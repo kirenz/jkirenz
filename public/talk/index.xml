@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>All Seminars &amp; Workshops on Jan Kirenz</title>
+    <link>/talk/</link>
+    <description>Recent content in All Seminars &amp; Workshops on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Thu, 24 Oct 2019 09:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Applied Statistics</title>
+      <link>/talk/2019-applied-statistics/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-applied-statistics/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Programming Languages for Data Science</title>
+      <link>/talk/2019-programming-languages/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-programming-languages/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Big Data and Web Analytics</title>
+      <link>/talk/2019-big-data-web-analytics/</link>
+      <pubDate>Mon, 07 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-big-data-web-analytics/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Web Analytics &amp; Social Media Analytics</title>
+      <link>/talk/2019-web-analytics/</link>
+      <pubDate>Thu, 13 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-web-analytics/</guid>
+      <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

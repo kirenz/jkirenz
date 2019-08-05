@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Markdown on Jan Kirenz</title>
+    <link>/tags/r-markdown/</link>
+    <description>Recent content in R Markdown on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Thu, 01 Aug 2019 10:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create Data Presentations with R Markdown</title>
+      <link>/project/r-xaringan/</link>
+      <pubDate>Thu, 01 Aug 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/r-xaringan/</guid>
+      <description>
+
+
+&lt;p&gt;The xaringan package is an R Markdown extension based on the JavaScript library &lt;a href=&#34;https://remarkjs.com&#34;&gt;remark.js&lt;/a&gt; to generate HTML5 presentations in different &lt;a href=&#34;https://github.com/yihui/xaringan/tree/master/inst/rmarkdown/templates/xaringan/resources&#34;&gt;themes&lt;/a&gt; (&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/xaringan.html#ref-R-xaringan&#34;&gt;Xie 2019&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;You can learn more about the usage of the xaringan package from this excellent &lt;a href=&#34;http://slides.yihui.name/xaringan/&#34;&gt;documentation&lt;/a&gt;, which is actually a set of slides generated from xaringan.&lt;/p&gt;
+&lt;p&gt;Xie, Y. (2019). Xaringan: Presentation Ninja. &lt;a href=&#34;https://CRAN.R-project.org/package=xaringan&#34;&gt;CRAN&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

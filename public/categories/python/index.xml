@@ -1,0 +1,2200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Jan Kirenz</title>
+    <link>/categories/python/</link>
+    <description>Recent content in Python on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Regression Tutorial in Python</title>
+      <link>/post/2019-08-04-r-regression-tutorial/regression_tutorial/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-08-04-r-regression-tutorial/regression_tutorial/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Applied Statistics&lt;/strong&gt;&lt;br/&gt;
+Prof. Dr. Jan Kirenz &lt;br/&gt;
+Hochschule der Medien Stuttgart&lt;/p&gt;
+
+&lt;p&gt;&lt;h1&gt;Table of Contents&lt;span class=&#34;tocSkip&#34;&gt;&lt;/span&gt;&lt;/h1&gt;
+&lt;div class=&#34;toc&#34;&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Import-data&#34; data-toc-modified-id=&#34;Import-data-1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Import data&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Tidying-data&#34; data-toc-modified-id=&#34;Tidying-data-2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Tidying data&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Data-inspection&#34; data-toc-modified-id=&#34;Data-inspection-2.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;2.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Data inspection&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Handle-missing-values&#34; data-toc-modified-id=&#34;Handle-missing-values-2.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;2.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Handle missing values&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Transform-data&#34; data-toc-modified-id=&#34;Transform-data-3&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;3&amp;nbsp;&amp;nbsp;&lt;/span&gt;Transform data&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Descriptive-statistics&#34; data-toc-modified-id=&#34;Descriptive-statistics-3.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;3.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Descriptive statistics&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Measures-of-central-tendency&#34; data-toc-modified-id=&#34;Measures-of-central-tendency-3.1.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;3.1.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Measures of central tendency&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Measures-of-dispersion&#34; data-toc-modified-id=&#34;Measures-of-dispersion-3.1.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;3.1.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Measures of dispersion&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Summary-statistics&#34; data-toc-modified-id=&#34;Summary-statistics-3.1.3&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;3.1.3&amp;nbsp;&amp;nbsp;&lt;/span&gt;Summary statistics&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Visualize-data&#34; data-toc-modified-id=&#34;Visualize-data-4&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;4&amp;nbsp;&amp;nbsp;&lt;/span&gt;Visualize data&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Distibution-of-Variables&#34; data-toc-modified-id=&#34;Distibution-of-Variables-4.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;4.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Distibution of Variables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Relationship-between-variables&#34; data-toc-modified-id=&#34;Relationship-between-variables-4.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;4.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Relationship between variables&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model&#34; data-toc-modified-id=&#34;Model-5&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;5&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-1:-Mean&#34; data-toc-modified-id=&#34;Model-1:-Mean-5.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;5.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 1: Mean&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-5.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;5.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Measuring-the-quality-of-fit:-errors&#34; data-toc-modified-id=&#34;Measuring-the-quality-of-fit:-errors-6&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6&amp;nbsp;&amp;nbsp;&lt;/span&gt;Measuring the quality of fit: errors&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Sum-of-squared-errors-and-$R^2$&#34; data-toc-modified-id=&#34;Sum-of-squared-errors-and-$R^2$-6.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Sum of squared errors and $R^2$&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-1:-Mean&#34; data-toc-modified-id=&#34;Model-1:-Mean-6.1.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.1.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 1: Mean&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-6.1.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.1.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Pearson&#39;s-correlation-coefficient&#34; data-toc-modified-id=&#34;Pearson&#39;s-correlation-coefficient-6.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Pearson&amp;rsquo;s correlation coefficient&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-6.2.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.2.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Mean-squared-error,-variance-and-standard-deviation&#34; data-toc-modified-id=&#34;Mean-squared-error,-variance-and-standard-deviation-6.3&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.3&amp;nbsp;&amp;nbsp;&lt;/span&gt;Mean squared error, variance and standard deviation&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-1:-Mean&#34; data-toc-modified-id=&#34;Model-1:-Mean-6.3.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.3.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 1: Mean&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-6.3.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.3.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#F-Statistic&#34; data-toc-modified-id=&#34;F-Statistic-6.4&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.4&amp;nbsp;&amp;nbsp;&lt;/span&gt;F-Statistic&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-6.4.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.4.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#5.2.5-Standard-error&#34; data-toc-modified-id=&#34;5.2.5-Standard-error-6.5&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.5&amp;nbsp;&amp;nbsp;&lt;/span&gt;5.2.5 Standard error&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-1:-Mean&#34; data-toc-modified-id=&#34;Model-1:-Mean-6.5.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.5.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 1: Mean&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-6.5.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.5.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Confidence-interval&#34; data-toc-modified-id=&#34;Confidence-interval-6.6&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.6&amp;nbsp;&amp;nbsp;&lt;/span&gt;Confidence interval&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-1:-The-Mean&#34; data-toc-modified-id=&#34;Model-1:-The-Mean-6.6.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.6.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 1: The Mean&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Model-2:-Linear-Regression&#34; data-toc-modified-id=&#34;Model-2:-Linear-Regression-6.6.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.6.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Model 2: Linear Regression&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Confidence-intervals-in-small-samples&#34; data-toc-modified-id=&#34;Confidence-intervals-in-small-samples-6.7&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;6.7&amp;nbsp;&amp;nbsp;&lt;/span&gt;Confidence intervals in small samples&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Further-measures-for-model-selection&#34; data-toc-modified-id=&#34;Further-measures-for-model-selection-7&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;7&amp;nbsp;&amp;nbsp;&lt;/span&gt;Further measures for model selection&lt;/a&gt;&lt;/span&gt;&lt;ul class=&#34;toc-item&#34;&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Bayesian-information-criterion-(BIC)&#34; data-toc-modified-id=&#34;Bayesian-information-criterion-(BIC)-7.1&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;7.1&amp;nbsp;&amp;nbsp;&lt;/span&gt;Bayesian information criterion (BIC)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&#34;#Akaike-information-criterion-(AIC)&#34; data-toc-modified-id=&#34;Akaike-information-criterion-(AIC)-7.2&#34;&gt;&lt;span class=&#34;toc-item-num&#34;&gt;7.2&amp;nbsp;&amp;nbsp;&lt;/span&gt;Akaike information criterion (AIC)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Python set up (load modules)
+import numpy as np
+import pandas as pd
+from pandas.api.types import CategoricalDtype
+from scipy import stats
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+from statsmodels.stats.outliers_influence import summary_table # confidence intervall
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.style.use(&#39;ggplot&#39;)
+import seaborn as sns  
+sns.set()
+from IPython.display import Image
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;linear-regression-and-the-quality-of-fit&#34;&gt;Linear regression and the quality of fit&lt;/h1&gt;
+
+&lt;p&gt;In this application we cover linear regression - the fundamental starting point for all regression methods - and how to evaluate the quality of fit of a regression model. Therefore, we quantify the extent to which the predicted outcome value for a given observation is close to the true outcome value for that observation. In the regression setting, the most commonly-used measure is the mean squared error (MSE), which we will cover in detail.&lt;/p&gt;
+
+&lt;p&gt;One of the simplest models we use in statistics is the &lt;strong&gt;mean&lt;/strong&gt;. It is a (simple) model because it represents a summary of data. Therefore, we use the mean as a baseline model and compare the quality of fit between the mean and a simple linear regression model with only one predictor. In our application, we use a sample of 20 adult german women from whom we obtained their height and the average height of their parents (height_parents).&lt;/p&gt;
+
+&lt;p&gt;Data description (n = 20, p = 5); Variables: name, unique identification number (id), height, average height of parents (height_parents), gender.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Source&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The statistical explanations in this tutorial are mainly based on Field (2018).&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Field, A. (2018). Discovering statistics using IBM SPSS statistics. Thousand Oaks, CA.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;import-data&#34;&gt;Import data&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Instead of importing data, we will create our own data
+df = pd.DataFrame({ &#39;name&#39;: pd.Categorical([ &amp;quot;Stefanie&amp;quot;, &amp;quot;Petra&amp;quot;, &amp;quot;Stefanie&amp;quot;,
+                                             &amp;quot;Manuela&amp;quot;, &amp;quot;Nadine&amp;quot;, &amp;quot;Sophia&amp;quot;,  
+                                             &amp;quot;Ellen&amp;quot;, &amp;quot;Emilia&amp;quot;, &amp;quot;Lina&amp;quot;,
+                                             &amp;quot;Marie&amp;quot;, &amp;quot;Lena&amp;quot;, &amp;quot;Mila&amp;quot;,    
+                                             &amp;quot;Ida&amp;quot;, &amp;quot;Ella&amp;quot;, &amp;quot;Pia&amp;quot;,
+                                             &amp;quot;Sarah &amp;quot;, &amp;quot;Lia&amp;quot;, &amp;quot;Lotta&amp;quot;,
+                                             &amp;quot;Emma&amp;quot;, &amp;quot;Lina&amp;quot;]),
+                       &#39;id&#39;: pd.Categorical([&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;6&amp;quot;,  
+                                             &amp;quot;7&amp;quot;, &amp;quot;8&amp;quot;, &amp;quot;9&amp;quot;, &amp;quot;10&amp;quot;, &amp;quot;11&amp;quot;, &amp;quot;12&amp;quot;,    
+                                             &amp;quot;13&amp;quot;, &amp;quot;14&amp;quot;, &amp;quot;15&amp;quot;, &amp;quot;16 &amp;quot;, &amp;quot;17&amp;quot;, &amp;quot;18&amp;quot;,
+                                             &amp;quot;19&amp;quot;, &amp;quot;20&amp;quot;]),
+                          &#39;height&#39;: np.array([162, 163, 163, 164, 164, 164, 164, 165,
+                                              165, 165, 165, 165, 165, 166, 166, 166,
+                                              166, 167, 167, 168],dtype=&#39;int32&#39;),
+                  &#39;height_parents&#39;: np.array([161, 163, 163, 165, 163, 164, 164, 165,
+                                              165, 165, 166, 167, 165, 166, 166, 166,
+                                              166, 166, 167, 168],dtype=&#39;int32&#39;),
+                                    &#39;gender&#39;: &#39;female&#39; })
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;tidying-data&#34;&gt;Tidying data&lt;/h2&gt;
+
+&lt;h3 id=&#34;data-inspection&#34;&gt;Data inspection&lt;/h3&gt;
+
+&lt;p&gt;First of all, let&amp;rsquo;s take a look at the variables (columns) in the data set.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# show all variables in the data set
+df.columns
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Index([&#39;name&#39;, &#39;id&#39;, &#39;height&#39;, &#39;height_parents&#39;, &#39;gender&#39;], dtype=&#39;object&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# show the first 5 rows (i.e. head of the DataFrame)
+df.head(10)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;gender&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;Sophia&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;Ellen&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;Emilia&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;Lina&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;Marie&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# show the lenght of the variable id (i.e. the number of observations)
+len(df[&amp;quot;id&amp;quot;])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# check for duplicates and print results (if the two numbers match, we have no duplicates)
+# show the lenght of the variable id (i.e. the number of observations)
+print(f&#39;IDs: {len(df[&amp;quot;id&amp;quot;])}&#39;)
+# count the number of individual id&#39;s
+print(f&#39;Unique IDs: {len(df[&amp;quot;id&amp;quot;].value_counts())}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;IDs: 20
+Unique IDs: 20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# we don&#39;t need the variable gender
+df = df.drop(&#39;gender&#39;, axis=1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# data overview (with meta data)
+df.info()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;class &#39;pandas.core.frame.DataFrame&#39;&amp;gt;
+RangeIndex: 20 entries, 0 to 19
+Data columns (total 4 columns):
+name              20 non-null category
+id                20 non-null category
+height            20 non-null int32
+height_parents    20 non-null int32
+dtypes: category(2), int32(2)
+memory usage: 1.8 KB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# show the first 20 rows (i.e. head of the DataFrame)
+df.head(20)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;5&lt;/th&gt;
+      &lt;td&gt;Sophia&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;6&lt;/th&gt;
+      &lt;td&gt;Ellen&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;7&lt;/th&gt;
+      &lt;td&gt;Emilia&lt;/td&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;8&lt;/th&gt;
+      &lt;td&gt;Lina&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;9&lt;/th&gt;
+      &lt;td&gt;Marie&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;10&lt;/th&gt;
+      &lt;td&gt;Lena&lt;/td&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;11&lt;/th&gt;
+      &lt;td&gt;Mila&lt;/td&gt;
+      &lt;td&gt;12&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;12&lt;/th&gt;
+      &lt;td&gt;Ida&lt;/td&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;13&lt;/th&gt;
+      &lt;td&gt;Ella&lt;/td&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;14&lt;/th&gt;
+      &lt;td&gt;Pia&lt;/td&gt;
+      &lt;td&gt;15&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;15&lt;/th&gt;
+      &lt;td&gt;Sarah&lt;/td&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;16&lt;/th&gt;
+      &lt;td&gt;Lia&lt;/td&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;17&lt;/th&gt;
+      &lt;td&gt;Lotta&lt;/td&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+      &lt;td&gt;166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;18&lt;/th&gt;
+      &lt;td&gt;Emma&lt;/td&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;19&lt;/th&gt;
+      &lt;td&gt;Lina&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;168&lt;/td&gt;
+      &lt;td&gt;168&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;handle-missing-values&#34;&gt;Handle missing values&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# show missing values (missing values - if present - will be displayed in yellow )
+sns.heatmap(df.isnull(),yticklabels=False,cbar=False,cmap=&#39;viridis&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_17_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can also check the column-wise distribution of null values:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(df.isnull().sum())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;name              0
+id                0
+height            0
+height_parents    0
+dtype: int64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;transform-data&#34;&gt;Transform data&lt;/h2&gt;
+
+&lt;h3 id=&#34;descriptive-statistics&#34;&gt;Descriptive statistics&lt;/h3&gt;
+
+&lt;h4 id=&#34;measures-of-central-tendency&#34;&gt;Measures of central tendency&lt;/h4&gt;
+
+&lt;p&gt;First of all we obtain some common statistics per variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# mode
+df[&#39;height&#39;].mode()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0    165
+dtype: int32
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate mean
+print(f&#39;The mean: {round(df[&amp;quot;height&amp;quot;].mean(),2)}&#39;)
+# calculate median
+print(f&#39;The median: {df[&amp;quot;height&amp;quot;].median()}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;The mean: 165.0
+The median: 165.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;measures-of-dispersion&#34;&gt;Measures of dispersion&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# quantiles
+df[&#39;height&#39;].quantile([.25, .5, .75])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.25    164.0
+0.50    165.0
+0.75    166.0
+Name: height, dtype: float64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Range
+df[&#39;height&#39;].max() - df[&#39;height&#39;].min()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# standard deviation
+round(df[&#39;height&#39;].std(),2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1.49
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;summary-statistics&#34;&gt;Summary statistics&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# summary statistics for all numerical columns
+round(df.describe(),2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;count&lt;/th&gt;
+      &lt;td&gt;20.00&lt;/td&gt;
+      &lt;td&gt;20.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;mean&lt;/th&gt;
+      &lt;td&gt;165.00&lt;/td&gt;
+      &lt;td&gt;165.05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;std&lt;/th&gt;
+      &lt;td&gt;1.49&lt;/td&gt;
+      &lt;td&gt;1.67&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;min&lt;/th&gt;
+      &lt;td&gt;162.00&lt;/td&gt;
+      &lt;td&gt;161.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;25%&lt;/th&gt;
+      &lt;td&gt;164.00&lt;/td&gt;
+      &lt;td&gt;164.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;50%&lt;/th&gt;
+      &lt;td&gt;165.00&lt;/td&gt;
+      &lt;td&gt;165.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;75%&lt;/th&gt;
+      &lt;td&gt;166.00&lt;/td&gt;
+      &lt;td&gt;166.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;max&lt;/th&gt;
+      &lt;td&gt;168.00&lt;/td&gt;
+      &lt;td&gt;168.00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# summary statistics for all categorical columns
+df.describe(include=[&#39;category&#39;])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;count&lt;/th&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;unique&lt;/th&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;20&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;top&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;freq&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;visualize-data&#34;&gt;Visualize data&lt;/h2&gt;
+
+&lt;h3 id=&#34;distibution-of-variables&#34;&gt;Distibution of Variables&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# histogram with seaborn
+sns.distplot(df.height);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_35_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.hist(bins=5, figsize=(10,5));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_36_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Another alternative to display the distribution of a continuous variable broken down by a categorical variable is the &lt;strong&gt;boxplot&lt;/strong&gt;. A boxplot is a type of visual shorthand for a distribution of values that is popular among statisticians. Each boxplot consists of:&lt;/p&gt;
+
+&lt;p&gt;A box that stretches from the 25th percentile of the distribution to the 75th percentile, a distance known as the interquartile range (IQR). In the middle of the box is a line that displays the median, i.e. 50th percentile, of the distribution. These three lines give you a sense of the spread of the distribution and whether or not the distribution is symmetric about the median or skewed to one side.&lt;/p&gt;
+
+&lt;p&gt;Visual points that display observations that fall more than 1.5 times the IQR from either edge of the box. These outlying points are unusual so are plotted individually.&lt;/p&gt;
+
+&lt;p&gt;A line (or whisker) that extends from each end of the box and goes to the farthest non-outlier point in the distribution.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# boxplot
+sns.boxplot(y=&#39;height&#39;, data=df, palette=&#39;winter&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_38_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.boxplot(figsize=(10,10));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_39_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;relationship-between-variables&#34;&gt;Relationship between variables&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# check relationship with a joint plot
+sns.jointplot(x=&amp;quot;height_parents&amp;quot;, y=&amp;quot;height&amp;quot;, data=df, stat_func=None);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_41_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can observe a strong relationship between the average height of the parents and the height of their daughter. Hence, it would make sense to use the variable &amp;ldquo;height_parents&amp;rdquo; as a predictor for the outcome variable &amp;ldquo;height&amp;rdquo; in a statistical model.&lt;/p&gt;
+
+&lt;h2 id=&#34;model&#34;&gt;Model&lt;/h2&gt;
+
+&lt;p&gt;If we are interested in discovering something about a phenomenon in the real world, we need to collect data to test predictions from our hypotheses about that phenomenon. Testing these hypotheses involves building statistical &lt;strong&gt;models&lt;/strong&gt; of the phenomenon of interest.&lt;/p&gt;
+
+&lt;p&gt;It is important that the model accurately represents the real world, otherwise any conclusions we extrapolate to the real-world will be meaningless. Hence, the statistical model should represent the data collected (the observed data) as closely as possible.&lt;/p&gt;
+
+&lt;p&gt;$$Outcome_i = (Model) + error_i$$&lt;/p&gt;
+
+&lt;p&gt;This equation means that the data we observe can be predicted from the model we choose to fit plus some amount of error. There are different terms that basically refer to &lt;strong&gt;error&lt;/strong&gt; like &lt;strong&gt;residual&lt;/strong&gt;, &lt;strong&gt;deviation&lt;/strong&gt; or &lt;strong&gt;deviance&lt;/strong&gt;. The degree to which a statistical model represents the data collected is known as the &lt;strong&gt;fit of the model&lt;/strong&gt; which is closely related to the error of the model.&lt;/p&gt;
+
+&lt;p&gt;The ‘model’ in the equation will vary depending on the design of your study, the type of data you have and what it is you’re trying to achieve with your model. Consequently, the model can also vary in its complexity.&lt;/p&gt;
+
+&lt;p&gt;The important thing is that we can use the model computed in our &lt;strong&gt;sample&lt;/strong&gt; to estimate the value in the &lt;strong&gt;population&lt;/strong&gt; (which is the value in which we’re interested).&lt;/p&gt;
+
+&lt;h1 id=&#34;parameters&#34;&gt;Parameters&lt;/h1&gt;
+
+&lt;p&gt;Statistical models are made up of &lt;strong&gt;variables&lt;/strong&gt; and &lt;strong&gt;parameters&lt;/strong&gt;. Variables are measured constructs that vary across entities in the sample. In contrast, parameters are not measured and are (usually) constants believed to represent some fundamental truth about the relations between variables in the model.&lt;/p&gt;
+
+&lt;p&gt;Some examples of parameters with which you already are familiar are: the &lt;strong&gt;mean&lt;/strong&gt; and &lt;strong&gt;median&lt;/strong&gt; (which estimate the centre of the distribution). We will also cover correlation and regression coefficients (which estimate the relationship between two variables) in other applications.&lt;/p&gt;
+
+&lt;p&gt;If we’re interested only in summarizing the outcome, as we are when we compute a &lt;strong&gt;mean&lt;/strong&gt;, then we won’t have any variables in the model, only a &lt;strong&gt;parameter&lt;/strong&gt; (typically called &lt;em&gt;b&lt;/em&gt;), so we could write our $Outcome_i = (Model) + error_i$ equation as:&lt;/p&gt;
+
+&lt;p&gt;$Outcome_i = (b) + error_i$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Let&amp;rsquo;s say we would like to compare the &lt;strong&gt;quality of fit&lt;/strong&gt; of two models to predict height: the simple mean and a second model in which we use information about the average height of their parents as a predictor in a linear regression model.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model 1: Mean&lt;/strong&gt;
+  * In the case of the &lt;strong&gt;mean&lt;/strong&gt;, the &lt;em&gt;b&lt;/em&gt; parameter is usually called $\bar{x}$, which leads to:&lt;/p&gt;
+
+&lt;p&gt;$height_i = (\bar{x}) + error_i$
+  * with&lt;/p&gt;
+
+&lt;p&gt;$\bar{x} =  \frac {\sum&lt;em&gt;{i=1}^n x&lt;/em&gt;{i}}{n}$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model 2: Linear Regression&lt;/strong&gt;
+  * In our second model, we use the variable height of parents as predictor in a linear regression model:&lt;/p&gt;
+
+&lt;p&gt;$height_i = (b_0 + b_i \times heightparents_i ) + error_i$&lt;/p&gt;
+
+&lt;h3 id=&#34;model-1-mean&#34;&gt;Model 1: Mean&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate the mean
+sum_x_i = df.height.sum()
+n = len(df[&amp;quot;height&amp;quot;])
+# formula for mean
+x_bar = sum_x_i / n
+print(x_bar)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;165.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate the mean
+df[&amp;quot;height&amp;quot;].mean()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;165.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# add the mean (as &amp;quot;average&amp;quot;) to our DataFrame
+df = df.assign(average = df.height.mean())
+df.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;average&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# create a scatterplot (plt)
+plt = sns.scatterplot(x=&amp;quot;id&amp;quot;, y=&amp;quot;height&amp;quot;,data=df);
+plt.set(xlabel=&#39;ID&#39;, ylabel=&#39;Height in cm&#39;, title=&#39;Error of th model&#39;);
+plt.plot([0, 20], [165, 165], linewidth=2, color=&#39;r&#39;);
+plt.text(1, 165.2,&#39;mean = 165&#39;, rotation=0, color=&#39;r&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_49_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;model-2-linear-regression&#34;&gt;Model 2: Linear Regression&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# fit linear model with statsmodels.formula.api (with R-style formulas)
+lm = smf.ols(formula =&#39;height ~ height_parents&#39;, data=df).fit()
+
+# add the regression predictions (as &amp;quot;pred&amp;quot;) to our DataFrame
+df[&#39;pred&#39;] = lm.predict()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;average&lt;/th&gt;
+      &lt;th&gt;pred&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;161.711048&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;164.959396&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lm.summary()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;table class=&#34;simpletable&#34;&gt;
+&lt;caption&gt;OLS Regression Results&lt;/caption&gt;
+&lt;tr&gt;
+  &lt;th&gt;Dep. Variable:&lt;/th&gt;         &lt;td&gt;height&lt;/td&gt;      &lt;th&gt;  R-squared:         &lt;/th&gt; &lt;td&gt;   0.831&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Model:&lt;/th&gt;                   &lt;td&gt;OLS&lt;/td&gt;       &lt;th&gt;  Adj. R-squared:    &lt;/th&gt; &lt;td&gt;   0.822&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Method:&lt;/th&gt;             &lt;td&gt;Least Squares&lt;/td&gt;  &lt;th&gt;  F-statistic:       &lt;/th&gt; &lt;td&gt;   88.78&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Date:&lt;/th&gt;             &lt;td&gt;Mon, 13 May 2019&lt;/td&gt; &lt;th&gt;  Prob (F-statistic):&lt;/th&gt; &lt;td&gt;2.21e-08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Time:&lt;/th&gt;                 &lt;td&gt;11:20:24&lt;/td&gt;     &lt;th&gt;  Log-Likelihood:    &lt;/th&gt; &lt;td&gt; -17.995&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;No. Observations:&lt;/th&gt;      &lt;td&gt;    20&lt;/td&gt;      &lt;th&gt;  AIC:               &lt;/th&gt; &lt;td&gt;   39.99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Df Residuals:&lt;/th&gt;          &lt;td&gt;    18&lt;/td&gt;      &lt;th&gt;  BIC:               &lt;/th&gt; &lt;td&gt;   41.98&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Df Model:&lt;/th&gt;              &lt;td&gt;     1&lt;/td&gt;      &lt;th&gt;                     &lt;/th&gt;     &lt;td&gt; &lt;/td&gt;&lt;br /&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Covariance Type:&lt;/th&gt;      &lt;td&gt;nonrobust&lt;/td&gt;    &lt;th&gt;                     &lt;/th&gt;     &lt;td&gt; &lt;/td&gt;&lt;br /&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table class=&#34;simpletable&#34;&gt;
+&lt;tr&gt;
+         &lt;td&gt;&lt;/td&gt;           &lt;th&gt;coef&lt;/th&gt;     &lt;th&gt;std err&lt;/th&gt;      &lt;th&gt;t&lt;/th&gt;      &lt;th&gt;P&amp;gt;|t|&lt;/th&gt;  &lt;th&gt;[0.025&lt;/th&gt;    &lt;th&gt;0.975]&lt;/th&gt;&lt;br /&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Intercept&lt;/th&gt;      &lt;td&gt;   30.9651&lt;/td&gt; &lt;td&gt;   14.226&lt;/td&gt; &lt;td&gt;    2.177&lt;/td&gt; &lt;td&gt; 0.043&lt;/td&gt; &lt;td&gt;    1.077&lt;/td&gt; &lt;td&gt;   60.853&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;height_parents&lt;/th&gt; &lt;td&gt;    0.8121&lt;/td&gt; &lt;td&gt;    0.086&lt;/td&gt; &lt;td&gt;    9.422&lt;/td&gt; &lt;td&gt; 0.000&lt;/td&gt; &lt;td&gt;    0.631&lt;/td&gt; &lt;td&gt;    0.993&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table class=&#34;simpletable&#34;&gt;
+&lt;tr&gt;
+  &lt;th&gt;Omnibus:&lt;/th&gt;       &lt;td&gt; 4.700&lt;/td&gt; &lt;th&gt;  Durbin-Watson:     &lt;/th&gt; &lt;td&gt;   1.384&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Prob(Omnibus):&lt;/th&gt; &lt;td&gt; 0.095&lt;/td&gt; &lt;th&gt;  Jarque-Bera (JB):  &lt;/th&gt; &lt;td&gt;   2.492&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Skew:&lt;/th&gt;          &lt;td&gt;-0.684&lt;/td&gt; &lt;th&gt;  Prob(JB):          &lt;/th&gt; &lt;td&gt;   0.288&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Kurtosis:&lt;/th&gt;      &lt;td&gt; 4.058&lt;/td&gt; &lt;th&gt;  Cond. No.          &lt;/th&gt; &lt;td&gt;1.67e+04&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;br/&gt;&lt;br/&gt;Warnings:&lt;br/&gt;[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.&lt;br/&gt;[2] The condition number is large, 1.67e+04. This might indicate that there are&lt;br/&gt;strong multicollinearity or other numerical problems.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# This is just a reminder of how the regression works. We make a prediction for X=200
+b_0 = 30.9651
+b_1 = 0.8121
+X = 200
+Vorhersage = b_0 + b_1*(X)
+print(Vorhersage)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;193.38510000000002
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;average&lt;/th&gt;
+      &lt;th&gt;pred&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;161.711048&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;164.959396&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We use &lt;a href=&#34;https://seaborn.pydata.org/generated/seaborn.lmplot.html&#34; target=&#34;_blank&#34;&gt;Seaborne&amp;rsquo;s lmplot&lt;/a&gt; to plot the regression line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Plot regression line
+sns.lmplot(x=&#39;height_parents&#39;, y=&#39;height&#39;, data=df, line_kws={&#39;color&#39;:&#39;red&#39;}, height=5, ci=None, );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_57_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Regression results overview
+lm.summary()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;table class=&#34;simpletable&#34;&gt;
+&lt;caption&gt;OLS Regression Results&lt;/caption&gt;
+&lt;tr&gt;
+  &lt;th&gt;Dep. Variable:&lt;/th&gt;         &lt;td&gt;height&lt;/td&gt;      &lt;th&gt;  R-squared:         &lt;/th&gt; &lt;td&gt;   0.831&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Model:&lt;/th&gt;                   &lt;td&gt;OLS&lt;/td&gt;       &lt;th&gt;  Adj. R-squared:    &lt;/th&gt; &lt;td&gt;   0.822&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Method:&lt;/th&gt;             &lt;td&gt;Least Squares&lt;/td&gt;  &lt;th&gt;  F-statistic:       &lt;/th&gt; &lt;td&gt;   88.78&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Date:&lt;/th&gt;             &lt;td&gt;Mon, 13 May 2019&lt;/td&gt; &lt;th&gt;  Prob (F-statistic):&lt;/th&gt; &lt;td&gt;2.21e-08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Time:&lt;/th&gt;                 &lt;td&gt;11:20:24&lt;/td&gt;     &lt;th&gt;  Log-Likelihood:    &lt;/th&gt; &lt;td&gt; -17.995&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;No. Observations:&lt;/th&gt;      &lt;td&gt;    20&lt;/td&gt;      &lt;th&gt;  AIC:               &lt;/th&gt; &lt;td&gt;   39.99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Df Residuals:&lt;/th&gt;          &lt;td&gt;    18&lt;/td&gt;      &lt;th&gt;  BIC:               &lt;/th&gt; &lt;td&gt;   41.98&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Df Model:&lt;/th&gt;              &lt;td&gt;     1&lt;/td&gt;      &lt;th&gt;                     &lt;/th&gt;     &lt;td&gt; &lt;/td&gt;&lt;br /&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Covariance Type:&lt;/th&gt;      &lt;td&gt;nonrobust&lt;/td&gt;    &lt;th&gt;                     &lt;/th&gt;     &lt;td&gt; &lt;/td&gt;&lt;br /&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table class=&#34;simpletable&#34;&gt;
+&lt;tr&gt;
+         &lt;td&gt;&lt;/td&gt;           &lt;th&gt;coef&lt;/th&gt;     &lt;th&gt;std err&lt;/th&gt;      &lt;th&gt;t&lt;/th&gt;      &lt;th&gt;P&amp;gt;|t|&lt;/th&gt;  &lt;th&gt;[0.025&lt;/th&gt;    &lt;th&gt;0.975]&lt;/th&gt;&lt;br /&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Intercept&lt;/th&gt;      &lt;td&gt;   30.9651&lt;/td&gt; &lt;td&gt;   14.226&lt;/td&gt; &lt;td&gt;    2.177&lt;/td&gt; &lt;td&gt; 0.043&lt;/td&gt; &lt;td&gt;    1.077&lt;/td&gt; &lt;td&gt;   60.853&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;height_parents&lt;/th&gt; &lt;td&gt;    0.8121&lt;/td&gt; &lt;td&gt;    0.086&lt;/td&gt; &lt;td&gt;    9.422&lt;/td&gt; &lt;td&gt; 0.000&lt;/td&gt; &lt;td&gt;    0.631&lt;/td&gt; &lt;td&gt;    0.993&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table class=&#34;simpletable&#34;&gt;
+&lt;tr&gt;
+  &lt;th&gt;Omnibus:&lt;/th&gt;       &lt;td&gt; 4.700&lt;/td&gt; &lt;th&gt;  Durbin-Watson:     &lt;/th&gt; &lt;td&gt;   1.384&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Prob(Omnibus):&lt;/th&gt; &lt;td&gt; 0.095&lt;/td&gt; &lt;th&gt;  Jarque-Bera (JB):  &lt;/th&gt; &lt;td&gt;   2.492&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Skew:&lt;/th&gt;          &lt;td&gt;-0.684&lt;/td&gt; &lt;th&gt;  Prob(JB):          &lt;/th&gt; &lt;td&gt;   0.288&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;th&gt;Kurtosis:&lt;/th&gt;      &lt;td&gt; 4.058&lt;/td&gt; &lt;th&gt;  Cond. No.          &lt;/th&gt; &lt;td&gt;1.67e+04&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;br/&gt;&lt;br/&gt;Warnings:&lt;br/&gt;[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.&lt;br/&gt;[2] The condition number is large, 1.67e+04. This might indicate that there are&lt;br/&gt;strong multicollinearity or other numerical problems.&lt;/p&gt;
+
+&lt;h2 id=&#34;measuring-the-quality-of-fit-errors&#34;&gt;Measuring the quality of fit: errors&lt;/h2&gt;
+
+&lt;p&gt;In order to evaluate the performance of a statistical model on a given data set, we need some way to measure how well its predictions actually match the observed data. That is, we need to quantify the extent to which the predicted response value for a given observation is close to
+the true response value for that observation.&lt;/p&gt;
+
+&lt;p&gt;With most statistical models we can determine whether the model represents the data well by looking at how different the scores we observed in the data are from the values that the model predicts.&lt;/p&gt;
+
+&lt;p&gt;$Outcome_i = (b) + error_i$, hence&lt;/p&gt;
+
+&lt;p&gt;$error_i = Outcome_i - (b)$&lt;/p&gt;
+
+&lt;p&gt;In other words, the error for a particular entity is the score predicted by the model for that entity subtracted from the corresponding observed score.&lt;/p&gt;
+
+&lt;h3 id=&#34;sum-of-squared-errors-and-r-2&#34;&gt;Sum of squared errors and $R^2$&lt;/h3&gt;
+
+&lt;p&gt;Errors cancel out because some are positive and others negative. Therefore, we square each deviation. If we add these squared deviations we get the &lt;strong&gt;Sum of Squared Errors (SS)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;$ SS = \sum_{i=1}^n (outcome_i - model_i)^2$&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;strong&gt;mean&lt;/strong&gt; of the outcome as a baseline model, we can calculate the difference between the observed values and the values predicted by the mean. We square these differences to give us the sum of squared differences. This sum of squared differences is known as the &lt;strong&gt;total sum of squares&lt;/strong&gt; (denoted by $SS_T$) and it represents how good the mean is as a model of the observed outcome scores&lt;/p&gt;
+
+&lt;p&gt;$SS&lt;em&gt;T = \sum&lt;/em&gt;{i=1}^n (observed_i - mean)^2$&lt;/p&gt;
+
+&lt;p&gt;We can use the values of $SS_T$ and the sum of squared residuals ($SS_R$)&lt;/p&gt;
+
+&lt;p&gt;$SS&lt;em&gt;R =  \sum&lt;/em&gt;{i=1}^n (observed_i - model_i )^2$&lt;/p&gt;
+
+&lt;p&gt;to calculate how much better the linear model is than the baseline model of ‘no relationship’ (the mean). The improvement in prediction resulting from using the linear model rather than the mean is calculated as the difference between $SS_T$ and $SS_R$.&lt;/p&gt;
+
+&lt;p&gt;This difference shows us the reduction in the inaccuracy of the model resulting from fitting the regression model to the data. This improvement is the &lt;strong&gt;model sum of squares&lt;/strong&gt;($SS_M$):&lt;/p&gt;
+
+&lt;p&gt;$SS_M = SS_T - SS_R$&lt;/p&gt;
+
+&lt;p&gt;If the value of $SS_M$ is &lt;em&gt;large&lt;/em&gt;, the linear model is very different from using the mean to predict the outcome variable. This implies that the linear model has made a big improvement to predicting the outcome variable.&lt;/p&gt;
+
+&lt;p&gt;If $SS_M$ is &lt;em&gt;small&lt;/em&gt; then using the linear model is little better than using the mean (i.e., the model is no better than predicting from ‘no relationship’).&lt;/p&gt;
+
+&lt;p&gt;A useful measure arising from these sums of squares is the proportion of improvement due to the model. This is calculated by dividing the sum of squares for the model by the total sum of squares to give a quantity called $R^2$&lt;/p&gt;
+
+&lt;p&gt;$$R^2 = \frac {SS_M}{SS_T}$$&lt;/p&gt;
+
+&lt;p&gt;with&lt;/p&gt;
+
+&lt;p&gt;$SS&lt;em&gt;T =  \sum&lt;/em&gt;{i=1}^n (observed_i - mean)^2$&lt;/p&gt;
+
+&lt;p&gt;$SS&lt;em&gt;R =  \sum&lt;/em&gt;{i=1}^n (observed_i - model_i )^2$&lt;/p&gt;
+
+&lt;p&gt;$SS_M = SS_T - SS_R$&lt;/p&gt;
+
+&lt;p&gt;To express the $R^2$-value as a percentage multiply it by 100. $R^2$ represents the amount of variance in the outcome explained by the model ($SS_M$) relative to how much variation there was to explain in the first place ($SS_T$): it represents the proportion of the variation in the outcome that can be predicted from the model. Therefore, it can take any value between 0% and 100%.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adjusted&lt;/strong&gt; $R^2$: Whereas $R^2$ tells us how much of the variance in Y overlaps with predicted values from the model in our sample, adjusted $R^2$ tells us how much variance in Y would be accounted for if the model had been derived from the &lt;strong&gt;population&lt;/strong&gt; from which the sample was taken (takes degrees of freedom into account). Therefore, the adjusted value indicates the loss of predictive power or shrinkage.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;As a general rule it is preferrable to use the adjusted $R^2$ instead of the simple $R^2$.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;model-1-mean-1&#34;&gt;Model 1: Mean&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate error (observation - average) and assign it to dataframe
+df = df.assign(error = (df[&#39;height&#39;] - df[&#39;average&#39;]))
+df.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;average&lt;/th&gt;
+      &lt;th&gt;pred&lt;/th&gt;
+      &lt;th&gt;error&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;161.711048&lt;/td&gt;
+      &lt;td&gt;-3.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-2.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-2.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;164.959396&lt;/td&gt;
+      &lt;td&gt;-1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-1.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note, that we can’t simply add deviances (the individual errors) because some errors are positive and others negative and so we’d get a total of zero.&lt;/p&gt;
+
+&lt;p&gt;total error = sum of errors&lt;/p&gt;
+
+&lt;p&gt;total error $= \sum_{i=1}^n (outcome_i - model_i)$&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate the sum of the errors
+df.error.sum()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# create a scatterplot (plt)
+plt = sns.scatterplot(x=&amp;quot;id&amp;quot;, y=&amp;quot;height&amp;quot;,data=df,);
+plt.set(xlabel=&#39;ID&#39;, ylabel=&#39;Height in cm&#39;, title=&#39;Error of th model&#39;);
+plt.plot([0, 20], [165, 165], linewidth=2, color=&#39;r&#39;);
+plt.text(1, 165.2,&#39;mean = 165&#39;, rotation=0, color=&#39;r&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_64_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# residual plot
+sns.residplot(x=&amp;quot;average&amp;quot;, y=&amp;quot;height&amp;quot;, data=df, scatter_kws={&amp;quot;s&amp;quot;: 80});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_65_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate squared error and assign it to dataframe
+df = df.assign(error_sq = (df[&#39;height&#39;] - df[&#39;average&#39;])**2)
+df.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;average&lt;/th&gt;
+      &lt;th&gt;pred&lt;/th&gt;
+      &lt;th&gt;error&lt;/th&gt;
+      &lt;th&gt;error_sq&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;161.711048&lt;/td&gt;
+      &lt;td&gt;-3.0&lt;/td&gt;
+      &lt;td&gt;9.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-2.0&lt;/td&gt;
+      &lt;td&gt;4.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-2.0&lt;/td&gt;
+      &lt;td&gt;4.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;164.959396&lt;/td&gt;
+      &lt;td&gt;-1.0&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-1.0&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate sum of squared error (which is in case of the mean the total error)
+SS_T = df.error_sq.sum()
+# print output
+print(&#39;Sum of squared error (SS_T) of model 1:&#39;, SS_T)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Sum of squared error (SS_T) of model 1: 42.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;model-2-linear-regression-1&#34;&gt;Model 2: Linear Regression&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lm.resid.sum()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;4.206412995699793e-12
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# obtain the residuals from statsmodel (resid)
+df[&#39;error_2&#39;] = lm.resid
+# square the residuals
+df[&#39;error_sq_2&#39;] = df[&#39;error_2&#39;]**2
+# show df
+df.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;id&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;th&gt;average&lt;/th&gt;
+      &lt;th&gt;pred&lt;/th&gt;
+      &lt;th&gt;error&lt;/th&gt;
+      &lt;th&gt;error_sq&lt;/th&gt;
+      &lt;th&gt;error_2&lt;/th&gt;
+      &lt;th&gt;error_sq_2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;162&lt;/td&gt;
+      &lt;td&gt;161&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;161.711048&lt;/td&gt;
+      &lt;td&gt;-3.0&lt;/td&gt;
+      &lt;td&gt;9.0&lt;/td&gt;
+      &lt;td&gt;0.288952&lt;/td&gt;
+      &lt;td&gt;0.083493&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;Petra&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-2.0&lt;/td&gt;
+      &lt;td&gt;4.0&lt;/td&gt;
+      &lt;td&gt;-0.335222&lt;/td&gt;
+      &lt;td&gt;0.112374&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;Stefanie&lt;/td&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-2.0&lt;/td&gt;
+      &lt;td&gt;4.0&lt;/td&gt;
+      &lt;td&gt;-0.335222&lt;/td&gt;
+      &lt;td&gt;0.112374&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Manuela&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;165&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;164.959396&lt;/td&gt;
+      &lt;td&gt;-1.0&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+      &lt;td&gt;-0.959396&lt;/td&gt;
+      &lt;td&gt;0.920440&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Nadine&lt;/td&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;164&lt;/td&gt;
+      &lt;td&gt;163&lt;/td&gt;
+      &lt;td&gt;165.0&lt;/td&gt;
+      &lt;td&gt;163.335222&lt;/td&gt;
+      &lt;td&gt;-1.0&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+      &lt;td&gt;0.664778&lt;/td&gt;
+      &lt;td&gt;0.441930&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Total sum of squares (SS_T: sum of squared errors of the base model, i.e. the mean)
+print(SS_T)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;42.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Sum of squared residuals (SS_R)
+SS_R = df[&#39;error_sq_2&#39;].sum()
+print(SS_R)
+# SS_R – Sum of squared (whitened) residuals from statsmodel function
+lm.ssr
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;7.0802644003777155
+
+
+
+
+
+7.080264400377715
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Plot regression line
+sns.lmplot(x=&#39;height_parents&#39;, y=&#39;height&#39;, data=df, line_kws={&#39;color&#39;:&#39;red&#39;}, height=5, ci=None);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_73_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;sns.residplot(x=&amp;quot;height_parents&amp;quot;, y=&amp;quot;height&amp;quot;, data=df, scatter_kws={&amp;quot;s&amp;quot;: 80});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_74_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Explained sum of squares  (SS_M = SS_T - SS_R)
+SS_M = SS_T - SS_R
+print(SS_M)
+# Explained sum of squres (SS_M) from statsmodel function
+lm.ess
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;34.919735599622285
+
+
+
+
+
+34.919735599622285
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;$R^2$ is the proportion of the variance in the dependent variable that is predictable from the independent variable&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# R_Squared: explained sum of squared residuals
+R_squared = SS_M / SS_T
+print(R_squared)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.831422276181483
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# R_Squared of statsmodel
+lm.rsquared
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.831422276181483
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Adjusted R_Squared:
+lm.rsquared_adj
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.8220568470804543
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pearson-s-correlation-coefficient&#34;&gt;Pearson&amp;rsquo;s correlation coefficient&lt;/h3&gt;
+
+&lt;p&gt;We just saw that $R^2$ represents the proportion of the variation in the outcome that can be predicted from the model:&lt;/p&gt;
+
+&lt;p&gt;$R^2 = \frac{SS_M}{SS_T}$&lt;/p&gt;
+
+&lt;p&gt;with&lt;/p&gt;
+
+&lt;p&gt;$SS&lt;em&gt;T =  \sum&lt;/em&gt;{i=1}^n (observed_i - mean)^2$&lt;/p&gt;
+
+&lt;p&gt;$SS&lt;em&gt;R =  \sum&lt;/em&gt;{i=1}^n (observed_i - model_i )^2$&lt;/p&gt;
+
+&lt;p&gt;$SS_M = SS_T - SS_R$&lt;/p&gt;
+
+&lt;p&gt;We can take the square root of this value to obtain &lt;strong&gt;Pearson’s correlation coefficient&lt;/strong&gt; (we cover the topic of correlation in a separate application in detail) for the relationship between the values of the outcome predicted by the model and the observed values of the outcome. With only one predictor in the model this value will be the same as the Pearson correlation coefficient between the predictor and outcome variable.&lt;/p&gt;
+
+&lt;p&gt;$r = \sqrt{R^2} = \sqrt{\frac{SS_M}{SS_T}}$&lt;/p&gt;
+
+&lt;p&gt;As such, the correlation coefficient provides us with a good estimate of the overall fit of the regression model (i.e., the correspondence between predicted values of the outcome and the actual values), and $R^2$ provides us with a gauge of the substantive size of the model fit.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Interpretation of r:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;$- 1 ≤ r ≤ 1$&lt;/p&gt;
+
+&lt;p&gt;With a perfect relationship (r = −1 or 1) the observed data basically fall exactly on the line (the model is a perfect fit to the data), but for a weaker relationship (r = −0.5 or 0.5) the observed data are scattered more widely around the line.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;| r | = 0.10 (small effect)&lt;/li&gt;
+&lt;li&gt;| r | = 0.30 (medium effect)&lt;/li&gt;
+&lt;li&gt;| r | = 0.50 (large effect)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It’s worth bearing in mind that r is not measured on a linear scale, so an effect with r = 0.6 isn’t twice as big as one with r = 0.3.&lt;/p&gt;
+
+&lt;h4 id=&#34;model-2-linear-regression-2&#34;&gt;Model 2: Linear Regression&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# correlation coefficient r
+r = np.sqrt(R_squared)
+print(r)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.911823599267689
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# correlation coefficient with p-value
+stats.pearsonr(df[&#39;height&#39;], df[&#39;height_parents&#39;])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;(0.9118235992676891, 2.214412891654905e-08)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;mean-squared-error-variance-and-standard-deviation&#34;&gt;Mean squared error, variance and standard deviation&lt;/h3&gt;
+
+&lt;p&gt;Although the &lt;strong&gt;sum of squared errors (SS)&lt;/strong&gt; is a good measure of the accuracy of our model, it depends upon the quantity of data that has been collected – the more data points, the higher the SS.&lt;/p&gt;
+
+&lt;p&gt;By using the &lt;strong&gt;average error&lt;/strong&gt;, rather than the total, we can overcome this problem. This measure is called the &amp;ldquo;&lt;strong&gt;Mean Squared Error (MSE)&lt;/strong&gt;&amp;rdquo;. In the regression setting, it is the most commonly-used measure to evaluate the performance of a model.&lt;/p&gt;
+
+&lt;p&gt;To compute the average error we divide the sum of squares by the number of values that we used to compute that total. We again come back to the problem that we’re usually interested in the error in the model in the &lt;strong&gt;population&lt;/strong&gt; (not the &lt;strong&gt;sample&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;To estimate the mean error in the population we need to divide not by the number of scores contributing to the total, but by the &lt;strong&gt;degrees of freedom (df)&lt;/strong&gt;, which is the number of scores used to compute the total adjusted for the fact that we’re trying to estimate the population value. Note: you may encounter different formulas for calculating the mse. Some only devide by the number of observations and not the df.&lt;/p&gt;
+
+&lt;p&gt;Mean squared error:&lt;/p&gt;
+
+&lt;p&gt;$$ MSE = \frac {SS}{df} = \frac {\sum_{i=1}^n (outcome_i - model_i)^2}{df}$$&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;mean squared error&lt;/strong&gt; is also known as the &lt;strong&gt;variance&lt;/strong&gt;. Furthermore, the &lt;strong&gt;standard deviation&lt;/strong&gt; is the square root of the variance:&lt;/p&gt;
+
+&lt;p&gt;$$Variance = s^2 = \frac {SS}{df} = \frac {\sum_{i=1}^n (outcome_i - model_i)^2}{df}$$&lt;/p&gt;
+
+&lt;p&gt;Standard Deviation = $$\sqrt{s^2} = \sqrt{\frac{\sum\limits&lt;em&gt;{i=1}^{n} \left(x&lt;/em&gt;{i} - \bar{x}\right)^{2}} {df}}$$&lt;/p&gt;
+
+&lt;p&gt;which equals:&lt;/p&gt;
+
+&lt;p&gt;$$ s =  \frac {\sum_{i=1}^n (outcome_i - model_i)}{df}$$&lt;/p&gt;
+
+&lt;p&gt;A small &lt;strong&gt;standard deviation&lt;/strong&gt; represented a scenario in which most data points were close to the mean, whereas a large standard deviation represented a situation in which data points were widely spread from the mean.&lt;/p&gt;
+
+&lt;h4 id=&#34;model-1-mean-2&#34;&gt;Model 1: Mean&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate mean squared error of the model 1 &amp;quot;the mean&amp;quot;
+# Number of obeservations (lenght of DataFrame)
+n = len(df[&amp;quot;height&amp;quot;])
+# calculate mse
+mse = (SS_T/(n-1))
+# print output
+print(&#39;Mean squared error of the mean:&#39;, mse)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Mean squared error of the mean: 2.210526315789474
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Mean squared error =  $\frac {SS}{df} = \frac {\sum_{i=1}^n (outcome_i - model&lt;em&gt;i)^2}{df} = \frac {\sum&lt;/em&gt;{i=1}^n(x_i-\bar{x})^2}{df} = \frac {42}{19} = 2.210$&lt;/p&gt;
+
+&lt;p&gt;In our example, $n=20$, we have one parameter, p=1 (the mean), and therefore, the degrees of freedom are df = (p-1) = 20-1 = 19.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# generate a variable called variance (to illustrate relationship between variance and standard deviation)
+variance = mse
+# obtain the standard deviation
+print(f&#39;Standard deviation (SD) of model 1 = {round(np.sqrt(variance),2)}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Standard deviation (SD) of model 1 = 1.49
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;model-2-linear-regression-3&#34;&gt;Model 2: Linear Regression&lt;/h4&gt;
+
+&lt;p&gt;Statsmodel provide us with different options (we use mse_resid and mse_total):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;mse_model : Mean squared error the model. This is the explained sum of squares divided by the model degrees of freedom.&lt;/li&gt;
+&lt;li&gt;mse_resid : Mean squared error of the residuals. The sum of squared residuals divided by the residual degrees of freedom.&lt;/li&gt;
+&lt;li&gt;mse_total : Total mean squared error. Defined as the uncentered total sum of squares divided by n the number of observations.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Total MSE_T (this is the MSE of the basline mean model) from statsmodel
+MSE_T = lm.mse_total
+# print output
+print(&#39;Total mean squared error (MSE_T):&#39;, MSE_T)
+# compare this result to mse... they are the same
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Total mean squared error (MSE_T): 2.210526315789474
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Mean squared error of residuals (MSE_R)
+MSE_R = SS_R / (20-2)
+print(&#39;Mean squared error of residuals (MSE_R):&#39;, MSE_R)
+# MSE of residuals from statsmodel (preferred)
+print(f&#39;Mean squared error od residuals (MSE_R): {lm.mse_resid}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Mean squared error of residuals (MSE_R): 0.3933480222432064
+Mean squared error od residuals (MSE_R): 0.39334802224320636
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# the standard deviation equals the root of the MSE_R
+print(f&#39;Standard deviation (SD) of model 2 = {round(np.sqrt(MSE_R),2)}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Standard deviation (SD) of model 2 = 0.63
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;f-statistic&#34;&gt;F-Statistic&lt;/h3&gt;
+
+&lt;p&gt;A second use of the sums of squares in assessing the model is the &lt;strong&gt;F-test&lt;/strong&gt;. Test statistics (like F) are usually the amount of &lt;strong&gt;systematic variance&lt;/strong&gt; divided by the amount of &lt;strong&gt;unsystematic variance&lt;/strong&gt;, or, put another way, the model compared to the error in the model. This is true here: F is based upon the ratio of the improvement due to the model ($SS_M$) and the error in the model ($SS_R$).&lt;/p&gt;
+
+&lt;p&gt;Because the sums of squares depend on the number of differences that were added up, the &lt;strong&gt;average sums of squares&lt;/strong&gt; (referred to as the &lt;strong&gt;mean squares&lt;/strong&gt; or &lt;strong&gt;MS&lt;/strong&gt;) are used to compute F.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;mean sum of squares&lt;/strong&gt; is the sum of squares divided by the associated degrees of freedom (this is comparable to calculating the variance from the sums of squares).&lt;/p&gt;
+
+&lt;p&gt;For $SS_M$ the degrees of freedom are the number of predictors in the model (&lt;em&gt;p&lt;/em&gt;), and for $SS_R$ they are the number of observations (&lt;em&gt;n&lt;/em&gt;) minus the number of parameters being estimated (i.e., the number of b coefficients including the constant).&lt;/p&gt;
+
+&lt;p&gt;We estimate a &amp;ldquo;b&amp;rdquo; for each predictor and the intercept ($b_0$), so the total number of b&amp;rsquo;s estimated will be &lt;em&gt;p + 1&lt;/em&gt;, giving us degrees of freedom of n - (p + 1) or, more simply, n - p - 1. Thus:&lt;/p&gt;
+
+&lt;p&gt;$MS_M = \frac{SS_M}{p}$&lt;/p&gt;
+
+&lt;p&gt;$MS_R = \frac{SS_R}{n-p-1}$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The F-statistic computed from these mean squares&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;$$F = \frac{Systematic Variance}{Unsystematic Variance} = \frac{MS_M}{MS_R}$$&lt;/p&gt;
+
+&lt;p&gt;is a measure of how much the model has &lt;em&gt;improved&lt;/em&gt; the prediction of the outcome compared to the level of inaccuracy of the model. If a model is good, then the improvement in prediction from using the model should be large ($MS_M$ will be large) and the difference between the model and the observed data should be small ($MS_R$ will be small).&lt;/p&gt;
+
+&lt;p&gt;In short, for a good model the numerator in the equation above will be bigger than the denominator, resulting in a large F-statistic (greater than 1 at least).&lt;/p&gt;
+
+&lt;p&gt;This F has an associated probability distribution from which a &lt;strong&gt;p-value&lt;/strong&gt; can be derived to tell us the probability of getting an F at least as big as the one we have if the null hypothesis were true. The null hypothesis in this case is a flat model (predicted values of the outcome are the same regardless of the value of the predictors).&lt;/p&gt;
+
+&lt;p&gt;The F-statistic is also used to calculate the significance of $R^2$ using the following equation:&lt;/p&gt;
+
+&lt;p&gt;$F = \frac{(n-p-1)R^2}{p(1-R^2)}$&lt;/p&gt;
+
+&lt;p&gt;in which n is the number of cases or participants, and p is the number of predictors in the model. This F tests the null hypothesis that $R^2$ is zero (i.e., there is no improvement in the sum of squared error due to fitting the model).&lt;/p&gt;
+
+&lt;h4 id=&#34;model-2-linear-regression-4&#34;&gt;Model 2: Linear Regression&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Mean squared error of the model (MSE_M)
+p = 1 # we only have one predictor (height_parents)
+MS_M = (SS_M / p)
+print(&#39;MS_M =&#39;, MS_M)
+# MSE_M of residuals from statsmodel
+print(f&#39;MS_M = {lm.mse_model}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;MS_M = 34.919735599622285
+MS_M = 34.919735599622285
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Adjust notation and calculate F-value
+MS_R = MSE_R
+# F-value
+F_value = (MS_M / MS_R)
+print(F_value)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;88.77567351293678
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# statsmodel
+# Alternative way to obtain F-value (preferred)
+print(lm.fvalue)
+# which of course equals
+F_val = (lm.mse_model / lm.mse_resid)
+print(F_val)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;88.77567351293679
+88.77567351293679
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;5-2-5-standard-error&#34;&gt;5.2.5 Standard error&lt;/h3&gt;
+
+&lt;p&gt;We just learned that the &lt;strong&gt;standard deviation&lt;/strong&gt; tells us about how well the mean represents the sample data. However, if we’re using the &lt;strong&gt;sample mean&lt;/strong&gt; to estimate this parameter in the &lt;strong&gt;population&lt;/strong&gt; (like we did), then we need to know how well it represents the value in the population, especially because samples from a population differ.&lt;/p&gt;
+
+&lt;p&gt;Imagine that we were interested in the height of &lt;em&gt;all&lt;/em&gt; adult women in germany (so adult women in germany are the &lt;strong&gt;population&lt;/strong&gt;). We could take a &lt;strong&gt;sample&lt;/strong&gt; from this population (like we did with our 20 women), and when we do we are taking one of many possible samples. If we were to take several samples from the same population, then each sample would have its own mean, and some of these sample means will be different.&lt;/p&gt;
+
+&lt;p&gt;Imagine we could obtain the height of all adult women in germany and could compute the mean of their height (which would equal $\mu$ = 168 cm). Then we would know, as an absolute fact, that the mean of the height is 168 cm (this is the population mean, &lt;strong&gt;µ&lt;/strong&gt;, the parameter that we’re trying to estimate).&lt;/p&gt;
+
+&lt;p&gt;In reality, we don’t have access to the population, so we use a sample. In this sample we calculate the average height, known as the &lt;strong&gt;sample mean&lt;/strong&gt; ($\bar{x}$), and discover it is 168 cm; that is, adult women in our sample are 168 cm tall, on average. Now we take a second sample and find that women in this sample are, on average, only 167 cm tall. In other words, the sample mean is different in the second sample than in the first.&lt;/p&gt;
+
+&lt;p&gt;This difference illustrates &lt;strong&gt;sampling variation&lt;/strong&gt;: that is, samples vary because they contain different members of the population; a sample that, by chance, includes relatively tall women will have a higher average than a sample that, by chance, includes some women who are relatively short.&lt;/p&gt;
+
+&lt;p&gt;Imagine that we now take a lot of samples (let&amp;rsquo;s say 1000). If we plotted the resulting sample means as a histogram, we would observe a symmetrical distribution known as a &lt;strong&gt;sampling distribution&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;sampling distribution&lt;/strong&gt; is the frequency distribution of sample means (or whatever parameter you’re trying to estimate) from the same population. You need to imagine that we’re taking hundreds or thousands of samples to construct a sampling distribution.&lt;/p&gt;
+
+&lt;p&gt;The sampling distribution of the mean tells us about the behaviour of samples from the population, and it is centred at around the same value as the mean of the population. Therefore, if we took the average of all sample means we’d get the value of the &lt;strong&gt;population mean&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can use the sampling distribution to tell us how &lt;em&gt;representative a sample&lt;/em&gt; is of the population. Think back to the &lt;strong&gt;standard deviation&lt;/strong&gt;. We used the standard deviation as a measure of how representative the mean was of the observed data.&lt;/p&gt;
+
+&lt;p&gt;A small standard deviation represented a scenario in which most data points were close to the mean, whereas a large standard deviation represented a situation in which data points were widely spread from the mean. If our ‘observed data’ are sample means then the standard deviation of these sample means would similarly tell us how widely spread (i.e., how representative) sample means are around their average. Bearing in mind that the &lt;em&gt;average of the sample means&lt;/em&gt; is the same as the &lt;em&gt;population mean&lt;/em&gt;, the standard deviation of the sample means would therefore tell us how widely sample means are spread around the population mean: put another way, it tells us whether sample means are typically representative of the population mean.&lt;/p&gt;
+
+&lt;p&gt;The standard deviation of sample means is known as the &lt;strong&gt;standard error of the mean (SE)&lt;/strong&gt; or standard error for short. Theoretically, the standard error could be calculated by taking the difference between each sample mean and the overall mean, squaring these differences, adding them up, and then dividing by the number of samples. Finally, the square root of this value would need to be taken to get the standard deviation of sample means: the standard error. In the real world, it would be to costly to collect thousands of samples, and so we compute the standard error from a mathematical approximation.&lt;/p&gt;
+
+&lt;p&gt;Statisticians have demonstrated something called the &lt;strong&gt;central limit theorem&lt;/strong&gt;, which tells us that as samples get large (usually defined as greater than 30), the sampling distribution has a normal distribution with a mean equal to the population mean, and we can calculate the standard deviation as follows:&lt;/p&gt;
+
+&lt;p&gt;$$\sigma_{\bar{X}} = \frac{s} {\sqrt{N}}$$&lt;/p&gt;
+
+&lt;p&gt;Hence, if our sample is largeer than n=30 we can use the equation above to approximate the standard error (because it is the standard deviation of the sampling distribution).
+Note: when the sample is relatively small (fewer than 30) the sampling distribution is not normal: it has a different shape, known as a &lt;strong&gt;t-distribution&lt;/strong&gt;, which we’ll cover later.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The standard error of the mean is the standard deviation of sample means.&lt;/li&gt;
+&lt;li&gt;As such, it is a measure of how representative of the population a sample mean is likely to be.&lt;/li&gt;
+&lt;li&gt;A large standard error (relative to the sample mean) means that there is a lot of variability between the means of different samples and so the sample mean we have might not be representative of the population mean.&lt;/li&gt;
+&lt;li&gt;A small standard error indicates that most sample means are similar to the population mean (i.e., our sample mean is likely to accurately reflect the population mean).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;model-1-mean-3&#34;&gt;Model 1: Mean&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate standard error (...we ignore the fact that our sample is small since n &amp;lt; 30)
+se = df[&#39;height&#39;].sem()
+print(se)
+# assign se to df
+df = df.assign(se=se)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.33245498310218435
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# alternative way to calculate standard error (se)
+# calculate standard deviation (s)
+s = df[&amp;quot;height&amp;quot;].std()
+# calculate se
+se = (s/np.sqrt(n))
+print(se)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.33245498310218435
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;model-2-linear-regression-5&#34;&gt;Model 2: Linear Regression&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Get standard error of parameters
+se_2 = lm.bse
+print(&#39;Standard error (SE) od model 2:&#39;, se_2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Standard error (SE) od model 2: Intercept         14.226306
+height_parents     0.086190
+dtype: float64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;confidence-interval&#34;&gt;Confidence interval&lt;/h3&gt;
+
+&lt;p&gt;As a brief recap, we usually use a &lt;strong&gt;sample value&lt;/strong&gt; as an estimate of a &lt;strong&gt;parameter&lt;/strong&gt; (e.g., the mean or any other parameter b) in the &lt;strong&gt;population&lt;/strong&gt;. We’ve just seen that the &lt;strong&gt;estimate of a parameter&lt;/strong&gt; (e.g., the mean) will differ across samples, and we can use the &lt;strong&gt;standard error&lt;/strong&gt; to get some idea of the extent to which these estimates differ across samples. We can also use this information to calculate boundaries within which we believe the population value will fall. Such boundaries are called &lt;strong&gt;confidence intervals&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, perhaps we might want to know how often, &lt;em&gt;in the long run&lt;/em&gt;, an interval contains the true value of the parameter we’re trying to estimate (in the case of model 1, the mean). This is what a &lt;strong&gt;confidence interval&lt;/strong&gt; does. Typically, we look at 95% confidence intervals, and sometimes 99% confidence intervals, but they all have a similar interpretation: they are limits constructed such that, for a certain percentage of samples (be that 95% or 99%), the true value of the population parameter falls within the limits. So, when you see a 95% confidence interval for a mean, think of it like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if we’d collected 100 samples, and for each sample calculated the parameter (e.g. the mean) and a confidence interval for it, then for 95 of these samples, the confidence interval contains the value of the parameter (e.g. the mean) in the population, and in 5 of the samples the confidence interval does not contain the population paramater (e.g. the mean).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The trouble is, you do not know whether the confidence interval from a particular sample is one of the 95% that contain the true value or one of the 5% that do not.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of a common wrong interpretation of confidence intervalls:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Wrong&lt;/strong&gt; interpretation: a 95% confidence interval has a 95% probability of containing the population parameter.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is a common mistake, but this is &lt;em&gt;not&lt;/em&gt; true. The 95% reflects a &lt;em&gt;long-run probability&lt;/em&gt;. It means that if you take repeated samples and construct confidence intervals, then 95% of them will contain the population value. That is not the same as a particular confidence interval for a specific sample having a 95% probability of containing the value. In fact, for a specific confidence interval, the probability that it contains the population value is either 0 (it does not contain it) or 1 (it does contain it). You have no way of knowing which it is.&lt;/p&gt;
+
+&lt;p&gt;We know (in large samples) that the sampling distribution of parameters (e.g. means) will be normal, and the &lt;strong&gt;normal distribution&lt;/strong&gt; has been precisely defined such that it has a mean of 0 and a standard deviation of 1. We can use this information to compute the probability of a score occurring, or the limits between which a certain percentage of scores fall.&lt;/p&gt;
+
+&lt;p&gt;We make use of the fact that 95% of &lt;strong&gt;z-scores&lt;/strong&gt; fall between −1.96 and 1.96. This means that if our sample parameters (e.g. means) were normally distributed with a mean of 0 and a standard error of 1, then the limits of our confidence interval would be −1.96 and +1.96. Luckily we know from the &lt;strong&gt;central limit theorem&lt;/strong&gt; that in large samples (above about 30) the sampling distribution will be normally distributed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Visualize confidence intervals in plots&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We saw that confidence intervals provide us with information about a parameter, and, therefore, you often see them displayed on graphs.&lt;/p&gt;
+
+&lt;p&gt;The confidence interval is usually displayed using something called an &lt;strong&gt;error bar&lt;/strong&gt;, which looks like the letter ‘I’. An error bar can represent the &lt;strong&gt;standard deviation&lt;/strong&gt;, or the &lt;strong&gt;standard error&lt;/strong&gt;, but more often than not it shows the &lt;strong&gt;95% confidence interval&lt;/strong&gt; of the mean. So, often when you see a graph showing the mean, perhaps displayed as a bar or a symbol, it is accompanied by this I-shaped bar.&lt;/p&gt;
+
+&lt;h4 id=&#34;model-1-the-mean&#34;&gt;Model 1: The Mean&lt;/h4&gt;
+
+&lt;p&gt;First of all, we convert scores so that they have a mean of 0 and standard deviation of 1 (&lt;strong&gt;z-scores&lt;/strong&gt;) using this equation:&lt;/p&gt;
+
+&lt;p&gt;$$z = \frac{X-\bar{X}}{s}$$&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate z-scores
+z = stats.zscore(df.height)
+print(z)
+# assign z-scores to df
+df = df.assign(z = z)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[-2.07019668 -1.38013112 -1.38013112 -0.69006556 -0.69006556 -0.69006556
+ -0.69006556  0.          0.          0.          0.          0.
+  0.          0.69006556  0.69006556  0.69006556  0.69006556  1.38013112
+  1.38013112  2.07019668]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt = sns.distplot(df.z);
+# draw a vertical line
+plt.axvline(1.96, 0, 1, linewidth=2, color=&#39;r&#39;);
+# add text
+plt.text(2.1, 0.3,&#39;z = 1.96&#39;, rotation=90, color=&#39;r&#39;);
+plt.axvline(-1.96, 0, 1, linewidth=2, color=&#39;r&#39;);
+plt.text(-2.2, 0.3,&#39;z = -1.96&#39;, rotation=90, color=&#39;r&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_109_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If we know that our limits are −1.96 and 1.96 as z-scores, then to find out the corresponding scores in our raw data we can replace z in the equation (because there are two values, we get two equations):&lt;/p&gt;
+
+&lt;p&gt;$$1.96 = \frac{X-\bar{X}}{s}$$&lt;/p&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;p&gt;$$-1.96 = \frac{X-\bar{X}}{s}$$&lt;/p&gt;
+
+&lt;p&gt;We rearrange these equations to discover the value of X:&lt;/p&gt;
+
+&lt;p&gt;$$1.96 \times s = X - \bar{X}$$&lt;/p&gt;
+
+&lt;p&gt;$$(1.96 \times s) + \bar{X} = X$$&lt;/p&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;p&gt;$$-1.96 \times s = X - \bar{X}$$&lt;/p&gt;
+
+&lt;p&gt;$$(-1.96 \times s) + \bar{X} = X$$&lt;/p&gt;
+
+&lt;p&gt;Therefore, the confidence interval can easily be calculated once the &lt;strong&gt;standard deviation&lt;/strong&gt; (s in the equation) and &lt;strong&gt;mean&lt;/strong&gt; ($\bar{x}$ in the equation) are known.&lt;/p&gt;
+
+&lt;p&gt;However, we use the &lt;strong&gt;standard error&lt;/strong&gt; and not the standard deviation because we’re interested in the variability of sample means, not the variability in observations within the sample.&lt;/p&gt;
+
+&lt;p&gt;The lower boundary of the confidence interval is, therefore, the mean minus 1.96 times the standard error, and the upper boundary is the mean plus 1.96 standard errors:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;lower boundary of confidence intervall&lt;/strong&gt; = $\bar{X} - (1.96 \times SE)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;upper boundary of confidence intervall&lt;/strong&gt; = $\bar{X} + (1.96 \times SE)$&lt;/p&gt;
+
+&lt;p&gt;As such, the mean is always in the centre of the confidence interval. We know that 95% of confidence intervals contain the population mean, so we can assume this confidence interval contains the true mean; therefore, if the interval is small,the sample mean must be very close to the true man. Conversely, if the confidenve interval is very wide then the sample mean could be very different from the true mean, indicating that it is a bad representation of the population.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# lower boundary
+lb = (df.height.mean() - (1.96*se))
+# upper boundary
+up = (df.height.mean() + (1.96*se))
+print(&#39;Lower boundary of CI&#39;, lb)
+print(&#39;Upper boundary of CI&#39;, up)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Lower boundary of CI 164.34838823311972
+Upper boundary of CI 165.65161176688028
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# draw limits of confidence intervall
+plt = sns.distplot(df.height);
+# draw a vertical line to mark the mean
+plt.axvline(165, 0, 1, linewidth=3, color=&#39;b&#39;);
+# add text
+plt.text(165.1, 0.1,&#39;Mean = 165&#39;, rotation=90, color=&#39;b&#39;);
+# draw a vertical line to mark the lower limit of the confidence intervall
+plt.axvline(164.348388, 0, 1, linewidth=3, color=&#39;w&#39;);
+# add text
+plt.text(164, 0.15,&#39;Lower limit = 164.34 &#39;, rotation=90, color=&#39;w&#39;);
+# draw a vertical line to mark the upper limit of the confidence intervall
+plt.axvline(165.651612, 0, 1, linewidth=3, color=&#39;w&#39;);
+plt.text(165.8, 0.15,&#39;Upper limit = 165.65&#39;, rotation=90, color=&#39;w&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_112_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;model-2-linear-regression-6&#34;&gt;Model 2: Linear Regression&lt;/h4&gt;
+
+&lt;p&gt;Confidence intervall for parameter $b_1$ (height_parents)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;lower boundary of confidence intervall&lt;/strong&gt; = $b_1 - (1.96 \times SE(b_1))$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;upper boundary of confidence intervall&lt;/strong&gt; = $b_1 + (1.96 \times SE(b_1))$&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Obtain confidence interval for fitted parameters
+lm.conf_int(alpha=0.05)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Intercept&lt;/th&gt;
+      &lt;td&gt;1.076702&lt;/td&gt;
+      &lt;td&gt;60.853420&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;height_parents&lt;/th&gt;
+      &lt;td&gt;0.631009&lt;/td&gt;
+      &lt;td&gt;0.993165&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Make a prediction for height when parents average height is 168 cm
+to_predict = pd.DataFrame({&#39;height_parents&#39;:[168]})
+results = lm.get_prediction(to_predict)
+round(results.summary_frame(alpha=0.05),2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean&lt;/th&gt;
+      &lt;th&gt;mean_se&lt;/th&gt;
+      &lt;th&gt;mean_ci_lower&lt;/th&gt;
+      &lt;th&gt;mean_ci_upper&lt;/th&gt;
+      &lt;th&gt;obs_ci_lower&lt;/th&gt;
+      &lt;th&gt;obs_ci_upper&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;167.4&lt;/td&gt;
+      &lt;td&gt;0.29&lt;/td&gt;
+      &lt;td&gt;166.79&lt;/td&gt;
+      &lt;td&gt;168.01&lt;/td&gt;
+      &lt;td&gt;165.94&lt;/td&gt;
+      &lt;td&gt;168.85&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The predicted height for an average parents height of 168 cm is 167.4.&lt;/li&gt;
+&lt;li&gt;For 95% the confidence interval is [166.79, 168.01] and the prediction interval is [165.94, 168.85]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;How much will the outcome vary from our prediction? We use &lt;strong&gt;prediction intervals&lt;/strong&gt; (obs_ci_lower and obs_ci_uppper) to answer this question. Prediction intervals are always wider than confidence intervals, because they incorporate both the error in the estimate for f(X) (the reducible error) and the uncertainty as to how much an individual point will differ from the population regression (the irreducible error).&lt;/p&gt;
+
+&lt;p&gt;We interpret this to mean that 95% of intervals of this form will contain the true value of Y for parents with this average height. Note that both intervals are centered at 167.4 cm, but that the &lt;strong&gt;prediction interval&lt;/strong&gt; is substantially wider than the confidence interval, reflecting the increased uncertainty about the individual height for given parents height in comparison to the average height of many parents.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Plot regression line with CI 95%
+sns.lmplot(x=&#39;height_parents&#39;, y=&#39;height&#39;, data=df, order=1, line_kws={&#39;color&#39;:&#39;red&#39;}, size=7, aspect=1.5, ci=95);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;/Users/jankirenz/anaconda3/lib/python3.6/site-packages/seaborn/regression.py:546: UserWarning: The `size` paramter has been renamed to `height`; please update your code.
+  warnings.warn(msg, UserWarning)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_119_1.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;confidence-intervals-in-small-samples&#34;&gt;Confidence intervals in small samples&lt;/h3&gt;
+
+&lt;p&gt;The procedure we just used is fine when samples are large, because the central limit theorem tells us that the sampling distribution will be normal. However, for small samples, the sampling distribution is not normal – it has a t-distribution. The t-distribution is a family of probability distributions that change shape as the sample size gets bigger (when the sample is very big, it has the shape of a normal distribution).&lt;/p&gt;
+
+&lt;p&gt;To construct a confidence interval in a small sample we use the same principle as before, but instead of using the value for z we use the value for t:&lt;/p&gt;
+
+&lt;p&gt;lower boundary of confidence intervall = $\bar{X} - (t_{n-1} \times SE)$&lt;/p&gt;
+
+&lt;p&gt;upper boundary of confidence intervall = $\bar{X} + (t_{n-1}  \times SE)$&lt;/p&gt;
+
+&lt;p&gt;The (n − 1) in the equations is the degrees of freedom and tells us which of the t-distributions to use. For a 95% confidence interval, we can calculate the value of t for a two-tailed test with probability of 0.05, for the appropriate degrees of freedom.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# calculate t-statistic
+# 95% confidence interval, two tailed test,
+# p&amp;lt;0.05 (we need to take 0.025 at each side), n=20, df=19
+t = stats.t.ppf(1-0.025, 19)
+print(t)
+# lower boundary
+lb_t = (df.height.mean() - (t*se))
+# upper boundary
+up_t = (df.height.mean() + (t*se))
+print(&#39;Lower boundary of CI (t-statistics)&#39;, lb_t)
+print(&#39;Upper boundary of CI (t-statistics)&#39;, up_t)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;2.093024054408263
+Lower boundary of CI (t-statistics) 164.30416372335924
+Upper boundary of CI (t-statistics) 165.69583627664076
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# draw limits of confidence intervall for t-statistic
+plt = sns.distplot(df.height);
+# draw a vertical line to mark the mean
+plt.axvline(165, 0, 1, linewidth=3, color=&#39;b&#39;);
+# add text
+plt.text(165.1, 0.1,&#39;Mean = 165&#39;, rotation=90, color=&#39;b&#39;);
+# draw a vertical line to mark the lower limit of the confidence intervall
+plt.axvline(164.304164, 0, 1, linewidth=3, color=&#39;r&#39;);
+# add text
+plt.text(164, 0.15,&#39;Lower limit = 164.30 &#39;, rotation=90, color=&#39;r&#39;);
+# draw a vertical line to mark the upper limit of the confidence intervall
+plt.axvline(165.695836, 0, 1, linewidth=3, color=&#39;r&#39;);
+plt.text(165.8, 0.15,&#39;Upper limit = 165.69&#39;, rotation=90, color=&#39;r&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_123_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# compare CI z-statistic with t-statistic
+# draw limits of confidence intervall
+plt = sns.distplot(df.height);
+# draw a vertical line to mark the mean
+plt.axvline(165, 0, 1, linewidth=3, color=&#39;b&#39;);
+# add text
+# draw vertical lines to mark the lower/upper limit of the confidence intervall (z)
+plt.axvline(164.348388, 0, 1, linewidth=3, color=&#39;w&#39;);
+plt.axvline(165.651612, 0, 1, linewidth=3, color=&#39;w&#39;);
+# draw vertical lines to mark the lower/upper limit of the confidence intervall (t)
+plt.axvline(164.304164, 0, 1, linewidth=3, color=&#39;r&#39;);
+plt.axvline(165.695836, 0, 1, linewidth=3, color=&#39;r&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;output_124_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;further-measures-for-model-selection&#34;&gt;Further measures for model selection&lt;/h2&gt;
+
+&lt;p&gt;When fitting models, it is possible to increase the likelihood by adding parameters, but doing so may result in overfitting.&lt;/p&gt;
+
+&lt;p&gt;Both the Bayesian information criterion (&lt;strong&gt;BIC&lt;/strong&gt;) (also called the Schwarz criterion SBC or SBIC) and Akaike information criterion (&lt;strong&gt;AIC&lt;/strong&gt;) attempt to resolve this problem by introducing a penalty term for the number of parameters in the model; the penalty term is larger in BIC than in AIC.&lt;/p&gt;
+
+&lt;p&gt;Both measures are an estimator of the &lt;strong&gt;relative quality&lt;/strong&gt; of statistical models for a given set of data. Hence, they are used to select the best performing model.&lt;/p&gt;
+
+&lt;p&gt;Here we cover AIC and BIC in the case of a linear model fit using least squares; however, these quantities can also be defined for more general types of models.&lt;/p&gt;
+
+&lt;p&gt;For both measures, lower values are better&lt;/p&gt;
+
+&lt;h3 id=&#34;bayesian-information-criterion-bic&#34;&gt;Bayesian information criterion (BIC)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# BIC
+lm.bic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;41.980585438104086
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;akaike-information-criterion-aic&#34;&gt;Akaike information criterion (AIC)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# AIC
+lm.aic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;39.989120890996105
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Jan Kirenz</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Thu, 24 Oct 2019 09:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Applied Statistics</title>
+      <link>/talk/2019-applied-statistics/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-applied-statistics/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Programming Languages for Data Science</title>
+      <link>/talk/2019-programming-languages/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-programming-languages/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>First Steps in R</title>
+      <link>/project/r-first-steps/</link>
+      <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/r-first-steps/</guid>
+      <description>
+
+&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34; target=&#34;_blank&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-r&#34;&gt;Installing R&lt;/h2&gt;
+
+&lt;p&gt;The first step is to install R. You can download and install R from the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt; (CRAN).&lt;/p&gt;
+
+&lt;p&gt;Windows:
+- Open the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.
+- Click on “CRAN”. You’ll see a list of mirror sites, organized by country.
+- Select a site near you.
+- Click on “Windows” under “Download and Install R”.
+- Click on “base”.
+- Click on the link for downloading the latest version of R (an .exe file).
+- When the download completes, double-click on the .exe file and answer the usual questions.&lt;/p&gt;
+
+&lt;p&gt;Mac:
+- Open the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.
+- Click on “CRAN”.
+- You’ll see a list of mirror sites, organized by country.
+- Select a site near you.
+- Click on “MacOS X”.
+- Click on the .pkg file for the latest version of R, under “Files:”, to download it.
+- When the download completes, double-click on the .pkg file and answer the usual questions.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-rstudio&#34;&gt;Installing RStudio&lt;/h2&gt;
+
+&lt;p&gt;The next step is to install &lt;strong&gt;RStudio&lt;/strong&gt;, a free and open-source integrated development environment (IDE) for R. You can use it for viewing and running R scripts.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34; target=&#34;_blank&#34;&gt;RStudio Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click the Download RStudio Desktop button.&lt;/li&gt;
+&lt;li&gt;Select the installation file for your system.&lt;/li&gt;
+&lt;li&gt;Run the installation file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;learn-r-basics&#34;&gt;Learn R Basics&lt;/h2&gt;
+
+&lt;p&gt;First of all, you can take an online course to master the basics of R: Visit the interactive &lt;a href=&#34;https://www.datacamp.com/getting-started?step=2&amp;amp;track=r&#34; target=&#34;_blank&#34;&gt;R-Course&lt;/a&gt; from DataCamp. With the knowledge gained in this courses, you will be ready to undertake your first very own data analysis.&lt;/p&gt;
+
+&lt;p&gt;There are also open and free resources and reference guides for R. Two examples are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statmethods.net/&#34; target=&#34;_blank&#34;&gt;Quick-R&lt;/a&gt;: a quick online reference for data input, basic statistics and plots&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/doc/contrib/Short-refcard.pdf&#34; target=&#34;_blank&#34;&gt;R reference card (PDF)&lt;/a&gt; by Tom Short&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Two key things you need to know about R is that you can get help for a function using &lt;code&gt;help&lt;/code&gt; or &lt;code&gt;?&lt;/code&gt;, like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r,eval=FALSE&#34;&gt;?install.packages
+help(&amp;quot;install.packages&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and the hash character represents comments, so text following these
+characters is not interpreted:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;##This is just a comment
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;installing-r-packages&#34;&gt;Installing R Packages&lt;/h2&gt;
+
+&lt;p&gt;The first R command we will run is &lt;code&gt;install.packages&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;An R package is a collection of functions, data, and documentation that extends the capabilities of base R.
+Many of these functions are stored in CRAN. You can easily install packages from within RStudio if you know
+the name of the packages.&lt;/p&gt;
+
+&lt;p&gt;As an example, we are going to install the
+package &lt;code&gt;dplyr&lt;/code&gt; which we use in our first data
+analysis examples:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r,eval=FALSE&#34;&gt;install.packages(&amp;quot;dplyr&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can then load the package into our R sessions using the &lt;code&gt;library&lt;/code&gt; function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From now on you will see that we sometimes load packages without
+installing them. This is because you only need to install a package once,
+but you need to reload it with the command &lt;code&gt;library&lt;/code&gt; every time you start
+a new R session.&lt;/p&gt;
+
+&lt;p&gt;If you try to load a package and get an error, it probably means you need to install it first.&lt;/p&gt;
+
+&lt;p&gt;Review the &lt;a href=&#34;https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html&#34; target=&#34;_blank&#34;&gt;dplyr-documentation&lt;/a&gt; to get an overview about the different functionalities of this package.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating Websites with R Markdown</title>
+      <link>/project/blogdown-book/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/blogdown-book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Create Data Presentations with R Markdown</title>
+      <link>/project/r-xaringan/</link>
+      <pubDate>Thu, 01 Aug 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/r-xaringan/</guid>
+      <description>
+
+
+&lt;p&gt;The xaringan package is an R Markdown extension based on the JavaScript library &lt;a href=&#34;https://remarkjs.com&#34;&gt;remark.js&lt;/a&gt; to generate HTML5 presentations in different &lt;a href=&#34;https://github.com/yihui/xaringan/tree/master/inst/rmarkdown/templates/xaringan/resources&#34;&gt;themes&lt;/a&gt; (&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/xaringan.html#ref-R-xaringan&#34;&gt;Xie 2019&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;You can learn more about the usage of the xaringan package from this excellent &lt;a href=&#34;http://slides.yihui.name/xaringan/&#34;&gt;documentation&lt;/a&gt;, which is actually a set of slides generated from xaringan.&lt;/p&gt;
+&lt;p&gt;Xie, Y. (2019). Xaringan: Presentation Ninja. &lt;a href=&#34;https://CRAN.R-project.org/package=xaringan&#34;&gt;CRAN&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Essential books for Data Science &amp; Statistics with R</title>
+      <link>/project/r-data-science-stats/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/r-data-science-stats/</guid>
+      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&amp;rdquo; provides an accessible overview of the field of statistical learning with applications in R. This book presents important modeling and prediction techniques, along with relevant applications. Topics include linear regression, classification, resampling methods, shrinkage approaches, tree-based methods, support vector machines, clustering, and more:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34; target=&#34;_blank&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;strong&gt;Statistical Thinking for the 21 Century&lt;/strong&gt;&amp;rdquo; and &amp;ldquo;&lt;strong&gt;Modern Dive: Statistical Inference via Data Science&lt;/strong&gt;&amp;rdquo; are both open-source digital textbooks which provide a great introduction into the fundamentals of modern quantitative methods which take advantage of today’s increased computing power to solve statistical problems with R:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34; target=&#34;_blank&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34; target=&#34;_blank&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

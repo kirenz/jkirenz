@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Jan Kirenz</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deskriptive Statistik in R</title>
+      <link>/post/2019-08-01-r-descriptive-statistics/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-08-01-r-descriptive-statistics/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#deskriptive-statistik-in-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Deskriptive Statistik in R&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#datenimport&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Datenimport&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deskriptive-statistiken&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Deskriptive Statistiken&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mittelwert&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.1&lt;/span&gt; Mittelwert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#standardabweichung&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.2&lt;/span&gt; Standardabweichung&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getrimmter-mittelwert&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.3&lt;/span&gt; Getrimmter Mittelwert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#schiefe&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.4&lt;/span&gt; Schiefe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#kurtosis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.5&lt;/span&gt; Kurtosis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#standardfehler&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.6&lt;/span&gt; Standardfehler&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;deskriptive-statistik-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Deskriptive Statistik in R&lt;/h1&gt;
+&lt;p&gt;In diesem Beitrag wird die Berechnung einfacher deskriptiver Statistiken und die Visualisierung von Verteilungen in R am Beispiel des Datensatzes “Advertising” behandelt.&lt;/p&gt;
+&lt;div id=&#34;datenimport&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Datenimport&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Datensatz: Advertising.csv&lt;/li&gt;
+&lt;li&gt;Variablen: &lt;em&gt;TV&lt;/em&gt;, &lt;em&gt;radio&lt;/em&gt;, &lt;em&gt;newspaper&lt;/em&gt; = jeweils Werbeausgaben in Dollar; &lt;em&gt;sales&lt;/em&gt; = Produkte in Tausend Einheiten&lt;/li&gt;
+&lt;li&gt;Abhängige Variable (dependent variable, response): &lt;em&gt;sales&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Unabhängige Variablen (independent variables, predictors): &lt;em&gt;TV&lt;/em&gt;, &lt;em&gt;radio&lt;/em&gt;, &lt;em&gt;newspaper&lt;/em&gt;, &lt;em&gt;sales&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Zunächts möchten wir uns einen Überblick über die Daten verschaffen. Dafür importieren wir die Daten und prüfen, ob die Skalenniveaus korrekt sind. Für die weiteren Berechnungen wird die Variable X1 nicht benötigt, weshalb wir diese löschen.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+# Daten importieren
+Advertising &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/kirenz/datasets/master/advertising.csv&amp;quot;)
+# Überblick über die Daten verschaffen (Skalenniveaus prüfen)
+head(Advertising)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 5
+##      X1    TV radio newspaper sales
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1 230.   37.8      69.2  22.1
+## 2     2  44.5  39.3      45.1  10.4
+## 3     3  17.2  45.9      69.3   9.3
+## 4     4 152.   41.3      58.5  18.5
+## 5     5 181.   10.8      58.4  12.9
+## 6     6   8.7  48.9      75     7.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Bereinigung der Daten
+Advertising$X1 &amp;lt;- NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;deskriptive-statistiken&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; Deskriptive Statistiken&lt;/h2&gt;
+&lt;p&gt;Ausgabe unterschiedlicher deskriptiver Statistiken:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(psych)
+
+psych::describe(Advertising) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           vars   n   mean    sd median trimmed    mad min   max range
+## TV           1 200 147.04 85.85 149.75  147.20 108.82 0.7 296.4 295.7
+## radio        2 200  23.26 14.85  22.90   23.00  19.79 0.0  49.6  49.6
+## newspaper    3 200  30.55 21.78  25.75   28.41  23.13 0.3 114.0 113.7
+## sales        4 200  14.02  5.22  12.90   13.78   4.82 1.6  27.0  25.4
+##            skew kurtosis   se
+## TV        -0.07    -1.24 6.07
+## radio      0.09    -1.28 1.05
+## newspaper  0.88     0.57 1.54
+## sales      0.40    -0.45 0.37&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Hinweise zu den Kennzahlen:
+&lt;ul&gt;
+&lt;li&gt;vars: Nummer der Variable&lt;/li&gt;
+&lt;li&gt;n: Anzahl der Beobachtungen&lt;/li&gt;
+&lt;li&gt;mean: arithmetischer Mittelwert&lt;/li&gt;
+&lt;li&gt;sd: empirische Standardabweichung&lt;/li&gt;
+&lt;li&gt;median: Median&lt;/li&gt;
+&lt;li&gt;trimmed: getrimmter Mittelwert&lt;/li&gt;
+&lt;li&gt;mad: Mittlere absolute Abweichung vom Median&lt;/li&gt;
+&lt;li&gt;min: kleinster Beobachtungswert&lt;/li&gt;
+&lt;li&gt;max: größter Beobachtungswert&lt;/li&gt;
+&lt;li&gt;range: Spannweite&lt;/li&gt;
+&lt;li&gt;skew: Schiefe&lt;/li&gt;
+&lt;li&gt;kurtosis: Wölbung&lt;/li&gt;
+&lt;li&gt;se = Standardfehler&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;mittelwert&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.1&lt;/span&gt; Mittelwert&lt;/h3&gt;
+&lt;p&gt;Bei der Berechnung des &lt;em&gt;arithmetischen Mittelwerts&lt;/em&gt; in R sollte immer die Anweisung gegeben werden, fehlende Werte auszuschließen (na.rm = “remove values which are not available”). Ansonsten stoppt R bei fehlenden Werten die Berechnung und gibt eine Fehlermeldung aus.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_sales &amp;lt;- mean(Advertising$sales, na.rm = TRUE)
+print(paste0(&amp;quot;Mittelwert der Variable Sales: &amp;quot;, mean_sales))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Mittelwert der Variable Sales: 14.0225&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;standardabweichung&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2&lt;/span&gt; Standardabweichung&lt;/h3&gt;
+&lt;p&gt;Die Standardabweichung ist ein häufig verwendetes Streuungsmaß und beschreibt die mittlere Abweichung der einzelnen Messwerte vom empirischen Mittelwert. Die Standardabweichung ist die positive Wurzel der empirischen Varianz. Die Varianz einer Stichprobe wird wie folgt berechnet:
+&lt;span class=&#34;math display&#34;&gt;\[s^{2} = \frac{\sum_{i=1}^{n} \left(x_{i} - \bar{x}\right)^{2}} {n-1}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Berechnung der Standardabweichung: &lt;span class=&#34;math display&#34;&gt;\[s = \sqrt{\frac{\sum\limits_{i=1}^{n} \left(x_{i} - \bar{x}\right)^{2}} {n-1}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;var_sales &amp;lt;- var(Advertising$sales, na.rm = TRUE)
+print(paste0(&amp;quot;Varianz der Variable Sales: &amp;quot;, round(var_sales, 2)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Varianz der Variable Sales: 27.22&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sd_sales &amp;lt;-  sd(Advertising$sales, na.rm = TRUE)
+print(paste0(&amp;quot;Standardabweichung der Variable Sales: &amp;quot;, round(sd_sales,2)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Standardabweichung der Variable Sales: 5.22&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getrimmter-mittelwert&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.3&lt;/span&gt; Getrimmter Mittelwert&lt;/h3&gt;
+&lt;p&gt;Bei dem &lt;em&gt;getrimmten Mittelwert&lt;/em&gt; wird ein bestimmer Anteil der größten und kleinsten Beobachtungen - hier oberhalb des 90% Quantils und unterhalb des 10 % Quantils - ignoriert. Damit sollen Ausreißer aus der Berechnung des Mittelwerts ausgeschlossen werden. Der getrimmte Mittelwert kann wie folgt in R berechnet werden:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean_trim_sales &amp;lt;- mean(Advertising$sales, trim = 0.1, na.rm = TRUE)
+print(paste0(&amp;quot;Getrimmter Mittelwert der Variable Sales: &amp;quot;, round(mean_trim_sales, 2)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Getrimmter Mittelwert der Variable Sales: 13.78&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;schiefe&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.4&lt;/span&gt; Schiefe&lt;/h3&gt;
+&lt;p&gt;Die &lt;em&gt;Schiefe&lt;/em&gt; ist eine statistische Kennzahl, die die Art und Stärke der Asymmetrie einer Wahrscheinlichkeitsverteilung beschreibt. Sie zeigt an, ob und wie stark die Verteilung nach rechts (positive Schiefe) oder nach links (negative Schiefe) geneigt ist. Jede nicht symmetrische Verteilung heißt schief.&lt;/p&gt;
+&lt;p&gt;Darstellung der Verteilung in einem Histogramm:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+# Vorlage für die Erstellung von plots in ggplot2 
+plot_1 &amp;lt;-  theme_bw() +
+        theme(axis.text.x = element_text(angle = 0, size = 8, family=&amp;quot;Arial&amp;quot;, colour=&amp;#39;black&amp;#39;),
+        axis.text.y = element_text(angle = 0, size = 8, family=&amp;quot;Arial&amp;quot;, colour=&amp;#39;black&amp;#39;),
+        axis.title = element_text(size=8, face=&amp;quot;bold&amp;quot;, family=&amp;quot;Arial&amp;quot;, colour=&amp;#39;black&amp;#39;),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.title=element_text(hjust=0, size=10,  family=&amp;quot;Arial&amp;quot;, face=&amp;quot;bold&amp;quot;, colour=&amp;#39;black&amp;#39;))
+
+ggplot(Advertising, aes(sales)) +
+  geom_histogram(binwidth = 2, color=&amp;quot;red&amp;quot;, alpha=.2) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
+  labs(title=&amp;quot;Histogramm für Sales&amp;quot;, x=&amp;quot;Sales&amp;quot;, y=&amp;quot;Anzahl&amp;quot;) +
+  plot_1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Darstellung der Verteilung in einer Dichtefunktion:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+ggplot(Advertising, aes(sales)) +
+  geom_density(fill=&amp;quot;grey&amp;quot;,alpha=.2 ) +
+  geom_vline(aes(xintercept=mean(sales, na.rm=TRUE)), color=&amp;quot;red&amp;quot;, linetype=&amp;quot;dotted&amp;quot;, size=0.6) +
+  geom_vline(aes(xintercept=median(sales, na.rm=TRUE)), color=&amp;quot;red&amp;quot;, linetype=&amp;quot;dotted&amp;quot;, size=0.6) +
+  geom_text(aes(x=median(sales), y=0.02), colour = &amp;quot;grey&amp;quot;, size =3,  
+             label=round(mean(Advertising$sales), digits=2), hjust=-1, family=&amp;quot;Arial&amp;quot;) +
+  geom_text(aes(x=mean(sales), y=0.02), hjust=-0.7, colour = &amp;quot;grey&amp;quot;, size = 3, label=&amp;quot;Mittelwert&amp;quot;, family=&amp;quot;Arial&amp;quot;) +
+  geom_text(aes(x=median(sales), y=0.005), colour = &amp;quot;grey&amp;quot;, size =3, 
+             label=round(median(Advertising$sales), digits=2), hjust=1 , family=&amp;quot;Arial&amp;quot;) +
+  geom_text(aes(x=median(sales), y=0.01), colour = &amp;quot;grey&amp;quot;, size = 3, label=&amp;quot;Median&amp;quot;, hjust=1, family=&amp;quot;Arial&amp;quot;) +
+  labs(x=&amp;quot;Produktabsatz (in Tausend Einheiten)&amp;quot;, y = &amp;quot;Dichte&amp;quot;, title = &amp;quot;Wahrscheinlichkeitsdichtefunktion&amp;quot;) +
+  plot_1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In der Abbildung kann man erkennen, dass es sich um eine asymmetrische Verteilung handelt (d.h. es liegt eine Abweichung von der Normalverteilung vor). Konkret handelt es sich um eine rechtsschiefe Verteilung (Mittelwert &amp;gt; Median; Schiefe = + 0.40).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;kurtosis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.5&lt;/span&gt; Kurtosis&lt;/h3&gt;
+&lt;p&gt;Die Abweichung des Verlaufs einer Verteilung vom Verlauf einer Normalverteilung wird &lt;em&gt;Kurtosis&lt;/em&gt; (Wölbung) genannt. Sie gibt an, wie spitz die Kurve verläuft. Unterschieden wird zwischen positiver, spitz zulaufender (leptokurtische Verteilung) und negativer, flacher (platykurtische Verteilung) Kurtosis. Die Kurtosis zählt zu den zentralen Momenten einer Verteilung, mittels derer der Kurvenverlauf definiert wird. Eine Kurtosis mit Wert 0 ist normalgipflig (mesokurtisch), ein Wert größer 0 ist steilgipflig und ein Wert unter 0 ist flachgipflig.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;standardfehler&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.6&lt;/span&gt; Standardfehler&lt;/h3&gt;
+&lt;p&gt;Der &lt;em&gt;Standardfehler&lt;/em&gt; ein Maß für die durchschnittliche Abweichung des geschätzten Parameterwertes vom wahren Parameterwert. Je kleiner der Standardfehler ist, desto genauer kann der unbekannte Parameter der Population mit Hilfe der Schätzfunktion geschätzt werden. Der Standardfehler hängt unter anderem von dem Stichprobenumfang und der Varianz ab. Allgemein gilt: Je größer der Stichprobenumfang, desto kleiner der Standardfehler; je kleiner die Varianz, desto kleiner der Standardfehler.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Up &amp; Running with blogdown</title>
+      <link>/post/2019-07-20-up-and-running-with-blogdown/</link>
+      <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-07-20-up-and-running-with-blogdown/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#read-up-on-blogdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Read up on blogdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#in-github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; In GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#in-terminal&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; In terminal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#in-rstudio&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; In RStudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#build-your-site-in-rstudio&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; Build your site in RStudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#deploy-in-netlify&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; Deploy in Netlify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#going-further&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;7&lt;/span&gt; Going further&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;read-up-on-blogdown&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Read up on blogdown&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;The content below is taken from the excellent post &lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/&#34;&gt;“Up &amp;amp; Running with blogdown”&lt;/a&gt; from Alison Hill&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Before you start, I recommend reading the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34;&gt;&lt;code&gt;blogdown&lt;/code&gt;: Creating Websites with R Markdown&lt;/a&gt; by Yihui Xie and Amber Thomas&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also note that I am a macOS user, and I use R, RStudio, Git (usually via &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;), and terminal regularly, so I’m assuming familiarity here with all of these. If that is not the case, here are some places to get started:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For Git: &lt;a href=&#34;http://happygitwithr.com&#34;&gt;Happy Git with R&lt;/a&gt; by Jenny Bryan et al.&lt;/li&gt;
+&lt;li&gt;For RStudio: &lt;a href=&#34;https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1&#34;&gt;DataCamp’s Working with the RStudio IDE (free)&lt;/a&gt; by Garrett Grolemund&lt;/li&gt;
+&lt;li&gt;For Terminal: &lt;a href=&#34;https://github.com/veltman/clmystery&#34;&gt;The Command Line Murder Mystery&lt;/a&gt; by Noah Veltman, and &lt;a href=&#34;http://seankross.com/the-unix-workbench/&#34;&gt;The UNIX Workbench&lt;/a&gt; by Sean Kross&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also have &lt;a href=&#34;https://developer.apple.com/xcode/&#34;&gt;Xcode&lt;/a&gt; and &lt;a href=&#34;https://brew.sh&#34;&gt;Homebrew&lt;/a&gt; installed- &lt;a href=&#34;https://bookdown.org/yihui/blogdown/installation.html&#34;&gt;you will probably need these to download Hugo&lt;/a&gt;. If you don’t have either but are on a mac, this link may help:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&#34;&gt;How to install Xcode, Homebrew, Git, RVM, Ruby &amp;amp; Rails on Mac OS X&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Introduction to static site generators and how domain names work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/deployment.html&#34;&gt;“Considering the cost and friendliness to beginners, I currently recommend Netlify.”&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/netlify.html&#34;&gt;“If you are not familiar with domain names or do not want to learn more about them, an option for your consideration is a free subdomain &lt;code&gt;*.rbind.io&lt;/code&gt; offered by RStudio, Inc.”&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;in-github&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; In GitHub&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;blogdown-signpost-1.png&#34; /&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Go online to your &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt; account, and create a new repository (check to initialize with a &lt;code&gt;README&lt;/code&gt; but don’t add &lt;code&gt;.gitignore&lt;/code&gt;- this will be taken care of later). For naming your repo, consider your future deployment plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you are going to use &lt;a href=&#34;https://www.netlify.com&#34;&gt;Netlify&lt;/a&gt; to host the site, you can name this repository anything you want!
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    You can see some of the repo names used by members of the &lt;code&gt;rbind&lt;/code&gt; organization &lt;a href=&#34;https://github.com/rbind/repositories&#34;&gt;here&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;If you want to host your site as a &lt;a href=&#34;https://pages.github.com&#34;&gt;GitHub Page&lt;/a&gt;, you should name your repository &lt;code&gt;yourgithubusername.github.io&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;github-new-repo.png&#34; alt=&#34;Screenshot above: Creating a new repository in GitHub&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Screenshot above: Creating a new repository in GitHub&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Go to the main page of your new repository, and under the repository name, click the green &lt;strong&gt;Clone or download&lt;/strong&gt; button.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;In the &lt;strong&gt;Clone with HTTPs&lt;/strong&gt; section, click on the clipboard icon to copy the clone URL for your new repository. You’ll paste this text into terminal in the next section.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;in-terminal&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; In terminal&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;blogdown-signpost-2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now you will &lt;a href=&#34;https://help.github.com/articles/cloning-a-repository/&#34;&gt;clone your remote repository&lt;/a&gt; and create a local copy on your computer so you can sync between the two locations (using terminal or your alternative command line tool for a Windows machine). However, I recommend to use &lt;a href=&#34;https://desktop.github.com&#34;&gt;GitHub Desktop&lt;/a&gt; instead of the terminal for the &lt;a href=&#34;https://help.github.com/en/articles/cloning-a-repository#cloning-a-repository-to-github-desktop&#34;&gt;cloning process&lt;/a&gt;. If you instead would like to use the terminal, this is how you proceed:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Use &lt;code&gt;cd&lt;/code&gt; to navigate into the directory where you want your repo to be&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Once there, type: &lt;code&gt;git clone [paste]&lt;/code&gt;. So my command looked like this:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/apreshill/apreshill.git&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this is what printed to the terminal window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Cloning into &amp;#39;apreshill&amp;#39;...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+Checking connectivity... done.&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Close terminal, you are done in there.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;in-rstudio&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; In RStudio&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;blogdown-signpost-3.png&#34; /&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Install &lt;code&gt;blogdown&lt;/code&gt; from your RStudio console. If you already have &lt;code&gt;devtools&lt;/code&gt; installed like I did, you can just use the second line below:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;if (!requireNamespace(&amp;quot;devtools&amp;quot;)) install.packages(&amp;quot;devtools&amp;quot;)
+devtools::install_github(&amp;quot;rstudio/blogdown&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Install Hugo using the &lt;code&gt;blogdown&lt;/code&gt; package helper function:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::install_hugo()
+# or
+library(blogdown)
+install_hugo()&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Use the top menu buttons in RStudio to select &lt;code&gt;File -&amp;gt; New Project -&amp;gt; Existing Directory&lt;/code&gt;, then browse to the directory on your computer where your GitHub repo is and click on the &lt;strong&gt;Create Project&lt;/strong&gt; button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;r-project-existing-directory.png&#34; alt=&#34;Screenshot above: Creating a new project in an existing directory in RStudio&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Screenshot above: Creating a new project in an existing directory in RStudio&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Now you should be “in” your project in RStudio. If you are using git for version control, edit your &lt;code&gt;*gitignore&lt;/code&gt; file. This file should be viewable in your file viewer pane in RStudio. Below is what it should look like: the first four lines will automatically be in this file if you have set up your RStudio Project, but if you plan to use Netlify to deploy, you need to add the &lt;code&gt;public/&lt;/code&gt; line (&lt;a href=&#34;https://bookdown.org/yihui/blogdown/version-control.html&#34;&gt;read about here&lt;/a&gt;.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+blogdown
+.DS_Store # if a windows user, Thumbs.db instead
+public/ # if using Netlify&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-your-site-in-rstudio&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; Build your site in RStudio&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;blogdown-signpost-4.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now you can finally build your site using the &lt;code&gt;blogdown::new_site()&lt;/code&gt; function. But &lt;strong&gt;first&lt;/strong&gt; you should at least think about themes…&lt;/p&gt;
+&lt;div id=&#34;picking-a-theme&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; Picking a theme&lt;/h2&gt;
+&lt;p&gt;There are over 90 &lt;a href=&#34;https://themes.gohugo.io&#34;&gt;Hugo themes&lt;/a&gt;. Here you can find an overview of some of the &lt;a href=&#34;https://bookdown.org/yihui/blogdown/other-themes.html&#34;&gt;themes&lt;/a&gt;. Whatever theme you choose, you’ll need to pick one of 3 ways to make your new site:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;If you are happy with the default theme, which is the lithium theme, you can use:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_site() # default theme is lithium&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;If you want a theme other than the default, you can specify the theme at the same time as you call the &lt;code&gt;new_site&lt;/code&gt; function:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;# for example, create a new site with the academic theme
+blogdown::new_site(theme = &amp;quot;gcushen/hugo-academic&amp;quot;, theme_example = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;If instead you want to add the theme later, you can do this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;library(blogdown)
+new_site() # default theme is lithium
+# need to stop serving so can use the console again
+install_theme(&amp;quot;gcushen/hugo-academic&amp;quot;, theme_example = TRUE, update_config = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Now is a good time to re-read about &lt;code&gt;blogdown::serve_site()&lt;/code&gt; and &lt;a href=&#34;https://bookdown.org/yihui/blogdown/a-quick-example.html&#34;&gt;how &lt;em&gt;LiveReload&lt;/em&gt; works&lt;/a&gt; (and how it blocks your R console by default)
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;update-project-options&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; Update project options&lt;/h2&gt;
+&lt;p&gt;In your project in RStudio, go to the top menu bar of RStudio and select &lt;code&gt;Tools -&amp;gt; Project Options&lt;/code&gt; and update following &lt;a href=&#34;https://bookdown.org/yihui/blogdown/rstudio-ide.html#fig:project-options&#34;&gt;Yihui and Amber’s instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;edit-your-configurations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; Edit your configurations&lt;/h2&gt;
+&lt;p&gt;Relevant reading:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/configuration.html&#34;&gt;&lt;code&gt;blogdown&lt;/code&gt; book chapter on configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;You can also view Alison Hill’s &lt;a href=&#34;https://github.com/apreshill/apreshill/blob/master/config.toml&#34;&gt;&lt;code&gt;config.toml&lt;/code&gt; file&lt;/a&gt; in GitHub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, edit the &lt;code&gt;baseurl&lt;/code&gt; in your &lt;code&gt;config.toml&lt;/code&gt; file. The URL &lt;em&gt;should always&lt;/em&gt; end with a &lt;code&gt;/&lt;/code&gt; trailing slash. At this point, you probably haven’t deployed your site yet, so to view it locally you can use the &lt;strong&gt;Serve Site&lt;/strong&gt; add-in, or run the &lt;code&gt;blogdown::serve_site&lt;/code&gt; function. Both of these baseurls worked for me when viewing locally:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;https://example.com/&amp;quot;
+baseurl = &amp;quot;/&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    Make sure that the &lt;code&gt;baseurl =&lt;/code&gt; listed ends with a trailing slash &lt;code&gt;/&lt;/code&gt;!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;Go ahead and edit all the other elements in the &lt;code&gt;config.toml&lt;/code&gt; file now as you please- this is how you personalize your site.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;addins-workflow&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.4&lt;/span&gt; Addins &amp;amp; workflow&lt;/h2&gt;
+&lt;p&gt;Relevant reading:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/rstudio-ide.html&#34;&gt;&lt;code&gt;blogdown&lt;/code&gt; book chapter on the RStudio IDE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Addins: use them- you won’t need the &lt;code&gt;blogdown&lt;/code&gt; library loaded in the console if you use the Addins. The workflow in RStudio at this point (again, just viewing locally because we haven’t deployed yet) works best like this:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Open the RStudio project for the site&lt;/li&gt;
+&lt;li&gt;Use the &lt;strong&gt;Serve Site&lt;/strong&gt; add-in (only once due to &lt;em&gt;LiveReload&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;View site in the RStudio viewer pane, and open in a new browser window while you work&lt;/li&gt;
+&lt;li&gt;Select existing files to edit using the file pane in RStudio&lt;/li&gt;
+&lt;li&gt;After making changes, click the save button (don’t &lt;code&gt;knit&lt;/code&gt;!)- the console will reload, the viewer pane will update, and if you hit refresh in the browser your local view will also be updated&lt;/li&gt;
+&lt;li&gt;When happy with changes, add/commit/push changes to GitHub&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Having &lt;code&gt;blogdown::serve_site&lt;/code&gt; running locally with &lt;em&gt;LiveReload&lt;/em&gt; is especially useful as you can immediately see if you have made any mistakes.&lt;/p&gt;
+&lt;p&gt;The above workflow is only for editing existing files or posts, but not for &lt;strong&gt;creating new posts&lt;/strong&gt;. For that, read on…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;posting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.5&lt;/span&gt; Posting&lt;/h2&gt;
+&lt;p&gt;Relevant reading:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/rstudio-ide.html&#34;&gt;&lt;code&gt;blogdown&lt;/code&gt; book chapter on RStudio IDE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/output-format.html&#34;&gt;&lt;code&gt;blogdown&lt;/code&gt; book chapter on output formats&lt;/a&gt;: on .md versus .Rmd posts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bottom line:&lt;/p&gt;
+&lt;p&gt;Use the &lt;strong&gt;New Post&lt;/strong&gt; addin. But, you need the console to do this, so you have to stop &lt;code&gt;blogdown::serve_site&lt;/code&gt; by clicking on the red &lt;strong&gt;Stop&lt;/strong&gt; button first. The Addin is a &lt;a href=&#34;https://shiny.rstudio.com&#34;&gt;Shiny&lt;/a&gt; interface that runs this code in your console: &lt;code&gt;blogdown:::new_post_addin()&lt;/code&gt;. So, your console needs to be unblocked for it to run. You also need to be “in” your RStudio project or it won’t work.&lt;/p&gt;
+&lt;div id=&#34;draft-posts&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.5.1&lt;/span&gt; Draft posts&lt;/h3&gt;
+&lt;p&gt;Relevant reading:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bookdown.org/yihui/blogdown/local-preview.html&#34;&gt;&lt;code&gt;blogdown&lt;/code&gt; book chapter on building a website for local preview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Whether you do a markdown or R Markdown post (see below), you should know that in the YAML front matter of your new file, you can add &lt;code&gt;draft: TRUE&lt;/code&gt; and you will be able to preview your post using &lt;code&gt;blogdown::serve_site()&lt;/code&gt;, but conveniently your post will not show up on your deployed site until you set it to false. Because this is a function built into Hugo, all posts (draft or not) will still end up in your GitHub repo though.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;new-markdown-posts&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.5.2&lt;/span&gt; New markdown posts&lt;/h3&gt;
+&lt;p&gt;Pick one of 2 methods:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Use the &lt;strong&gt;New Post&lt;/strong&gt; addin and with the radio button at the bottom select &lt;strong&gt;Format: Markdown&lt;/strong&gt; (recommended)&lt;/li&gt;
+&lt;li&gt;Use the console to author a new &lt;code&gt;.md&lt;/code&gt; post:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_post()
+blogdown::new_post(ext = &amp;#39;.md&amp;#39;) # md is the default!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here are the &lt;code&gt;?new_post&lt;/code&gt; arguments:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new_post(title, kind = &amp;quot;&amp;quot;, open = interactive(),
+    author = getOption(&amp;quot;blogdown.author&amp;quot;), categories = NULL, tags = NULL,
+    date = Sys.Date(), file = NULL, slug = NULL,
+    title_case = getOption(&amp;quot;blogdown.title_case&amp;quot;),
+    subdir = getOption(&amp;quot;blogdown.subdir&amp;quot;, &amp;quot;post&amp;quot;),
+    ext = getOption(&amp;quot;blogdown.ext&amp;quot;, &amp;quot;.md&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Remember to use the &lt;strong&gt;Serve Site&lt;/strong&gt; addin again so that you can immediately view your changes with every save using &lt;em&gt;LiveReload&lt;/em&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;new-r-markdown-.rmd-posts&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.5.3&lt;/span&gt; New R Markdown (.Rmd) posts&lt;/h3&gt;
+&lt;p&gt;Again, you have your choice of one of 2 methods:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Use the &lt;strong&gt;New Post&lt;/strong&gt; addin and with the radio button at the bottom select &lt;strong&gt;Format: R Markdown (.Rmd)&lt;/strong&gt; (recommended)&lt;/li&gt;
+&lt;li&gt;Use the console to author a new &lt;code&gt;.Rmd&lt;/code&gt; post:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_post(ext = &amp;#39;.Rmd&amp;#39;) # md is the default!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After you edit your &lt;code&gt;.Rmd&lt;/code&gt; post, in addition to saving the changes in your &lt;code&gt;.Rmd&lt;/code&gt; file, you &lt;em&gt;must&lt;/em&gt; use &lt;code&gt;blogdown::serve_site&lt;/code&gt;- this is how the output &lt;code&gt;html&lt;/code&gt; file needs to be generated.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    Do &lt;em&gt;not&lt;/em&gt; knit your &lt;code&gt;.Rmd&lt;/code&gt; posts- use &lt;code&gt;blogdown::serve_site&lt;/code&gt; instead. If you happen to hit the knit button, just &lt;strong&gt;Serve Site&lt;/strong&gt; again to rewrite the &lt;code&gt;.html&lt;/code&gt; file.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;Ultimately, your &lt;a href=&#34;https://bookdown.org/yihui/blogdown/output-format.html#output-format&#34;&gt;YAML front matter looks something like this&lt;/a&gt;; note that some but not all features of &lt;code&gt;rmarkdown::html_document&lt;/code&gt; &lt;a href=&#34;https://bookdown.org/yihui/blogdown/output-format.html#fn15&#34;&gt;are supported in &lt;code&gt;blogdown&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: &amp;quot;My Post&amp;quot;
+author: &amp;quot;John Doe&amp;quot;
+date: &amp;quot;2017-02-14&amp;quot;
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 1
+    number_sections: true
+    fig_width: 6
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Remember to use the &lt;strong&gt;Serve Site&lt;/strong&gt; addin again so that you can immediately view your changes with every save using &lt;em&gt;LiveReload&lt;/em&gt; and your &lt;code&gt;.html&lt;/code&gt; file is properly output.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adding-images-to-a-post&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.5.4&lt;/span&gt; Adding images to a post&lt;/h3&gt;
+&lt;p&gt;If you want to include an image that is not a figure created from an R chunk, the &lt;a href=&#34;https://github.com/rstudio/blogdown/issues/45&#34;&gt;recommended method&lt;/a&gt; is to:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Add the image to your &lt;code&gt;/static/img/&lt;/code&gt; folder, then&lt;/li&gt;
+&lt;li&gt;Reference the image using the relative file path as follows:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;![my-image](/img/my-image.png)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;deploy-in-netlify&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; Deploy in Netlify&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;blogdown-signpost-5.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Deploying in Netlify through GitHub is smooth. Here are some &lt;a href=&#34;https://bookdown.org/yihui/blogdown/deployment.html&#34;&gt;beginner instructions&lt;/a&gt;, but Netlify is so easy, I recommend that you skip dragging your &lt;code&gt;public&lt;/code&gt; folder in and instead &lt;a href=&#34;https://bookdown.org/yihui/blogdown/netlify.html#netlify&#34;&gt;automate the process through GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;When you are ready to deploy, commit your changes and push to GitHub, then go online to &lt;a href=&#34;https://www.netlify.com&#34;&gt;Netlify&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Click on the &lt;strong&gt;Sign Up&lt;/strong&gt; button and sign up using your existing GitHub account (no need to create another account)&lt;/li&gt;
+&lt;li&gt;Log in, and select: &lt;code&gt;New site from Git -&amp;gt; Continuous Deployment: GitHub&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;From there, Netlify will allow you to select from your existing GitHub repositories. You’ll pick the repo you’ve been working from with &lt;code&gt;blogdown&lt;/code&gt;, then you’ll configure your build. This involves specifying two important things: the build command and the publish directory (this should be &lt;code&gt;public&lt;/code&gt;).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;More about the build command from &lt;a href=&#34;https://www.netlify.com/docs/continuous-deployment/#common-configuration-directives&#34;&gt;Netlify&lt;/a&gt;: &lt;em&gt;“For Hugo hosting, &lt;code&gt;hugo&lt;/code&gt; will build and deploy with the version 0.17 of &lt;code&gt;hugo&lt;/code&gt;. You can specify a specific &lt;code&gt;hugo&lt;/code&gt; release like this: &lt;code&gt;hugo_0.15&lt;/code&gt;. Currently &lt;code&gt;0.13&lt;/code&gt;, &lt;code&gt;0.14&lt;/code&gt;, &lt;code&gt;0.15&lt;/code&gt;, &lt;code&gt;0.16&lt;/code&gt;, &lt;code&gt;0.17&lt;/code&gt;, &lt;code&gt;0.18&lt;/code&gt; and &lt;code&gt;0.19&lt;/code&gt; are supported. For version &lt;code&gt;0.20&lt;/code&gt; and above, you’ll need to create a Build environment variable called &lt;code&gt;HUGO_VERSION&lt;/code&gt; and set it to the version of your choice.”&lt;/em&gt; I opted for the former, and specified &lt;code&gt;hugo_0.19&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can check your &lt;code&gt;hugo&lt;/code&gt; version in terminal using the command &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;&lt;code&gt;hugo version&lt;/code&gt;&lt;/a&gt;. This is what my output looked like, so I could run version &lt;code&gt;0.20&lt;/code&gt; if I wanted to through Netlify, but I went with &lt;code&gt;0.19&lt;/code&gt; and it works just fine.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hugo version
+Hugo Static Site Generator v0.20.7 darwin/amd64 BuildDate: 2017-05-08T18:37:40-07:00&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;netlify-build-settings.png&#34; alt=&#34;Screenshot above: Basic build settings in Netlify&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Screenshot above: Basic build settings in Netlify&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Netlify will deploy your site and assign you a random subdomain name of the form &lt;code&gt;random-word-12345.netlify.com&lt;/code&gt;. You should know that you can change this; e.g. to &lt;code&gt;mynewsite.netlify.com&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Anytime you change your subdomain name, you need to update the &lt;code&gt;baseurl&lt;/code&gt; in your &lt;code&gt;config.toml&lt;/code&gt; file (e.g., baseurl = “&lt;a href=&#34;https://mynewsite.netlify.com/&#34; class=&#34;uri&#34;&gt;&lt;a href=&#34;https://mynewsite.netlify.com/&#34; target=&#34;_blank&#34;&gt;https://mynewsite.netlify.com/&lt;/a&gt;&lt;/a&gt;”).
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;At this point, you should be up and running with &lt;code&gt;blogdown&lt;/code&gt;, GitHub, and Netlify, but here are some ideas if you want to go further…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;going-further&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;7&lt;/span&gt; Going further&lt;/h1&gt;
+&lt;div id=&#34;custom-css&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;7.1&lt;/span&gt; Custom CSS&lt;/h2&gt;
+&lt;p&gt;Every Hugo theme is structured a little differently, but if you are interested, you can check out Alison Hill’s &lt;a href=&#34;https://github.com/apreshill/apreshill/blob/master/static/css/blue.css&#34;&gt;custom css&lt;/a&gt; to see how she customized the academic theme, which provides a way to link to a custom CSS file in the &lt;code&gt;config.toml&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  # Link custom CSS and JS assets
+  #   (relative to /static/css and /static/js respectively)
+  custom_css = [&amp;quot;blue.css&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;formspree&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;7.2&lt;/span&gt; Formspree&lt;/h2&gt;
+&lt;p&gt;Alison Hill used &lt;a href=&#34;https://formspree.io&#34;&gt;Formspree&lt;/a&gt; to make a contact form, which is an online service (managed on &lt;a href=&#34;https://github.com/formspree/formspree&#34;&gt;GitHub&lt;/a&gt;) that allows you to add an HTML form to your static site. No registration, just use the form and confirm your email address once. She added the following code into &lt;a href=&#34;https://github.com/apreshill/apreshill/blob/master/themes/hugo-academic/layouts/partials/widgets/contact.html&#34;&gt;the contact widget&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;https://formspree.io/your@email.com&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt;
+  &amp;lt;label for=&amp;quot;name&amp;quot;&amp;gt;Your name: &amp;lt;/label&amp;gt;
+  &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;name&amp;quot; required=&amp;quot;required&amp;quot; placeholder=&amp;quot;here&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
+  &amp;lt;label for=&amp;quot;email&amp;quot;&amp;gt;Your email: &amp;lt;/label&amp;gt;
+  &amp;lt;input type=&amp;quot;email&amp;quot; name=&amp;quot;_replyto&amp;quot; required=&amp;quot;required&amp;quot; placeholder=&amp;quot;here&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
+  &amp;lt;label for=&amp;quot;message&amp;quot;&amp;gt;Your message:&amp;lt;/label&amp;gt;&amp;lt;br&amp;gt;
+  &amp;lt;textarea rows=&amp;quot;4&amp;quot; name=&amp;quot;message&amp;quot; id=&amp;quot;message&amp;quot; required=&amp;quot;required&amp;quot; class=&amp;quot;form-control&amp;quot; placeholder=&amp;quot;I can&amp;#39;t wait to read this!&amp;quot;&amp;gt;&amp;lt;/textarea&amp;gt;
+  &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;_next&amp;quot; value=&amp;quot;/html/thanks.html&amp;quot; /&amp;gt;
+  &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Send&amp;quot; name=&amp;quot;submit&amp;quot; class=&amp;quot;btn btn-primary btn-outline&amp;quot;&amp;gt;
+  &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;_subject&amp;quot; value=&amp;quot;Website message&amp;quot; /&amp;gt;
+  &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;_gotcha&amp;quot; style=&amp;quot;display:none&amp;quot; /&amp;gt;
+&amp;lt;/form&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rbind.io-domain-names&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;7.3&lt;/span&gt; &lt;code&gt;*.rbind.io&lt;/code&gt; domain names&lt;/h2&gt;
+&lt;p&gt;You may want a different &lt;a href=&#34;https://bookdown.org/yihui/blogdown/domain-name.html&#34;&gt;domain name&lt;/a&gt; than the one provided by Netlify. Alison opted for a free subdomain &lt;code&gt;*.rbind.io&lt;/code&gt; offered by RStudio. To do the same, head over to the &lt;a href=&#34;https://github.com/rbind/support/issues&#34;&gt;rbind/support GitHub page&lt;/a&gt; and open a new issue. All you need to do is let them know what your Netlify subdomain name is (&lt;code&gt;*.netlify.com&lt;/code&gt;), and what you want your subdomain name to be (&lt;code&gt;*.rbind.io&lt;/code&gt;). The &lt;a href=&#34;https://support.rbind.io&#34;&gt;&lt;code&gt;rbind&lt;/code&gt; support team&lt;/a&gt; will help you take it from there!&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Again, you will need to update the &lt;code&gt;baseurl&lt;/code&gt; in your &lt;code&gt;config.toml&lt;/code&gt; file to reflect your new rbind subdomain name (so Alison’s is baseurl = “&lt;a href=&#34;https://alison.rbind.io/&#34; class=&#34;uri&#34;&gt;&lt;a href=&#34;https://alison.rbind.io/&#34; target=&#34;_blank&#34;&gt;https://alison.rbind.io/&lt;/a&gt;&lt;/a&gt;”).
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;That’s all for now.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

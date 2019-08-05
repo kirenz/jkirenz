@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>workshop on Jan Kirenz</title>
+    <link>/tags/workshop/</link>
+    <description>Recent content in workshop on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Thu, 13 Jun 2019 09:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/tags/workshop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Web Analytics &amp; Social Media Analytics</title>
+      <link>/talk/2019-web-analytics/</link>
+      <pubDate>Thu, 13 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-web-analytics/</guid>
+      <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
+
+&lt;p&gt;Four daily 1-hour sessions (see slides) plus 30-60 minutes of homework for 3 nights.&lt;/p&gt;
+
+&lt;p&gt;See the project link for more information.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

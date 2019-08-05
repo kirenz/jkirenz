@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data visualization on Jan Kirenz</title>
+    <link>/tags/data-visualization/</link>
+    <description>Recent content in data visualization on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Fri, 06 Apr 2018 16:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Take a Sad Plot &amp; Make It Better</title>
+      <link>/talk/2018-ohsu-sad-plot-better/</link>
+      <pubDate>Fri, 06 Apr 2018 16:00:00 +0000</pubDate>
+      
+      <guid>/talk/2018-ohsu-sad-plot-better/</guid>
+      <description>&lt;p&gt;Join us on April 6 for a walk-through of how to take a sad plot and make it better by Alison Hill, who co-teaches the CS631 Data Visualization course. Alison will take us through one plot’s life cycle, from a sad Powerpoint slide to an Excel chart and finally to the finished product made with the ggplot2 package in R. We will discuss why each version of the plot fails in different ways, how each iteration improved on the last one, and which data visualization principles are at work in the final plot to communicate a clear scientific story.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://apreshill.github.io/ohsu-biodatavis/slides_files/figure-html/animated.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Following this, Eric Earl (Senior RA in the DCAN Labs) will show a case study of visualization in neuroimaging research.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

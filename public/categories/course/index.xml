@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>course on Jan Kirenz</title>
+    <link>/categories/course/</link>
+    <description>Recent content in course on Jan Kirenz</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
+    <lastBuildDate>Sat, 03 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/categories/course/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First Steps in Python</title>
+      <link>/project/python-first-steps/</link>
+      <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/python-first-steps/</guid>
+      <description>
+
+&lt;h1 id=&#34;first-steps-in-python&#34;&gt;First Steps in Python&lt;/h1&gt;
+
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/Python_overview.pdf&#34; target=&#34;_blank&#34;&gt;Python overview&lt;/a&gt; to get an overview about Python and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
+
+&lt;p&gt;First of all, install &lt;strong&gt;Anaconda&lt;/strong&gt; - it&amp;rsquo;s a free and open-source distribution of the Python programming language that aims to simplify package management and deployment. It already contains Jupyter Notebook (see below) and other important data science modules.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a href=&#34;https://www.anaconda.com/distribution/&#34; target=&#34;_blank&#34;&gt;Anaconda&lt;/a&gt; (select the current version of Python 3). After installation, launch the Anaconda Navigator and start Jupyter Notebook or Jupyter Lab.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One important third-party tool for data science is
+&lt;strong&gt;Jupyter&lt;/strong&gt;, an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Learn why Jupyter is data scientists&amp;rsquo; computational notebook of choice:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/d41586-018-07196-1&#34; target=&#34;_blank&#34;&gt;Perkel, J. M. (2018). Why Jupyter is data scientists&amp;rsquo; computational notebook of choice. Nature, 563(7729), p. 145.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/bringing-the-best-out-of-jupyter-notebooks-for-data-science-f0871519ca29&#34; target=&#34;_blank&#34;&gt;Pandey, P. (2018). Bringing the best out of Jupyter Notebooks for Data Science. Towards Data Science&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/jupyter-lab-evolution-of-the-jupyter-notebook-5297cacde6b&#34; target=&#34;_blank&#34;&gt;Pandey, P. (2019). Jupyter Lab: Evolution of the Jupyter Notebook. Towards Data Science&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s start with some code examples:&lt;/p&gt;
+
+&lt;p&gt;1) &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/1_pandas_import_save_csv.ipynb&#34; target=&#34;_blank&#34;&gt;Import and save CSV-files with Pandas&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2) &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/2_data_tidying_missing_values.ipynb&#34; target=&#34;_blank&#34;&gt;Check for missing values&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;3) &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/3_level_of_measurement.ipynb&#34; target=&#34;_blank&#34;&gt;Change data type (level of measurment)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;4) &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/4_descriptive_statistics.ipynb&#34; target=&#34;_blank&#34;&gt;Descriptive statistics&lt;/a&gt;
+&lt;a href=&#34;https://colab.research.google.com/github/kirenz/first_steps_in_python/blob/master/4_descriptive_statistics.ipynb&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://colab.research.google.com/assets/colab-badge.svg&#34; alt=&#34;Open In Colab&#34; /&gt;&lt;/a&gt;
+&lt;em&gt;&lt;a href=&#34;https://colab.research.google.com/notebooks/welcome.ipynb#scrollTo=5fCEDCU_qrC0&#34; target=&#34;_blank&#34;&gt;Colaboratory&lt;/a&gt; is a free Jupyter notebook environment that requires no setup and runs entirely in the cloud. With Colaboratory you can write and execute code, save and share your analyses, and access powerful computing resources, all for free from your browser:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;5) &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/5_data_science_programming_process.ipynb&#34; target=&#34;_blank&#34;&gt;Overview of the data science programming process&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;recommended-reading&#34;&gt;Recommended reading:&lt;/h2&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;strong&gt;A Whirlwind Tour of Python&lt;/strong&gt;&amp;rdquo; is a free and fast-paced introduction to essential features of the Python language. The material is particularly designed for those who wish to use Python for data science and/or scientific programming:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/WhirlwindTourOfPython/&#34; target=&#34;_blank&#34;&gt;VanderPlas, J. (2016). Whirlwind Tour of Python. O&amp;rsquo;Reilly Media.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>First Steps in R</title>
+      <link>/project/r-first-steps/</link>
+      <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/r-first-steps/</guid>
+      <description>
+
+&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34; target=&#34;_blank&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-r&#34;&gt;Installing R&lt;/h2&gt;
+
+&lt;p&gt;The first step is to install R. You can download and install R from the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt; (CRAN).&lt;/p&gt;
+
+&lt;p&gt;Windows:
+- Open the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.
+- Click on “CRAN”. You’ll see a list of mirror sites, organized by country.
+- Select a site near you.
+- Click on “Windows” under “Download and Install R”.
+- Click on “base”.
+- Click on the link for downloading the latest version of R (an .exe file).
+- When the download completes, double-click on the .exe file and answer the usual questions.&lt;/p&gt;
+
+&lt;p&gt;Mac:
+- Open the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.
+- Click on “CRAN”.
+- You’ll see a list of mirror sites, organized by country.
+- Select a site near you.
+- Click on “MacOS X”.
+- Click on the .pkg file for the latest version of R, under “Files:”, to download it.
+- When the download completes, double-click on the .pkg file and answer the usual questions.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-rstudio&#34;&gt;Installing RStudio&lt;/h2&gt;
+
+&lt;p&gt;The next step is to install &lt;strong&gt;RStudio&lt;/strong&gt;, a free and open-source integrated development environment (IDE) for R. You can use it for viewing and running R scripts.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34; target=&#34;_blank&#34;&gt;RStudio Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click the Download RStudio Desktop button.&lt;/li&gt;
+&lt;li&gt;Select the installation file for your system.&lt;/li&gt;
+&lt;li&gt;Run the installation file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;learn-r-basics&#34;&gt;Learn R Basics&lt;/h2&gt;
+
+&lt;p&gt;First of all, you can take an online course to master the basics of R: Visit the interactive &lt;a href=&#34;https://www.datacamp.com/getting-started?step=2&amp;amp;track=r&#34; target=&#34;_blank&#34;&gt;R-Course&lt;/a&gt; from DataCamp. With the knowledge gained in this courses, you will be ready to undertake your first very own data analysis.&lt;/p&gt;
+
+&lt;p&gt;There are also open and free resources and reference guides for R. Two examples are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statmethods.net/&#34; target=&#34;_blank&#34;&gt;Quick-R&lt;/a&gt;: a quick online reference for data input, basic statistics and plots&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/doc/contrib/Short-refcard.pdf&#34; target=&#34;_blank&#34;&gt;R reference card (PDF)&lt;/a&gt; by Tom Short&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Two key things you need to know about R is that you can get help for a function using &lt;code&gt;help&lt;/code&gt; or &lt;code&gt;?&lt;/code&gt;, like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r,eval=FALSE&#34;&gt;?install.packages
+help(&amp;quot;install.packages&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and the hash character represents comments, so text following these
+characters is not interpreted:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;##This is just a comment
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;installing-r-packages&#34;&gt;Installing R Packages&lt;/h2&gt;
+
+&lt;p&gt;The first R command we will run is &lt;code&gt;install.packages&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;An R package is a collection of functions, data, and documentation that extends the capabilities of base R.
+Many of these functions are stored in CRAN. You can easily install packages from within RStudio if you know
+the name of the packages.&lt;/p&gt;
+
+&lt;p&gt;As an example, we are going to install the
+package &lt;code&gt;dplyr&lt;/code&gt; which we use in our first data
+analysis examples:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r,eval=FALSE&#34;&gt;install.packages(&amp;quot;dplyr&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can then load the package into our R sessions using the &lt;code&gt;library&lt;/code&gt; function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From now on you will see that we sometimes load packages without
+installing them. This is because you only need to install a package once,
+but you need to reload it with the command &lt;code&gt;library&lt;/code&gt; every time you start
+a new R session.&lt;/p&gt;
+
+&lt;p&gt;If you try to load a package and get an error, it probably means you need to install it first.&lt;/p&gt;
+
+&lt;p&gt;Review the &lt;a href=&#34;https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html&#34; target=&#34;_blank&#34;&gt;dplyr-documentation&lt;/a&gt; to get an overview about the different functionalities of this package.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
