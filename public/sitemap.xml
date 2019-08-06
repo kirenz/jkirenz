@@ -43,12 +43,6 @@
   </url>
   
   <url>
-    <loc>/categories/seminar/</loc>
-    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/talk/</loc>
     <lastmod>2019-06-24T09:00:00+00:00</lastmod>
   </url>
@@ -68,6 +62,12 @@
   <url>
     <loc>/tags/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/seminar/</loc>
+    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -118,14 +118,14 @@
   </url>
   
   <url>
-    <loc>/categories/tutorial/</loc>
+    <loc>/post/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/categories/tutorial/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
