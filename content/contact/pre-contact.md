@@ -23,14 +23,14 @@ subtitle = ""
 
   # Background color.
   # color = "navy"
-  
+
   # Background gradient.
   # gradient_start = "DeepSkyBlue"
   # gradient_end = "SkyBlue"
-  
+
   # Background image.
-  image = "Designlovefest_SANTANA_dress-your-tech_01_01.jpg"  # Name of image in `static/img/`.
-  image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  image = "background.jpg"  # Name of image in `static/img/`.
+  image_darken = 0.2  # 0.6 Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
 
   # Text color (true=light or false=dark).
   text_color_light = true
@@ -40,9 +40,9 @@ subtitle = ""
   padding = ["60px", "0", "60px", "0"]
 
 [advanced]
- # Custom CSS. 
+ # Custom CSS.
  css_style = "text-align: center"
- 
+
  # CSS class.
  css_class = ""
 +++
