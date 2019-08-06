@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>All Seminars &amp; Workshops on Jan Kirenz</title>
+    <title>Seminars &amp; Workshops on Jan Kirenz</title>
     <link>/talk/</link>
-    <description>Recent content in All Seminars &amp; Workshops on Jan Kirenz</description>
+    <description>Recent content in Seminars &amp; Workshops on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
@@ -31,11 +31,7 @@
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
       <guid>/talk/2019-programming-languages/</guid>
-      <description>
-
-
-
-</description>
+      <description></description>
     </item>
     
     <item>
