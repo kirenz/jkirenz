@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Lecture</title>
-      <link>/categories/lecture/</link>
-      <pubDate>Mon, 07 Oct 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/categories/lecture/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>German</title>
       <link>/categories/german/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
@@ -58,7 +49,7 @@
     </item>
     
     <item>
-      <title>tutorial</title>
+      <title>Tutorial</title>
       <link>/categories/tutorial/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
@@ -81,6 +72,15 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/blogdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lecture</title>
+      <link>/categories/lecture/</link>
+      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/categories/lecture/</guid>
       <description></description>
     </item>
     

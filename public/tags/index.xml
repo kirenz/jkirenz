@@ -31,15 +31,6 @@
     </item>
     
     <item>
-      <title>SQL</title>
-      <link>/tags/sql/</link>
-      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>StatisticalLearning</title>
       <link>/tags/statisticallearning/</link>
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
@@ -54,24 +45,6 @@
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
       <guid>/tags/statistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>BigData</title>
-      <link>/tags/bigdata/</link>
-      <pubDate>Mon, 07 Oct 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/tags/bigdata/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>WebAnalytics</title>
-      <link>/tags/webanalytics/</link>
-      <pubDate>Mon, 07 Oct 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/tags/webanalytics/</guid>
       <description></description>
     </item>
     
@@ -135,6 +108,33 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/blogdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>/tags/sql/</link>
+      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BigData</title>
+      <link>/tags/bigdata/</link>
+      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/tags/bigdata/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WebAnalytics</title>
+      <link>/tags/webanalytics/</link>
+      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/tags/webanalytics/</guid>
       <description></description>
     </item>
     

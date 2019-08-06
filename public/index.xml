@@ -26,28 +26,6 @@
     </item>
     
     <item>
-      <title>Programming Languages for Data Science</title>
-      <link>/talk/2019-programming-languages/</link>
-      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-programming-languages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Big Data and Web Analytics</title>
-      <link>/talk/2019-big-data-web-analytics/</link>
-      <pubDate>Mon, 07 Oct 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-big-data-web-analytics/</guid>
-      <description>
-
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Deskriptive Statistik in R</title>
       <link>/post/2019-08-01-r-descriptive-statistics/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
@@ -794,12 +772,34 @@ Hugo Static Site Generator v0.20.7 darwin/amd64 BuildDate: 2017-05-08T18:37:40-0
     </item>
     
     <item>
+      <title>Programming Languages for Data Science</title>
+      <link>/talk/2019-programming-languages/</link>
+      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-programming-languages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Web Analytics &amp; Social Media Analytics</title>
       <link>/talk/2019-web-analytics/</link>
       <pubDate>Thu, 13 Jun 2019 09:00:00 +0000</pubDate>
       
       <guid>/talk/2019-web-analytics/</guid>
       <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Big Data and Web Analytics</title>
+      <link>/talk/2019-big-data-web-analytics/</link>
+      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-big-data-web-analytics/</guid>
+      <description>
+
+
+
 </description>
     </item>
     

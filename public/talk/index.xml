@@ -28,23 +28,10 @@
     <item>
       <title>Programming Languages for Data Science</title>
       <link>/talk/2019-programming-languages/</link>
-      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
       
       <guid>/talk/2019-programming-languages/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Big Data and Web Analytics</title>
-      <link>/talk/2019-big-data-web-analytics/</link>
-      <pubDate>Mon, 07 Oct 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-big-data-web-analytics/</guid>
-      <description>
-
-
-
-</description>
     </item>
     
     <item>
@@ -54,6 +41,19 @@
       
       <guid>/talk/2019-web-analytics/</guid>
       <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Big Data and Web Analytics</title>
+      <link>/talk/2019-big-data-web-analytics/</link>
+      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-big-data-web-analytics/</guid>
+      <description>
+
+
+
 </description>
     </item>
     

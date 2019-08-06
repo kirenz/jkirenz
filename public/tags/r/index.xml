@@ -26,15 +26,6 @@
     </item>
     
     <item>
-      <title>Programming Languages for Data Science</title>
-      <link>/talk/2019-programming-languages/</link>
-      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-programming-languages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>First Steps in R</title>
       <link>/project/r-first-steps/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
@@ -185,6 +176,15 @@ a new R session.&lt;/p&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34; target=&#34;_blank&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Programming Languages for Data Science</title>
+      <link>/talk/2019-programming-languages/</link>
+      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-programming-languages/</guid>
+      <description></description>
     </item>
     
   </channel>

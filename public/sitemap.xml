@@ -4,7 +4,7 @@
   
   <url>
     <loc>/authors/jan/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,25 +14,20 @@
   
   <url>
     <loc>/authors/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/talk/2019-programming-languages/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,25 +38,19 @@
   
   <url>
     <loc>/tags/r/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/sql/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/seminar/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/talk/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -78,30 +67,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/talk/2019-big-data-web-analytics/</loc>
-    <lastmod>2019-06-16T02:20:01-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/bigdata/</loc>
-    <lastmod>2019-06-16T02:20:01-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/lecture/</loc>
-    <lastmod>2019-06-16T02:20:01-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/webanalytics/</loc>
-    <lastmod>2019-06-16T02:20:01-07:00</lastmod>
+    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -152,14 +118,14 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/categories/tutorial/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -240,8 +206,42 @@
   </url>
   
   <url>
+    <loc>/talk/2019-programming-languages/</loc>
+    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/sql/</loc>
+    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/talk/2019-web-analytics/</loc>
     <lastmod>2019-06-13T09:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/2019-big-data-web-analytics/</loc>
+    <lastmod>2019-03-16T02:20:01-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/bigdata/</loc>
+    <lastmod>2019-03-16T02:20:01-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/lecture/</loc>
+    <lastmod>2019-03-16T02:20:01-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/webanalytics/</loc>
+    <lastmod>2019-03-16T02:20:01-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
