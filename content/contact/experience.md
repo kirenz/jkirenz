@@ -24,8 +24,7 @@ date_format = "January 2006"
   location = "Stuttgart"
   date_start = "2017-04-01"
   date_end = ""
-  description = """
-  """
+  description = ""
 
 [[experience]]
   title = "Data Scientist"
@@ -34,7 +33,7 @@ date_format = "January 2006"
   location = "Munich"
   date_start = "2015-01-01"
   date_end = ""
-  description = """ """
+  description = ""
 
 [[experience]]
   title = "Professor"
@@ -43,7 +42,7 @@ date_format = "January 2006"
   location = "Munich"
   date_start = "2014-01-01"
   date_end = "2017-03-01"
-  description = """ """
+  description = ""
 
 [[experience]]
   title = "Marketing Management"
@@ -52,7 +51,7 @@ date_format = "January 2006"
   location = "Munich"
   date_start = "2011-08-01"
   date_end = "2014-01-01"
-  description = """ """
+  description = ""
 
 [[experience]]
   title = "Head of Customer Lifecycle Management"
@@ -61,7 +60,7 @@ date_format = "January 2006"
   location = "Munich"
   date_start = "2010-03-01"
   date_end = "2011-12-31"
-  description = """ """
+  description = ""
 
 [[experience]]
   title = "Research Assistant"
@@ -70,5 +69,5 @@ date_format = "January 2006"
   location = "Zurich, Switzerland"
   date_start = "2007-03-01"
   date_end = "2010-04-01"
-  description = """ """
+  description = ""
 +++
