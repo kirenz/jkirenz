@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Seminar on Jan Kirenz</title>
+    <title>seminar on Jan Kirenz</title>
     <link>/categories/seminar/</link>
-    <description>Recent content in Seminar on Jan Kirenz</description>
+    <description>Recent content in seminar on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Mon, 30 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2019 09:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/categories/seminar/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Applied Statistics</title>
-      <link>/talk/2019-applied-statistics/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-applied-statistics/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Programming Languages for Data Science</title>

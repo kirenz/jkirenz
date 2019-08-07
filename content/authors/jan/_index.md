@@ -1,6 +1,6 @@
 ---
 authors:
-- alison
+- jan
 bio: I'm a data scientist educator and consultant.
 education:
   courses:
