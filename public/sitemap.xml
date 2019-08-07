@@ -9,7 +9,7 @@
   
   <url>
     <loc>/talk/2019-applied-statistics/</loc>
-    <lastmod>2019-06-16T02:20:01-07:00</lastmod>
+    <lastmod>2019-08-01T02:20:01-07:00</lastmod>
   </url>
   
   <url>
@@ -44,18 +44,18 @@
   
   <url>
     <loc>/categories/seminar/</loc>
-    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
+    <lastmod>2019-08-01T02:20:01-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/talk/</loc>
-    <lastmod>2019-06-24T09:00:00+00:00</lastmod>
+    <lastmod>2019-08-01T02:20:01-07:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/statisticallearning/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-01T02:20:01-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -179,13 +179,14 @@
   </url>
   
   <url>
-    <loc>/authors/alison/</loc>
+    <loc>/project/r-data-science-stats/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-data-science-stats/</loc>
+    <loc>/authors/alison/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -194,13 +195,13 @@
   </url>
   
   <url>
-    <loc>/categories/blogdown/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
