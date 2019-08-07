@@ -12,7 +12,7 @@ summary: 'Statistical Learning in Python & R'
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
 time_start: "2019-10-24T09:00:00Z"
-time_end: "2019-11-11T17:00:00Z"
+end: "2019-11-11T17:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
