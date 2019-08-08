@@ -1,5 +1,6 @@
 ---
 title: "Web Analytics & Social Media Analytics"
+draft: false
 event: Weitere Informationen
 event_url: https://www.hdm-weiterbildung.de/berufsbegleitende-masterangebote/data-science-and-business-analytics
 location: Stuttgart

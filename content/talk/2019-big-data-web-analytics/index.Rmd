@@ -20,7 +20,8 @@ tags:
   - WebAnalytics
 lastmod: '2019-03-16T02:20:01-07:00'
 featured: no
-image:
+draft: false
+  image:
   caption: '[Photo by Markus Spiske on Unsplash](https://unsplash.com/photos/qjnAnF0jIGk)'
   focal_point: ''
   preview_only: no

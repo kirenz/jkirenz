@@ -1,6 +1,6 @@
 ---
 title: Programming Languages for Data Science
-draft: true
+draft: false
 subtitle: 'Learn to Code in R and SQL'
 authors: [jan]
 event: 'Weitere Informationen'
