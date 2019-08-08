@@ -40,17 +40,5 @@
 </description>
     </item>
     
-    <item>
-      <title></title>
-      <link>/authors/alison/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/authors/alison/</guid>
-      <description>&lt;p&gt;I am a Data Scientist &amp;amp; Professional Educator at &lt;a href=&#34;https://rstudio.com&#34; target=&#34;_blank&#34;&gt;RStudio&lt;/a&gt;, where I work to help people learn and use programming to do better work in less time, with less friction, and (perhaps) more joy.&lt;/p&gt;
-
-&lt;p&gt;I love working with data scientists across the spectrum- from beginners to advanced users- and particularly enjoy using software tools to create educational materials that enlighten and engage learners. Topics I teach range from literate programming to machine learning. My teaching materials have been used by &lt;a href=&#34;https://open.nasa.gov/explore/datanauts/&#34; target=&#34;_blank&#34;&gt;NASA&lt;/a&gt;, &lt;a href=&#34;https://medium.com/pew-research-center-decoded/using-tidyverse-tools-with-pew-research-center-survey-data-in-r-bdfe61de0909&#34; target=&#34;_blank&#34;&gt;Pew Research Center&lt;/a&gt;, &lt;a href=&#34;https://github.com/uo-datasci-specialization&#34; target=&#34;_blank&#34;&gt;University of Oregon&lt;/a&gt;, and now &lt;a href=&#34;https://www.rstudio.com/&#34; target=&#34;_blank&#34;&gt;RStudio&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
   </channel>
 </rss>

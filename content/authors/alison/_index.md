@@ -1,58 +1,41 @@
 ---
 authors:
-- alison
-bio: I'm a developmental psychologist, former NIH Principal Investigator, and autism researcher who loves programming.
+- jan
+bio: I'm a data scientist educator and consultant.
 education:
   courses:
-  - course: PhD in Developmental Psychology & Quantitative Methods
-    institution: Vanderbilt University
-    year: 2008
-  - course: MSc in Developmental Psychology
-    institution: Vanderbilt University
-    year: 2005
-  - course: BSc in Applied Psychology
-    institution: Georgia Institute of Technology
-    year: 2002
+  - course: Doctoral Program in Business Administration & Quantitative Methods
+    institution: Graduate School of Business, University of Zurich
+    year: 2010
+  - course: MSc in Business Administration (Operations Research & Marketing)
+    institution: University of Tübingen
+    year: 2007
 email: ""
 interests:
-- Data science / statistics
-- Data visualization
-- Literate programming
-- Education
-- Parenting
-name: Alison Hill
+- Data Science
+- Machine Learning / Statistical Learning
+- Programming in Python and R
+- Data-Driven Decision Making
+- Digital Marketing & CRM
+name: Jan Kirenz
 organizations:
-- name: RStudio
-  url: https://www.rstudio.com/
-role: Data Scientist & Professional Educator
+- name: HdM Stuttgart
+  url: https://www.hdm-stuttgart.de
+role: Professor
 social:
 - icon: paper-plane
   icon_pack: fas
   link: /contact
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/apreshill
 - icon: github
   icon_pack: fab
-  link: https://github.com/apreshill
-- icon: impactstory
-  icon_pack: ai
-  link: https://impactstory.org/u/0000-0002-8082-1890
-- icon: orcid
-  icon_pack: ai
-  link: http://orcid.org/0000-0002-8082-1890
+  link: https://github.com/kirenz
+- icon: xing
+  icon_pack: fab
+  link: https://www.xing.com/profile/Jan_Kirenz
 - icon: linkedin-in
   icon_pack: fab
-  link: https://www.linkedin.com/in/alisonpresmaneshill/
-- icon: keybase
-  icon_pack: fab
-  link: https://keybase.io/alisonhill
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.com/citations?user=yGD9V6MAAAAJ&hl=en
+  link: https://www.linkedin.com/in/jan-kirenz-01b301a5/
 superuser: true
 ---
 
-I am a Data Scientist & Professional Educator at [RStudio](https://rstudio.com), where I work to help people learn and use programming to do better work in less time, with less friction, and (perhaps) more joy. 
-
-I love working with data scientists across the spectrum- from beginners to advanced users- and particularly enjoy using software tools to create educational materials that enlighten and engage learners. Topics I teach range from literate programming to machine learning. My teaching materials have been used by [NASA](https://open.nasa.gov/explore/datanauts/), [Pew Research Center](https://medium.com/pew-research-center-decoded/using-tidyverse-tools-with-pew-research-center-survey-data-in-r-bdfe61de0909), [University of Oregon](https://github.com/uo-datasci-specialization), and now [RStudio](https://www.rstudio.com/).
+I'm a Professor at [HdM Stuttgart](https://www.hdm-stuttgart.de), where I help students and organizations to learn and use data science, statistics, and machine learning with Python and R programming to extract meaningful information from data.
