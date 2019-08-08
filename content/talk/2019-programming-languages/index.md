@@ -11,8 +11,8 @@ summary: 'Introduction to SQL and R'
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2019-06-24T09:00:00Z"
-date_end: "2019-06-11T17:00:00Z"
+date: "2019-10-24T09:00:00Z"
+date_end: "2019-11-11T17:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
