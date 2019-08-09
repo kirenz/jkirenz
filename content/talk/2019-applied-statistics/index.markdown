@@ -1,6 +1,6 @@
 ---
 title: Applied Statistics
-draft: true
+draft: false
 subtitle: 'With Applications in Python and R'
 authors: [jan]
 event: 'Applied Statistics'
