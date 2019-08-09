@@ -3,7 +3,7 @@ title: Programming Languages for Data Science
 draft: false
 subtitle: 'Learn to Code in R and SQL'
 authors: [jan]
-event: 'Weitere Informationen'
+event: 'Master in Data Science & Business Analytics'
 event_url: https://www.hdm-weiterbildung.de/angebote/kontaktstudium/programming-languages-for-ds
 location: Stuttgart
 abstract: ''
@@ -16,7 +16,7 @@ date_end: "2019-11-11T17:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2019-03-06T00:00:00Z"
+publishDate: "2019-08-08T00:00:00Z"
 categories:
   - Seminar
 tags:
@@ -36,3 +36,20 @@ links:
 #  name: materials
 #  url: https://github.com/kirenz/first-steps-in-r
 ---
+Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.
+
+* Datenimport,
+* Verknüpfung von Tabellen,
+* Gruppierung und Summierung,
+* Berechnung statistischer Kennzahlen, - Datenexploration,
+* Analyse von Zeitdaten,
+* Textanalysen und
+* bedingte Ausdrücke (Conditional Expressions)
+
+kann auf eine Vielzahl von Datenbanken wie bspw.
+
+* PostgreSQL,
+* MySQL,
+* Microsoft Azure SQL Datenbank, Google BigQuery und Oracle angewendet werden.
+
+Im Rahmen der Datenanalyse mit R werden neben den zentralen Grundkenntnissen der Programmiersprache R insbesondere Kompetenzen im Umgang mit Datentransformationen („Data Wrangling“), der explorativen Datenanalyse und Visualisierung von Daten (bspw. mit Hilfe eines Dashboards) vermittelt. Zudem wird die Erstellung und Ausgabe (bspw. als HTML, PDF, Word, Excel, PPT,…) von Reports in R markdown behandelt.

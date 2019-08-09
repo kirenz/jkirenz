@@ -1,23 +1,23 @@
 ---
-title: "Web Analytics"
+title: "Web Analytics & Social Media Analytics"
 draft: false
 event: Weitere Informationen
-event_url: Master Wirtschaftsinformatik
+event_url: https://www.hdm-weiterbildung.de/berufsbegleitende-masterangebote/data-science-and-business-analytics
 location: Stuttgart
 summary: Webscraping, API's, Network Analysis, NLP, Dashboards
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2019-10-14T08:00:00Z"
-date_end: "2020-01-30T20:00:00Z"
+date: "2019-05-16T09:00:00Z"
+date_end: "2019-07-03T10:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2019-08-08T00:00:00Z"
+publishDate: "2019-06-01T00:00:00Z"
 
 authors: [jan]
 tags: [DataScience]
-categories: [lecture]
+categories: [seminar]
 
 # Is this a featured talk? (true/false)
 featured: false
@@ -60,8 +60,4 @@ projects:
 math: true
 ---
 
-In der Veranstaltung befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen.
-
- Die Erfassung von Daten auf Webpräsenz wird mit Hilfe von Tracking-Methoden (bspw. mit JavaScript und Tools wie Google Tag Manager, Google Analytics, Matomo) sowie Methoden des Web-Scarping und der Nutzung von Programmierschnittstellen (Application Programming Interface, API) behandelt.
-
- Im Rahmen der Datenanalyse und Datenvisualisierung (Programmierung von Dashboards) werden insbesondere Open Source-Technologien (insbesondere Python und R) genutzt.
+A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API's, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.  
