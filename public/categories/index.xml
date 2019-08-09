@@ -7,10 +7,28 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 09:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Seminar</title>
+      <link>/categories/seminar/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/categories/seminar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lecture</title>
+      <link>/categories/lecture/</link>
+      <pubDate>Mon, 14 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/categories/lecture/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>German</title>
@@ -63,24 +81,6 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/blogdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Seminar</title>
-      <link>/categories/seminar/</link>
-      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/categories/seminar/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lecture</title>
-      <link>/categories/lecture/</link>
-      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/categories/lecture/</guid>
       <description></description>
     </item>
     

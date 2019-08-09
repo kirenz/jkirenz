@@ -7,10 +7,34 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sat, 03 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 08:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/datascience/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Web Analytics</title>
+      <link>/talk/2019-web-analytics/</link>
+      <pubDate>Mon, 14 Oct 2019 08:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-web-analytics/</guid>
+      <description>&lt;p&gt;In der Veranstaltung befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen.&lt;/p&gt;
+
+&lt;p&gt;Die Erfassung von Daten auf Webpräsenz wird mit Hilfe von Tracking-Methoden (bspw. mit JavaScript und Tools wie Google Tag Manager, Google Analytics, Matomo) sowie Methoden des Web-Scarping und der Nutzung von Programmierschnittstellen (Application Programming Interface, API) behandelt.&lt;/p&gt;
+
+&lt;p&gt;Im Rahmen der Datenanalyse und Datenvisualisierung (Programmierung von Dashboards) werden insbesondere Open Source-Technologien (insbesondere Python und R) genutzt.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Big Data and Web Analytics</title>
+      <link>/talk/2019-big-data-web-analytics/</link>
+      <pubDate>Fri, 11 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-big-data-web-analytics/</guid>
+      <description>&lt;p&gt;&amp;lsquo;In der Veranstaltung Web Analytics &amp;amp; Big Data befassen wir uns mit der Erfassung und Analyse von strukturierten und unstrukturierten (großen) Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen. Die dadurch gewonnenen Erkenntnisse sollen einen Beitrag zu dem systematischen Aufbau und der Pflege dauerhafter und profitabler Kundenbeziehungen leisten und beziehen sich insbesondere auf die Phasen der Kundengewinnung, Kundenbindung und Vermeidung der Kundenabwanderung innerhalb des Customer Lifecycle Managements.&amp;rsquo;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>First Steps in Python</title>
@@ -170,10 +194,10 @@ a new R session.&lt;/p&gt;
     
     <item>
       <title>Web Analytics &amp; Social Media Analytics</title>
-      <link>/talk/2019-web-analytics/</link>
-      <pubDate>Thu, 13 Jun 2019 09:00:00 +0000</pubDate>
+      <link>/talk/2019-web-analytics-social-media/</link>
+      <pubDate>Thu, 16 May 2019 09:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-web-analytics/</guid>
+      <guid>/talk/2019-web-analytics-social-media/</guid>
       <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
 </description>
     </item>

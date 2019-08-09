@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Mon, 24 Jun 2019 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 09:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,32 +15,73 @@
     <item>
       <title>Programming Languages for Data Science</title>
       <link>/talk/2019-programming-languages/</link>
-      <pubDate>Mon, 24 Jun 2019 09:00:00 +0000</pubDate>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
       <guid>/talk/2019-programming-languages/</guid>
-      <description></description>
+      <description>&lt;p&gt;Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Datenimport,&lt;/li&gt;
+&lt;li&gt;Verknüpfung von Tabellen,&lt;/li&gt;
+&lt;li&gt;Gruppierung und Summierung,&lt;/li&gt;
+&lt;li&gt;Berechnung statistischer Kennzahlen, - Datenexploration,&lt;/li&gt;
+&lt;li&gt;Analyse von Zeitdaten,&lt;/li&gt;
+&lt;li&gt;Textanalysen und&lt;/li&gt;
+&lt;li&gt;bedingte Ausdrücke (Conditional Expressions)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;kann auf eine Vielzahl von Datenbanken wie bspw.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PostgreSQL,&lt;/li&gt;
+&lt;li&gt;MySQL,&lt;/li&gt;
+&lt;li&gt;Microsoft Azure SQL Datenbank, Google BigQuery und Oracle angewendet werden.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Im Rahmen der Datenanalyse mit R werden neben den zentralen Grundkenntnissen der Programmiersprache R insbesondere Kompetenzen im Umgang mit Datentransformationen („Data Wrangling“), der explorativen Datenanalyse und Visualisierung von Daten (bspw. mit Hilfe eines Dashboards) vermittelt. Zudem wird die Erstellung und Ausgabe (bspw. als HTML, PDF, Word, Excel, PPT,…) von Reports in R markdown behandelt.&lt;/p&gt;
+</description>
     </item>
     
     <item>
-      <title>Web Analytics &amp; Social Media Analytics</title>
+      <title>Web Analytics</title>
       <link>/talk/2019-web-analytics/</link>
-      <pubDate>Thu, 13 Jun 2019 09:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Oct 2019 08:00:00 +0000</pubDate>
       
       <guid>/talk/2019-web-analytics/</guid>
-      <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
+      <description>&lt;p&gt;In der Veranstaltung befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen.&lt;/p&gt;
+
+&lt;p&gt;Die Erfassung von Daten auf Webpräsenz wird mit Hilfe von Tracking-Methoden (bspw. mit JavaScript und Tools wie Google Tag Manager, Google Analytics, Matomo) sowie Methoden des Web-Scarping und der Nutzung von Programmierschnittstellen (Application Programming Interface, API) behandelt.&lt;/p&gt;
+
+&lt;p&gt;Im Rahmen der Datenanalyse und Datenvisualisierung (Programmierung von Dashboards) werden insbesondere Open Source-Technologien (insbesondere Python und R) genutzt.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Big Data and Web Analytics</title>
       <link>/talk/2019-big-data-web-analytics/</link>
-      <pubDate>Sun, 07 Apr 2019 08:00:00 +0000</pubDate>
+      <pubDate>Fri, 11 Oct 2019 09:00:00 +0000</pubDate>
       
       <guid>/talk/2019-big-data-web-analytics/</guid>
-      <description>
-
-
-
+      <description>&lt;p&gt;&amp;lsquo;In der Veranstaltung Web Analytics &amp;amp; Big Data befassen wir uns mit der Erfassung und Analyse von strukturierten und unstrukturierten (großen) Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen. Die dadurch gewonnenen Erkenntnisse sollen einen Beitrag zu dem systematischen Aufbau und der Pflege dauerhafter und profitabler Kundenbeziehungen leisten und beziehen sich insbesondere auf die Phasen der Kundengewinnung, Kundenbindung und Vermeidung der Kundenabwanderung innerhalb des Customer Lifecycle Managements.&amp;rsquo;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Applied Statistics</title>
+      <link>/talk/2019-applied-statistics/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-applied-statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Analytics &amp; Social Media Analytics</title>
+      <link>/talk/2019-web-analytics-social-media/</link>
+      <pubDate>Thu, 16 May 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-web-analytics-social-media/</guid>
+      <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
 </description>
     </item>
     
