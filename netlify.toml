@@ -19,5 +19,5 @@
 [[redirects]]
   from = "https://kirenz.netlify.com"
   to = "https://kirenz.com"
-  status = 200
+  status = 301
   force = true
