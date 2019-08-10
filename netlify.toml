@@ -21,3 +21,9 @@
   to = "https://kirenz.com"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://kirenz.de"
+  to = "https://kirenz.com"
+  status = 301
+  force = true
