@@ -29,8 +29,8 @@
   force = true
 
 [[redirects]]
-    from = "https://www.kirenz.de/data-science/"
-    to = "https://kirenz.com"
-    status = 301
-    force = true
-    query = {path = ":path"} #  apply this rule for /old-path?path=example
+   from = "https://www.kirenz.de/data-science/"
+   to = "https://kirenz.com"
+   status = 301
+   force = true
+   #query = {path = ":path"} #  apply this rule for /old-path?path=example
