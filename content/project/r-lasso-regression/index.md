@@ -17,7 +17,7 @@ date: "2019-08-11T00:00:00Z"
 #external_link: "https://ohsu-math630.netlify.com/"
 
 image:
-  caption: 'Linear Regression'
+  caption: 'Lasso Regression'
   focal_point: Smart
 
 links:
