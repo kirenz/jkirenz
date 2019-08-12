@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="Implement Lasso Regression in Python">
+  <meta name="description" content="Implementation of Lasso Regression in Python">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/2019-08-12-python-lasso-regression-auto/python-lasso-regression/">
@@ -131,7 +131,7 @@
   <meta property="og:site_name" content="Jan Kirenz">
   <meta property="og:url" content="/post/2019-08-12-python-lasso-regression-auto/python-lasso-regression/">
   <meta property="og:title" content="Lasso Regression with Python | Jan Kirenz">
-  <meta property="og:description" content="Implement Lasso Regression in Python"><meta property="og:image" content="/img/avatar.jpg">
+  <meta property="og:description" content="Implementation of Lasso Regression in Python"><meta property="og:image" content="/img/avatar.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-08-12T00:00:00&#43;00:00">
@@ -392,7 +392,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    7 min read
   </span>
   
 
@@ -525,9 +525,13 @@
 
 <p>Lasso performs a so called <code>L1 regularization</code> (a process of introducing additional information in order to prevent overfitting), i.e. adds penalty equivalent to absolute value of the magnitude of coefficients.</p>
 
-<p><em>Minimization objective = RSS + α (sum of absolute value of coefficients).</em></p>
+<p>In particular, the minimization objective does not only include the residual sum of squares (RSS) but also the sum of the absolute value of coefficients.</p>
 
-<p>α (alpha) provides a trade-off between balancing RSS and magnitude of coefficients.</p>
+<p>The residual sum of squares (RSS) is calculated as follows:</p>
+
+<p>$$ RSS = \sum_{i=1}^{n} (y - \hat{y})^2 $$</p>
+
+<p>Hence, the minimization objective becomes: RSS + α (sum of absolute value of coefficients), where α (alpha) provides a trade-off between balancing RSS and magnitude of coefficients.</p>
 
 <p>α can take various values:</p>
 
@@ -539,45 +543,9 @@
 
 <hr />
 
-<p><strong>Tasks</strong></p>
+<h2 id="data-preparation">Data preparation</h2>
 
-<p>Use scikit learn to fit a Lasso regression <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html" target="_blank">(see documentation)</a>.</p>
-
-<ul>
-<li>(1.1) <strong>Standardize</strong> the features (module: <code>from sklearn.preprocessing import StandardScaler</code>)</li>
-</ul>
-
-<p><em>Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.</em></p>
-
-<ul>
-<li><p>(1.2) <strong>Split the data set</strong> into train and test sets (use <code>X_train</code>, <code>X_test</code>, <code>y_train</code>, <code>y_test</code>), with the first 75% of the data for training and the remaining for testing. (module: <code>from sklearn.model_selection import train_test_split</code>)</p></li>
-
-<li><p>(1.3) Apply <strong>Lasso regression</strong> on the training set with the regularization parameter <strong>lambda = 0.5</strong> (module: <code>from sklearn.linear_model import Lasso</code>) and print the $R^2$-score for the training and test set. Comment on your findings.</p></li>
-
-<li><p>(1.4) Apply the <strong>Lasso regression</strong> on the training set with the following <strong>λ parameters: (0.001, 0.01, 0.1, 0.5, 1, 2, 10)</strong>. Evaluate the R^2 score for all the models you obtain on both the train and test sets.</p></li>
-
-<li><p>(1.5) <strong>Plot</strong> all values for both data sets (train and test $R^2$-values) as a function of λ. Comment on your findings.</p></li>
-
-<li><p>(1.6) Store your test data results in a DataFrame and indentify the lambda where the $R^2$ has it&rsquo;s <strong>maximum value</strong> in the <strong>test data</strong>. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding <strong>regression coefficients</strong>. Furthermore, obtain the <strong>mean squared error</strong> for the test data of this model (module: <code>from sklearn.metrics import mean_squared_error</code>)</p></li>
-
-<li><p>(1.7) Evaluate the performance of a <strong>Lasso regression</strong> for different regularization parameters λ using <strong>5-fold cross validation</strong> on the training set (module: <code>from sklearn.model_selection import cross_val_score</code>) and plot the cross-validation (CV) $R^2$ scores of the training and test data as a function of λ.</p>
-
-<p>Use the following lambda parameters:
-l_min = 0.05
-l_max = 0.2
-l_num = 20
-lambdas = np.linspace(l_min,l_max, l_num)</p>
-
-<ul>
-<li>(1.8) Finally, store your test data results in a DataFrame and identify the lambda where the $R^2$ has it&rsquo;s <strong>maximum value</strong> in the <strong>test data</strong>. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding <strong>regression coefficients</strong>. Furthermore, obtain the <strong>mean squared error</strong> for the test data of this model (module: <code>from sklearn.metrics import mean_squared_error</code>)</li>
-</ul></li>
-</ul>
-
-<hr />
-
-<p><strong>Data preparation</strong></p>
-
-<p>This tutorial involves the use of the Lasso regression on the Auto data set. In particular, we only use observations 1 to 200 for our analysis. Furthermore, you can drop the <code>name</code> variable.</p>
+<p>This tutorial involves the use of the Lasso regression on the &ldquo;Auto&rdquo; dataset. In particular, we only use observations 1 to 200 for our analysis. Furthermore, you can drop the <code>name</code> variable.</p>
 
 <pre><code class="language-python">import numpy as np
 import pandas as pd
@@ -632,9 +600,39 @@ dtype: int64
 df = df.dropna()
 </code></pre>
 
-<hr />
+<h1 id="implementation-of-lasso-regression">Implementation of Lasso regression</h1>
 
-<h2 id="tasks">Tasks</h2>
+<p>We use scikit learn to fit a Lasso regression <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html" target="_blank">(see documentation)</a> and follow a number of steps:</p>
+
+<ul>
+<li>(1.1) <strong>Standardize</strong> the features (module: <code>from sklearn.preprocessing import StandardScaler</code>)</li>
+</ul>
+
+<p><em>Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.</em></p>
+
+<ul>
+<li><p>(1.2) <strong>Split the data set</strong> into train and test sets (use <code>X_train</code>, <code>X_test</code>, <code>y_train</code>, <code>y_test</code>), with the first 75% of the data for training and the remaining for testing. (module: <code>from sklearn.model_selection import train_test_split</code>)</p></li>
+
+<li><p>(1.3) Apply <strong>Lasso regression</strong> on the training set with the regularization parameter <strong>lambda = 0.5</strong> (module: <code>from sklearn.linear_model import Lasso</code>) and print the $R^2$-score for the training and test set. Comment on your findings.</p></li>
+
+<li><p>(1.4) Apply the <strong>Lasso regression</strong> on the training set with the following <strong>λ parameters: (0.001, 0.01, 0.1, 0.5, 1, 2, 10)</strong>. Evaluate the R^2 score for all the models you obtain on both the train and test sets.</p></li>
+
+<li><p>(1.5) <strong>Plot</strong> all values for both data sets (train and test $R^2$-values) as a function of λ. Comment on your findings.</p></li>
+
+<li><p>(1.6) Store your test data results in a DataFrame and indentify the lambda where the $R^2$ has it&rsquo;s <strong>maximum value</strong> in the <strong>test data</strong>. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding <strong>regression coefficients</strong>. Furthermore, obtain the <strong>mean squared error</strong> for the test data of this model (module: <code>from sklearn.metrics import mean_squared_error</code>)</p></li>
+
+<li><p>(1.7) Evaluate the performance of a <strong>Lasso regression</strong> for different regularization parameters λ using <strong>5-fold cross validation</strong> on the training set (module: <code>from sklearn.model_selection import cross_val_score</code>) and plot the cross-validation (CV) $R^2$ scores of the training and test data as a function of λ.</p>
+
+<p>Use the following lambda parameters:
+l_min = 0.05
+l_max = 0.2
+l_num = 20
+lambdas = np.linspace(l_min,l_max, l_num)</p></li>
+
+<li><p>(1.8) Finally, store your test data results in a DataFrame and identify the lambda where the $R^2$ has it&rsquo;s <strong>maximum value</strong> in the <strong>test data</strong>. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding <strong>regression coefficients</strong>. Furthermore, obtain the <strong>mean squared error</strong> for the test data of this model (module: <code>from sklearn.metrics import mean_squared_error</code>)</p></li>
+</ul>
+
+<hr />
 
 <h3 id="1-1-standardization">1.1 Standardization</h3>
 
