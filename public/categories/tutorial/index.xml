@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on Jan Kirenz</title>
+    <title>tutorial on Jan Kirenz</title>
     <link>/categories/tutorial/</link>
-    <description>Recent content in Tutorial on Jan Kirenz</description>
+    <description>Recent content in tutorial on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2019 05:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Correlation Tutorial with R</title>
+      <link>/project/r-correlation-tutorial/</link>
+      <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
+      
+      <guid>/project/r-correlation-tutorial/</guid>
+      <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1) increases,&lt;/li&gt;
+&lt;li&gt;(2) decreases or&lt;/li&gt;
+&lt;li&gt;(3) stays the same.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This can be done by calculating the covariance or correlation of two variables.&lt;/p&gt;
+
+&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34; target=&#34;_blank&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34; target=&#34;_blank&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
+
+&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34; target=&#34;_blank&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lasso Regression with Python</title>
+      <link>/project/r-lasso-regression/</link>
+      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/r-lasso-regression/</guid>
+      <description>
+
+&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
+
+&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Time Series Analysis with Python</title>
+      <link>/project/python-time-series/</link>
+      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/python-time-series/</guid>
+      <description>
+
+&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
+
+&lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Explaining seasonal patterns in sales&lt;/li&gt;
+&lt;li&gt;Predicting the expected number of incoming or churning customers&lt;/li&gt;
+&lt;li&gt;Estimating the effect of a newly launched product on number of sold units&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>Linear Regression Tutorial with Python</title>

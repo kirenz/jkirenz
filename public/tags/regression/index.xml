@@ -7,10 +7,466 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lasso Regression with Python</title>
+      <link>/post/2019-08-12-python-lasso-regression-auto/python-lasso-regression/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-08-12-python-lasso-regression-auto/python-lasso-regression/</guid>
+      <description>
+
+&lt;p&gt;Lasso performs a so called &lt;code&gt;L1 regularization&lt;/code&gt; (a process of introducing additional information in order to prevent overfitting), i.e. adds penalty equivalent to absolute value of the magnitude of coefficients.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Minimization objective = RSS + α (sum of absolute value of coefficients).&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;α (alpha) provides a trade-off between balancing RSS and magnitude of coefficients.&lt;/p&gt;
+
+&lt;p&gt;α can take various values:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;α = 0: Same coefficients as simple linear regression&lt;/li&gt;
+&lt;li&gt;α = ∞: All coefficients zero (same logic as before)&lt;/li&gt;
+&lt;li&gt;0 &amp;lt; α &amp;lt; ∞: coefficients between 0 and that of simple linear regression&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Tasks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Use scikit learn to fit a Lasso regression &lt;a href=&#34;http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html&#34; target=&#34;_blank&#34;&gt;(see documentation)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1.1) &lt;strong&gt;Standardize&lt;/strong&gt; the features (module: &lt;code&gt;from sklearn.preprocessing import StandardScaler&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(1.2) &lt;strong&gt;Split the data set&lt;/strong&gt; into train and test sets (use &lt;code&gt;X_train&lt;/code&gt;, &lt;code&gt;X_test&lt;/code&gt;, &lt;code&gt;y_train&lt;/code&gt;, &lt;code&gt;y_test&lt;/code&gt;), with the first 75% of the data for training and the remaining for testing. (module: &lt;code&gt;from sklearn.model_selection import train_test_split&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(1.3) Apply &lt;strong&gt;Lasso regression&lt;/strong&gt; on the training set with the regularization parameter &lt;strong&gt;lambda = 0.5&lt;/strong&gt; (module: &lt;code&gt;from sklearn.linear_model import Lasso&lt;/code&gt;) and print the $R^2$-score for the training and test set. Comment on your findings.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(1.4) Apply the &lt;strong&gt;Lasso regression&lt;/strong&gt; on the training set with the following &lt;strong&gt;λ parameters: (0.001, 0.01, 0.1, 0.5, 1, 2, 10)&lt;/strong&gt;. Evaluate the R^2 score for all the models you obtain on both the train and test sets.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(1.5) &lt;strong&gt;Plot&lt;/strong&gt; all values for both data sets (train and test $R^2$-values) as a function of λ. Comment on your findings.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(1.6) Store your test data results in a DataFrame and indentify the lambda where the $R^2$ has it&amp;rsquo;s &lt;strong&gt;maximum value&lt;/strong&gt; in the &lt;strong&gt;test data&lt;/strong&gt;. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding &lt;strong&gt;regression coefficients&lt;/strong&gt;. Furthermore, obtain the &lt;strong&gt;mean squared error&lt;/strong&gt; for the test data of this model (module: &lt;code&gt;from sklearn.metrics import mean_squared_error&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(1.7) Evaluate the performance of a &lt;strong&gt;Lasso regression&lt;/strong&gt; for different regularization parameters λ using &lt;strong&gt;5-fold cross validation&lt;/strong&gt; on the training set (module: &lt;code&gt;from sklearn.model_selection import cross_val_score&lt;/code&gt;) and plot the cross-validation (CV) $R^2$ scores of the training and test data as a function of λ.&lt;/p&gt;
+
+&lt;p&gt;Use the following lambda parameters:
+l_min = 0.05
+l_max = 0.2
+l_num = 20
+lambdas = np.linspace(l_min,l_max, l_num)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1.8) Finally, store your test data results in a DataFrame and identify the lambda where the $R^2$ has it&amp;rsquo;s &lt;strong&gt;maximum value&lt;/strong&gt; in the &lt;strong&gt;test data&lt;/strong&gt;. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding &lt;strong&gt;regression coefficients&lt;/strong&gt;. Furthermore, obtain the &lt;strong&gt;mean squared error&lt;/strong&gt; for the test data of this model (module: &lt;code&gt;from sklearn.metrics import mean_squared_error&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Data preparation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This tutorial involves the use of the Lasso regression on the Auto data set. In particular, we only use observations 1 to 200 for our analysis. Furthermore, you can drop the &lt;code&gt;name&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.style.use(&#39;ggplot&#39;)
+import warnings; warnings.simplefilter(&#39;ignore&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df = pd.read_csv(&amp;quot;https://raw.githubusercontent.com/kirenz/datasets/master/Auto.csv&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Tidying data&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df = df.iloc[0:200]
+df = df.drop([&#39;name&#39;], axis=1)
+df.info()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;class &#39;pandas.core.frame.DataFrame&#39;&amp;gt;
+RangeIndex: 200 entries, 0 to 199
+Data columns (total 8 columns):
+mpg             200 non-null float64
+cylinders       200 non-null int64
+displacement    200 non-null float64
+horsepower      200 non-null object
+weight          200 non-null int64
+acceleration    200 non-null float64
+year            200 non-null int64
+origin          200 non-null int64
+dtypes: float64(3), int64(4), object(1)
+memory usage: 12.6+ KB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df[&#39;origin&#39;] = pd.Categorical(df[&#39;origin&#39;])
+df[&#39;horsepower&#39;] = pd.to_numeric(df[&#39;horsepower&#39;], errors=&#39;coerce&#39;)
+print(df.isnull().sum())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;mpg             0
+cylinders       0
+displacement    0
+horsepower      2
+weight          0
+acceleration    0
+year            0
+origin          0
+dtype: int64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# drop missing cases
+df = df.dropna()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;tasks&#34;&gt;Tasks&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-1-standardization&#34;&gt;1.1 Standardization&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dfs = df.astype(&#39;int&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dfs.info()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;class &#39;pandas.core.frame.DataFrame&#39;&amp;gt;
+Int64Index: 198 entries, 0 to 199
+Data columns (total 8 columns):
+mpg             198 non-null int64
+cylinders       198 non-null int64
+displacement    198 non-null int64
+horsepower      198 non-null int64
+weight          198 non-null int64
+acceleration    198 non-null int64
+year            198 non-null int64
+origin          198 non-null int64
+dtypes: int64(8)
+memory usage: 13.9 KB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dfs.columns
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Index([&#39;mpg&#39;, &#39;cylinders&#39;, &#39;displacement&#39;, &#39;horsepower&#39;, &#39;weight&#39;,
+       &#39;acceleration&#39;, &#39;year&#39;, &#39;origin&#39;],
+      dtype=&#39;object&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+dfs[[&#39;cylinders&#39;, &#39;displacement&#39;, &#39;horsepower&#39;,
+     &#39;weight&#39;, &#39;acceleration&#39;, &#39;year&#39;, &#39;origin&#39;]] = scaler.fit_transform(dfs[[&#39;cylinders&#39;,
+                                                                              &#39;displacement&#39;,
+                                                                              &#39;horsepower&#39;,
+                                                                              &#39;weight&#39;,
+                                                                              &#39;acceleration&#39;,
+                                                                              &#39;year&#39;, &#39;origin&#39;]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dfs.head(5)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mpg&lt;/th&gt;
+      &lt;th&gt;cylinders&lt;/th&gt;
+      &lt;th&gt;displacement&lt;/th&gt;
+      &lt;th&gt;horsepower&lt;/th&gt;
+      &lt;th&gt;weight&lt;/th&gt;
+      &lt;th&gt;acceleration&lt;/th&gt;
+      &lt;th&gt;year&lt;/th&gt;
+      &lt;th&gt;origin&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;1.179744&lt;/td&gt;
+      &lt;td&gt;0.726091&lt;/td&gt;
+      &lt;td&gt;0.325216&lt;/td&gt;
+      &lt;td&gt;0.346138&lt;/td&gt;
+      &lt;td&gt;-0.955578&lt;/td&gt;
+      &lt;td&gt;-1.516818&lt;/td&gt;
+      &lt;td&gt;-0.629372&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;15&lt;/td&gt;
+      &lt;td&gt;1.179744&lt;/td&gt;
+      &lt;td&gt;1.100254&lt;/td&gt;
+      &lt;td&gt;1.129264&lt;/td&gt;
+      &lt;td&gt;0.548389&lt;/td&gt;
+      &lt;td&gt;-1.305309&lt;/td&gt;
+      &lt;td&gt;-1.516818&lt;/td&gt;
+      &lt;td&gt;-0.629372&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;1.179744&lt;/td&gt;
+      &lt;td&gt;0.821807&lt;/td&gt;
+      &lt;td&gt;0.784672&lt;/td&gt;
+      &lt;td&gt;0.273370&lt;/td&gt;
+      &lt;td&gt;-1.305309&lt;/td&gt;
+      &lt;td&gt;-1.516818&lt;/td&gt;
+      &lt;td&gt;-0.629372&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;1.179744&lt;/td&gt;
+      &lt;td&gt;0.699986&lt;/td&gt;
+      &lt;td&gt;0.784672&lt;/td&gt;
+      &lt;td&gt;0.270160&lt;/td&gt;
+      &lt;td&gt;-0.955578&lt;/td&gt;
+      &lt;td&gt;-1.516818&lt;/td&gt;
+      &lt;td&gt;-0.629372&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;1.179744&lt;/td&gt;
+      &lt;td&gt;0.682583&lt;/td&gt;
+      &lt;td&gt;0.554944&lt;/td&gt;
+      &lt;td&gt;0.287282&lt;/td&gt;
+      &lt;td&gt;-1.655041&lt;/td&gt;
+      &lt;td&gt;-1.516818&lt;/td&gt;
+      &lt;td&gt;-0.629372&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;1-2-split-data&#34;&gt;1.2 Split data&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;X = dfs.drop([&#39;mpg&#39;], axis=1)
+y = dfs[&#39;mpg&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=10)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-3-lasso&#34;&gt;1.3 Lasso&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sklearn.linear_model import Lasso
+
+reg = Lasso(alpha=0.5)
+reg.fit(X_train, y_train)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Lasso(alpha=0.5, copy_X=True, fit_intercept=True, max_iter=1000,
+   normalize=False, positive=False, precompute=False, random_state=None,
+   selection=&#39;cyclic&#39;, tol=0.0001, warm_start=False)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&#39;Lasso Regression: R^2 score on training set&#39;, reg.score(X_train, y_train)*100)
+print(&#39;Lasso Regression: R^2 score on test set&#39;, reg.score(X_test, y_test)*100)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Lasso Regression: R^2 score on training set 82.49741060950073
+Lasso Regression: R^2 score on test set 85.49734440925533
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-4-lasso-with-different-lambdas&#34;&gt;1.4 Lasso with different lambdas&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lambdas = (0.001, 0.01, 0.1, 0.5, 1, 2, 10)
+l_num = 7
+pred_num = X.shape[1]
+
+# prepare data for enumerate
+coeff_a = np.zeros((l_num, pred_num))
+train_r_squared = np.zeros(l_num)
+test_r_squared = np.zeros(l_num)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# enumerate through lambdas with index and i
+for ind, i in enumerate(lambdas):    
+    reg = Lasso(alpha = i)
+    reg.fit(X_train, y_train)
+
+    coeff_a[ind,:] = reg.coef_
+    train_r_squared[ind] = reg.score(X_train, y_train)
+    test_r_squared[ind] = reg.score(X_test, y_test)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-5-plot&#34;&gt;1.5 Plot&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Plotting
+plt.figure(figsize=(18, 8))
+plt.plot(train_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Training set&#39;, color=&amp;quot;darkblue&amp;quot;, alpha=0.6, linewidth=3)
+plt.plot(test_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Test set&#39;, color=&amp;quot;darkred&amp;quot;, alpha=0.6, linewidth=3)
+plt.xlabel(&#39;Lamda index&#39;); plt.ylabel(r&#39;$R^2$&#39;)
+plt.xlim(0, 6)
+plt.title(r&#39;Evaluate lasso regression with lamdas: 0 = 0.001, 1= 0.01, 2 = 0.1, 3 = 0.5, 4= 1, 5= 2, 6 = 10&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.grid()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-6-identify-best-lambda-and-coefficients&#34;&gt;1.6 Identify best lambda and coefficients&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df_lam = pd.DataFrame(test_r_squared*100, columns=[&#39;R_squared&#39;])
+df_lam[&#39;lambda&#39;] = (lambdas)
+# returns the index of the row where column has maximum value.
+df_lam.loc[df_lam[&#39;R_squared&#39;].idxmax()]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;R_squared    88.105773
+lambda        0.001000
+Name: 0, dtype: float64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Coefficients of best model
+reg_best = Lasso(alpha = 0.1)
+reg_best.fit(X_train, y_train)
+reg_best.coef_
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;array([-0.35554113, -1.13104696, -0.00596296, -3.31741775, -0.        ,
+        0.37914648,  0.74902885])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sklearn.metrics import mean_squared_error
+mean_squared_error(y_test, reg_best.predict(X_test))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;3.586249592807347
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-7-cross-validation&#34;&gt;1.7 Cross Validation&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;l_min = 0.05
+l_max = 0.2
+l_num = 20
+lambdas = np.linspace(l_min,l_max, l_num)
+
+train_r_squared = np.zeros(l_num)
+test_r_squared = np.zeros(l_num)
+
+pred_num = X.shape[1]
+coeff_a = np.zeros((l_num, pred_num))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sklearn.model_selection import cross_val_score
+
+for ind, i in enumerate(lambdas):    
+    reg = Lasso(alpha = i)
+    reg.fit(X_train, y_train)
+    results = cross_val_score(reg, X, y, cv=5, scoring=&amp;quot;r2&amp;quot;)
+
+    train_r_squared[ind] = reg.score(X_train, y_train)    
+    test_r_squared[ind] = reg.score(X_test, y_test)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Plotting
+plt.figure(figsize=(18, 8))
+plt.plot(train_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Training set&#39;, color=&amp;quot;darkblue&amp;quot;, alpha=0.6, linewidth=3)
+plt.plot(test_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Test set&#39;, color=&amp;quot;darkred&amp;quot;, alpha=0.6, linewidth=3)
+plt.xlabel(&#39;Lamda value&#39;); plt.ylabel(r&#39;$R^2$&#39;)
+plt.xlim(0, 19)
+plt.title(r&#39;Evaluate 5-fold cv with different lamdas&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.grid()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-8-best-model&#34;&gt;1.8 Best Model&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df_lam = pd.DataFrame(test_r_squared*100, columns=[&#39;R_squared&#39;])
+df_lam[&#39;lambda&#39;] = (lambdas)
+# returns the index of the row where column has maximum value.
+df_lam.loc[df_lam[&#39;R_squared&#39;].idxmax()]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;R_squared    87.897525
+lambda        0.050000
+Name: 0, dtype: float64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Best Model
+reg_best = Lasso(alpha = 0.144737)
+reg_best.fit(X_train, y_train)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Lasso(alpha=0.144737, copy_X=True, fit_intercept=True, max_iter=1000,
+   normalize=False, positive=False, precompute=False, random_state=None,
+   selection=&#39;cyclic&#39;, tol=0.0001, warm_start=False)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sklearn.metrics import mean_squared_error
+
+mean_squared_error(y_test, reg_best.predict(X_test))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;3.635187490993961
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;reg_best.coef_
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;array([-0.34136411, -1.18223273, -0.        , -3.27132984,  0.        ,
+        0.33262331,  0.71385488])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lasso Regression with Python</title>
+      <link>/project/r-lasso-regression/</link>
+      <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/r-lasso-regression/</guid>
+      <description>
+
+&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
+
+&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>Linear Regression Tutorial with Python</title>

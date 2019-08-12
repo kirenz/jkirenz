@@ -31,6 +31,24 @@
     </item>
     
     <item>
+      <title>Statistics</title>
+      <link>/categories/statistics/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>/categories/tutorial/</link>
+      <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
+      
+      <guid>/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>German</title>
       <link>/categories/german/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
@@ -45,24 +63,6 @@
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Statistics</title>
-      <link>/categories/statistics/</link>
-      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/statistics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>/categories/tutorial/</link>
-      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/tutorial/</guid>
       <description></description>
     </item>
     

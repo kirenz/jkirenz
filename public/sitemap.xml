@@ -88,7 +88,7 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -100,13 +100,68 @@
   
   <url>
     <loc>/tags/statistics/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>/post/2019-08-12-python-lasso-regression-auto/python-lasso-regression/</loc>
+    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/regression/</loc>
+    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/statistics/</loc>
+    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/r-correlation-tutorial/</loc>
+    <lastmod>2019-08-11T05:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/dataexploration/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-11T05:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2019-08-11T05:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/tutorial/</loc>
+    <lastmod>2019-08-11T05:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/r-lasso-regression/</loc>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/python-time-series/</loc>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/timeseries/</loc>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -127,38 +182,9 @@
   </url>
   
   <url>
-    <loc>/project/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/r/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/statistics/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/tutorial/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -221,13 +247,13 @@
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/blogdown/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

@@ -7,10 +7,32 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2019 05:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/dataexploration/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Correlation Tutorial with R</title>
+      <link>/project/r-correlation-tutorial/</link>
+      <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
+      
+      <guid>/project/r-correlation-tutorial/</guid>
+      <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1) increases,&lt;/li&gt;
+&lt;li&gt;(2) decreases or&lt;/li&gt;
+&lt;li&gt;(3) stays the same.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This can be done by calculating the covariance or correlation of two variables.&lt;/p&gt;
+
+&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34; target=&#34;_blank&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34; target=&#34;_blank&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
+
+&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34; target=&#34;_blank&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Linear Regression Tutorial with Python</title>
