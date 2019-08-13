@@ -7,10 +7,471 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/categories/statistics/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Network Analysis with Python</title>
+      <link>/post/2019-08-13-network_analysis/network-analysis-python/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-08-13-network_analysis/network-analysis-python/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#conda install -c anaconda networkx
+import networkx as nx
+import matplotlib.pyplot as plt
+%matplotlib inline
+import warnings; warnings.simplefilter(&#39;ignore&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;social-network-analysis-sna&#34;&gt;Social Network Analysis (SNA)&lt;/h2&gt;
+
+&lt;p&gt;Social network analysis (SNA) with &lt;a href=&#34;(https://networkx.github.io/documentation/stable/)&#34; target=&#34;_blank&#34;&gt;NetworkX&lt;/a&gt;, a Python library for the study of the structure, dynamics, and functions of complex networks.&lt;/p&gt;
+
+&lt;p&gt;Each network consists of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nodes: The individuals whose network we are building.&lt;/li&gt;
+&lt;li&gt;Edges: The connection between the nodes. It represents a relationship between the nodes of the network.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;symmetric-networks-undirected&#34;&gt;Symmetric Networks (undirected)&lt;/h3&gt;
+
+&lt;p&gt;The first network that we create is a group of people who work together. This is called a &lt;strong&gt;symmetric network&lt;/strong&gt; because the relationship &amp;ldquo;working together&amp;rdquo; is a symmetric relationship: If A is related to B, B is also related to A.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;G_symmetric = nx.Graph()
+
+G_symmetric.add_edge(&#39;Steven&#39;,  &#39;Laura&#39;)
+G_symmetric.add_edge(&#39;Steven&#39;,  &#39;Marc&#39;)
+G_symmetric.add_edge(&#39;Steven&#39;,  &#39;John&#39;)
+G_symmetric.add_edge(&#39;Steven&#39;,  &#39;Michelle&#39;)
+G_symmetric.add_edge(&#39;Laura&#39;,   &#39;Michelle&#39;)
+G_symmetric.add_edge(&#39;Michelle&#39;,&#39;Marc&#39;)
+G_symmetric.add_edge(&#39;George&#39;,  &#39;John&#39;)
+G_symmetric.add_edge(&#39;George&#39;,  &#39;Steven&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(nx.info(G_symmetric))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Name:
+Type: Graph
+Number of nodes: 6
+Number of edges: 8
+Average degree:   2.6667
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we visualize the network with the &lt;code&gt;draw_networkx()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt.figure(figsize=(5,5))
+nx.draw_networkx(G_symmetric);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_8_0.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;asymmetric-networks-directed&#34;&gt;Asymmetric Networks (directed)&lt;/h3&gt;
+
+&lt;p&gt;What if the relationship between nodes is &amp;lsquo;child of&amp;rsquo;, then the relationship is no longer symmetric. This is the case if someone follows someone else on Twitter. Or in the case of hyperlinks.&lt;/p&gt;
+
+&lt;p&gt;If A is the child of B, then B is not a child of A. Such a network where the relationship is &lt;strong&gt;asymmetric&lt;/strong&gt; (A is related to B, does not necessarily means that B is associated with A) is called an Asymmetric network.&lt;/p&gt;
+
+&lt;p&gt;We can build the asymmetric network in NetworkX using &lt;code&gt;DiGraph&lt;/code&gt; method, which is short of &lt;strong&gt;Directional Graph&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;G_asymmetric = nx.DiGraph()
+G_asymmetric.add_edge(&#39;A&#39;,&#39;B&#39;)
+G_asymmetric.add_edge(&#39;A&#39;,&#39;D&#39;)
+G_asymmetric.add_edge(&#39;C&#39;,&#39;A&#39;)
+G_asymmetric.add_edge(&#39;D&#39;,&#39;E&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To make sure that all nodes are distinctly visible in the network, use the &lt;code&gt;spring_layout()&lt;/code&gt; function, followed by the &lt;code&gt;draw_networkx()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.spring_layout(G_asymmetric)
+nx.draw_networkx(G_asymmetric)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_12_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;weighted-networks&#34;&gt;Weighted Networks&lt;/h3&gt;
+
+&lt;p&gt;Till now we had networks without weights, but it is possible that networks are made with weights, for example, if in our initial network we consider the number of projects done together as a weight, we will get a weighted Network.&lt;/p&gt;
+
+&lt;p&gt;Let us make one again of the employees, but this time we add weight to the network, each edge has a weight signifying the number of projects they have done together.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;G_weighted = nx.Graph()
+
+G_weighted.add_edge(&#39;Steven&#39;,  &#39;Laura&#39;,   weight=25)
+G_weighted.add_edge(&#39;Steven&#39;,  &#39;Marc&#39;,    weight=8)
+G_weighted.add_edge(&#39;Steven&#39;,  &#39;John&#39;,    weight=11)
+G_weighted.add_edge(&#39;Steven&#39;,  &#39;Michelle&#39;,weight=1)
+G_weighted.add_edge(&#39;Laura&#39;,   &#39;Michelle&#39;,weight=1)
+G_weighted.add_edge(&#39;Michelle&#39;,&#39;Marc&#39;,    weight=1)
+G_weighted.add_edge(&#39;George&#39;,  &#39;John&#39;,    weight=8)
+G_weighted.add_edge(&#39;George&#39;,  &#39;Steven&#39;,  weight=4)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;elarge = [(u, v) for (u, v, d) in G_weighted.edges(data=True) if d[&#39;weight&#39;] &amp;gt; 8]
+esmall = [(u, v) for (u, v, d) in G_weighted.edges(data=True) if d[&#39;weight&#39;] &amp;lt;= 8]
+
+pos = nx.circular_layout(G_weighted)  # positions for all nodes
+
+# nodes
+nx.draw_networkx_nodes(G_weighted, pos, node_size=700)
+
+# edges
+nx.draw_networkx_edges(G_weighted, pos, edgelist=elarge,width=6)
+nx.draw_networkx_edges(G_weighted, pos, edgelist=esmall,width=6, alpha=0.5, edge_color=&#39;b&#39;, style=&#39;dashed&#39;)
+
+# labels
+nx.draw_networkx_labels(G_weighted, pos, font_size=20, font_family=&#39;sans-serif&#39;)
+
+plt.axis(&#39;off&#39;)
+plt.show();
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_15_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;clustering-coefficient&#34;&gt;Clustering coefficient&lt;/h2&gt;
+
+&lt;p&gt;It is observed that people who share connections in a social network tend to form associations. In other words, there is a tendency in a social network to form clusters.&lt;/p&gt;
+
+&lt;p&gt;We can determine the clusters of a node, &lt;strong&gt;local clustering coefficient&lt;/strong&gt;, which is the fraction of pairs of the node&amp;rsquo;s friends (that is connections) that are connected with each other.&lt;/p&gt;
+
+&lt;p&gt;To determine the local clustering coefficient, we make use of &lt;code&gt;nx.clustering(Graph, Node)&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 1 and Laura  has a local clustering coefficient of 0.67.&lt;/p&gt;
+
+&lt;p&gt;The average clustering coefficient (sum of all the local clustering coefficients divided by the number of nodes) for the symmetric employee-network is 0.867.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.clustering(G_symmetric,&#39;Michelle&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.6666666666666666
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.clustering(G_symmetric,&#39;Laura&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.average_clustering(G_symmetric)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.8277777777777778
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;network-distance-measures&#34;&gt;Network Distance Measures&lt;/h2&gt;
+
+&lt;h3 id=&#34;degree&#34;&gt;Degree&lt;/h3&gt;
+
+&lt;p&gt;Degree of a node defines the number of connections a node has. NetworkX has the function &lt;code&gt;degree&lt;/code&gt; which we can use to determine the degree of a node in the network.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.degree(G_symmetric, &#39;Michelle&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will return a value of 3, as Michelle has worked with three employees in the network.&lt;/p&gt;
+
+&lt;h3 id=&#34;distance&#34;&gt;Distance&lt;/h3&gt;
+
+&lt;p&gt;We can also determine the shortest path between two nodes and its length in NetworkX using &lt;code&gt;nx.shortest_path(Graph, Node1, Node2)&lt;/code&gt; and &lt;code&gt;nx.shortest_path_length(Graph, Node1, Node2)&lt;/code&gt;
+ functions respectively.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.shortest_path(G_symmetric, &#39;Michelle&#39;, &#39;John&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;Michelle&#39;, &#39;Steven&#39;, &#39;John&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.shortest_path_length(G_symmetric, &#39;Michelle&#39;, &#39;John&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;breadth-first-search&#34;&gt;Breadth-first search&lt;/h3&gt;
+
+&lt;p&gt;We can find the distance of a node from every other node in the network using breadth-first search algorithm, starting from that node. networkX provides the function bfs_tree to do it.&lt;/p&gt;
+
+&lt;p&gt;And so if you use &lt;code&gt;M = nx.bfs_tree(G_symmetric, &#39;Michelle&#39;)&lt;/code&gt; and now draw this tree, we will get a network structure telling how we can reach other nodes of the network starting from Michelle .&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;S = nx.bfs_tree(G_symmetric, &#39;Steven&#39;)
+nx.draw_networkx(S)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_29_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;M = nx.bfs_tree(G_symmetric, &#39;Michelle&#39;)
+nx.draw_networkx(M)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_30_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;eccentricity&#34;&gt;Eccentricity&lt;/h3&gt;
+
+&lt;p&gt;Eccentricity of a node A is defined as the largest distance between A and all other nodes.&lt;/p&gt;
+
+&lt;p&gt;It can be found using &lt;code&gt;nx.eccentricity()&lt;/code&gt; function. In the symmetric employee-network, Michelle has an eccentricity of 2, and Steven has an eccentricity of 1 (he is connected to every other node).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.eccentricity(G_symmetric,&#39;Michelle&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.eccentricity(G_symmetric,&#39;Steven&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;centrality-measures&#34;&gt;Centrality measures&lt;/h2&gt;
+
+&lt;p&gt;Above we learned some of the network distance measures and they are useful in knowing how the information will spread through the network.&lt;/p&gt;
+
+&lt;p&gt;In this section, we will learn how to find the most important nodes (individuals) in the network. These parameters are called as &lt;strong&gt;centrality measures&lt;/strong&gt;. Centrality Measures can help us in identifying popularity, most liked, and biggest influencers within the network.&lt;/p&gt;
+
+&lt;h3 id=&#34;degree-centrality&#34;&gt;Degree Centrality&lt;/h3&gt;
+
+&lt;p&gt;The people most popular or more liked usually are the ones who have more friends.&lt;/p&gt;
+
+&lt;p&gt;Degree centrality is a measure of the number of connections a particular node has in the network. It is based on the fact that important nodes have many connections. NetworkX has the function &lt;code&gt;degree_centrality()&lt;/code&gt; to calculate the degree centrality of all the nodes of a network.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.degree_centrality(G_symmetric)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;Steven&#39;: 1.0,
+ &#39;Laura&#39;: 0.4,
+ &#39;Marc&#39;: 0.4,
+ &#39;John&#39;: 0.4,
+ &#39;Michelle&#39;: 0.6000000000000001,
+ &#39;George&#39;: 0.4}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;eigenvector-centrality&#34;&gt;Eigenvector Centrality&lt;/h3&gt;
+
+&lt;p&gt;It is not just how many individuals one is connected too, but the type of people one is connected with that can decide the importance of a node.&lt;/p&gt;
+
+&lt;p&gt;Eigenvector centrality is a measure of how import a node is by accounting for the fact of how well it is connected to other important nodes.&lt;/p&gt;
+
+&lt;p&gt;We can use the &lt;code&gt;eigenvector_centrality()&lt;/code&gt; function of NetworkX to calculate eigenvector centrality of all the nodes in a network.&lt;/p&gt;
+
+&lt;p&gt;The Google&amp;rsquo;s Pagerank algorithm is a variant of Eigenvector centrality algorithm.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.eigenvector_centrality(G_symmetric)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;Steven&#39;: 0.6006686104947806,
+ &#39;Laura&#39;: 0.3545677660798074,
+ &#39;Marc&#39;: 0.3545677660798074,
+ &#39;John&#39;: 0.30844592433424667,
+ &#39;Michelle&#39;: 0.4443904166426225,
+ &#39;George&#39;: 0.30844592433424667}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;closeness-centrality&#34;&gt;Closeness Centrality&lt;/h3&gt;
+
+&lt;p&gt;Closeness Centrality is a measure where each node’s importance is determined by &lt;strong&gt;closeness to all other nodes&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.closeness_centrality(G_symmetric)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;Steven&#39;: 1.0,
+ &#39;Laura&#39;: 0.625,
+ &#39;Marc&#39;: 0.625,
+ &#39;John&#39;: 0.625,
+ &#39;Michelle&#39;: 0.7142857142857143,
+ &#39;George&#39;: 0.625}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;betweenness-centrality&#34;&gt;Betweenness Centrality&lt;/h3&gt;
+
+&lt;p&gt;The Betweenness Centrality is the centrality of control.&lt;/p&gt;
+
+&lt;p&gt;It represents the frequency at which a point occurs on the &lt;strong&gt;shortest paths&lt;/strong&gt; that connected pair of points. It quantifies how many times a particular node comes in the shortest chosen path between two other nodes.&lt;/p&gt;
+
+&lt;p&gt;The nodes with high betweenness centrality play a significant role in the communication/information flow within the network.&lt;/p&gt;
+
+&lt;p&gt;The nodes with high betweenness centrality can have a strategic control and influence on others. An individual at such a strategic position can influence the whole group, by either withholding or coloring the information in transmission.&lt;/p&gt;
+
+&lt;p&gt;Networkx has the function &lt;code&gt;betweenness_centrality()&lt;/code&gt; to measure it for the network. It has options to select if we want betweenness values to be normalized or not, weights to be included in centrality calculation or not, and to include the endpoints in the shortest path counts or not.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nx.betweenness_centrality(G_symmetric)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;Steven&#39;: 0.65,
+ &#39;Laura&#39;: 0.0,
+ &#39;Marc&#39;: 0.0,
+ &#39;John&#39;: 0.0,
+ &#39;Michelle&#39;: 0.05,
+ &#39;George&#39;: 0.0}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;pos = nx.spring_layout(G_symmetric)
+betCent = nx.betweenness_centrality(G_symmetric, normalized=True, endpoints=True)
+node_color = [20000.0 * G_symmetric.degree(v) for v in G_symmetric]
+node_size =  [v * 10000 for v in betCent.values()]
+plt.figure(figsize=(10,10))
+nx.draw_networkx(G_symmetric, pos=pos, with_labels=True,
+                 node_color=node_color,
+                 node_size=node_size )
+plt.axis(&#39;off&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_45_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;sorted(betCent, key=betCent.get, reverse=True)[:5]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;Steven&#39;, &#39;Michelle&#39;, &#39;Laura&#39;, &#39;Marc&#39;, &#39;John&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;facebook-case-study&#34;&gt;Facebook Case Study&lt;/h2&gt;
+
+&lt;p&gt;This dataset consists of &amp;lsquo;circles&amp;rsquo; (or &amp;lsquo;friends lists&amp;rsquo;) from Facebook. Facebook data was collected from survey participants using this Facebook app. The dataset includes node features (profiles), circles, and ego networks.&lt;/p&gt;
+
+&lt;p&gt;Facebook data has been anonymized by replacing the Facebook-internal ids for each user with a new value. Also, while feature vectors from this dataset have been provided, the interpretation of those features has been obscured. For instance, where the original dataset may have contained a feature &amp;ldquo;political=Democratic Party&amp;rdquo;, the new data would simply contain &amp;ldquo;political=anonymized feature 1&amp;rdquo;. Thus, using the anonymized data it is possible to determine whether two users have the same political affiliations, but not what their individual political affiliations represent.&lt;/p&gt;
+
+&lt;p&gt;Source: &lt;a href=&#34;https://snap.stanford.edu/data/egonets-Facebook.html&#34; target=&#34;_blank&#34;&gt;J. McAuley and J. Leskovec. Learning to Discover Social Circles in Ego Networks. NIPS, 2012&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us start with the Facebook data, for our analysis here we will use Facebook combined ego networks dataset, it contains the aggregated network of ten individuals’ Facebook friends list. You can download the required facebook_combined.txt file from the Stanford University site.&lt;/p&gt;
+
+&lt;p&gt;We read in the file and construct the Graph:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.dropbox.com/s/k34phmodh9nsy9r/facebook_combined.txt?dl=0&#34; target=&#34;_blank&#34;&gt;Download the file&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pandas as pd
+
+df = pd.read_csv(&#39;/Users/jankirenz/Dropbox/Data/facebook_combined.txt&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.info()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;class &#39;pandas.core.frame.DataFrame&#39;&amp;gt;
+RangeIndex: 88233 entries, 0 to 88232
+Data columns (total 1 columns):
+0 1    88233 non-null object
+dtypes: object(1)
+memory usage: 689.4+ KB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.tail()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;0 1&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;88228&lt;/th&gt;
+      &lt;td&gt;4026 4030&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;88229&lt;/th&gt;
+      &lt;td&gt;4027 4031&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;88230&lt;/th&gt;
+      &lt;td&gt;4027 4032&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;88231&lt;/th&gt;
+      &lt;td&gt;4027 4038&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;88232&lt;/th&gt;
+      &lt;td&gt;4031 4038&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;G_fb = nx.read_edgelist(&amp;quot;/Users/jankirenz/Dropbox/Data/facebook_combined.txt&amp;quot;, create_using = nx.Graph(), nodetype=int)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(nx.info(G_fb))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Name:
+Type: Graph
+Number of nodes: 4039
+Number of edges: 88234
+Average degree:  43.6910
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The network consists of 4,039 nodes, connected via 88,234 edges.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;plt.figure(figsize=(20,20))
+nx.draw_networkx(G_fb);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/net1.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can also visualize the network such that the node color varies with Degree and node size with Betweenness Centrality. The code to do this is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;pos = nx.spring_layout(G_fb)
+betCent = nx.betweenness_centrality(G_fb, normalized=True, endpoints=True)
+node_color = [20000.0 * G_fb.degree(v) for v in G_fb]
+node_size =  [v * 10000 for v in betCent.values()]
+plt.figure(figsize=(20,20))
+nx.draw_networkx(G_fb, pos=pos, with_labels=False,
+                 node_color=node_color,
+                 node_size=node_size )
+plt.axis(&#39;off&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/net2.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also know the labels of the nodes with the highest betweenness centrality using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;sorted(betCent, key=betCent.get, reverse=True)[:5]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can see that some nodes are common between Degree Centrality, which is a measure of degree, and Betweenness Centrality which controls the information flow.&lt;/p&gt;
+
+&lt;p&gt;It is natural that nodes that are more connected also lie on shortest paths between other nodes. The node 1912 is an important node as it is crucial according to all three centrality measures that we had considered.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Sources of examples:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.datacamp.com/community/tutorials/social-network-analysis-python&#34; target=&#34;_blank&#34;&gt;Datacamp&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aksakalli.github.io/2017/07/17/network-centrality-measures-and-their-visualization.html&#34; target=&#34;_blank&#34;&gt;Aksakalli, C.&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://snap.stanford.edu/data/egonets-Facebook.html&#34; target=&#34;_blank&#34;&gt;McAuley, J. &amp;amp; Leskovec, J.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Lasso Regression with Python</title>

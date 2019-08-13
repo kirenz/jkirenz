@@ -7,10 +7,28 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sun, 11 Aug 2019 05:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 10:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction to Network Analysis with Python</title>
+      <link>/project/python-network-analysis-intro/</link>
+      <pubDate>Mon, 12 Aug 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/python-network-analysis-intro/</guid>
+      <description>
+
+
+&lt;p&gt;NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Material:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/slides/Social_Network_Analysis_Networkx/index.html&#34;&gt;Introduction to network presentation slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/13samMteoTnAkUoHul1iV5pA0bc4qmYjGge019HcT1F4/edit?usp=sharing&#34;&gt;Network analysis tasks with code templates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Correlation Tutorial with R</title>
