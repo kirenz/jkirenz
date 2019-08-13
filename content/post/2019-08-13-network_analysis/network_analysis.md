@@ -1,22 +1,21 @@
 ---
 title: Network Analysis with Python
 date: '2019-08-13'
-slug: network-analysis-python
+#slug: network-analysis-python
 categories:
   - Statistics
 tags:
   - Python
   - Statistics
-subtitle: ''
+#subtitle: ''
 summary: 'Implementation of Network Analysis in Python with NetworkX'
-authors: [Jan]
-lastmod: '2019-08-13T00:00:00+02:00'
-featured: no
+authors: [jan]
+#lastmod: '2019-08-13T00:00:00+02:00'
+#featured: no
 image:
   caption: 'Network Analysis'
-  focal_point: ''
-  preview_only: yes
-projects: []
+  focal_point: ''  
+#projects: []
 ---
 
 ```python

@@ -14,10 +14,10 @@
     
     <item>
       <title>Network Analysis with Python</title>
-      <link>/post/2019-08-13-network_analysis/network-analysis-python/</link>
+      <link>/post/2019-08-13-network_analysis/network_analysis/</link>
       <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-13-network_analysis/network-analysis-python/</guid>
+      <guid>/post/2019-08-13-network_analysis/network_analysis/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#conda install -c anaconda networkx
