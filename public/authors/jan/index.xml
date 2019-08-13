@@ -83,12 +83,18 @@
       <guid>/post/2019-08-13-network_analysis/network_analysis/</guid>
       <description>
 
+&lt;hr /&gt;
+
+&lt;p&gt;Python set up:&lt;/p&gt;
+
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#conda install -c anaconda networkx
 import networkx as nx
 import matplotlib.pyplot as plt
 %matplotlib inline
 import warnings; warnings.simplefilter(&#39;ignore&#39;)
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
 
 &lt;h2 id=&#34;social-network-analysis-sna&#34;&gt;Social Network Analysis (SNA)&lt;/h2&gt;
 

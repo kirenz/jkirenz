@@ -14,9 +14,14 @@ authors: [jan]
 #featured: no
 image:
   caption: 'Network Analysis'
-  focal_point: ''  
+  focal_point: 'smart'  
 #projects: []
 ---
+
+
+---
+
+Python set up:
 
 ```python
 #conda install -c anaconda networkx
@@ -26,6 +31,8 @@ import matplotlib.pyplot as plt
 import warnings; warnings.simplefilter('ignore')
 ```
 
+---
+
 ## Social Network Analysis (SNA)
 
 Social network analysis (SNA) with [NetworkX]((https://networkx.github.io/documentation/stable/)), a Python library for the study of the structure, dynamics, and functions of complex networks.
@@ -34,6 +41,7 @@ Each network consists of:
 
 - Nodes: The individuals whose network we are building.
 - Edges: The connection between the nodes. It represents a relationship between the nodes of the network.
+
 
 
 ### Symmetric Networks (undirected)
