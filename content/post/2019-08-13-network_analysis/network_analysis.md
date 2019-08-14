@@ -18,10 +18,15 @@ image:
 #projects: []
 ---
 
+We use the module [NetworkX](https://networkx.github.io/documentation/stable/) in this tutorial. It is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
 
----
+If you work with [Anaconda](https://www.anaconda.com/distribution/), you can install the package as follows:
 
-Python set up:
+```
+conda install -c anaconda networkx
+```
+
+**Import modules:**
 
 ```python
 #conda install -c anaconda networkx
@@ -33,15 +38,12 @@ import warnings; warnings.simplefilter('ignore')
 
 ---
 
-## Social Network Analysis (SNA)
-
-Social network analysis (SNA) with [NetworkX]((https://networkx.github.io/documentation/stable/)), a Python library for the study of the structure, dynamics, and functions of complex networks.
+## Social Network Basics
 
 Each network consists of:
 
 - Nodes: The individuals whose network we are building.
 - Edges: The connection between the nodes. It represents a relationship between the nodes of the network.
-
 
 
 ### Symmetric Networks (undirected)
@@ -168,7 +170,7 @@ We can determine the clusters of a node, **local clustering coefficient**, which
 
 To determine the local clustering coefficient, we make use of `nx.clustering(Graph, Node)` function.
 
-In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 1 and Laura  has a local clustering coefficient of 0.67.
+In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 0.67 and Laura  has a local clustering coefficient of 1.
 
 The average clustering coefficient (sum of all the local clustering coefficients divided by the number of nodes) for the symmetric employee-network is 0.867.
 
