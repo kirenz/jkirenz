@@ -29,9 +29,14 @@
       <guid>/post/2019-08-13-network_analysis/network_analysis/</guid>
       <description>
 
-&lt;hr /&gt;
+&lt;p&gt;We use the module &lt;a href=&#34;https://networkx.github.io/documentation/stable/&#34; target=&#34;_blank&#34;&gt;NetworkX&lt;/a&gt; in this tutorial. It is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.&lt;/p&gt;
 
-&lt;p&gt;Python set up:&lt;/p&gt;
+&lt;p&gt;If you work with &lt;a href=&#34;https://www.anaconda.com/distribution/&#34; target=&#34;_blank&#34;&gt;Anaconda&lt;/a&gt;, you can install the package as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;conda install -c anaconda networkx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Import modules:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#conda install -c anaconda networkx
 import networkx as nx
@@ -42,9 +47,7 @@ import warnings; warnings.simplefilter(&#39;ignore&#39;)
 
 &lt;hr /&gt;
 
-&lt;h2 id=&#34;social-network-analysis-sna&#34;&gt;Social Network Analysis (SNA)&lt;/h2&gt;
-
-&lt;p&gt;Social network analysis (SNA) with &lt;a href=&#34;(https://networkx.github.io/documentation/stable/)&#34; target=&#34;_blank&#34;&gt;NetworkX&lt;/a&gt;, a Python library for the study of the structure, dynamics, and functions of complex networks.&lt;/p&gt;
+&lt;h2 id=&#34;social-network-basics&#34;&gt;Social Network Basics&lt;/h2&gt;
 
 &lt;p&gt;Each network consists of:&lt;/p&gt;
 
@@ -158,7 +161,7 @@ plt.show();
 
 &lt;p&gt;To determine the local clustering coefficient, we make use of &lt;code&gt;nx.clustering(Graph, Node)&lt;/code&gt; function.&lt;/p&gt;
 
-&lt;p&gt;In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 1 and Laura  has a local clustering coefficient of 0.67.&lt;/p&gt;
+&lt;p&gt;In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 0.67 and Laura  has a local clustering coefficient of 1.&lt;/p&gt;
 
 &lt;p&gt;The average clustering coefficient (sum of all the local clustering coefficients divided by the number of nodes) for the symmetric employee-network is 0.867.&lt;/p&gt;
 

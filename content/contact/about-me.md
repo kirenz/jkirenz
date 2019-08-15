@@ -44,7 +44,8 @@ subtitle = ""
  css_style = ""
 
  # CSS class.
- css_class = "mini"
+ css_class = ""
+#css_class = "mini"
 +++
 
 I studied business administration with a focus on operations research and quantitative marketing at the [University of Tübingen](https://uni-tuebingen.de/fakultaeten/wirtschafts-und-sozialwissenschaftliche-fakultaet/faecher/).

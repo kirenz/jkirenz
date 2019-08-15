@@ -300,6 +300,28 @@
         
         
 
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact"><span>About/Contact</span></a>
+        </li>
+
+        
+        
+
       
 
         
@@ -521,9 +543,14 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<hr />
+<p>We use the module <a href="https://networkx.github.io/documentation/stable/" target="_blank">NetworkX</a> in this tutorial. It is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.</p>
 
-<p>Python set up:</p>
+<p>If you work with <a href="https://www.anaconda.com/distribution/" target="_blank">Anaconda</a>, you can install the package as follows:</p>
+
+<pre><code>conda install -c anaconda networkx
+</code></pre>
+
+<p><strong>Import modules:</strong></p>
 
 <pre><code class="language-python">#conda install -c anaconda networkx
 import networkx as nx
@@ -534,9 +561,7 @@ import warnings; warnings.simplefilter('ignore')
 
 <hr />
 
-<h2 id="social-network-analysis-sna">Social Network Analysis (SNA)</h2>
-
-<p>Social network analysis (SNA) with <a href="(https://networkx.github.io/documentation/stable/)" target="_blank">NetworkX</a>, a Python library for the study of the structure, dynamics, and functions of complex networks.</p>
+<h2 id="social-network-basics">Social Network Basics</h2>
 
 <p>Each network consists of:</p>
 
@@ -650,7 +675,7 @@ plt.show();
 
 <p>To determine the local clustering coefficient, we make use of <code>nx.clustering(Graph, Node)</code> function.</p>
 
-<p>In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 1 and Laura  has a local clustering coefficient of 0.67.</p>
+<p>In the symmetric employee-network, you will find that Michelle has a local clustering coefficient of 0.67 and Laura  has a local clustering coefficient of 1.</p>
 
 <p>The average clustering coefficient (sum of all the local clustering coefficients divided by the number of nodes) for the symmetric employee-network is 0.867.</p>
 
