@@ -125,14 +125,13 @@ df = df.dropna()
 ```
 
 
-We use scikit learn to fit a Lasso regression [(see documentation)](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html) and follow a number of steps:
+We use scikit learn to fit a Lasso regression [(see documentation)](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html) and follow a number of steps (note that scikit-learn uses $\alpha$ instead of $\lambda$ in their notation):
 
 ## Standardization
 
-**Standardize** the features (module: `from sklearn.preprocessing import StandardScaler`)
+*Standardize the features with the module: `from sklearn.preprocessing import StandardScaler`*
 
-
-*Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.*
+It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.
 
 
 ```python

@@ -105,11 +105,11 @@ origin          0
 dtype: int64&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# drop missing cases
 df = df.dropna()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We use scikit learn to fit a Lasso regression &lt;a href=&#34;http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html&#34;&gt;(see documentation)&lt;/a&gt; and follow a number of steps:&lt;/p&gt;
+&lt;p&gt;We use scikit learn to fit a Lasso regression &lt;a href=&#34;http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html&#34;&gt;(see documentation)&lt;/a&gt; and follow a number of steps (note that scikit-learn uses &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; in their notation):&lt;/p&gt;
 &lt;div id=&#34;standardization&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Standardization&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Standardize&lt;/strong&gt; the features (module: &lt;code&gt;from sklearn.preprocessing import StandardScaler&lt;/code&gt;)&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Standardize the features with the module: &lt;code&gt;from sklearn.preprocessing import StandardScaler&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;dfs = df.astype(&amp;#39;int&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;dfs.info()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;

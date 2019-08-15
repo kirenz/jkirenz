@@ -808,11 +808,11 @@ origin          0
 dtype: int64</code></pre>
 <pre class="python"><code># drop missing cases
 df = df.dropna()</code></pre>
-<p>We use scikit learn to fit a Lasso regression <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">(see documentation)</a> and follow a number of steps:</p>
+<p>We use scikit learn to fit a Lasso regression <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">(see documentation)</a> and follow a number of steps (note that scikit-learn uses <span class="math inline">\(\alpha\)</span> instead of <span class="math inline">\(\lambda\)</span> in their notation):</p>
 <div id="standardization" class="section level2">
 <h2><span class="header-section-number">2.1</span> Standardization</h2>
-<p><strong>Standardize</strong> the features (module: <code>from sklearn.preprocessing import StandardScaler</code>)</p>
-<p><em>Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.</em></p>
+<p><em>Standardize the features with the module: <code>from sklearn.preprocessing import StandardScaler</code></em></p>
+<p>It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.</p>
 <pre class="python"><code>dfs = df.astype(&#39;int&#39;)</code></pre>
 <pre class="python"><code>dfs.info()</code></pre>
 <pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
