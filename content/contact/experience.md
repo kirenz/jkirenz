@@ -70,4 +70,11 @@ date_format = "January 2006"
   date_start = "2007-03-01"
   date_end = "2010-04-01"
   description = ""
+
+[advanced]
+ # Custom CSS.
+ css_style = ""
+
+  # CSS class.
+   css_class = ""
 +++
