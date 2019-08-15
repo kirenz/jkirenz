@@ -7,7 +7,7 @@ education:
   - course: Doctoral Program in Business Administration & Quantitative Methods
     institution: Graduate School of Business, University of Zurich
     year: 2010
-  - course: MSc in Business Administration (Operations Research & Marketing)
+  - course: MSc in Business Administration (Operations Research & Quantitative Marketing)
     institution: University of Tübingen
     year: 2007
 email: ""
@@ -38,4 +38,4 @@ social:
 superuser: true
 ---
 
-I'm a Professor at [HdM Stuttgart](https://www.hdm-stuttgart.de), where I help students and organizations to learn and use data science, statistics, and machine learning with Python and R programming to extract meaningful information from data.
+I'm a Professor at [HdM Stuttgart](https://www.hdm-stuttgart.de), where I help students and organizations to learn and use data science, statistics, and machine learning with Python and R programming to extract meaningful information from data. Please feel free to contact me if you are interested in data science seminars or data science consulting.

@@ -49,9 +49,7 @@ subtitle = ""
 #css_class = "mini"
 +++
 
-I studied business administration with a focus on operations research and quantitative marketing at the [University of Tübingen](https://uni-tuebingen.de/fakultaeten/wirtschafts-und-sozialwissenschaftliche-fakultaet/faecher/).
-
-Afterwards, I received my doctoral degree from the [University of Zurich](https://www.uzh.ch/de.html) (2010). During my doctoral studies, I attended quantitative methods and programming courses at the University of Zurich, [London School of Economics and Political Science](http://www.lse.ac.uk) (GB) and the [University of Michigan](https://umich.edu) (USA).
+I studied business administration with a focus on operations research and quantitative marketing at the [University of Tübingen](https://uni-tuebingen.de/fakultaeten/wirtschafts-und-sozialwissenschaftliche-fakultaet/faecher/). Afterwards, I received my doctoral degree from the [University of Zurich](https://www.uzh.ch/de.html) (2010). During my doctoral studies, I attended quantitative methods and programming courses at the University of Zurich, [London School of Economics and Political Science](http://www.lse.ac.uk) (GB) and the [University of Michigan](https://umich.edu) (USA).
 
 
 <img src="hdm-stuttgart.jpg" class="center-block" alt="HdM Stuttgart" style="width:60%;height:60%;">
