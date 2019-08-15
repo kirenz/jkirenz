@@ -1,0 +1,479 @@
+---
+#aliases: []
+#projects: []
+title: Lasso Regression with Python
+authors: [jan]
+date: '2019-08-12'
+tags: [Statistics]
+categories:
+  - Python
+  - Statistics
+  - Regression
+summary: Implementation of Lasso Regression in Python
+image:
+  caption: 'Lasso Regression'
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+    toc_depth: 3
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#lasso-regression-basics"><span class="toc-section-number">1</span> Lasso Regression Basics</a></li>
+<li><a href="#implementation-of-lasso-regression"><span class="toc-section-number">2</span> Implementation of Lasso regression</a><ul>
+<li><a href="#standardization"><span class="toc-section-number">2.1</span> Standardization</a></li>
+<li><a href="#split-data"><span class="toc-section-number">2.2</span> Split data</a></li>
+<li><a href="#lasso-regression"><span class="toc-section-number">2.3</span> Lasso regression</a></li>
+<li><a href="#lasso-with-different-lambdas"><span class="toc-section-number">2.4</span> Lasso with different lambdas</a></li>
+<li><a href="#plot-values-as-a-function-of-lambda"><span class="toc-section-number">2.5</span> Plot values as a function of lambda</a></li>
+<li><a href="#identify-best-lambda-and-coefficients"><span class="toc-section-number">2.6</span> Identify best lambda and coefficients</a></li>
+<li><a href="#cross-validation"><span class="toc-section-number">2.7</span> Cross Validation</a></li>
+<li><a href="#best-model"><span class="toc-section-number">2.8</span> Best Model</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="lasso-regression-basics" class="section level1">
+<h1><span class="header-section-number">1</span> Lasso Regression Basics</h1>
+<p>Lasso performs a so called <code>L1 regularization</code> (a process of introducing additional information in order to prevent overfitting), i.e. adds penalty equivalent to absolute value of the magnitude of coefficients.</p>
+<p>In particular, the minimization objective does not only include the residual sum of squares (RSS) - like in the OLS regression setting - but also the sum of the absolute value of coefficients.</p>
+<p>The residual sum of squares (RSS) is calculated as follows:</p>
+<p><span class="math display">\[ RSS = \sum_{i=1}^{n} (y_i - \hat{y_i})^2 \]</span></p>
+<p>This formula can be stated as:</p>
+<p><span class="math display">\[ RSS = \sum_{i=1}^{n} \bigg(y_i - \big( \beta_{0} + \sum_{j=1}^{p} \beta_{j} x_{ij} \big) \bigg)^2  \]</span></p>
+<ul>
+<li>n represents the number of distinct data points, or observations, in our sample.</li>
+<li>p denotes the number of variables that are available in the dataset.</li>
+<li>x_{ij} represents the value of the jth variable for the ith observation, where i = 1, 2, . . ., n and j = 1, 2, . . . , p.</li>
+</ul>
+<p>In the lasso regression, the minimization objective becomes:</p>
+<p><span class="math display">\[ \sum_{i=1}^{n} \bigg(y_i - \big( \beta_{0} + \sum_{j=1}^{p} \beta_{j} x_{ij} \big) \bigg)^2 + \lambda \sum_{j=1}^{p} |\beta_j|   \]</span></p>
+<p>which equals:</p>
+<p><span class="math display">\[RSS + \lambda \sum_{j=1}^{p} |\beta_j|  \]</span></p>
+<p><span class="math inline">\(\lambda\)</span> (lambda) provides a trade-off between balancing RSS and magnitude of coefficients.</p>
+<p><span class="math inline">\(\lambda\)</span> can take various values:</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span> = 0: Same coefficients as simple linear regression</li>
+<li><span class="math inline">\(\lambda\)</span> = ∞: All coefficients zero (same logic as before)</li>
+<li>0 &lt; <span class="math inline">\(\lambda\)</span> &lt; ∞: coefficients between 0 and that of simple linear regression</li>
+</ul>
+<hr />
+</div>
+<div id="implementation-of-lasso-regression" class="section level1">
+<h1><span class="header-section-number">2</span> Implementation of Lasso regression</h1>
+<p>Python set up:</p>
+<pre class="python"><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.style.use(&#39;ggplot&#39;)
+import warnings; warnings.simplefilter(&#39;ignore&#39;)</code></pre>
+<p>This notebook involves the use of the Lasso regression on the “Auto” dataset. In particular, we only use observations 1 to 200 for our analysis. Furthermore, you can drop the <code>name</code> variable.</p>
+<p>Import data:</p>
+<pre class="python"><code>df = pd.read_csv(&quot;https://raw.githubusercontent.com/kirenz/datasets/master/Auto.csv&quot;)</code></pre>
+<p>Tidying data:</p>
+<pre class="python"><code>df = df.iloc[0:200]
+df = df.drop([&#39;name&#39;], axis=1)
+df.info()</code></pre>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 200 entries, 0 to 199
+Data columns (total 8 columns):
+mpg             200 non-null float64
+cylinders       200 non-null int64
+displacement    200 non-null float64
+horsepower      200 non-null object
+weight          200 non-null int64
+acceleration    200 non-null float64
+year            200 non-null int64
+origin          200 non-null int64
+dtypes: float64(3), int64(4), object(1)
+memory usage: 12.6+ KB</code></pre>
+<pre class="python"><code>df[&#39;origin&#39;] = pd.Categorical(df[&#39;origin&#39;])
+df[&#39;horsepower&#39;] = pd.to_numeric(df[&#39;horsepower&#39;], errors=&#39;coerce&#39;)
+print(df.isnull().sum())</code></pre>
+<pre><code>mpg             0
+cylinders       0
+displacement    0
+horsepower      2
+weight          0
+acceleration    0
+year            0
+origin          0
+dtype: int64</code></pre>
+<pre class="python"><code># drop missing cases
+df = df.dropna()</code></pre>
+<p>We use scikit learn to fit a Lasso regression <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">(see documentation)</a> and follow a number of steps:</p>
+<div id="standardization" class="section level2">
+<h2><span class="header-section-number">2.1</span> Standardization</h2>
+<p><strong>Standardize</strong> the features (module: <code>from sklearn.preprocessing import StandardScaler</code>)</p>
+<p><em>Hint: It is important to standardize the features by removing the mean and scaling to unit variance. The L1 (Lasso) and L2 (Ridge) regularizers of linear models assume that all features are centered around 0 and have variance in the same order. If a feature has a variance that is orders of magnitude larger that others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.</em></p>
+<pre class="python"><code>dfs = df.astype(&#39;int&#39;)</code></pre>
+<pre class="python"><code>dfs.info()</code></pre>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 198 entries, 0 to 199
+Data columns (total 8 columns):
+mpg             198 non-null int64
+cylinders       198 non-null int64
+displacement    198 non-null int64
+horsepower      198 non-null int64
+weight          198 non-null int64
+acceleration    198 non-null int64
+year            198 non-null int64
+origin          198 non-null int64
+dtypes: int64(8)
+memory usage: 13.9 KB</code></pre>
+<pre class="python"><code>dfs.columns</code></pre>
+<pre><code>Index([&#39;mpg&#39;, &#39;cylinders&#39;, &#39;displacement&#39;, &#39;horsepower&#39;, &#39;weight&#39;,
+       &#39;acceleration&#39;, &#39;year&#39;, &#39;origin&#39;],
+      dtype=&#39;object&#39;)</code></pre>
+<pre class="python"><code>from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+dfs[[&#39;cylinders&#39;, &#39;displacement&#39;, &#39;horsepower&#39;,
+     &#39;weight&#39;, &#39;acceleration&#39;, &#39;year&#39;, &#39;origin&#39;]] = scaler.fit_transform(dfs[[&#39;cylinders&#39;,
+                                                                              &#39;displacement&#39;,
+                                                                              &#39;horsepower&#39;,
+                                                                              &#39;weight&#39;,
+                                                                              &#39;acceleration&#39;,
+                                                                              &#39;year&#39;, &#39;origin&#39;]])</code></pre>
+<pre class="python"><code>dfs.head(5)</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+mpg
+</th>
+<th>
+cylinders
+</th>
+<th>
+displacement
+</th>
+<th>
+horsepower
+</th>
+<th>
+weight
+</th>
+<th>
+acceleration
+</th>
+<th>
+year
+</th>
+<th>
+origin
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+18
+</td>
+<td>
+1.179744
+</td>
+<td>
+0.726091
+</td>
+<td>
+0.325216
+</td>
+<td>
+0.346138
+</td>
+<td>
+-0.955578
+</td>
+<td>
+-1.516818
+</td>
+<td>
+-0.629372
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+15
+</td>
+<td>
+1.179744
+</td>
+<td>
+1.100254
+</td>
+<td>
+1.129264
+</td>
+<td>
+0.548389
+</td>
+<td>
+-1.305309
+</td>
+<td>
+-1.516818
+</td>
+<td>
+-0.629372
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+18
+</td>
+<td>
+1.179744
+</td>
+<td>
+0.821807
+</td>
+<td>
+0.784672
+</td>
+<td>
+0.273370
+</td>
+<td>
+-1.305309
+</td>
+<td>
+-1.516818
+</td>
+<td>
+-0.629372
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+16
+</td>
+<td>
+1.179744
+</td>
+<td>
+0.699986
+</td>
+<td>
+0.784672
+</td>
+<td>
+0.270160
+</td>
+<td>
+-0.955578
+</td>
+<td>
+-1.516818
+</td>
+<td>
+-0.629372
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+17
+</td>
+<td>
+1.179744
+</td>
+<td>
+0.682583
+</td>
+<td>
+0.554944
+</td>
+<td>
+0.287282
+</td>
+<td>
+-1.655041
+</td>
+<td>
+-1.516818
+</td>
+<td>
+-0.629372
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="split-data" class="section level2">
+<h2><span class="header-section-number">2.2</span> Split data</h2>
+<p><strong>Split the data set</strong> into train and test sets (use <code>X_train</code>, <code>X_test</code>, <code>y_train</code>, <code>y_test</code>), with the first 75% of the data for training and the remaining for testing. (module: <code>from sklearn.model_selection import train_test_split</code>)</p>
+<pre class="python"><code>X = dfs.drop([&#39;mpg&#39;], axis=1)
+y = dfs[&#39;mpg&#39;]</code></pre>
+<pre class="python"><code>from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=10)</code></pre>
+</div>
+<div id="lasso-regression" class="section level2">
+<h2><span class="header-section-number">2.3</span> Lasso regression</h2>
+<p>Apply <strong>Lasso regression</strong> on the training set with the regularization parameter <strong>lambda = 0.5</strong> (module: <code>from sklearn.linear_model import Lasso</code>) and print the <span class="math inline">\(R^2\)</span>-score for the training and test set. Comment on your findings.</p>
+<pre class="python"><code>from sklearn.linear_model import Lasso
+
+reg = Lasso(alpha=0.5)
+reg.fit(X_train, y_train)</code></pre>
+<p>Lasso(alpha=0.5, copy_X=True, fit_intercept=True, max_iter=1000,
+normalize=False, positive=False, precompute=False, random_state=None,
+selection=‘cyclic’, tol=0.0001, warm_start=False)</p>
+<pre class="python"><code>print(&#39;Lasso Regression: R^2 score on training set&#39;, reg.score(X_train, y_train)*100)
+print(&#39;Lasso Regression: R^2 score on test set&#39;, reg.score(X_test, y_test)*100)</code></pre>
+<p>Lasso Regression: R^2 score on training set 82.49741060950073
+Lasso Regression: R^2 score on test set 85.49734440925533</p>
+</div>
+<div id="lasso-with-different-lambdas" class="section level2">
+<h2><span class="header-section-number">2.4</span> Lasso with different lambdas</h2>
+<p>Apply the <strong>Lasso regression</strong> on the training set with the following <strong>λ parameters: (0.001, 0.01, 0.1, 0.5, 1, 2, 10)</strong>. Evaluate the R^2 score for all the models you obtain on both the train and test sets.</p>
+<pre class="python"><code>lambdas = (0.001, 0.01, 0.1, 0.5, 1, 2, 10)
+l_num = 7
+pred_num = X.shape[1]
+
+# prepare data for enumerate
+coeff_a = np.zeros((l_num, pred_num))
+train_r_squared = np.zeros(l_num)
+test_r_squared = np.zeros(l_num)</code></pre>
+<pre class="python"><code># enumerate through lambdas with index and i
+for ind, i in enumerate(lambdas):    
+    reg = Lasso(alpha = i)
+    reg.fit(X_train, y_train)
+
+    coeff_a[ind,:] = reg.coef_
+    train_r_squared[ind] = reg.score(X_train, y_train)
+    test_r_squared[ind] = reg.score(X_test, y_test)</code></pre>
+</div>
+<div id="plot-values-as-a-function-of-lambda" class="section level2">
+<h2><span class="header-section-number">2.5</span> Plot values as a function of lambda</h2>
+<p><strong>Plot</strong> all values for both data sets (train and test <span class="math inline">\(R^2\)</span>-values) as a function of λ. Comment on your findings.</p>
+<pre class="python"><code># Plotting
+plt.figure(figsize=(18, 8))
+plt.plot(train_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Training set&#39;, color=&quot;darkblue&quot;, alpha=0.6, linewidth=3)
+plt.plot(test_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Test set&#39;, color=&quot;darkred&quot;, alpha=0.6, linewidth=3)
+plt.xlabel(&#39;Lamda index&#39;); plt.ylabel(r&#39;$R^2$&#39;)
+plt.xlim(0, 6)
+plt.title(r&#39;Evaluate lasso regression with lamdas: 0 = 0.001, 1= 0.01, 2 = 0.1, 3 = 0.5, 4= 1, 5= 2, 6 = 10&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.grid()</code></pre>
+<p><img src="/post/2019-08-12-python-lasso-regression-auto/output_27_0.png" /></p>
+</div>
+<div id="identify-best-lambda-and-coefficients" class="section level2">
+<h2><span class="header-section-number">2.6</span> Identify best lambda and coefficients</h2>
+<p>Store your test data results in a DataFrame and indentify the lambda where the <span class="math inline">\(R^2\)</span> has it’s <strong>maximum value</strong> in the <strong>test data</strong>. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding <strong>regression coefficients</strong>. Furthermore, obtain the <strong>mean squared error</strong> for the test data of this model (module: <code>from sklearn.metrics import mean_squared_error</code>)</p>
+<pre class="python"><code>df_lam = pd.DataFrame(test_r_squared*100, columns=[&#39;R_squared&#39;])
+df_lam[&#39;lambda&#39;] = (lambdas)
+# returns the index of the row where column has maximum value.
+df_lam.loc[df_lam[&#39;R_squared&#39;].idxmax()]</code></pre>
+<p>R_squared 88.105773
+lambda 0.001000
+Name: 0, dtype: float64</p>
+<pre class="python"><code># Coefficients of best model
+reg_best = Lasso(alpha = 0.1)
+reg_best.fit(X_train, y_train)
+reg_best.coef_</code></pre>
+<p>array([-0.35554113, -1.13104696, -0.00596296, -3.31741775, -0. ,
+0.37914648, 0.74902885])</p>
+<pre class="python"><code>from sklearn.metrics import mean_squared_error
+mean_squared_error(y_test, reg_best.predict(X_test))</code></pre>
+<p>3.586249592807347</p>
+</div>
+<div id="cross-validation" class="section level2">
+<h2><span class="header-section-number">2.7</span> Cross Validation</h2>
+<p>Evaluate the performance of a <strong>Lasso regression</strong> for different regularization parameters λ using <strong>5-fold cross validation</strong> on the training set (module: <code>from sklearn.model_selection import cross_val_score</code>) and plot the cross-validation (CV) <span class="math inline">\(R^2\)</span> scores of the training and test data as a function of λ.</p>
+<p>Use the following lambda parameters:
+l_min = 0.05
+l_max = 0.2
+l_num = 20
+lambdas = np.linspace(l_min,l_max, l_num)</p>
+<pre class="python"><code>l_min = 0.05
+l_max = 0.2
+l_num = 20
+lambdas = np.linspace(l_min,l_max, l_num)
+
+train_r_squared = np.zeros(l_num)
+test_r_squared = np.zeros(l_num)
+
+pred_num = X.shape[1]
+coeff_a = np.zeros((l_num, pred_num))</code></pre>
+<pre class="python"><code>from sklearn.model_selection import cross_val_score
+
+for ind, i in enumerate(lambdas):    
+    reg = Lasso(alpha = i)
+    reg.fit(X_train, y_train)
+    results = cross_val_score(reg, X, y, cv=5, scoring=&quot;r2&quot;)
+
+    train_r_squared[ind] = reg.score(X_train, y_train)    
+    test_r_squared[ind] = reg.score(X_test, y_test)</code></pre>
+<pre class="python"><code># Plotting
+plt.figure(figsize=(18, 8))
+plt.plot(train_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Training set&#39;, color=&quot;darkblue&quot;, alpha=0.6, linewidth=3)
+plt.plot(test_r_squared, &#39;bo-&#39;, label=r&#39;$R^2$ Test set&#39;, color=&quot;darkred&quot;, alpha=0.6, linewidth=3)
+plt.xlabel(&#39;Lamda value&#39;); plt.ylabel(r&#39;$R^2$&#39;)
+plt.xlim(0, 19)
+plt.title(r&#39;Evaluate 5-fold cv with different lamdas&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.grid()</code></pre>
+<p><img src="/post/2019-08-12-python-lasso-regression-auto/output_35_0.png" /></p>
+</div>
+<div id="best-model" class="section level2">
+<h2><span class="header-section-number">2.8</span> Best Model</h2>
+<p>Finally, store your test data results in a DataFrame and identify the lambda where the <span class="math inline">\(R^2\)</span> has it’s <strong>maximum value</strong> in the <strong>test data</strong>. Fit a Lasso model with this lambda parameter (use the training data) and obtain the corresponding <strong>regression coefficients</strong>. Furthermore, obtain the <strong>mean squared error</strong> for the test data of this model (module: <code>from sklearn.metrics import mean_squared_error</code>)</p>
+<pre class="python"><code>df_lam = pd.DataFrame(test_r_squared*100, columns=[&#39;R_squared&#39;])
+df_lam[&#39;lambda&#39;] = (lambdas)
+# returns the index of the row where column has maximum value.
+df_lam.loc[df_lam[&#39;R_squared&#39;].idxmax()]</code></pre>
+<p>R_squared 87.897525
+lambda 0.050000
+Name: 0, dtype: float64</p>
+<pre class="python"><code># Best Model
+reg_best = Lasso(alpha = 0.144737)
+reg_best.fit(X_train, y_train)</code></pre>
+<p>Lasso(alpha=0.144737, copy_X=True, fit_intercept=True, max_iter=1000,
+normalize=False, positive=False, precompute=False, random_state=None,
+selection=‘cyclic’, tol=0.0001, warm_start=False)</p>
+<pre class="python"><code>from sklearn.metrics import mean_squared_error
+
+mean_squared_error(y_test, reg_best.predict(X_test))</code></pre>
+<p>3.635187490993961</p>
+<pre class="python"><code>reg_best.coef_</code></pre>
+<p>array([-0.34136411, -1.18223273, -0. , -3.27132984, 0. ,
+0.33262331, 0.71385488])</p>
+</div>
+</div>

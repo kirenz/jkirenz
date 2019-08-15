@@ -88,7 +88,7 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-12T10:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -100,24 +100,30 @@
   
   <url>
     <loc>/tags/statistics/</loc>
-    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-08-13-network_analysis/network_analysis/</loc>
-    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <loc>/categories/python/</loc>
+    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/2019-08-13-network_analysis/</loc>
+    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/statistics/</loc>
-    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -138,13 +144,13 @@
   </url>
   
   <url>
-    <loc>/post/2019-08-12-python-lasso-regression-auto/python-lasso-regression/</loc>
-    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
+    <loc>/post/2019-08-12-python-lasso-regression-auto/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2019-08-12T08:30:37+02:00</lastmod>
+    <loc>/categories/regression/</loc>
+    <lastmod>2019-08-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -168,6 +174,12 @@
   <url>
     <loc>/project/r-lasso-regression/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/regression/</loc>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -263,13 +275,13 @@
   </url>
   
   <url>
-    <loc>/categories/blogdown/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

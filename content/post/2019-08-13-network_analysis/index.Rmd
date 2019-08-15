@@ -1,22 +1,25 @@
 ---
-title: Network Analysis with Python
-date: '2019-08-13'
-#slug: network-analysis-python
+#aliases: [up-and-running-with-blogdown]
+#projects: [up-running-blogdown]
+title: Social Network Analysis with Python
+authors: [jan]
+date: '2019-08-15'
+tags: [Statistics]
 categories:
   - Statistics
-tags:
   - Python
-  - Statistics
-#subtitle: ''
-summary: 'Implementation of Network Analysis in Python with NetworkX'
-authors: [jan]
-#lastmod: '2019-08-13T00:00:00+02:00'
-#featured: no
+summary: Introduction to Social Network Analysis with NetworkX
 image:
-  caption: 'Network Analysis'
-  focal_point: 'smart'  
-#projects: []
+  caption: 'Social Network'
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+    toc_depth: 3
 ---
+
+# Social Network Analysis with NetworkX in Python
 
 We use the module [NetworkX](https://networkx.github.io/documentation/stable/) in this tutorial. It is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
 
@@ -29,7 +32,6 @@ conda install -c anaconda networkx
 **Import modules:**
 
 ```python
-#conda install -c anaconda networkx
 import networkx as nx
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -37,6 +39,7 @@ import warnings; warnings.simplefilter('ignore')
 ```
 
 ---
+
 
 ## Social Network Basics
 
@@ -113,7 +116,7 @@ nx.draw_networkx(G_asymmetric)
 ```
 
 
-![png](/post/2019-08-13-network_analysis/output_12_0.png)
+![](/post/2019-08-13-network_analysis/output_12_0.png)
 
 
 ### Weighted Networks
@@ -159,7 +162,7 @@ plt.show();
 ```
 
 
-![png](/post/2019-08-13-network_analysis/output_15_0.png)
+![](/post/2019-08-13-network_analysis/output_15_0.png)
 
 
 ## Clustering coefficient
@@ -273,7 +276,7 @@ nx.draw_networkx(S)
 ```
 
 
-![png](/post/2019-08-13-network_analysis/output_29_0.png)
+![](/post/2019-08-13-network_analysis/output_29_0.png)
 
 
 
@@ -283,7 +286,7 @@ nx.draw_networkx(M)
 ```
 
 
-![png](/post/2019-08-13-network_analysis/output_30_0.png)
+![](/post/2019-08-13-network_analysis/output_30_0.png)
 
 
 ### Eccentricity
@@ -436,7 +439,7 @@ plt.axis('off');
 ```
 
 
-![png](/post/2019-08-13-network_analysis/output_45_0.png)
+![](/post/2019-08-13-network_analysis/output_45_0.png)
 
 
 
@@ -568,7 +571,7 @@ plt.figure(figsize=(20,20))
 nx.draw_networkx(G_fb);
 ```
 
-![png](/post/2019-08-13-network_analysis/net1.png)
+![](/post/2019-08-13-network_analysis/net1.png)
 
 
 We can also visualize the network such that the node color varies with Degree and node size with Betweenness Centrality. The code to do this is:
@@ -585,7 +588,7 @@ nx.draw_networkx(G_fb, pos=pos, with_labels=False,
                  node_size=node_size )
 plt.axis('off');
 ```
-![png](/post/2019-08-13-network_analysis/net2.png)
+![](/post/2019-08-13-network_analysis/net2.png)
 
 You can also know the labels of the nodes with the highest betweenness centrality using:
 
