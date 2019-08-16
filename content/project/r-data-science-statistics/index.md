@@ -1,9 +1,10 @@
 ---
-title: Essential books for Data Science & Statistics with R
-authors: [alison]
+title: Free books to learn Data Science & Statistics with R
+authors: [jan]
 summary: Free resources to learn data science and statistics with R.
 categories:
 - Tutorial
+description: Free books to learn Data Science & Statistics with R
 tags:
 #- course
 #- tidyverse

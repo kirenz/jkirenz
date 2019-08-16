@@ -1,14 +1,15 @@
 ---
 aliases: [up-and-running-with-blogdown]
 projects: [up-running-blogdown]
-title: Up & Running with blogdown
+title: Create and publish a Website with R and Hugo
 authors: [jan]
 date: '2019-07-20'
 tags: [blogdown]
 categories:
   - blogdown
   - R
-summary: A guide to getting up and running with blogdown, GitHub, and Netlify
+summary: A guide to create and publish a website with RStudio, blogdown, Hugo, GitHub and Netlify
+description: A guide to create and publish a website with RStudio, blogdown, Hugo, GitHub and Netlify
 image:
   caption: '[Photo by Pankaj Patel on Unsplash](https://unsplash.com/photos/ZV_64LdGoao)'
   focal_point: ''
@@ -16,24 +17,39 @@ output:
   blogdown::html_page:
     toc: true
     number_sections: true
-    toc_depth: 1
+    toc_depth: 3
 ---
 
 
 <div id="TOC">
 <ul>
-<li><a href="#read-up-on-blogdown"><span class="toc-section-number">1</span> Read up on blogdown</a></li>
-<li><a href="#in-github"><span class="toc-section-number">2</span> In GitHub</a></li>
-<li><a href="#in-terminal"><span class="toc-section-number">3</span> In terminal</a></li>
-<li><a href="#in-rstudio"><span class="toc-section-number">4</span> In RStudio</a></li>
-<li><a href="#build-your-site-in-rstudio"><span class="toc-section-number">5</span> Build your site in RStudio</a></li>
+<li><a href="#introduction-to-blogdown"><span class="toc-section-number">1</span> Introduction to Blogdown</a></li>
+<li><a href="#github"><span class="toc-section-number">2</span> GitHub</a></li>
+<li><a href="#terminal-or-github-desktop"><span class="toc-section-number">3</span> Terminal or GitHub Desktop</a></li>
+<li><a href="#rstudio"><span class="toc-section-number">4</span> RStudio</a></li>
+<li><a href="#build-your-site-in-rstudio"><span class="toc-section-number">5</span> Build your site in RStudio</a><ul>
+<li><a href="#picking-a-theme"><span class="toc-section-number">5.1</span> Picking a theme</a></li>
+<li><a href="#update-project-options"><span class="toc-section-number">5.2</span> Update project options</a></li>
+<li><a href="#edit-your-configurations"><span class="toc-section-number">5.3</span> Edit your configurations</a></li>
+<li><a href="#addins-workflow"><span class="toc-section-number">5.4</span> Addins &amp; workflow</a></li>
+<li><a href="#posting"><span class="toc-section-number">5.5</span> Posting</a><ul>
+<li><a href="#draft-posts"><span class="toc-section-number">5.5.1</span> Draft posts</a></li>
+<li><a href="#new-markdown-posts"><span class="toc-section-number">5.5.2</span> New markdown posts</a></li>
+<li><a href="#new-r-markdown-.rmd-posts"><span class="toc-section-number">5.5.3</span> New R Markdown (.Rmd) posts</a></li>
+<li><a href="#adding-images-to-a-post"><span class="toc-section-number">5.5.4</span> Adding images to a post</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#deploy-in-netlify"><span class="toc-section-number">6</span> Deploy in Netlify</a></li>
-<li><a href="#going-further"><span class="toc-section-number">7</span> Going further</a></li>
+<li><a href="#going-further"><span class="toc-section-number">7</span> Going further</a><ul>
+<li><a href="#custom-css"><span class="toc-section-number">7.1</span> Custom CSS</a></li>
+<li><a href="#formspree"><span class="toc-section-number">7.2</span> Formspree</a></li>
+<li><a href="#rbind.io-domain-names"><span class="toc-section-number">7.3</span> <code>*.rbind.io</code> domain names</a></li>
+</ul></li>
 </ul>
 </div>
 
-<div id="read-up-on-blogdown" class="section level1">
-<h1><span class="header-section-number">1</span> Read up on blogdown</h1>
+<div id="introduction-to-blogdown" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction to Blogdown</h1>
 <p><em>The content below is taken from the excellent post <a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/">“Up &amp; Running with blogdown”</a> from Alison Hill</em></p>
 <p>Before you start, I recommend reading the following:</p>
 <ul>
@@ -55,8 +71,8 @@ output:
 <li><a href="https://bookdown.org/yihui/blogdown/netlify.html">“If you are not familiar with domain names or do not want to learn more about them, an option for your consideration is a free subdomain <code>*.rbind.io</code> offered by RStudio, Inc.”</a>.</li>
 </ul>
 </div>
-<div id="in-github" class="section level1">
-<h1><span class="header-section-number">2</span> In GitHub</h1>
+<div id="github" class="section level1">
+<h1><span class="header-section-number">2</span> GitHub</h1>
 <p><img src="blogdown-signpost-1.png" /></p>
 <ol style="list-style-type: decimal">
 <li><p>Go online to your <a href="https://github.com">GitHub</a> account, and create a new repository (check to initialize with a <code>README</code> but don’t add <code>.gitignore</code>- this will be taken care of later). For naming your repo, consider your future deployment plan:</p>
@@ -77,8 +93,8 @@ You can see some of the repo names used by members of the <code>rbind</code> org
 <li><p>In the <strong>Clone with HTTPs</strong> section, click on the clipboard icon to copy the clone URL for your new repository. You’ll paste this text into terminal in the next section.</p></li>
 </ol>
 </div>
-<div id="in-terminal" class="section level1">
-<h1><span class="header-section-number">3</span> In terminal</h1>
+<div id="terminal-or-github-desktop" class="section level1">
+<h1><span class="header-section-number">3</span> Terminal or GitHub Desktop</h1>
 <p><img src="blogdown-signpost-2.png" /></p>
 <p>Now you will <a href="https://help.github.com/articles/cloning-a-repository/">clone your remote repository</a> and create a local copy on your computer so you can sync between the two locations (using terminal or your alternative command line tool for a Windows machine). However, I recommend to use <a href="https://desktop.github.com">GitHub Desktop</a> instead of the terminal for the <a href="https://help.github.com/en/articles/cloning-a-repository#cloning-a-repository-to-github-desktop">cloning process</a>. If you instead would like to use the terminal, this is how you proceed:</p>
 <ol style="list-style-type: decimal">
@@ -97,8 +113,8 @@ Checking connectivity... done.</code></pre>
 <li>Close terminal, you are done in there.</li>
 </ol>
 </div>
-<div id="in-rstudio" class="section level1">
-<h1><span class="header-section-number">4</span> In RStudio</h1>
+<div id="rstudio" class="section level1">
+<h1><span class="header-section-number">4</span> RStudio</h1>
 <p><img src="blogdown-signpost-3.png" /></p>
 <ol style="list-style-type: decimal">
 <li>Install <code>blogdown</code> from your RStudio console. If you already have <code>devtools</code> installed like I did, you can just use the second line below:</li>
@@ -327,6 +343,6 @@ Anytime you change your subdomain name, you need to update the <code>baseurl</co
 <p>{{% alert note %}}
 Again, you will need to update the <code>baseurl</code> in your <code>config.toml</code> file to reflect your new rbind subdomain name (so Alison’s is baseurl = “<a href="https://alison.rbind.io/" class="uri">https://alison.rbind.io/</a>”).
 {{% /alert %}}</p>
-<p>That’s all for now.</p>
+<p>That’s it!</p>
 </div>
 </div>

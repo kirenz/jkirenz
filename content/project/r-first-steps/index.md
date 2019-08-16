@@ -2,6 +2,7 @@
 title: First Steps in R
 authors: [jan]
 summary: Learn Data Science with R
+description: Learn Data Science with R. How to install R and RStudio 
 categories:
 - course
 tags:

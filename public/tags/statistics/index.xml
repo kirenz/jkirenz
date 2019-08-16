@@ -1129,11 +1129,11 @@ ggplot(Advertising, aes(sales)) +
     </item>
     
     <item>
-      <title>Essential books for Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-stats/</link>
+      <title>Free books to learn Data Science &amp; Statistics with R</title>
+      <link>/project/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-stats/</guid>
+      <guid>/project/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 
 &lt;ul&gt;

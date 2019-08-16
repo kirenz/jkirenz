@@ -105,6 +105,41 @@
   </url>
   
   <url>
+    <loc>/tags/artificialintelligence/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/deeplearning/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/intro-machine-learning/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/machinelearning/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/tutorial/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/python/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -138,12 +173,6 @@
   </url>
   
   <url>
-    <loc>/project/</loc>
-    <lastmod>2019-08-12T10:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/post/2019-08-12-python-lasso-regression-auto/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
@@ -161,12 +190,6 @@
   
   <url>
     <loc>/tags/dataexploration/</loc>
-    <lastmod>2019-08-11T05:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/tutorial/</loc>
     <lastmod>2019-08-11T05:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -260,12 +283,7 @@
   </url>
   
   <url>
-    <loc>/authors/alison/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/r-data-science-stats/</loc>
+    <loc>/project/r-data-science-statistics/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -309,6 +327,10 @@
   <url>
     <loc>/license/</loc>
     <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/alison/</loc>
   </url>
   
   <url>

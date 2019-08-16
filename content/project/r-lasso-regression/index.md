@@ -2,6 +2,7 @@
 title: Lasso Regression with Python
 authors: [jan]
 summary: Introduction to Lasso Regression with Python.
+description: Introduction to Lasso Regression with Python.
 categories:
 - tutorial
 tags:

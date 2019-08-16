@@ -2,6 +2,7 @@
 title: Correlation Tutorial with R
 authors: [jan]
 summary: Introduction to correlation analysis with R.
+description: Introduction to Correlation Analysis with R. 
 categories:
 - tutorial
 tags:

@@ -2,6 +2,7 @@
 title: Linear Regression Tutorial with Python
 authors: [jan]
 summary: Introduction to essential concepts of linear regression with Python.
+description: Introduction to Linear Regression with Python.
 categories:
 - tutorial
 tags:

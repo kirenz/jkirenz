@@ -2,6 +2,7 @@
 title: Time Series Analysis with Python
 authors: [jan]
 summary: Introduction to ARIMA, SARIMAX & Facebook's Prophet
+summary: Time Series Analysis with Python. Introduction to ARIMA, SARIMAX and Facebook's Prophet
 categories:
 - tutorial
 tags:

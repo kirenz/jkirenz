@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>tutorial</title>
+      <link>/categories/tutorial/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Python</title>
       <link>/categories/python/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
@@ -54,15 +63,6 @@
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tutorial</title>
-      <link>/categories/tutorial/</link>
-      <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
-      
-      <guid>/categories/tutorial/</guid>
       <description></description>
     </item>
     

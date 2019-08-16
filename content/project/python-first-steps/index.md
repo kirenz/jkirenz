@@ -2,6 +2,7 @@
 title: First Steps in Python
 authors: [jan]
 summary: Learn Data Science with Python
+description: First Steps in Python. Learn Data Science with Python
 categories:
 - course
 tags:

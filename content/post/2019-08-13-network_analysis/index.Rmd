@@ -9,6 +9,7 @@ categories:
   - Statistics
   - Python
 summary: Introduction to Social Network Analysis with NetworkX
+description: Social Network Analysis with NetworkX in Python
 image:
   caption: 'Social Network'
   focal_point: ''

@@ -1,14 +1,15 @@
 ---
 aliases: [up-and-running-with-blogdown]
 projects: [up-running-blogdown]
-title: Up & Running with blogdown
+title: Create and publish a Website with R and Hugo
 authors: [jan]
 date: '2019-07-20'
 tags: [blogdown]
 categories:
   - blogdown
   - R
-summary: A guide to getting up and running with blogdown, GitHub, and Netlify
+summary: A guide to create and publish a website with RStudio, blogdown, Hugo, GitHub and Netlify
+description: A guide to create and publish a website with RStudio, blogdown, Hugo, GitHub and Netlify
 image:
   caption: '[Photo by Pankaj Patel on Unsplash](https://unsplash.com/photos/ZV_64LdGoao)'
   focal_point: ''
@@ -16,7 +17,7 @@ output:
   blogdown::html_page:
     toc: true
     number_sections: true
-    toc_depth: 1
+    toc_depth: 3
 ---
 
 ```{r include = FALSE}
@@ -24,7 +25,7 @@ knitr::opts_chunk$set(eval = FALSE, collapse = TRUE, comment = NA, tidy = FALSE)
 ```
 
 
-# Read up on blogdown
+# Introduction to Blogdown
 
 *The content below is taken from the excellent post ["Up & Running with blogdown"](https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/) from Alison Hill*
 
@@ -50,7 +51,7 @@ Introduction to static site generators and how domain names work:
 
 
 
-# In GitHub
+# GitHub
 
 ![](blogdown-signpost-1.png)
 
@@ -70,7 +71,7 @@ You can see some of the repo names used by members of the `rbind` organization [
 
 3. In the **Clone with HTTPs** section, click on the clipboard icon to copy the clone URL for your new repository. You'll paste this text into terminal in the next section.
     
-# In terminal
+# Terminal or GitHub Desktop
 
 ![](blogdown-signpost-2.png)
 
@@ -97,7 +98,7 @@ Checking connectivity... done.
 
 3. Close terminal, you are done in there.
 
-# In RStudio 
+# RStudio 
 
 ![](blogdown-signpost-3.png)
 
@@ -396,6 +397,4 @@ You may want a different [domain name](https://bookdown.org/yihui/blogdown/domai
 Again, you will need to update the `baseurl` in your `config.toml` file to reflect your new rbind subdomain name (so Alison's is baseurl = "https://alison.rbind.io/").
 {{% /alert %}}
 
-That's all for now. 
-
-
+That's it!

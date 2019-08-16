@@ -18,6 +18,7 @@ links:
   name: Demo site
   url: https://blogdown-demo.rbind.io/
 summary: A practical guide for creating websites using the blogdown package in R
+description: A practical guide for creating websites using the blogdown package in R
 tags:
 - book
 - DataReporting
