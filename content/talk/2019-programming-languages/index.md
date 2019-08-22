@@ -16,7 +16,7 @@ date_end: "2019-11-11T17:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2019-08-08T00:00:00Z"
+publishDate: "2019-08-17T00:00:00Z"
 categories:
   - Seminar
 tags:

@@ -13,7 +13,7 @@ date_end: "2020-01-30T10:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2019-06-01T00:00:00Z"
+publishDate: "2019-08-016T00:00:00Z"
 
 authors: [jan]
 tags: [DataScience]
