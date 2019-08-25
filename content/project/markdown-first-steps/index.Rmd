@@ -28,6 +28,10 @@ links:
   url: https://www.markdownguide.org/basic-syntax
 ---
 
+- HTML-presentation ["First Steps in Markdown"](/slides/markdown-first-steps/markdown-guide.html) (created in Markdown with the [R Xaringan package](https://www.kirenz.com/project/r-xaringan/).
+
+---
+
 Markdown is one of the world’s most popular markup languages used in data science. Both **R Markdown** and **Jupyter Notebooks** use **Markdown** to provide an unified authoring framework for data science, combining code (Python, R, SQL,...), its results, and commentary in Markdown. The documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.
 
 According to Wickham & Grolemund (2016), Markdown files are designed to be used in three ways:
@@ -39,9 +43,4 @@ According to Wickham & Grolemund (2016), Markdown files are designed to be used 
 - As an environment in which to do data science, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.
 
 
-**Material:**
-
-*[Introduction to network presentation slides](/slides/markdown-first-steps/markdown-guide.html)
-
-
-*[Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O'Reilly Media, Inc.](https://r4ds.had.co.nz/r-markdown.html)*
+[Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O'Reilly Media, Inc.](https://r4ds.had.co.nz/r-markdown.html)
