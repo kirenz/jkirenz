@@ -18,7 +18,7 @@ links:
 - icon: file
   icon_pack: fas
   name: demo slides
-  url: /slides/Social_Network_Analysis_Networkx/index.html
+  url: /slides/Social_Network_Analysis_Networkx/social-network-analysis.html
 #- icon: github
 #  icon_pack: fab
 #  name: demo code
@@ -33,6 +33,6 @@ NetworkX is a Python package for the creation, manipulation, and study of the st
 
 **Material:**
 
-* [Introduction to network presentation slides](/slides/Social_Network_Analysis_Networkx/index.html)
+* [Introduction to network presentation slides](/slides/Social_Network_Analysis_Networkx/social-network-analysis.html)
 * [Network analysis tasks with code templates](https://docs.google.com/spreadsheets/d/13samMteoTnAkUoHul1iV5pA0bc4qmYjGge019HcT1F4/edit?usp=sharing)
 

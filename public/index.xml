@@ -100,7 +100,7 @@
     </item>
     
     <item>
-      <title>Free Resources to Learn the Basics of Artificial Intelligence, Machine  Learning and Deep Learning</title>
+      <title>Learn the Basics of AI</title>
       <link>/project/intro-machine-learning/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
@@ -530,7 +530,7 @@ plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Material:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/slides/Social_Network_Analysis_Networkx/index.html&#34;&gt;Introduction to network presentation slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/slides/Social_Network_Analysis_Networkx/social-network-analysis.html&#34;&gt;Introduction to network presentation slides&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/13samMteoTnAkUoHul1iV5pA0bc4qmYjGge019HcT1F4/edit?usp=sharing&#34;&gt;Network analysis tasks with code templates&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

@@ -1,7 +1,7 @@
 ---
-title: Free Resources to Learn the Basics of Artificial Intelligence, Machine  Learning and Deep Learning
+title: Learn the Basics of AI
 authors: [jan]
-summary:
+summary: Free Resources to Learn the Basics of Artificial Intelligence, Machine  Learning and Deep Learning
 description: Free Resources to Learn the Basics of Artificial Intelligence, Machine  Learning and Deep Learning.
 categories:
 - Tutorial
