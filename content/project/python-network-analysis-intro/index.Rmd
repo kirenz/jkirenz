@@ -3,7 +3,7 @@ title: Introduction to Network Analysis with Python
 date: "2019-08-12T10:00:00Z"
 external_link: ""
 image:
-  caption: "[Photo by Teemu Paananen on Unsplash](https://unsplash.com/photos/bzdhc5b3Bxs)"
+  caption: "Social Network"
   focal_point: Smart
 summary: Network Analysis with the Python module NetworkX
 description: Learn Network Analysis with the Python module NetworkX

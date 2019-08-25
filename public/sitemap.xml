@@ -105,6 +105,23 @@
   </url>
   
   <url>
+    <loc>/project/markdown-first-steps/</loc>
+    <lastmod>2019-08-25T10:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/markdown/</loc>
+    <lastmod>2019-08-25T10:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2019-08-25T10:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/artificialintelligence/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -123,12 +140,6 @@
   
   <url>
     <loc>/tags/machinelearning/</loc>
-    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -293,13 +304,13 @@
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/blogdown/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

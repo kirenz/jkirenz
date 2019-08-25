@@ -76,6 +76,28 @@
     </item>
     
     <item>
+      <title>First Steps in Markdown</title>
+      <link>/project/markdown-first-steps/</link>
+      <pubDate>Sun, 25 Aug 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/markdown-first-steps/</guid>
+      <description>
+
+
+&lt;p&gt;Markdown is one of the world’s most popular markup languages used in data science. Both &lt;strong&gt;R Markdown&lt;/strong&gt; and &lt;strong&gt;Jupyter Notebooks&lt;/strong&gt; use &lt;strong&gt;Markdown&lt;/strong&gt; to provide an unified authoring framework for data science, combining code (Python, R, SQL,…), its results, and commentary in Markdown. The documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.&lt;/p&gt;
+&lt;p&gt;According to Wickham &amp;amp; Grolemund (2016), Markdown files are designed to be used in three ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;For communicating to decision makers, who want to focus on the conclusions, not the code behind the analysis.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;For collaborating with other data scientists, who are interested in both your conclusions, and how you reached them ( i.e. the code).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;As an environment in which to do data science, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Material:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;*&lt;a href=&#34;/slides/markdown-first-steps/markdown-guide.html&#34;&gt;Introduction to network presentation slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://r4ds.had.co.nz/r-markdown.html&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O’Reilly Media, Inc.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Free Resources to Learn the Basics of Artificial Intelligence, Machine  Learning and Deep Learning</title>
       <link>/project/intro-machine-learning/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
