@@ -1,0 +1,58 @@
+---
+title: Programming Languages for Data Science
+date: "2019-09-03T10:00:00Z"
+external_link: ""
+image:
+  caption: "[Photo by Teemu Paananen on Unsplash](https://unsplash.com/photos/bzdhc5b3Bxs)"
+  focal_point: Smart
+summary: Unterlagen für Programming Languages for Data Science.
+description: Unterlagen für das Seminar Programming Languages for Data Science - SQL, R, Markdown, PostgreSQL. 
+tags:
+- R
+- SQL
+- Markdown
+- DataScience
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+links:
+#- icon: file
+#  icon_pack: fas
+#  name: demo slides
+#  url: ../../slides/r-for-data-science/r-for-data-science.html
+#- icon: github
+#  icon_pack: fab
+#  name: demo code
+#  url: https://github.com/kirenz/xaringan/blob/master/xaringan-demo-slides.Rmd
+#- icon: book
+#  icon_pack: fas
+#  name: Documentation
+#  url: https://slides.yihui.name/xaringan/#1
+---
+
+## Einführung
+
+* [Einführung in Business Intelligence]()
+
+* Data Science mit R
+
+* Markdown
+
+---
+
+## SQL
+
+* Datenexploration mit SELECT
+
+* Datentypen
+
+* Gruppieren und Aggregieren
+
+* Tabellen verbinden (Joins)
+
+* Tabellen modifizieren
+
+* Subqueries
+
+* Gapminder
