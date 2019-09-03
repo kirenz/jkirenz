@@ -56,6 +56,8 @@ links:
 
 * Subqueries
 
+* [Microsoft Azure SQL Database](https://github.com/kirenz/microsoft_azure_sql_database)
+
 
 _Literatur:_  
 
@@ -81,6 +83,10 @@ DeBarros, A. (2018). Practical SQL: A Beginner's Guide to Storytelling with Data
 * [Natural Language Processing with R](https://www.dropbox.com/sh/zsqxpdpe99mrqss/AACZypuVKWEOmceaddxGlRBJa?dl=0)
 
 * [Advanced Programming in R, Part I](https://www.dropbox.com/s/q7up3x819bg44f4/r-programming.pdf?dl=0)
+
+* [Erstellung von interaktiven Tutorials in R](https://github.com/kirenz/interaktive_tutorials_mit_r_erstellen)
+
+
 
 
 _Literatur:_  
