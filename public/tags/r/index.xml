@@ -52,6 +52,46 @@
     </item>
     
     <item>
+      <title>Programming Languages for Data Science</title>
+      <link>/project/programming-languages/</link>
+      <pubDate>Tue, 03 Sep 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/programming-languages/</guid>
+      <description>
+
+
+&lt;div id=&#34;agenda&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Agenda&lt;/h1&gt;
+&lt;div id=&#34;einfuhrung&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Einführung&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.kirenz.com/slides/intro-business-intelligence/assets/player/keynotedhtmlplayer#0&#34;&gt;Einführung in Business Intelligence&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.kirenz.com/slides/r-for-data-science/assets/player/keynotedhtmlplayer#0&#34;&gt;Data Science mit R&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.kirenz.com/slides/markdown-first-steps/markdown-guide.html#1&#34;&gt;First steps in Markdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sql&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;SQL&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Datenexploration mit SELECT&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Datentypen&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Gruppieren und Aggregieren&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Tabellen verbinden (Joins)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Tabellen modifizieren&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Subqueries&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Gapminder&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-for-data-science&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R for Data Science&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Correlation Tutorial with R</title>
       <link>/project/r-correlation-tutorial/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>

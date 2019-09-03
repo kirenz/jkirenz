@@ -3,7 +3,7 @@ title: Programming Languages for Data Science
 date: "2019-09-03T10:00:00Z"
 external_link: ""
 image:
-  caption: "[Photo by Teemu Paananen on Unsplash](https://unsplash.com/photos/bzdhc5b3Bxs)"
+  caption: "[Photo by Markus Spiske on Unsplash](https://unsplash.com/photos/8OyKWQgBsKQ)"
   focal_point: Smart
 summary: Unterlagen für Programming Languages for Data Science.
 description: Unterlagen für das Seminar Programming Languages for Data Science - SQL, R, Markdown, PostgreSQL. 
@@ -31,13 +31,15 @@ links:
 #  url: https://slides.yihui.name/xaringan/#1
 ---
 
+# Agenda
+
 ## Einführung
 
-* [Einführung in Business Intelligence]()
+* [Einführung in Business Intelligence](https://www.kirenz.com/slides/intro-business-intelligence/assets/player/keynotedhtmlplayer#0)
 
-* Data Science mit R
+* [Data Science mit R](https://www.kirenz.com/slides/r-for-data-science/assets/player/keynotedhtmlplayer#0)
 
-* Markdown
+* [First steps in Markdown](https://www.kirenz.com/slides/markdown-first-steps/markdown-guide.html#1)
 
 ---
 
@@ -56,3 +58,9 @@ links:
 * Subqueries
 
 * Gapminder
+
+---
+
+## R for Data Science
+
+
