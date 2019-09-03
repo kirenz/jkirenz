@@ -37,7 +37,6 @@ links:
 
 * [Einführung in Business Intelligence](https://www.kirenz.com/slides/intro-business-intelligence/assets/player/keynotedhtmlplayer#0)
 
-* [Data Science mit R](https://www.kirenz.com/slides/r-for-data-science/assets/player/keynotedhtmlplayer#0)
 
 * [First steps in Markdown](https://www.kirenz.com/slides/markdown-first-steps/markdown-guide.html#1)
 
@@ -45,9 +44,9 @@ links:
 
 ## SQL
 
-* Datenexploration mit SELECT
+* Datenexploration (Selektieren, Ordnen und Filtern)
 
-* Datentypen
+* Datentypen und Datentransformationen
 
 * Gruppieren und Aggregieren
 
@@ -57,10 +56,42 @@ links:
 
 * Subqueries
 
-* Gapminder
+
+_Literatur:_  
+
+DeBarros, A. (2018). Practical SQL: A Beginner's Guide to Storytelling with Data. No Starch Press.  
+
 
 ---
 
 ## R for Data Science
+
+* [First Steps in R](https://www.dropbox.com/s/ul7btvtp30627s6/R_overview.pdf?dl=0)
+
+* [Introduction to Data Science with R](https://www.kirenz.com/slides/r-for-data-science/assets/player/keynotedhtmlplayer#0)
+
+* [Einführung in die deskriptive Statistik in R](https://www.kirenz.de/post/2019-08-01-r-descriptive-statistics/)
+
+* [Basic Analytics in R](https://www.dropbox.com/sh/wmbf2syk2ijpbyn/AAAH5jPQUbmE5wGiiWCTzePEa?dl=0)
+
+* [Data Exploration in R](https://www.dropbox.com/sh/rjvsa79zx76h67w/AADx2bd4_cifjwnHTlQyAen6a?dl=0)
+
+* Correlation Analysis in R, [interactive  module](https://www.dropbox.com/sh/png707v3hn1wt6l/AAAmtxYR43bPZASY2ILzMT7Ea?dl=0), [HTML](https://www.dropbox.com/s/ob14w7jrwa7mv30/Correlation.html?dl=0)
+
+* [Natural Language Processing with R](https://www.dropbox.com/sh/zsqxpdpe99mrqss/AACZypuVKWEOmceaddxGlRBJa?dl=0)
+
+* [Advanced Programming in R, Part I](https://www.dropbox.com/s/q7up3x819bg44f4/r-programming.pdf?dl=0)
+
+
+_Literatur:_  
+
+
+* [Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O'Reilly Media, Inc.](https://r4ds.had.co.nz)
+
+* [Wickham, H. (2019). Advanced r. Chapman and Hall/CRC.](https://adv-r.hadley.nz) 
+
+* [Silge, J., & Robinson, D. (2017). Text mining with R: A tidy approach. "O'Reilly Media, Inc."](https://www.tidytextmining.com)
+
+* [Xie, Y. (2019). Bookdown: Authoring Books and Technical Documents with R Markdown. Chapman and Hall/CRC.](https://bookdown.org/yihui/bookdown/)
 
 
