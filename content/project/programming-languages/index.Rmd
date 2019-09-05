@@ -68,23 +68,22 @@ DeBarros, A. (2018). Practical SQL: A Beginner's Guide to Storytelling with Data
 
 ## R for Data Science
 
-* [First Steps in R](https://www.dropbox.com/s/ul7btvtp30627s6/R_overview.pdf?dl=0)
+* First Steps in R
 
 * [Introduction to Data Science with R](https://www.kirenz.com/slides/r-for-data-science/assets/player/keynotedhtmlplayer#0)
 
-* [Einführung in die deskriptive Statistik in R](https://www.kirenz.de/post/2019-08-01-r-descriptive-statistics/)
 
-* [Basic Analytics in R](https://www.dropbox.com/sh/wmbf2syk2ijpbyn/AAAH5jPQUbmE5wGiiWCTzePEa?dl=0)
+* Basic Analytics in R
 
-* [Data Exploration in R](https://www.dropbox.com/sh/rjvsa79zx76h67w/AADx2bd4_cifjwnHTlQyAen6a?dl=0)
+* Data Exploration in R
 
-* Correlation Analysis in R, [interactive  module](https://www.dropbox.com/sh/png707v3hn1wt6l/AAAmtxYR43bPZASY2ILzMT7Ea?dl=0), [HTML](https://www.dropbox.com/s/ob14w7jrwa7mv30/Correlation.html?dl=0)
+* Correlation Analysis in R
 
-* [Natural Language Processing with R](https://www.dropbox.com/sh/zsqxpdpe99mrqss/AACZypuVKWEOmceaddxGlRBJa?dl=0)
+* Natural Language Processing with R
 
-* [Advanced Programming in R, Part I](https://www.dropbox.com/s/q7up3x819bg44f4/r-programming.pdf?dl=0)
+* Advanced Programming in R
 
-* [Erstellung von interaktiven Tutorials in R](https://github.com/kirenz/interaktive_tutorials_mit_r_erstellen)
+* Erstellung von interaktiven Tutorials in R
 
 
 
