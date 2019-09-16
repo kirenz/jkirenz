@@ -76,6 +76,2302 @@
     </item>
     
     <item>
+      <title>Text Mining in R</title>
+      <link>/post/2019-09-16-r-text-mining/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-09-16-r-text-mining/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introdution-to-textmining-in-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Introdution to Textmining in R&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#installation-of-r-packages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Installation of R packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-import&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Data import&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-transformation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Data transformation&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#tokenization&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Tokenization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stop-words&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; Stop words&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploratory-data-analysis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Exploratory data analysis&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#term-frequency-tf&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Term frequency (tf)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#term-frequency-and-inverse-document-frequency-tf-idf&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Term frequency and inverse document frequency (tf-idf)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tokenizing-by-n-gram&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Tokenizing by n-gram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#network-analysis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; Network analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#classification-with-logistic-regression&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Classification with logistic regression&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#train-test-split&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Train test split&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#training-data-sparse-matrix&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Training data (sparse matrix)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#response-variable&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; Response variable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#logistic-regression-model&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.4&lt;/span&gt; Logistic regression model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#model-evaluation-with-test-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.5&lt;/span&gt; Model evaluation with test data&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introdution-to-textmining-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Introdution to Textmining in R&lt;/h1&gt;
+&lt;p&gt;This post demonstrates how various R packages can be used for text mining in R. In particular, we start with common text transformations, perform various data explorations with term frequency (tf) and inverse document frequency (idf) and build a supervised classifiaction model that learns the difference between texts of different authors.&lt;/p&gt;
+&lt;p&gt;The content of this tutorial is based on the excellent book &lt;a href=&#34;https://www.tidytextmining.com&#34;&gt;“Textmining with R (2019)”&lt;/a&gt; from Julia Silge and David Robinson and the blog post &lt;a href=&#34;https://www.r-bloggers.com/text-classification-with-tidy-data-principles/&#34;&gt;“Text classification with tidy data principles (2018)”&lt;/a&gt; from Julia Silges.&lt;/p&gt;
+&lt;div id=&#34;installation-of-r-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Installation of R packages&lt;/h2&gt;
+&lt;p&gt;If you like to install all packages at once, use the code below.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(c(&amp;quot;dplyr&amp;quot;, &amp;quot;gutenbergr&amp;quot;, &amp;quot;stringr&amp;quot;, &amp;quot;tidytext&amp;quot;, &amp;quot;tidyr&amp;quot;,
+                   &amp;quot;stopwords&amp;quot;, &amp;quot;wordcloud&amp;quot;, &amp;quot;rsample&amp;quot;, &amp;quot;glmnet&amp;quot;, 
+                   &amp;quot;doMC&amp;quot;, &amp;quot;forcats&amp;quot;, &amp;quot;broom&amp;quot;, &amp;quot;igraph&amp;quot;, &amp;quot;ggraph&amp;quot;)) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-import&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; Data import&lt;/h2&gt;
+&lt;p&gt;We can access the full texts of various books from “Project Gutenberg” via the &lt;a href=&#34;https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html&#34;&gt;&lt;code&gt;gutenbergr&lt;/code&gt; package&lt;/a&gt;. We can look up certain authors or titles with a regular expression using the &lt;code&gt;stringr&lt;/code&gt; package. All functions in &lt;code&gt;stringr&lt;/code&gt; start with &lt;code&gt;str_&lt;/code&gt;and take a vector of strings as the first argument. To learn more about stringr, visit the &lt;a href=&#34;https://stringr.tidyverse.org&#34;&gt;stringr documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gutenbergr)
+library(stringr)
+
+doyle &amp;lt;- gutenberg_works(str_detect(author, &amp;quot;Doyle&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+gutenberg_id
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+title
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+gutenberg_author_id
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+language
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+gutenberg_bookshelf
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+rights
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+has_text
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+108
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+The Return of Sherlock Holmes
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Doyle, Arthur Conan
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+69
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+en
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Detective Fiction
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Public domain in the USA.
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+TRUE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+126
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+The Poison Belt
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Doyle, Arthur Conan
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+69
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+en
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Science Fiction
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Public domain in the USA.
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+TRUE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+139
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+The Lost World
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Doyle, Arthur Conan
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+69
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+en
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Science Fiction
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Public domain in the USA.
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+TRUE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+244
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A Study in Scarlet
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Doyle, Arthur Conan
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+69
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+en
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Detective Fiction
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Public domain in the USA.
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+TRUE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We obtain &lt;em&gt;“Relativity: The Special and General Theory”&lt;/em&gt; by Albert Einstein (gutenberg_id: 30155) and &lt;em&gt;“Experiments with Alternate Currents of High Potential and High Frequency”&lt;/em&gt; by Nikola Tesla (gutenberg_id: 13476) from gutenberg and add the column “author” to the result.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gutenbergr)
+
+books &amp;lt;- gutenberg_download(c(30155, 13476), meta_fields = &amp;quot;author&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Furthermore, we transfrom the data to a &lt;a href=&#34;https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html&#34;&gt;tibble&lt;/a&gt; (tibbles are a modern take on data frames), add the row number with the column name &lt;code&gt;document&lt;/code&gt; to the tibble and drop the column &lt;code&gt;gutenberg_id&lt;/code&gt;. We will use the information in column &lt;code&gt;document&lt;/code&gt; to train a model that can take an individual line (row) and give us a probability that the text in this particular line comes from a certain author.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+
+books &amp;lt;- as_tibble(books) %&amp;gt;% 
+  mutate(document = row_number()) %&amp;gt;% 
+  select(-gutenberg_id)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+text
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+document
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+EXPERIMENTS WITH ALTERNATE CURRENTS OF HIGH POTENTIAL AND HIGH FREQUENCY
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+A Lecture Delivered before the Institution of Electrical Engineers, London
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+by
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NIKOLA TESLA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-transformation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Data transformation&lt;/h1&gt;
+&lt;div id=&#34;tokenization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Tokenization&lt;/h2&gt;
+&lt;p&gt;First of all, we need to both break the text into individual tokens (a process called &lt;strong&gt;tokenization&lt;/strong&gt;) and transform it to a tidy data structure (i.e. each variable must have its own column, each observation must have its own row and each value must have its own cell). To do this, we use tidytext’s &lt;code&gt;unnest_tokens()&lt;/code&gt; function. We also remove the &lt;em&gt;rarest words&lt;/em&gt; in that step, keeping only words in our dataset that occur more than 10 times.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+library(tidytext)
+
+tidy_books &amp;lt;- books %&amp;gt;%
+  unnest_tokens(word, text) %&amp;gt;%
+  group_by(word) %&amp;gt;%
+  filter(n() &amp;gt; 10) %&amp;gt;%
+  ungroup()&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+document
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+experiments
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+with
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+alternate
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+currents
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+of
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+high
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+potential
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+and
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;stop-words&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; Stop words&lt;/h2&gt;
+&lt;p&gt;Now that the data is in a tidy “one-word-per-row” format, we can manipulate it with packages like &lt;code&gt;dplyr&lt;/code&gt;. Often in text analysis, we will want to remove &lt;strong&gt;stop words&lt;/strong&gt;: Stop words are words that are not useful for an analysis, typically extremely common words such as “the”, “of”, “to”, and so forth. We can remove stop words in our data by using the stop words provided in the package &lt;code&gt;stopwords&lt;/code&gt; with an &lt;code&gt;anti_join()&lt;/code&gt; from the package &lt;code&gt;dplyr&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stopwords) 
+library(dplyr)
+library(tibble)
+
+stopword &amp;lt;- as_tibble(stopwords::stopwords(&amp;quot;en&amp;quot;)) 
+stopword &amp;lt;- rename(stopword, word=value)
+tb &amp;lt;- anti_join(tidy_books, stopword, by = &amp;#39;word&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+document
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+experiments
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+alternate
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+currents
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+high
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+potential
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+high
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+frequency
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lecture
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The tidy data structure allows different types of exploratory data analysis (EDA), which we turn to next.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Exploratory data analysis&lt;/h1&gt;
+&lt;div id=&#34;term-frequency-tf&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Term frequency (tf)&lt;/h2&gt;
+&lt;p&gt;An important question in text mining is how to quantify what a document is about. One measure of how important a word may be is its &lt;strong&gt;term frequency&lt;/strong&gt; (tf), i.e. how frequently a word occurs in a document.&lt;/p&gt;
+&lt;p&gt;We can start by using &lt;code&gt;dplyr&lt;/code&gt; to explore the most commonly used words.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+
+word_count &amp;lt;- count(tb, word, sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+one
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+239
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+230
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+may
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+224
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+can
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+194
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+relativity
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+193
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Term frequency by author:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+
+author_count &amp;lt;-  tb %&amp;gt;% 
+  count(author, word, sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+relativity
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+193
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+may
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+184
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+theory
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+181
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+bulb
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+171
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+coil
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+166
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+high
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+166
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+156
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+one
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+156
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reference
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+150
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tube
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+147
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Plot terms with a frequency greater than 100:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+library(ggplot2)
+
+tb %&amp;gt;%
+  count(author, word, sort = TRUE) %&amp;gt;%
+  filter(n &amp;gt; 100) %&amp;gt;%
+  mutate(word = reorder(word, n)) %&amp;gt;%
+  ggplot(aes(word, n)) +
+  geom_col(aes(fill=author)) +
+  xlab(NULL) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  theme_classic(base_size = 12) +
+  labs(fill= &amp;quot;Author&amp;quot;, title=&amp;quot;Word frequency&amp;quot;, subtitle=&amp;quot;n &amp;gt; 100&amp;quot;)+
+  theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
+  scale_fill_brewer() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Plot top 20 terms by author:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+tb %&amp;gt;%
+  count(author, word, sort = TRUE) %&amp;gt;%
+  group_by(author) %&amp;gt;%
+  top_n(20) %&amp;gt;%
+  ungroup() %&amp;gt;%
+  ggplot(aes(reorder_within(word, n, author), n,
+    fill = author)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  scale_x_reordered() +
+  coord_flip() +
+  facet_wrap(~author, scales = &amp;quot;free&amp;quot;) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic(base_size = 12) +
+  labs(fill= &amp;quot;Author&amp;quot;, 
+       title=&amp;quot;Most frequent words&amp;quot;, 
+       subtitle=&amp;quot;Top 20 words by book&amp;quot;,
+       x= NULL, 
+       y= &amp;quot;Word Count&amp;quot;)+
+  theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
+  scale_fill_brewer()   &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You may notice expressions like “_k”, “co” in the Einstein text and “fig” in the Tesla text. Let’s remove these and other less meaningful words with a custom list of stop words and use anti_join() to remove them.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;newstopwords &amp;lt;- tibble(word = c(&amp;quot;eq&amp;quot;, &amp;quot;co&amp;quot;, &amp;quot;rc&amp;quot;, &amp;quot;ac&amp;quot;, &amp;quot;ak&amp;quot;, &amp;quot;bn&amp;quot;, 
+                                   &amp;quot;fig&amp;quot;, &amp;quot;file&amp;quot;, &amp;quot;cg&amp;quot;, &amp;quot;cb&amp;quot;, &amp;quot;cm&amp;quot;,
+                               &amp;quot;ab&amp;quot;, &amp;quot;_k&amp;quot;, &amp;quot;_k_&amp;quot;, &amp;quot;_x&amp;quot;))
+
+tb &amp;lt;- anti_join(tb, newstopwords, by = &amp;quot;word&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we plot the data again without the new stopwords:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+tb %&amp;gt;%
+  count(author, word, sort = TRUE) %&amp;gt;%
+  group_by(author) %&amp;gt;%
+  top_n(20) %&amp;gt;%
+  ungroup() %&amp;gt;%
+  ggplot(aes(reorder_within(word, n, author), n,
+    fill = author)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  scale_x_reordered() +
+  coord_flip() +
+  facet_wrap(~author, scales = &amp;quot;free&amp;quot;) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic(base_size = 12) +
+  labs(fill= &amp;quot;Author&amp;quot;, 
+       title=&amp;quot;Most frequent words after removing stop words&amp;quot;, 
+       subtitle=&amp;quot;Top 20 words by book&amp;quot;,
+       x= NULL, 
+       y= &amp;quot;Word Count&amp;quot;)+
+  theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
+  scale_fill_brewer()   &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You also may want to visualize the most frequent terms as a simple word cloud:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(wordcloud)
+
+tb %&amp;gt;%
+  count(word) %&amp;gt;%
+  with(wordcloud(word, n, max.words = 15))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;term-frequency-and-inverse-document-frequency-tf-idf&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Term frequency and inverse document frequency (tf-idf)&lt;/h2&gt;
+&lt;p&gt;Term frequency is a useful measure to determine how frequently a word occurs in a document. There are words in a document, however, that occur many times but may not be important.&lt;/p&gt;
+&lt;p&gt;Another approach is to look at a term’s &lt;strong&gt;inverse document frequency (idf)&lt;/strong&gt;, which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. This can be combined with term frequency to calculate a term’s tf-idf (the two quantities multiplied together), the frequency of a term adjusted for how rarely it is used.&lt;/p&gt;
+&lt;p&gt;The inverse document frequency for any given term is defined as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hence, term frequency and inverse document frequency allows us to find words that are characteristic for one document within a collection of documents. The &lt;code&gt;tidytext&lt;/code&gt; package uses an implementation of tf-idf consistent with tidy data principles that enables us to see how different words are important in documents within a collection or corpus of documents.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(forcats)
+
+plot_tb &amp;lt;- tb %&amp;gt;%
+  count(author, word, sort = TRUE) %&amp;gt;%
+  bind_tf_idf(word, author, n) %&amp;gt;%
+  mutate(word = fct_reorder(word, tf_idf)) %&amp;gt;%
+  mutate(author = factor(author, 
+                         levels = c(&amp;quot;Tesla, Nikola&amp;quot;,
+                                    &amp;quot;Einstein, Albert&amp;quot;)))
+
+plot_tb %&amp;gt;% 
+  group_by(author) %&amp;gt;% 
+  top_n(15, tf_idf) %&amp;gt;% 
+  ungroup() %&amp;gt;%
+  mutate(word = reorder(word, tf_idf)) %&amp;gt;%
+  ggplot(aes(word, tf_idf, fill = author)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = NULL, y = &amp;quot;tf-idf&amp;quot;) +
+  facet_wrap(~author, ncol = 2, scales = &amp;quot;free&amp;quot;) +
+  coord_flip() +
+  theme_classic(base_size = 12) +
+  labs(fill= &amp;quot;Author&amp;quot;, 
+       title=&amp;quot;Term frequency and inverse document frequency (tf-idf)&amp;quot;, 
+       subtitle=&amp;quot;Top 20 words by book&amp;quot;,
+       x= NULL, 
+       y= &amp;quot;tf-idf&amp;quot;) +
+  theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
+  scale_fill_brewer()  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In particular, the &lt;code&gt;bind_tf_idf&lt;/code&gt; function in the &lt;code&gt;tidytext&lt;/code&gt; package takes a tidy text dataset as input with one row per token (term), per document. One column (word here) contains the terms/tokens, one column contains the documents (authors in this case), and the last necessary column contains the counts, how many times each document contains each term (n in this example).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tf_idf &amp;lt;- tb %&amp;gt;%
+  count(author, word, sort = TRUE) %&amp;gt;%
+  bind_tf_idf(word, author, n)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+tf
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+idf
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+tf_idf
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+relativity
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+193
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0177831
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.6931472
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0123263
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+may
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+184
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0139436
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+theory
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+181
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0166774
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.6931472
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0115599
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+bulb
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+171
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0129585
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.6931472
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0089821
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+coil
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+166
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0125796
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.6931472
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0087195
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+high
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+166
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0125796
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+156
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0143739
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+one
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+156
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0118218
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reference
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+150
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0138211
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+tube
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+147
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0111397
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Notice that &lt;em&gt;idf&lt;/em&gt; and thus &lt;em&gt;tf-idf&lt;/em&gt; are zero for extremely common words (like “may”). These are all words that appear in both documents, so the idf term (which will then be the natural log of 1) is zero. The inverse document frequency (and thus tf-idf) is very low (near zero) for words that occur in many of the documents in a collection; this is how this approach decreases the weight for common words. The inverse document frequency will be a higher number for words that occur in fewer of the documents in the collection.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tokenizing-by-n-gram&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Tokenizing by n-gram&lt;/h2&gt;
+&lt;p&gt;We’ve been using the &lt;code&gt;unnest_tokens&lt;/code&gt; function to tokenize by word, or sometimes by sentence, which is useful for the kinds of frequency analyses we’ve been doing so far. But we can also use the function to tokenize into consecutive sequences of words, called &lt;strong&gt;n-grams&lt;/strong&gt;. By seeing how often word X is followed by word Y, we can then build a model of the relationships between them.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+library(tidytext)
+
+einstein_bigrams &amp;lt;- books %&amp;gt;%
+  filter(author == &amp;quot;Einstein, Albert&amp;quot;) %&amp;gt;% 
+  unnest_tokens(bigram, text, token = &amp;quot;ngrams&amp;quot;, n = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+document
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+bigram
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3797
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3798
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3799
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3800
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3801
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+relativity the
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3801
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the special
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3801
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+special and
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3801
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+and general
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3801
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+general theory
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Einstein, Albert
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3802
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We can examine the most common bigrams using dplyr’s &lt;code&gt;count()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;einstein_bigrams_count &amp;lt;- einstein_bigrams %&amp;gt;% 
+    count(bigram, sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+bigram
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+916
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+of the
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+613
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+to the
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+247
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+in the
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+197
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+of relativity
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+164
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+theory of
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+121
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+with the
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+119
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+on the
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+111
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+that the
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+110
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+of a
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+98
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Now we use tidyr’s &lt;code&gt;separate()&lt;/code&gt;, which splits a column into multiple columns based on a delimiter. This lets us separate it into two columns, “word1” and “word2”, at which point we can remove cases where either is a stop-word. This time, we use the stopwords from the package &lt;code&gt;tidyr&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyr)
+
+# seperate words
+bigrams_separated &amp;lt;- einstein_bigrams %&amp;gt;%
+  separate(bigram, c(&amp;quot;word1&amp;quot;, &amp;quot;word2&amp;quot;), sep = &amp;quot; &amp;quot;)
+
+# filter stop words and NA
+bigrams_filtered &amp;lt;- bigrams_separated %&amp;gt;%
+  filter(!word1 %in% stop_words$word) %&amp;gt;%
+  filter(!word2 %in% stop_words$word) %&amp;gt;% 
+  filter(!is.na(word1))
+
+# new bigram counts:
+bigram_counts &amp;lt;- bigrams_filtered %&amp;gt;% 
+  count(word1, word2, sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word1
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word2
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reference
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+56
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gravitational
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+field
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+53
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+special
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+theory
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+35
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ordinate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+system
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+34
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+space
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+time
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+27
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+classical
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mechanics
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+26
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lorentz
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+transformation
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+23
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+measuring
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rods
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+22
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+straight
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+line
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+17
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+rigid
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+16
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This one-bigram-per-row format is helpful for exploratory analyses of the text. As a simple example, we might be interested in the most often mentioned “theory”:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bigram_theory &amp;lt;- bigrams_filtered %&amp;gt;%
+  filter(word2 == &amp;quot;theory&amp;quot;) %&amp;gt;%
+  count(word1, sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word1
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+special
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+35
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+lorentz
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+newton’s
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_special
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+comprehensive
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+electrodynamic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+electromagnetic
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In other analyses you may be interested in the most common trigrams, which are consecutive sequences of 3 words. We can find this by setting n = 3:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trigram &amp;lt;- books %&amp;gt;%
+  unnest_tokens(trigram, text, token = &amp;quot;ngrams&amp;quot;, n = 3) %&amp;gt;%
+  separate(trigram, c(&amp;quot;word1&amp;quot;, &amp;quot;word2&amp;quot;, &amp;quot;word3&amp;quot;), sep = &amp;quot; &amp;quot;) %&amp;gt;%
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word,
+         !word3 %in% stop_words$word,  
+         !is.na(word1)) %&amp;gt;%
+  count(word1, word2, word3, sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped table-hover table-condensed table-responsive&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word1
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word2
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+word3
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_x_1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_x_2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_x_3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+light
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_in
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+vacuo_
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reference
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;em&gt;k&lt;/em&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+space
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+time
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+continuum
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_x_2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_x_3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_x_4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reference
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+body
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_k
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+disruptive
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+discharge
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+coil
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;network-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; Network analysis&lt;/h2&gt;
+&lt;p&gt;We may be interested in visualizing all of the relationships among words simultaneously, rather than just the top few at a time. As one common visualization, we can arrange the words into a network, or “graph.” Here we’ll be referring to a “graph” not in the sense of a visualization, but as a combination of connected nodes. A graph can be constructed from a tidy object since it has three variables:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;from: the node an edge is coming from&lt;/li&gt;
+&lt;li&gt;to: the node an edge is going towards&lt;/li&gt;
+&lt;li&gt;weight: A numeric value associated with each edge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;igraph&lt;/code&gt; package has many functions for manipulating and analyzing networks. One way to create an igraph object from tidy data is the &lt;code&gt;graph_from_data_frame()&lt;/code&gt; function, which takes a data frame of edges with columns for “from”, “to”, and edge attributes (in this case n):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+library(igraph)
+
+# filter for only relatively common combinations
+bigram_graph &amp;lt;- bigram_counts %&amp;gt;%
+  filter(n &amp;gt; 5) %&amp;gt;%
+  graph_from_data_frame()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We use the &lt;a href=&#34;https://cran.r-project.org/web/packages/ggraph/ggraph.pdf&#34;&gt;&lt;code&gt;ggraph&lt;/code&gt;&lt;/a&gt; package to convert the igraph object into a &lt;code&gt;ggraph&lt;/code&gt; with the ggraph function, after which we add layers to it, much like layers are added in ggplot2. For example, for a basic graph we need to add three layers: nodes, edges, and text:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggraph)
+set.seed(123)
+
+ggraph(bigram_graph, layout = &amp;quot;fr&amp;quot;) +
+  geom_edge_link() +
+  geom_node_point() +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-34-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Finally, we will change some settings to obtain to a better looking graph:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We add the &lt;code&gt;edge_alpha&lt;/code&gt; aesthetic to the link layer to make links transparent based on how common or rare the bigram is.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We add directionality with an arrow, constructed using &lt;code&gt;grid::arrow()&lt;/code&gt;, including an &lt;code&gt;end_cap&lt;/code&gt; option that tells the arrow to end before touching the node.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We tinker with the options to the node layer to make the nodes more attractive (larger, blue points).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We add a theme that’s useful for plotting networks, &lt;code&gt;theme_void()&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggraph)
+set.seed(123)
+
+a &amp;lt;- grid::arrow(type = &amp;quot;closed&amp;quot;, length = unit(.15, &amp;quot;inches&amp;quot;))
+
+ggraph(bigram_graph, layout = &amp;quot;fr&amp;quot;) +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 arrow = a, end_cap = circle(.07, &amp;#39;inches&amp;#39;)) +
+  geom_node_point(color = &amp;quot;lightblue&amp;quot;, size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-35-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;classification-with-logistic-regression&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Classification with logistic regression&lt;/h1&gt;
+&lt;p&gt;In the first part we will build a statistical learning model. In the second part we will want to test it and assess its quality. Without dividing the dataset we would test the model on the data which the algorithm have already seen, which is why we start by splitting the data.&lt;/p&gt;
+&lt;div id=&#34;train-test-split&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Train test split&lt;/h2&gt;
+&lt;p&gt;Let’s go back to the original &lt;code&gt;books&lt;/code&gt; dataset (not the &lt;code&gt;tidy_books&lt;/code&gt; dataset) because the lines of text are our individual observations.&lt;/p&gt;
+&lt;p&gt;We could use functions from the &lt;a href=&#34;https://tidymodels.github.io/rsample/&#34;&gt;&lt;code&gt;rsample&lt;/code&gt;&lt;/a&gt; package to generate resampled datasets, but the specific modeling approach we’re going to use will do that for us so we only need a simple train/test split.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rsample)
+
+books_split &amp;lt;- books %&amp;gt;%
+  select(document) %&amp;gt;%
+  initial_split(prop = 3/4)
+
+train_data &amp;lt;- training(books_split)
+test_data &amp;lt;- testing(books_split)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice that we just select specific text rows (column &lt;code&gt;document&lt;/code&gt;) for training and others for our test data (we set the proportion of data to be retained for modeling/analysis to 3/4) without selecting the actual text lines at this point.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;training-data-sparse-matrix&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Training data (sparse matrix)&lt;/h2&gt;
+&lt;p&gt;Now we want to transform our training data from a tidy data structure to a “sparse matrix” (these objects can be treated as though they were matrices, for example accessing particular rows and columns, but are stored in a more efficient format) to use for our classification algorithm.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidytext)
+
+sparse_words &amp;lt;- tidy_books %&amp;gt;%
+  count(document, word) %&amp;gt;%
+  inner_join(train_data, by = &amp;quot;document&amp;quot;) %&amp;gt;%
+  cast_sparse(document, word, n)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(sparse_words)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4782  892&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have over 4,700 training observations and almost 900 features. Text feature space handled in this way is very high dimensional, so we need to take that into account when considering our modeling approach.&lt;/p&gt;
+&lt;p&gt;One reason this overall approach is flexible is that you could at this point &lt;code&gt;cbind()&lt;/code&gt; other columns, such as non-text numeric data, onto this sparse matrix. Then you can use this combination of text and non-text data as your predictors in the classifiaction algorithm, and the regularized regression algorithm we are going to use will find which are important for your problem space.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;response-variable&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; Response variable&lt;/h2&gt;
+&lt;p&gt;We also need to build a tibble with a &lt;strong&gt;response variable&lt;/strong&gt; to associate each of the &lt;code&gt;rownames()&lt;/code&gt; of the sparse matrix with an author, to use as the quantity we will predict in the model.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;word_rownames &amp;lt;- as.integer(rownames(sparse_words))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;books_joined &amp;lt;- tibble(document = word_rownames) %&amp;gt;%
+  left_join(books  %&amp;gt;%
+    select(document, author))&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+document
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+author
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+24
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+25
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tesla, Nikola
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;logistic-regression-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.4&lt;/span&gt; Logistic regression model&lt;/h2&gt;
+&lt;p&gt;Now it’s time to train our classification model. Let’s use the &lt;code&gt;glmnet&lt;/code&gt; package to fit a logistic regression model with &lt;em&gt;lasso&lt;/em&gt; (least absolute shrinkage and selection operator; also Lasso or LASSO) regularization. This regression analysis method performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Glmnet&lt;/code&gt; is a package that fits lasso models via penalized maximum likelihood. We do not cover the method and glmnet package in detail at this point, but if you want to learn more about glmnet and lasso regression, review the following resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/glmnet/vignettes/glmnet_beta.pdf&#34;&gt;Introduction to glmnet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/glmnet/glmnet.pdf&#34;&gt;glmnet documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kirenz.com/post/2019-08-12-python-lasso-regression-auto/&#34;&gt;LASSO regression in Python&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The package is very useful for text classification because the variable selection that lasso regularization performs can tell you which words are important for your prediction problem. The glmnet package also supports parallel processing, so we can train on multiple cores with &lt;a href=&#34;https://en.wikipedia.org/wiki/Cross-validation_(statistics)&#34;&gt;cross-validation&lt;/a&gt; on the training set using &lt;code&gt;cv.glmnet()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(glmnet)
+library(doMC)
+registerDoMC(cores = 8)
+
+is_einstein &amp;lt;- books_joined$author == &amp;quot;Einstein, Albert&amp;quot;
+
+model &amp;lt;- cv.glmnet(sparse_words, 
+                   is_einstein,
+                   family = &amp;quot;binomial&amp;quot;,
+                   parallel = TRUE, 
+                   keep = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s use the package &lt;a href=&#34;https://cran.r-project.org/web/packages/broom/vignettes/broom.html&#34;&gt;&lt;code&gt;broom&lt;/code&gt;&lt;/a&gt; (the broom package takes the messy output of built-in functions in R, such as lm, nls, or t.test, and turns them into tidy data frames) to check out the coefficients of the model, for the largest value of lambda with error within 1 standard error of the minimum (&lt;code&gt;lambda.1se&lt;/code&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(broom)
+
+coefs &amp;lt;- model$glmnet.fit %&amp;gt;%
+  tidy() %&amp;gt;%
+  filter(lambda == model$lambda.1se)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which coefficents are the largest in size, in each direction:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(forcats)
+
+coefs %&amp;gt;%
+  group_by(estimate &amp;gt; 0) %&amp;gt;%
+  top_n(10, abs(estimate)) %&amp;gt;%
+  ungroup() %&amp;gt;%
+  ggplot(aes(fct_reorder(term, estimate), estimate, fill = estimate &amp;gt; 0)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    title = &amp;quot;Coefficients that increase/decrease probability the most&amp;quot;,
+    subtitle = &amp;quot;A document mentioning lecture or probably is unlikely to be written by Albert Einstein&amp;quot;
+  ) +
+  theme_classic(base_size = 12) +
+  theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
+  scale_fill_brewer()  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-44-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-evaluation-with-test-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.5&lt;/span&gt; Model evaluation with test data&lt;/h2&gt;
+&lt;p&gt;Now we want to evaluate how well this model is doing using the test data that we held out and did not use for training the model. Let’s create a dataframe that tells us, for each document in the test set, the probability of being written by Albert Einstein.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;intercept &amp;lt;- coefs %&amp;gt;%
+  filter(term == &amp;quot;(Intercept)&amp;quot;) %&amp;gt;%
+  pull(estimate)
+
+classifications &amp;lt;- tidy_books %&amp;gt;%
+  inner_join(test_data) %&amp;gt;%
+  inner_join(coefs, by = c(&amp;quot;word&amp;quot; = &amp;quot;term&amp;quot;)) %&amp;gt;%
+  group_by(document) %&amp;gt;%
+  summarize(score = sum(estimate)) %&amp;gt;%
+  mutate(probability = plogis(intercept + score))&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+document
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+score
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+probability
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+21
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.3811800
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.2063129
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.9929541
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.1235678
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.2522803
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.7834973
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+33
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.8746267
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.1369635
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+52
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-5.1987683
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0056813
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+54
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-2.8148527
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0583613
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+56
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.2272565
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.5649167
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Now let’s use the &lt;a href=&#34;https://tidymodels.github.io/yardstick/&#34;&gt;&lt;code&gt;yardstick&lt;/code&gt;&lt;/a&gt; package (yardstick is a package to estimate how well models are working using tidy data principles) to calculate some model performance metrics. For example, what does the &lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc&#34;&gt;ROC curve&lt;/a&gt; (receiver operating characteristic curve - a graph showing the performance of a classification model at all classification thresholds) look like:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(yardstick)
+
+comment_classes &amp;lt;- classifications %&amp;gt;%
+  left_join(books %&amp;gt;%
+    select(author, document), by = &amp;quot;document&amp;quot;) %&amp;gt;%
+  mutate(author = as.factor(author))
+
+comment_classes %&amp;gt;%
+  roc_curve(author, probability) %&amp;gt;%
+  ggplot(aes(x = 1 - specificity, y = sensitivity)) +
+  geom_line(
+    color = &amp;quot;midnightblue&amp;quot;,
+    size = 1.5
+  ) +
+  geom_abline(
+    lty = 2, alpha = 0.5,
+    color = &amp;quot;gray50&amp;quot;,
+    size = 1.2
+  ) +
+  labs(
+    title = &amp;quot;ROC curve for text classification using regularized regression&amp;quot;,
+    subtitle = &amp;quot;Predicting whether text was written by Albert Einstein or Nikola Tesla&amp;quot;
+  ) +
+  theme_classic(base_size = 12) +
+  theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-47-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let’s obtain the accuracy (AUC - the fraction of predictions that a classification model got right) on the test data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;auc &amp;lt;- comment_classes %&amp;gt;%
+  roc_auc(author, probability)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+.metric
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+.estimator
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+.estimate
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+roc_auc
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+binary
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9757987
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Next we turn to the &lt;strong&gt;confusion matrix&lt;/strong&gt;. Let’s make the following definitions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“Einstein, Albert” is a positive class.&lt;/li&gt;
+&lt;li&gt;“Tesla, Nikola” is a negative class.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;span style=&#34;color:green&#34;&gt; &lt;strong&gt;True Positive (TP):&lt;/strong&gt; &lt;/span&gt;&lt;/th&gt;
+&lt;th&gt;&lt;span style=&#34;color:red&#34;&gt; &lt;strong&gt;False Positive (FP):&lt;/strong&gt; &lt;/span&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;strong&gt;Reality&lt;/strong&gt;: Text is from Einstein&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Reality&lt;/strong&gt;: Text is from Tesla&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;strong&gt;Model&lt;/strong&gt;: Text is from Einstein&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Model&lt;/strong&gt;: Text is from Einstein&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;span style=&#34;color:red&#34;&gt; &lt;strong&gt;False Negative (FN):&lt;/strong&gt; &lt;/span&gt;&lt;/th&gt;
+&lt;th&gt;&lt;span style=&#34;color:green&#34;&gt; &lt;strong&gt;True Negative (TN):&lt;/strong&gt; &lt;/span&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;strong&gt;Reality&lt;/strong&gt;: Text is from Einstein&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Reality&lt;/strong&gt;: Text is from Tesla&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;strong&gt;Model&lt;/strong&gt;: Text is from Tesla&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Model&lt;/strong&gt;: Text is from Tesla&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We can summarize our “einstein-text-prediction” model using a 2x2 confusion matrix that depicts all four possible outcomes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A &lt;em&gt;true positive&lt;/em&gt; is an outcome where the model correctly predicts the positive class (Einstein). Similarly, a &lt;em&gt;true negative&lt;/em&gt; is an outcome where the model correctly predicts the negative class (Tesla).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A &lt;em&gt;false positive&lt;/em&gt; is an outcome where the model incorrectly predicts the positive class. And a &lt;em&gt;false negative&lt;/em&gt; is an outcome where the model incorrectly predicts the negative class.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let’s use a probability of 0.5 as our threshold. That means all model predictions with a probability greater than 50% get labeld as beeing text from Einstein:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;comment_classes %&amp;gt;%
+  mutate(prediction = case_when(
+          probability &amp;gt; 0.5 ~ &amp;quot;Einstein, Albert&amp;quot;,
+          TRUE ~ &amp;quot;Tesla, Nikola&amp;quot;),
+        prediction = as.factor(prediction)) %&amp;gt;%
+  conf_mat(author, prediction)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                   Truth
+## Prediction         Einstein, Albert Tesla, Nikola
+##   Einstein, Albert              628            58
+##   Tesla, Nikola                  70           784&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s take a closer look at these misclassifications: false negatives (FN) and false positives (FP). Which documents here were incorrectly predicted to be written by Albert Einstein, at the extreme probability end of greater than 80% (false positive)?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;FP&amp;lt;- comment_classes %&amp;gt;%
+  filter(probability &amp;gt; .8,
+          author == &amp;quot;Einstein, Albert&amp;quot;) %&amp;gt;%
+  sample_n(10) %&amp;gt;%
+  inner_join(books %&amp;gt;%
+  select(document, text)) %&amp;gt;%
+  select(probability, text)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+probability
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+text
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9631560
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+distance or of action at a distance with an infinite velocity of
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9990371
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the body of reference. But we have just seen that this assumption is
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9984961
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ON THE RELATIVITY OF THE CONCEPTION OF DISTANCE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9759264
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+shortening in the direction of the motion. On the other hand, the
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9677179
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+distance sun-planet exhibits periodic variations; but in this case the
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9860807
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+domain leads conclusively to a theory of electromagnetic phenomena, of
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9672166
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+When we say that the lightning strokes &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;B&lt;/em&gt; are simultaneous
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9034887
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+If, then, the observer first measures the circumference of the disc
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9996035
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+seen from a reference-body &lt;em&gt;K′&lt;/em&gt; which is accelerated relatively to &lt;em&gt;K&lt;/em&gt;.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9818753
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+and the action of the other planets under consideration. Thus, if we
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;These documents were incorrectly predicted to not be written by Albert Einstein.&lt;/p&gt;
+&lt;p&gt;Finally, let’s take a look at the texts which are from Albert Einstein that the model did not correctly identify (false negative):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;FN &amp;lt;- comment_classes %&amp;gt;%
+  filter(probability &amp;lt; .3,
+         author == &amp;quot;Einstein, Albert&amp;quot;) %&amp;gt;%
+  sample_n(10) %&amp;gt;%
+  inner_join(books %&amp;gt;%
+  select(document, text)) %&amp;gt;%
+  select(probability, text)&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+probability
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+text
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.2453691
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+perceptible in terrestrial experiments. We have already remarked in
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0969140
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+be arbitrary, although it was always tacitly made even before the
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.1989692
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+strings to the floor, otherwise the slightest impact against the floor
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.1994746
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+local variations of temperature, and with which we made acquaintance as
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.1932809
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the conservation of energy (and of impulse).
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0546119
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+me—and rightly so—and you declare: “I maintain my previous definition
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0613870
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+permits of our answering it with a moderate degree of certainty, and in
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.2458622
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+treated in detail and with unsurpassable lucidity by Helmholtz and
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.2929757
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+potential φ, hence the result we have obtained will hold quite
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.1570832
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+for the following reason. As a result of the more careful study of
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We can conclude that the model did a very good job in predicting the authors of the texts. Furthermore, the texts of the misclassifications are quite short and we can imagine, that even a human reader who is familiar with the work of Einstein and Tesla would have difficulties to classify them correctly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Programming Languages for Data Science</title>
       <link>/project/programming-languages/</link>
       <pubDate>Tue, 03 Sep 2019 10:00:00 +0000</pubDate>

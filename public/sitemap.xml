@@ -100,8 +100,30 @@
   
   <url>
     <loc>/tags/statistics/</loc>
-    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/2019-09-16-r-text-mining/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/textmining/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -173,11 +195,6 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/project/python-network-analysis-intro/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
   </url>
@@ -246,12 +263,6 @@
   <url>
     <loc>/project/python-linear-regression/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

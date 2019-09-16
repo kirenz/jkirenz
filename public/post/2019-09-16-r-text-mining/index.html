@@ -1,0 +1,3348 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jan Kirenz">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction to Text Mining in R with Tidytext">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/2019-09-16-r-text-mining/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#E13D3D">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/paraiso-light.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/paraiso-light.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Arapey:400,400i|Karla:400,700|Roboto+Mono|Open Sans:300">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.1322fc49e20b88c93e5b9cdb13456289.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.8eb4558559a8cb72cfe457c72f587a28.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-62543454-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/2019-09-16-r-text-mining/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Jan Kirenz">
+  <meta property="og:url" content="/post/2019-09-16-r-text-mining/">
+  <meta property="og:title" content="Text Mining in R | Jan Kirenz">
+  <meta property="og:description" content="Introduction to Text Mining in R with Tidytext"><meta property="og:image" content="/post/2019-09-16-r-text-mining/featured.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-09-16T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-09-16T00:00:00&#43;00:00">
+  
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#E13D3D",
+          "text": "#ffffff"
+        },
+        "button": {
+          "background": "#ffffff",
+          "text": "#E13D3D"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://cookies.insites.com"
+      }
+    })});
+</script>
+
+
+
+  
+
+
+
+
+
+  <title>Text Mining in R | Jan Kirenz</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Jan Kirenz</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects"><span>Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact"><span>About/Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/post/2019-09-16-r-text-mining/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_4115480_800x0_resize_q90_lanczos.jpg');"></div>
+  <span class="article-header-caption"><a href="https://unsplash.com/photos/Oaqk7qqNh_c" target="_blank">Photo by Patrick Tomasso on Unsplash</a></span>
+</div>
+
+
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">Text Mining in R</h1>
+
+        
+
+        
+
+
+
+<meta content="2019-09-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-09-16 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/jan/">Jan Kirenz</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Sep 16, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    20 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/r/">R</a>, <a href="/categories/textmining/">TextMining</a></span>
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/2019-09-16-r-text-mining/&amp;text=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/2019-09-16-r-text-mining/&amp;t=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Text%20Mining%20in%20R&amp;body=/post/2019-09-16-r-text-mining/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/2019-09-16-r-text-mining/&amp;title=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Text%20Mining%20in%20R%20/post/2019-09-16-r-text-mining/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/2019-09-16-r-text-mining/&amp;title=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/post/2019-09-16-r-text-mining/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_4115480_680x500_fill_q90_lanczos_smart1.jpg" itemprop="image" alt="">
+        <span class="article-header-caption"><a href="https://unsplash.com/photos/Oaqk7qqNh_c" target="_blank">Photo by Patrick Tomasso on Unsplash</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">Text Mining in R</h1>
+
+  
+
+  
+
+
+
+<meta content="2019-09-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-09-16 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/jan/">Jan Kirenz</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Sep 16, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    20 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/r/">R</a>, <a href="/categories/textmining/">TextMining</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/2019-09-16-r-text-mining/&amp;text=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/2019-09-16-r-text-mining/&amp;t=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Text%20Mining%20in%20R&amp;body=/post/2019-09-16-r-text-mining/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/2019-09-16-r-text-mining/&amp;title=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Text%20Mining%20in%20R%20/post/2019-09-16-r-text-mining/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/2019-09-16-r-text-mining/&amp;title=Text%20Mining%20in%20R" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introdution-to-textmining-in-r"><span class="toc-section-number">1</span> Introdution to Textmining in R</a><ul>
+<li><a href="#installation-of-r-packages"><span class="toc-section-number">1.1</span> Installation of R packages</a></li>
+<li><a href="#data-import"><span class="toc-section-number">1.2</span> Data import</a></li>
+</ul></li>
+<li><a href="#data-transformation"><span class="toc-section-number">2</span> Data transformation</a><ul>
+<li><a href="#tokenization"><span class="toc-section-number">2.1</span> Tokenization</a></li>
+<li><a href="#stop-words"><span class="toc-section-number">2.2</span> Stop words</a></li>
+</ul></li>
+<li><a href="#exploratory-data-analysis"><span class="toc-section-number">3</span> Exploratory data analysis</a><ul>
+<li><a href="#term-frequency-tf"><span class="toc-section-number">3.1</span> Term frequency (tf)</a></li>
+<li><a href="#term-frequency-and-inverse-document-frequency-tf-idf"><span class="toc-section-number">3.2</span> Term frequency and inverse document frequency (tf-idf)</a></li>
+<li><a href="#tokenizing-by-n-gram"><span class="toc-section-number">3.3</span> Tokenizing by n-gram</a></li>
+<li><a href="#network-analysis"><span class="toc-section-number">3.4</span> Network analysis</a></li>
+</ul></li>
+<li><a href="#classification-with-logistic-regression"><span class="toc-section-number">4</span> Classification with logistic regression</a><ul>
+<li><a href="#train-test-split"><span class="toc-section-number">4.1</span> Train test split</a></li>
+<li><a href="#training-data-sparse-matrix"><span class="toc-section-number">4.2</span> Training data (sparse matrix)</a></li>
+<li><a href="#response-variable"><span class="toc-section-number">4.3</span> Response variable</a></li>
+<li><a href="#logistic-regression-model"><span class="toc-section-number">4.4</span> Logistic regression model</a></li>
+<li><a href="#model-evaluation-with-test-data"><span class="toc-section-number">4.5</span> Model evaluation with test data</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="introdution-to-textmining-in-r" class="section level1">
+<h1><span class="header-section-number">1</span> Introdution to Textmining in R</h1>
+<p>This post demonstrates how various R packages can be used for text mining in R. In particular, we start with common text transformations, perform various data explorations with term frequency (tf) and inverse document frequency (idf) and build a supervised classifiaction model that learns the difference between texts of different authors.</p>
+<p>The content of this tutorial is based on the excellent book <a href="https://www.tidytextmining.com">“Textmining with R (2019)”</a> from Julia Silge and David Robinson and the blog post <a href="https://www.r-bloggers.com/text-classification-with-tidy-data-principles/">“Text classification with tidy data principles (2018)”</a> from Julia Silges.</p>
+<div id="installation-of-r-packages" class="section level2">
+<h2><span class="header-section-number">1.1</span> Installation of R packages</h2>
+<p>If you like to install all packages at once, use the code below.</p>
+<pre class="r"><code>install.packages(c(&quot;dplyr&quot;, &quot;gutenbergr&quot;, &quot;stringr&quot;, &quot;tidytext&quot;, &quot;tidyr&quot;,
+                   &quot;stopwords&quot;, &quot;wordcloud&quot;, &quot;rsample&quot;, &quot;glmnet&quot;, 
+                   &quot;doMC&quot;, &quot;forcats&quot;, &quot;broom&quot;, &quot;igraph&quot;, &quot;ggraph&quot;)) </code></pre>
+</div>
+<div id="data-import" class="section level2">
+<h2><span class="header-section-number">1.2</span> Data import</h2>
+<p>We can access the full texts of various books from “Project Gutenberg” via the <a href="https://cran.r-project.org/web/packages/gutenbergr/vignettes/intro.html"><code>gutenbergr</code> package</a>. We can look up certain authors or titles with a regular expression using the <code>stringr</code> package. All functions in <code>stringr</code> start with <code>str_</code>and take a vector of strings as the first argument. To learn more about stringr, visit the <a href="https://stringr.tidyverse.org">stringr documentation</a>.</p>
+<pre class="r"><code>library(gutenbergr)
+library(stringr)
+
+doyle &lt;- gutenberg_works(str_detect(author, &quot;Doyle&quot;))</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+gutenberg_id
+</th>
+<th style="text-align:left;">
+title
+</th>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:right;">
+gutenberg_author_id
+</th>
+<th style="text-align:left;">
+language
+</th>
+<th style="text-align:left;">
+gutenberg_bookshelf
+</th>
+<th style="text-align:left;">
+rights
+</th>
+<th style="text-align:left;">
+has_text
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+The Return of Sherlock Holmes
+</td>
+<td style="text-align:left;">
+Doyle, Arthur Conan
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+en
+</td>
+<td style="text-align:left;">
+Detective Fiction
+</td>
+<td style="text-align:left;">
+Public domain in the USA.
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:left;">
+The Poison Belt
+</td>
+<td style="text-align:left;">
+Doyle, Arthur Conan
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+en
+</td>
+<td style="text-align:left;">
+Science Fiction
+</td>
+<td style="text-align:left;">
+Public domain in the USA.
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+The Lost World
+</td>
+<td style="text-align:left;">
+Doyle, Arthur Conan
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+en
+</td>
+<td style="text-align:left;">
+Science Fiction
+</td>
+<td style="text-align:left;">
+Public domain in the USA.
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:left;">
+A Study in Scarlet
+</td>
+<td style="text-align:left;">
+Doyle, Arthur Conan
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+en
+</td>
+<td style="text-align:left;">
+Detective Fiction
+</td>
+<td style="text-align:left;">
+Public domain in the USA.
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+</tbody>
+</table>
+<p>We obtain <em>“Relativity: The Special and General Theory”</em> by Albert Einstein (gutenberg_id: 30155) and <em>“Experiments with Alternate Currents of High Potential and High Frequency”</em> by Nikola Tesla (gutenberg_id: 13476) from gutenberg and add the column “author” to the result.</p>
+<pre class="r"><code>library(gutenbergr)
+
+books &lt;- gutenberg_download(c(30155, 13476), meta_fields = &quot;author&quot;)</code></pre>
+<p>Furthermore, we transfrom the data to a <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">tibble</a> (tibbles are a modern take on data frames), add the row number with the column name <code>document</code> to the tibble and drop the column <code>gutenberg_id</code>. We will use the information in column <code>document</code> to train a model that can take an individual line (row) and give us a probability that the text in this particular line comes from a certain author.</p>
+<pre class="r"><code>library(dplyr)
+
+books &lt;- as_tibble(books) %&gt;% 
+  mutate(document = row_number()) %&gt;% 
+  select(-gutenberg_id)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+text
+</th>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:right;">
+document
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+EXPERIMENTS WITH ALTERNATE CURRENTS OF HIGH POTENTIAL AND HIGH FREQUENCY
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A Lecture Delivered before the Institution of Electrical Engineers, London
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+by
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NIKOLA TESLA
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="data-transformation" class="section level1">
+<h1><span class="header-section-number">2</span> Data transformation</h1>
+<div id="tokenization" class="section level2">
+<h2><span class="header-section-number">2.1</span> Tokenization</h2>
+<p>First of all, we need to both break the text into individual tokens (a process called <strong>tokenization</strong>) and transform it to a tidy data structure (i.e. each variable must have its own column, each observation must have its own row and each value must have its own cell). To do this, we use tidytext’s <code>unnest_tokens()</code> function. We also remove the <em>rarest words</em> in that step, keeping only words in our dataset that occur more than 10 times.</p>
+<pre class="r"><code>library(dplyr)
+library(tidytext)
+
+tidy_books &lt;- books %&gt;%
+  unnest_tokens(word, text) %&gt;%
+  group_by(word) %&gt;%
+  filter(n() &gt; 10) %&gt;%
+  ungroup()</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:right;">
+document
+</th>
+<th style="text-align:left;">
+word
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+experiments
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+with
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+alternate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+currents
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+of
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+potential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+and
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="stop-words" class="section level2">
+<h2><span class="header-section-number">2.2</span> Stop words</h2>
+<p>Now that the data is in a tidy “one-word-per-row” format, we can manipulate it with packages like <code>dplyr</code>. Often in text analysis, we will want to remove <strong>stop words</strong>: Stop words are words that are not useful for an analysis, typically extremely common words such as “the”, “of”, “to”, and so forth. We can remove stop words in our data by using the stop words provided in the package <code>stopwords</code> with an <code>anti_join()</code> from the package <code>dplyr</code>.</p>
+<pre class="r"><code>library(stopwords) 
+library(dplyr)
+library(tibble)
+
+stopword &lt;- as_tibble(stopwords::stopwords(&quot;en&quot;)) 
+stopword &lt;- rename(stopword, word=value)
+tb &lt;- anti_join(tidy_books, stopword, by = &#39;word&#39;)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:right;">
+document
+</th>
+<th style="text-align:left;">
+word
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+experiments
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+alternate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+currents
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+potential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+high
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+frequency
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+lecture
+</td>
+</tr>
+</tbody>
+</table>
+<p>The tidy data structure allows different types of exploratory data analysis (EDA), which we turn to next.</p>
+</div>
+</div>
+<div id="exploratory-data-analysis" class="section level1">
+<h1><span class="header-section-number">3</span> Exploratory data analysis</h1>
+<div id="term-frequency-tf" class="section level2">
+<h2><span class="header-section-number">3.1</span> Term frequency (tf)</h2>
+<p>An important question in text mining is how to quantify what a document is about. One measure of how important a word may be is its <strong>term frequency</strong> (tf), i.e. how frequently a word occurs in a document.</p>
+<p>We can start by using <code>dplyr</code> to explore the most commonly used words.</p>
+<pre class="r"><code>library(dplyr)
+
+word_count &lt;- count(tb, word, sort = TRUE)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+word
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+one
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:right;">
+230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+may
+</td>
+<td style="text-align:right;">
+224
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+can
+</td>
+<td style="text-align:right;">
+194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+relativity
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+</tbody>
+</table>
+<p>Term frequency by author:</p>
+<pre class="r"><code>library(dplyr)
+
+author_count &lt;-  tb %&gt;% 
+  count(author, word, sort = TRUE)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:left;">
+word
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+relativity
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+may
+</td>
+<td style="text-align:right;">
+184
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+theory
+</td>
+<td style="text-align:right;">
+181
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+bulb
+</td>
+<td style="text-align:right;">
+171
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+coil
+</td>
+<td style="text-align:right;">
+166
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+166
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:right;">
+156
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+one
+</td>
+<td style="text-align:right;">
+156
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+reference
+</td>
+<td style="text-align:right;">
+150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+tube
+</td>
+<td style="text-align:right;">
+147
+</td>
+</tr>
+</tbody>
+</table>
+<p>Plot terms with a frequency greater than 100:</p>
+<pre class="r"><code>library(dplyr)
+library(ggplot2)
+
+tb %&gt;%
+  count(author, word, sort = TRUE) %&gt;%
+  filter(n &gt; 100) %&gt;%
+  mutate(word = reorder(word, n)) %&gt;%
+  ggplot(aes(word, n)) +
+  geom_col(aes(fill=author)) +
+  xlab(NULL) +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  theme_classic(base_size = 12) +
+  labs(fill= &quot;Author&quot;, title=&quot;Word frequency&quot;, subtitle=&quot;n &gt; 100&quot;)+
+  theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;)) +
+  scale_fill_brewer() </code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Plot top 20 terms by author:</p>
+<pre class="r"><code>library(ggplot2)
+
+tb %&gt;%
+  count(author, word, sort = TRUE) %&gt;%
+  group_by(author) %&gt;%
+  top_n(20) %&gt;%
+  ungroup() %&gt;%
+  ggplot(aes(reorder_within(word, n, author), n,
+    fill = author)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  scale_x_reordered() +
+  coord_flip() +
+  facet_wrap(~author, scales = &quot;free&quot;) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic(base_size = 12) +
+  labs(fill= &quot;Author&quot;, 
+       title=&quot;Most frequent words&quot;, 
+       subtitle=&quot;Top 20 words by book&quot;,
+       x= NULL, 
+       y= &quot;Word Count&quot;)+
+  theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;)) +
+  scale_fill_brewer()   </code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>You may notice expressions like “_k”, “co” in the Einstein text and “fig” in the Tesla text. Let’s remove these and other less meaningful words with a custom list of stop words and use anti_join() to remove them.</p>
+<pre class="r"><code>newstopwords &lt;- tibble(word = c(&quot;eq&quot;, &quot;co&quot;, &quot;rc&quot;, &quot;ac&quot;, &quot;ak&quot;, &quot;bn&quot;, 
+                                   &quot;fig&quot;, &quot;file&quot;, &quot;cg&quot;, &quot;cb&quot;, &quot;cm&quot;,
+                               &quot;ab&quot;, &quot;_k&quot;, &quot;_k_&quot;, &quot;_x&quot;))
+
+tb &lt;- anti_join(tb, newstopwords, by = &quot;word&quot;)</code></pre>
+<p>Now we plot the data again without the new stopwords:</p>
+<pre class="r"><code>library(ggplot2)
+
+tb %&gt;%
+  count(author, word, sort = TRUE) %&gt;%
+  group_by(author) %&gt;%
+  top_n(20) %&gt;%
+  ungroup() %&gt;%
+  ggplot(aes(reorder_within(word, n, author), n,
+    fill = author)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  scale_x_reordered() +
+  coord_flip() +
+  facet_wrap(~author, scales = &quot;free&quot;) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic(base_size = 12) +
+  labs(fill= &quot;Author&quot;, 
+       title=&quot;Most frequent words after removing stop words&quot;, 
+       subtitle=&quot;Top 20 words by book&quot;,
+       x= NULL, 
+       y= &quot;Word Count&quot;)+
+  theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;)) +
+  scale_fill_brewer()   </code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>You also may want to visualize the most frequent terms as a simple word cloud:</p>
+<pre class="r"><code>library(wordcloud)
+
+tb %&gt;%
+  count(word) %&gt;%
+  with(wordcloud(word, n, max.words = 15))</code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="term-frequency-and-inverse-document-frequency-tf-idf" class="section level2">
+<h2><span class="header-section-number">3.2</span> Term frequency and inverse document frequency (tf-idf)</h2>
+<p>Term frequency is a useful measure to determine how frequently a word occurs in a document. There are words in a document, however, that occur many times but may not be important.</p>
+<p>Another approach is to look at a term’s <strong>inverse document frequency (idf)</strong>, which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. This can be combined with term frequency to calculate a term’s tf-idf (the two quantities multiplied together), the frequency of a term adjusted for how rarely it is used.</p>
+<p>The inverse document frequency for any given term is defined as:</p>
+<p><span class="math display">\[idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}\]</span></p>
+<p>Hence, term frequency and inverse document frequency allows us to find words that are characteristic for one document within a collection of documents. The <code>tidytext</code> package uses an implementation of tf-idf consistent with tidy data principles that enables us to see how different words are important in documents within a collection or corpus of documents.</p>
+<pre class="r"><code>library(forcats)
+
+plot_tb &lt;- tb %&gt;%
+  count(author, word, sort = TRUE) %&gt;%
+  bind_tf_idf(word, author, n) %&gt;%
+  mutate(word = fct_reorder(word, tf_idf)) %&gt;%
+  mutate(author = factor(author, 
+                         levels = c(&quot;Tesla, Nikola&quot;,
+                                    &quot;Einstein, Albert&quot;)))
+
+plot_tb %&gt;% 
+  group_by(author) %&gt;% 
+  top_n(15, tf_idf) %&gt;% 
+  ungroup() %&gt;%
+  mutate(word = reorder(word, tf_idf)) %&gt;%
+  ggplot(aes(word, tf_idf, fill = author)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = NULL, y = &quot;tf-idf&quot;) +
+  facet_wrap(~author, ncol = 2, scales = &quot;free&quot;) +
+  coord_flip() +
+  theme_classic(base_size = 12) +
+  labs(fill= &quot;Author&quot;, 
+       title=&quot;Term frequency and inverse document frequency (tf-idf)&quot;, 
+       subtitle=&quot;Top 20 words by book&quot;,
+       x= NULL, 
+       y= &quot;tf-idf&quot;) +
+  theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;)) +
+  scale_fill_brewer()  </code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>In particular, the <code>bind_tf_idf</code> function in the <code>tidytext</code> package takes a tidy text dataset as input with one row per token (term), per document. One column (word here) contains the terms/tokens, one column contains the documents (authors in this case), and the last necessary column contains the counts, how many times each document contains each term (n in this example).</p>
+<pre class="r"><code>tf_idf &lt;- tb %&gt;%
+  count(author, word, sort = TRUE) %&gt;%
+  bind_tf_idf(word, author, n)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:left;">
+word
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+tf
+</th>
+<th style="text-align:right;">
+idf
+</th>
+<th style="text-align:right;">
+tf_idf
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+relativity
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:right;">
+0.0177831
+</td>
+<td style="text-align:right;">
+0.6931472
+</td>
+<td style="text-align:right;">
+0.0123263
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+may
+</td>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:right;">
+0.0139436
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+theory
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:right;">
+0.0166774
+</td>
+<td style="text-align:right;">
+0.6931472
+</td>
+<td style="text-align:right;">
+0.0115599
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+bulb
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:right;">
+0.0129585
+</td>
+<td style="text-align:right;">
+0.6931472
+</td>
+<td style="text-align:right;">
+0.0089821
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+coil
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+0.0125796
+</td>
+<td style="text-align:right;">
+0.6931472
+</td>
+<td style="text-align:right;">
+0.0087195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+0.0125796
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:right;">
+0.0143739
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+one
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:right;">
+0.0118218
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:left;">
+reference
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+0.0138211
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+<td style="text-align:left;">
+tube
+</td>
+<td style="text-align:right;">
+147
+</td>
+<td style="text-align:right;">
+0.0111397
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that <em>idf</em> and thus <em>tf-idf</em> are zero for extremely common words (like “may”). These are all words that appear in both documents, so the idf term (which will then be the natural log of 1) is zero. The inverse document frequency (and thus tf-idf) is very low (near zero) for words that occur in many of the documents in a collection; this is how this approach decreases the weight for common words. The inverse document frequency will be a higher number for words that occur in fewer of the documents in the collection.</p>
+</div>
+<div id="tokenizing-by-n-gram" class="section level2">
+<h2><span class="header-section-number">3.3</span> Tokenizing by n-gram</h2>
+<p>We’ve been using the <code>unnest_tokens</code> function to tokenize by word, or sometimes by sentence, which is useful for the kinds of frequency analyses we’ve been doing so far. But we can also use the function to tokenize into consecutive sequences of words, called <strong>n-grams</strong>. By seeing how often word X is followed by word Y, we can then build a model of the relationships between them.</p>
+<pre class="r"><code>library(dplyr)
+library(tidytext)
+
+einstein_bigrams &lt;- books %&gt;%
+  filter(author == &quot;Einstein, Albert&quot;) %&gt;% 
+  unnest_tokens(bigram, text, token = &quot;ngrams&quot;, n = 2)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+author
+</th>
+<th style="text-align:right;">
+document
+</th>
+<th style="text-align:left;">
+bigram
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3797
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3798
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3799
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3800
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3801
+</td>
+<td style="text-align:left;">
+relativity the
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3801
+</td>
+<td style="text-align:left;">
+the special
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3801
+</td>
+<td style="text-align:left;">
+special and
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3801
+</td>
+<td style="text-align:left;">
+and general
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3801
+</td>
+<td style="text-align:left;">
+general theory
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einstein, Albert
+</td>
+<td style="text-align:right;">
+3802
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>We can examine the most common bigrams using dplyr’s <code>count()</code>:</p>
+<pre class="r"><code>einstein_bigrams_count &lt;- einstein_bigrams %&gt;% 
+    count(bigram, sort = TRUE)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+bigram
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+916
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+of the
+</td>
+<td style="text-align:right;">
+613
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+to the
+</td>
+<td style="text-align:right;">
+247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+in the
+</td>
+<td style="text-align:right;">
+197
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+of relativity
+</td>
+<td style="text-align:right;">
+164
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+theory of
+</td>
+<td style="text-align:right;">
+121
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+with the
+</td>
+<td style="text-align:right;">
+119
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+on the
+</td>
+<td style="text-align:right;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+that the
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+of a
+</td>
+<td style="text-align:right;">
+98
+</td>
+</tr>
+</tbody>
+</table>
+<p>Now we use tidyr’s <code>separate()</code>, which splits a column into multiple columns based on a delimiter. This lets us separate it into two columns, “word1” and “word2”, at which point we can remove cases where either is a stop-word. This time, we use the stopwords from the package <code>tidyr</code>:</p>
+<pre class="r"><code>library(tidyr)
+
+# seperate words
+bigrams_separated &lt;- einstein_bigrams %&gt;%
+  separate(bigram, c(&quot;word1&quot;, &quot;word2&quot;), sep = &quot; &quot;)
+
+# filter stop words and NA
+bigrams_filtered &lt;- bigrams_separated %&gt;%
+  filter(!word1 %in% stop_words$word) %&gt;%
+  filter(!word2 %in% stop_words$word) %&gt;% 
+  filter(!is.na(word1))
+
+# new bigram counts:
+bigram_counts &lt;- bigrams_filtered %&gt;% 
+  count(word1, word2, sort = TRUE)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+word1
+</th>
+<th style="text-align:left;">
+word2
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+reference
+</td>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gravitational
+</td>
+<td style="text-align:left;">
+field
+</td>
+<td style="text-align:right;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+special
+</td>
+<td style="text-align:left;">
+theory
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ordinate
+</td>
+<td style="text-align:left;">
+system
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+space
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+classical
+</td>
+<td style="text-align:left;">
+mechanics
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lorentz
+</td>
+<td style="text-align:left;">
+transformation
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+measuring
+</td>
+<td style="text-align:left;">
+rods
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+straight
+</td>
+<td style="text-align:left;">
+line
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rigid
+</td>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+</tbody>
+</table>
+<p>This one-bigram-per-row format is helpful for exploratory analyses of the text. As a simple example, we might be interested in the most often mentioned “theory”:</p>
+<pre class="r"><code>bigram_theory &lt;- bigrams_filtered %&gt;%
+  filter(word2 == &quot;theory&quot;) %&gt;%
+  count(word1, sort = TRUE)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+word1
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+special
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lorentz
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+newton’s
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+_special
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+comprehensive
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+electrodynamic
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+electromagnetic
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>In other analyses you may be interested in the most common trigrams, which are consecutive sequences of 3 words. We can find this by setting n = 3:</p>
+<pre class="r"><code>trigram &lt;- books %&gt;%
+  unnest_tokens(trigram, text, token = &quot;ngrams&quot;, n = 3) %&gt;%
+  separate(trigram, c(&quot;word1&quot;, &quot;word2&quot;, &quot;word3&quot;), sep = &quot; &quot;) %&gt;%
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word,
+         !word3 %in% stop_words$word,  
+         !is.na(word1)) %&gt;%
+  count(word1, word2, word3, sort = TRUE)</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+word1
+</th>
+<th style="text-align:left;">
+word2
+</th>
+<th style="text-align:left;">
+word3
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+_x_1
+</td>
+<td style="text-align:left;">
+_x_2
+</td>
+<td style="text-align:left;">
+_x_3
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+light
+</td>
+<td style="text-align:left;">
+_in
+</td>
+<td style="text-align:left;">
+vacuo_
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reference
+</td>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:left;">
+<em>k</em>
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+space
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:left;">
+continuum
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+_x_2
+</td>
+<td style="text-align:left;">
+_x_3
+</td>
+<td style="text-align:left;">
+_x_4
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reference
+</td>
+<td style="text-align:left;">
+body
+</td>
+<td style="text-align:left;">
+_k
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+disruptive
+</td>
+<td style="text-align:left;">
+discharge
+</td>
+<td style="text-align:left;">
+coil
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="network-analysis" class="section level2">
+<h2><span class="header-section-number">3.4</span> Network analysis</h2>
+<p>We may be interested in visualizing all of the relationships among words simultaneously, rather than just the top few at a time. As one common visualization, we can arrange the words into a network, or “graph.” Here we’ll be referring to a “graph” not in the sense of a visualization, but as a combination of connected nodes. A graph can be constructed from a tidy object since it has three variables:</p>
+<ul>
+<li>from: the node an edge is coming from</li>
+<li>to: the node an edge is going towards</li>
+<li>weight: A numeric value associated with each edge</li>
+</ul>
+<p>The <code>igraph</code> package has many functions for manipulating and analyzing networks. One way to create an igraph object from tidy data is the <code>graph_from_data_frame()</code> function, which takes a data frame of edges with columns for “from”, “to”, and edge attributes (in this case n):</p>
+<pre class="r"><code>library(dplyr)
+library(igraph)
+
+# filter for only relatively common combinations
+bigram_graph &lt;- bigram_counts %&gt;%
+  filter(n &gt; 5) %&gt;%
+  graph_from_data_frame()</code></pre>
+<p>We use the <a href="https://cran.r-project.org/web/packages/ggraph/ggraph.pdf"><code>ggraph</code></a> package to convert the igraph object into a <code>ggraph</code> with the ggraph function, after which we add layers to it, much like layers are added in ggplot2. For example, for a basic graph we need to add three layers: nodes, edges, and text:</p>
+<pre class="r"><code>library(ggraph)
+set.seed(123)
+
+ggraph(bigram_graph, layout = &quot;fr&quot;) +
+  geom_edge_link() +
+  geom_node_point() +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1)</code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Finally, we will change some settings to obtain to a better looking graph:</p>
+<ul>
+<li><p>We add the <code>edge_alpha</code> aesthetic to the link layer to make links transparent based on how common or rare the bigram is.</p></li>
+<li><p>We add directionality with an arrow, constructed using <code>grid::arrow()</code>, including an <code>end_cap</code> option that tells the arrow to end before touching the node.</p></li>
+<li><p>We tinker with the options to the node layer to make the nodes more attractive (larger, blue points).</p></li>
+<li><p>We add a theme that’s useful for plotting networks, <code>theme_void()</code>.</p></li>
+</ul>
+<pre class="r"><code>library(ggraph)
+set.seed(123)
+
+a &lt;- grid::arrow(type = &quot;closed&quot;, length = unit(.15, &quot;inches&quot;))
+
+ggraph(bigram_graph, layout = &quot;fr&quot;) +
+  geom_edge_link(aes(edge_alpha = n), show.legend = FALSE,
+                 arrow = a, end_cap = circle(.07, &#39;inches&#39;)) +
+  geom_node_point(color = &quot;lightblue&quot;, size = 5) +
+  geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+  theme_void()</code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+</div>
+</div>
+<div id="classification-with-logistic-regression" class="section level1">
+<h1><span class="header-section-number">4</span> Classification with logistic regression</h1>
+<p>In the first part we will build a statistical learning model. In the second part we will want to test it and assess its quality. Without dividing the dataset we would test the model on the data which the algorithm have already seen, which is why we start by splitting the data.</p>
+<div id="train-test-split" class="section level2">
+<h2><span class="header-section-number">4.1</span> Train test split</h2>
+<p>Let’s go back to the original <code>books</code> dataset (not the <code>tidy_books</code> dataset) because the lines of text are our individual observations.</p>
+<p>We could use functions from the <a href="https://tidymodels.github.io/rsample/"><code>rsample</code></a> package to generate resampled datasets, but the specific modeling approach we’re going to use will do that for us so we only need a simple train/test split.</p>
+<pre class="r"><code>library(rsample)
+
+books_split &lt;- books %&gt;%
+  select(document) %&gt;%
+  initial_split(prop = 3/4)
+
+train_data &lt;- training(books_split)
+test_data &lt;- testing(books_split)</code></pre>
+<p>Notice that we just select specific text rows (column <code>document</code>) for training and others for our test data (we set the proportion of data to be retained for modeling/analysis to 3/4) without selecting the actual text lines at this point.</p>
+</div>
+<div id="training-data-sparse-matrix" class="section level2">
+<h2><span class="header-section-number">4.2</span> Training data (sparse matrix)</h2>
+<p>Now we want to transform our training data from a tidy data structure to a “sparse matrix” (these objects can be treated as though they were matrices, for example accessing particular rows and columns, but are stored in a more efficient format) to use for our classification algorithm.</p>
+<pre class="r"><code>library(tidytext)
+
+sparse_words &lt;- tidy_books %&gt;%
+  count(document, word) %&gt;%
+  inner_join(train_data, by = &quot;document&quot;) %&gt;%
+  cast_sparse(document, word, n)</code></pre>
+<pre class="r"><code>dim(sparse_words)</code></pre>
+<pre><code>## [1] 4782  892</code></pre>
+<p>We have over 4,700 training observations and almost 900 features. Text feature space handled in this way is very high dimensional, so we need to take that into account when considering our modeling approach.</p>
+<p>One reason this overall approach is flexible is that you could at this point <code>cbind()</code> other columns, such as non-text numeric data, onto this sparse matrix. Then you can use this combination of text and non-text data as your predictors in the classifiaction algorithm, and the regularized regression algorithm we are going to use will find which are important for your problem space.</p>
+</div>
+<div id="response-variable" class="section level2">
+<h2><span class="header-section-number">4.3</span> Response variable</h2>
+<p>We also need to build a tibble with a <strong>response variable</strong> to associate each of the <code>rownames()</code> of the sparse matrix with an author, to use as the quantity we will predict in the model.</p>
+<pre class="r"><code>word_rownames &lt;- as.integer(rownames(sparse_words))</code></pre>
+<pre class="r"><code>books_joined &lt;- tibble(document = word_rownames) %&gt;%
+  left_join(books  %&gt;%
+    select(document, author))</code></pre>
+<table class="table table-striped" style="font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+document
+</th>
+<th style="text-align:left;">
+author
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Tesla, Nikola
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="logistic-regression-model" class="section level2">
+<h2><span class="header-section-number">4.4</span> Logistic regression model</h2>
+<p>Now it’s time to train our classification model. Let’s use the <code>glmnet</code> package to fit a logistic regression model with <em>lasso</em> (least absolute shrinkage and selection operator; also Lasso or LASSO) regularization. This regression analysis method performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces.</p>
+<p><code>Glmnet</code> is a package that fits lasso models via penalized maximum likelihood. We do not cover the method and glmnet package in detail at this point, but if you want to learn more about glmnet and lasso regression, review the following resources:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/glmnet/vignettes/glmnet_beta.pdf">Introduction to glmnet</a></li>
+<li><a href="https://cran.r-project.org/web/packages/glmnet/glmnet.pdf">glmnet documentation</a></li>
+<li><a href="https://www.kirenz.com/post/2019-08-12-python-lasso-regression-auto/">LASSO regression in Python</a></li>
+</ul>
+<p>The package is very useful for text classification because the variable selection that lasso regularization performs can tell you which words are important for your prediction problem. The glmnet package also supports parallel processing, so we can train on multiple cores with <a href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">cross-validation</a> on the training set using <code>cv.glmnet()</code>.</p>
+<pre class="r"><code>library(glmnet)
+library(doMC)
+registerDoMC(cores = 8)
+
+is_einstein &lt;- books_joined$author == &quot;Einstein, Albert&quot;
+
+model &lt;- cv.glmnet(sparse_words, 
+                   is_einstein,
+                   family = &quot;binomial&quot;,
+                   parallel = TRUE, 
+                   keep = TRUE)</code></pre>
+<p>Let’s use the package <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom.html"><code>broom</code></a> (the broom package takes the messy output of built-in functions in R, such as lm, nls, or t.test, and turns them into tidy data frames) to check out the coefficients of the model, for the largest value of lambda with error within 1 standard error of the minimum (<code>lambda.1se</code>).</p>
+<pre class="r"><code>library(broom)
+
+coefs &lt;- model$glmnet.fit %&gt;%
+  tidy() %&gt;%
+  filter(lambda == model$lambda.1se)</code></pre>
+<p>Which coefficents are the largest in size, in each direction:</p>
+<pre class="r"><code>library(forcats)
+
+coefs %&gt;%
+  group_by(estimate &gt; 0) %&gt;%
+  top_n(10, abs(estimate)) %&gt;%
+  ungroup() %&gt;%
+  ggplot(aes(fct_reorder(term, estimate), estimate, fill = estimate &gt; 0)) +
+  geom_col(alpha = 0.8, show.legend = FALSE) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    title = &quot;Coefficients that increase/decrease probability the most&quot;,
+    subtitle = &quot;A document mentioning lecture or probably is unlikely to be written by Albert Einstein&quot;
+  ) +
+  theme_classic(base_size = 12) +
+  theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;)) +
+  scale_fill_brewer()  </code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+</div>
+<div id="model-evaluation-with-test-data" class="section level2">
+<h2><span class="header-section-number">4.5</span> Model evaluation with test data</h2>
+<p>Now we want to evaluate how well this model is doing using the test data that we held out and did not use for training the model. Let’s create a dataframe that tells us, for each document in the test set, the probability of being written by Albert Einstein.</p>
+<pre class="r"><code>intercept &lt;- coefs %&gt;%
+  filter(term == &quot;(Intercept)&quot;) %&gt;%
+  pull(estimate)
+
+classifications &lt;- tidy_books %&gt;%
+  inner_join(test_data) %&gt;%
+  inner_join(coefs, by = c(&quot;word&quot; = &quot;term&quot;)) %&gt;%
+  group_by(document) %&gt;%
+  summarize(score = sum(estimate)) %&gt;%
+  mutate(probability = plogis(intercept + score))</code></pre>
+<table class="table table-striped" style="font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+document
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:right;">
+probability
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+-1.3811800
+</td>
+<td style="text-align:right;">
+0.2063129
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+-1.9929541
+</td>
+<td style="text-align:right;">
+0.1235678
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+1.2522803
+</td>
+<td style="text-align:right;">
+0.7834973
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+-1.8746267
+</td>
+<td style="text-align:right;">
+0.1369635
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+-5.1987683
+</td>
+<td style="text-align:right;">
+0.0056813
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+-2.8148527
+</td>
+<td style="text-align:right;">
+0.0583613
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+0.2272565
+</td>
+<td style="text-align:right;">
+0.5649167
+</td>
+</tr>
+</tbody>
+</table>
+<p>Now let’s use the <a href="https://tidymodels.github.io/yardstick/"><code>yardstick</code></a> package (yardstick is a package to estimate how well models are working using tidy data principles) to calculate some model performance metrics. For example, what does the <a href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc">ROC curve</a> (receiver operating characteristic curve - a graph showing the performance of a classification model at all classification thresholds) look like:</p>
+<pre class="r"><code>library(yardstick)
+
+comment_classes &lt;- classifications %&gt;%
+  left_join(books %&gt;%
+    select(author, document), by = &quot;document&quot;) %&gt;%
+  mutate(author = as.factor(author))
+
+comment_classes %&gt;%
+  roc_curve(author, probability) %&gt;%
+  ggplot(aes(x = 1 - specificity, y = sensitivity)) +
+  geom_line(
+    color = &quot;midnightblue&quot;,
+    size = 1.5
+  ) +
+  geom_abline(
+    lty = 2, alpha = 0.5,
+    color = &quot;gray50&quot;,
+    size = 1.2
+  ) +
+  labs(
+    title = &quot;ROC curve for text classification using regularized regression&quot;,
+    subtitle = &quot;Predicting whether text was written by Albert Einstein or Nikola Tesla&quot;
+  ) +
+  theme_classic(base_size = 12) +
+  theme(plot.title = element_text(lineheight=.8, face=&quot;bold&quot;))</code></pre>
+<p><img src="/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Let’s obtain the accuracy (AUC - the fraction of predictions that a classification model got right) on the test data:</p>
+<pre class="r"><code>auc &lt;- comment_classes %&gt;%
+  roc_auc(author, probability)</code></pre>
+<table class="table table-striped" style="font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+.metric
+</th>
+<th style="text-align:left;">
+.estimator
+</th>
+<th style="text-align:right;">
+.estimate
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+roc_auc
+</td>
+<td style="text-align:left;">
+binary
+</td>
+<td style="text-align:right;">
+0.9757987
+</td>
+</tr>
+</tbody>
+</table>
+<p>Next we turn to the <strong>confusion matrix</strong>. Let’s make the following definitions:</p>
+<ul>
+<li>“Einstein, Albert” is a positive class.</li>
+<li>“Tesla, Nikola” is a negative class.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><span style="color:green"> <strong>True Positive (TP):</strong> </span></th>
+<th><span style="color:red"> <strong>False Positive (FP):</strong> </span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Reality</strong>: Text is from Einstein</td>
+<td><strong>Reality</strong>: Text is from Tesla</td>
+</tr>
+<tr class="even">
+<td><strong>Model</strong>: Text is from Einstein</td>
+<td><strong>Model</strong>: Text is from Einstein</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><span style="color:red"> <strong>False Negative (FN):</strong> </span></th>
+<th><span style="color:green"> <strong>True Negative (TN):</strong> </span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Reality</strong>: Text is from Einstein</td>
+<td><strong>Reality</strong>: Text is from Tesla</td>
+</tr>
+<tr class="even">
+<td><strong>Model</strong>: Text is from Tesla</td>
+<td><strong>Model</strong>: Text is from Tesla</td>
+</tr>
+</tbody>
+</table>
+<p>We can summarize our “einstein-text-prediction” model using a 2x2 confusion matrix that depicts all four possible outcomes:</p>
+<ul>
+<li><p>A <em>true positive</em> is an outcome where the model correctly predicts the positive class (Einstein). Similarly, a <em>true negative</em> is an outcome where the model correctly predicts the negative class (Tesla).</p></li>
+<li><p>A <em>false positive</em> is an outcome where the model incorrectly predicts the positive class. And a <em>false negative</em> is an outcome where the model incorrectly predicts the negative class.</p></li>
+</ul>
+<p>Let’s use a probability of 0.5 as our threshold. That means all model predictions with a probability greater than 50% get labeld as beeing text from Einstein:</p>
+<pre class="r"><code>comment_classes %&gt;%
+  mutate(prediction = case_when(
+          probability &gt; 0.5 ~ &quot;Einstein, Albert&quot;,
+          TRUE ~ &quot;Tesla, Nikola&quot;),
+        prediction = as.factor(prediction)) %&gt;%
+  conf_mat(author, prediction)</code></pre>
+<pre><code>##                   Truth
+## Prediction         Einstein, Albert Tesla, Nikola
+##   Einstein, Albert              628            58
+##   Tesla, Nikola                  70           784</code></pre>
+<p>Let’s take a closer look at these misclassifications: false negatives (FN) and false positives (FP). Which documents here were incorrectly predicted to be written by Albert Einstein, at the extreme probability end of greater than 80% (false positive)?</p>
+<pre class="r"><code>FP&lt;- comment_classes %&gt;%
+  filter(probability &gt; .8,
+          author == &quot;Einstein, Albert&quot;) %&gt;%
+  sample_n(10) %&gt;%
+  inner_join(books %&gt;%
+  select(document, text)) %&gt;%
+  select(probability, text)</code></pre>
+<table class="table table-striped" style="font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+probability
+</th>
+<th style="text-align:left;">
+text
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.9631560
+</td>
+<td style="text-align:left;">
+distance or of action at a distance with an infinite velocity of
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9990371
+</td>
+<td style="text-align:left;">
+the body of reference. But we have just seen that this assumption is
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9984961
+</td>
+<td style="text-align:left;">
+ON THE RELATIVITY OF THE CONCEPTION OF DISTANCE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9759264
+</td>
+<td style="text-align:left;">
+shortening in the direction of the motion. On the other hand, the
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9677179
+</td>
+<td style="text-align:left;">
+distance sun-planet exhibits periodic variations; but in this case the
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9860807
+</td>
+<td style="text-align:left;">
+domain leads conclusively to a theory of electromagnetic phenomena, of
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9672166
+</td>
+<td style="text-align:left;">
+When we say that the lightning strokes <em>A</em> and <em>B</em> are simultaneous
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9034887
+</td>
+<td style="text-align:left;">
+If, then, the observer first measures the circumference of the disc
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9996035
+</td>
+<td style="text-align:left;">
+seen from a reference-body <em>K′</em> which is accelerated relatively to <em>K</em>.
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.9818753
+</td>
+<td style="text-align:left;">
+and the action of the other planets under consideration. Thus, if we
+</td>
+</tr>
+</tbody>
+</table>
+<p>These documents were incorrectly predicted to not be written by Albert Einstein.</p>
+<p>Finally, let’s take a look at the texts which are from Albert Einstein that the model did not correctly identify (false negative):</p>
+<pre class="r"><code>FN &lt;- comment_classes %&gt;%
+  filter(probability &lt; .3,
+         author == &quot;Einstein, Albert&quot;) %&gt;%
+  sample_n(10) %&gt;%
+  inner_join(books %&gt;%
+  select(document, text)) %&gt;%
+  select(probability, text)</code></pre>
+<table class="table table-striped" style="font-size: condensedpx; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+probability
+</th>
+<th style="text-align:left;">
+text
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.2453691
+</td>
+<td style="text-align:left;">
+perceptible in terrestrial experiments. We have already remarked in
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.0969140
+</td>
+<td style="text-align:left;">
+be arbitrary, although it was always tacitly made even before the
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.1989692
+</td>
+<td style="text-align:left;">
+strings to the floor, otherwise the slightest impact against the floor
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.1994746
+</td>
+<td style="text-align:left;">
+local variations of temperature, and with which we made acquaintance as
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.1932809
+</td>
+<td style="text-align:left;">
+the conservation of energy (and of impulse).
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.0546119
+</td>
+<td style="text-align:left;">
+me—and rightly so—and you declare: “I maintain my previous definition
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.0613870
+</td>
+<td style="text-align:left;">
+permits of our answering it with a moderate degree of certainty, and in
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.2458622
+</td>
+<td style="text-align:left;">
+treated in detail and with unsurpassable lucidity by Helmholtz and
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.2929757
+</td>
+<td style="text-align:left;">
+potential φ, hence the result we have obtained will hold quite
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.1570832
+</td>
+<td style="text-align:left;">
+for the following reason. As a result of the more careful study of
+</td>
+</tr>
+</tbody>
+</table>
+<p>We can conclude that the model did a very good job in predicting the authors of the texts. Furthermore, the texts of the misclassifications are quite short and we can imagine, that even a human reader who is familiar with the work of Einstein and Tesla would have difficulties to classify them correctly.</p>
+</div>
+</div>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/statistics/">Statistics</a>
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/jan/avatar_hu1d623008f699678abc0368ff80db1811_316634_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="/">Jan Kirenz</a></h5>
+      <h6 class="card-subtitle">Professor</h6>
+      <p class="card-text" itemprop="description">I&rsquo;m a data scientist educator and consultant.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/contact" >
+              <i class="fas fa-paper-plane"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/kirenz" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.xing.com/profile/Jan_Kirenz" target="_blank" rel="noopener">
+              <i class="fab fa-xing"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/jan-kirenz-01b301a5/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/project/r-correlation-tutorial/">Correlation Tutorial with R</a></li>
+          
+          <li><a href="/project/r-data-science-statistics/">Free books to learn Data Science &amp; Statistics with R</a></li>
+          
+          <li><a href="/project/programming-languages/">Programming Languages for Data Science</a></li>
+          
+          <li><a href="/talk/2019-programming-languages/">Programming Languages for Data Science</a></li>
+          
+          <li><a href="/post/2019-08-13-network_analysis/">Social Network Analysis with Python</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/css.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/js.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/markdown.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.9ef1b53ee2bde6c7f33b150c6ba4d452.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/license/">LICENSE: CC-BY-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i> </a><br>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; Jan Kirenz, 2019 &middot; 
+
+    Made with the <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i> </a><a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package and the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>. 
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
