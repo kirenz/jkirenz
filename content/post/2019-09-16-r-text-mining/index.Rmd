@@ -747,7 +747,7 @@ Let’s take a closer look at these misclassifications: false negatives (FN) and
 ```{r}
 FP<- comment_classes %>%
   filter(probability > .8,
-          author == "Einstein, Albert") %>%
+          author == "Tesla, Nikola") %>%
   sample_n(10) %>%
   inner_join(books %>%
   select(document, text)) %>%

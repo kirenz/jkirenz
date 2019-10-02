@@ -2803,7 +2803,7 @@ binary
 <p>Let’s take a closer look at these misclassifications: false negatives (FN) and false positives (FP). Which documents here were incorrectly predicted to be written by Albert Einstein, at the extreme probability end of greater than 80% (false positive)?</p>
 <pre class="r"><code>FP&lt;- comment_classes %&gt;%
   filter(probability &gt; .8,
-          author == &quot;Einstein, Albert&quot;) %&gt;%
+          author == &quot;Tesla, Nikola&quot;) %&gt;%
   sample_n(10) %&gt;%
   inner_join(books %&gt;%
   select(document, text)) %&gt;%
@@ -2822,82 +2822,82 @@ text
 <tbody>
 <tr>
 <td style="text-align:right;">
-0.9631560
+0.8189629
 </td>
 <td style="text-align:left;">
-distance or of action at a distance with an infinite velocity of
+through things. He is an omnivorous reader, who never forgets; and he
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9990371
+0.9012553
 </td>
 <td style="text-align:left;">
-the body of reference. But we have just seen that this assumption is
+our sense of vision.
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9984961
+0.8094770
 </td>
 <td style="text-align:left;">
-ON THE RELATIVITY OF THE CONCEPTION OF DISTANCE
+enormous distance without affecting greatly the character of the
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9759264
+0.9058630
 </td>
 <td style="text-align:left;">
-shortening in the direction of the motion. On the other hand, the
+experience of to-day enables us to see clearly why these coils under
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9677179
+0.8509898
 </td>
 <td style="text-align:left;">
-distance sun-planet exhibits periodic variations; but in this case the
+discharger I have been able to maintain an oscillating motion without
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9860807
+0.8119290
 </td>
 <td style="text-align:left;">
-domain leads conclusively to a theory of electromagnetic phenomena, of
+little thought leads us to the conclusion that, could we but reach
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9672166
+0.9086652
 </td>
 <td style="text-align:left;">
-When we say that the lightning strokes <em>A</em> and <em>B</em> are simultaneous
+disc, which could be seen from a considerable distance, such is the
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9034887
+0.9440000
 </td>
 <td style="text-align:left;">
-If, then, the observer first measures the circumference of the disc
+obtainable at any point of the universe. This idea is not novel. Men
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9996035
+0.9069282
 </td>
 <td style="text-align:left;">
-seen from a reference-body <em>K′</em> which is accelerated relatively to <em>K</em>.
+Leaving practicability out of consideration, this, then, would be the
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
-0.9818753
+0.8595897
 </td>
 <td style="text-align:left;">
-and the action of the other planets under consideration. Thus, if we
+plant, and on returning to Paris sought to carry out a number of ideas
 </td>
 </tr>
 </tbody>
@@ -2923,14 +2923,6 @@ text
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-0.2453691
-</td>
-<td style="text-align:left;">
-perceptible in terrestrial experiments. We have already remarked in
-</td>
-</tr>
 <tr>
 <td style="text-align:right;">
 0.0969140
@@ -2989,10 +2981,10 @@ treated in detail and with unsurpassable lucidity by Helmholtz and
 </tr>
 <tr>
 <td style="text-align:right;">
-0.2929757
+0.1886392
 </td>
 <td style="text-align:left;">
-potential φ, hence the result we have obtained will hold quite
+gravitational potential, then the study of this displacement will
 </td>
 </tr>
 <tr>
@@ -3001,6 +2993,14 @@ potential φ, hence the result we have obtained will hold quite
 </td>
 <td style="text-align:left;">
 for the following reason. As a result of the more careful study of
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.0134175
+</td>
+<td style="text-align:left;">
+throwing it. Then, disregarding the influence of the air resistance, I
 </td>
 </tr>
 </tbody>
