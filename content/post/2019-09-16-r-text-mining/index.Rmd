@@ -760,7 +760,7 @@ kable(FP) %>%
   kable_styling(bootstrap_options = "striped", "hover", "condensed", "responsive", full_width = F, position = "center")
 ```
 
-These documents were incorrectly predicted to not be written by Albert Einstein. 
+These documents were incorrectly predicted to be written by Albert Einstein. However, they were written by Nikola Tesla. 
 
 Finally, let's take a look at the texts which are from Albert Einstein that the model did not correctly identify (false negative):
 

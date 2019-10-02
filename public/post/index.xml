@@ -2199,7 +2199,7 @@ plant, and on returning to Paris sought to carry out a number of ideas
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;These documents were incorrectly predicted to not be written by Albert Einstein.&lt;/p&gt;
+&lt;p&gt;These documents were incorrectly predicted to be written by Albert Einstein. However, they were written by Nikola Tesla.&lt;/p&gt;
 &lt;p&gt;Finally, let’s take a look at the texts which are from Albert Einstein that the model did not correctly identify (false negative):&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;FN &amp;lt;- comment_classes %&amp;gt;%
   filter(probability &amp;lt; .3,
