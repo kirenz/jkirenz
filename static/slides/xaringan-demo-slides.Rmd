@@ -392,7 +392,7 @@ knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/62bcc8535a0607709
 
 ---
 
-### Incremental slides
+## Incremental slides
 
 .pull-left[
 
@@ -507,7 +507,7 @@ knitr::kable(head(iris), format = 'html')
 
 ---
 
-## Table: DT package
+## Tables: DT package
 
 * The R package DT provides an R interface to the JavaScript library DataTables. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Build Presentations in R"
-subtitle: "⚔<br/>with Xaringan"
+subtitle: "with Xaringan"
 author: "Jan Kirenz"
 output:
   xaringan::moon_reader:
@@ -9,12 +9,40 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-    includes:
-      in_header: header.html
 ---
+
+```{r setup, include=FALSE}
+# htmltools.dir.version copies an HTML dependency to a subdirectory of the given directory. 
+# The subdirectory name will be name-version (for example, "outputDir/xaringan-slides--1.11.0"). 
+# You may set options(htmltools.dir.version = FALSE) to suppress the version number in the subdirectory name.
+options(htmltools.dir.version = FALSE)
+```
+
+class: inverse, center, middle
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-position: 50% 60%
+background-size: contain
+
+# ... some xaringan highlights ...
+
+---
+
+
+## Use R code and show output
+
+
+```{r, fig.height=4, fig.width=5}
+library(ggplot2)
+
+ggplot(cars, aes(speed, dist)) + geom_point() + theme_bw()
+```
+
+---
+
 class: center
 
 background-image: url("https://media.giphy.com/media/l378c04F2fjeZ7vH2/giphy.gif")
+
 
 # Easy implementation of animations
 
@@ -24,83 +52,486 @@ class: center, inverse
 background-image: url("images/dashboard2.png")
 
 # Use background images 
----
-
-# Let's start.... First of all, get **xaringan**
-
-*This tutorial is mainly based on [Yihui Xie's](https://slides.yihui.name/xaringan/#1) and [Alison Hill's](https://github.com/rbind/apreshill/blob/master/static/slides/rladies-demo-slides.Rmd) xaringan introductions*
-
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
-
-```{r eval=FALSE, tidy=FALSE}
-devtools::install_github("yihui/xaringan")
-```
-
---
-
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
-
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;
-
---
-
-- Click the `Knit` button to compile it;
-
---
-
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
-
-.footnote[
-[1] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio. Review this site for more information about the [Infinite Moon Reader](https://yihui.name/en/2019/02/ultimate-inf-mr/)
-]
 
 ---
 
-# Themes
-
-You can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
-
-```{r}
-names(xaringan:::list_css())
-```
+class: center
 
 
----
-
-# Themes
-
-To use a theme, you can specify the `css` option as an array of CSS filenames (without the `.css` extensions), e.g.,
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts]
-```
-
-
----
-class: center, inverse
-
-
-# Side by side slides
-
+## Show content in different formats
 
 
 .pull-left[
+
+Image on the left
+
 ![](https://media.giphy.com/media/3o6Ygfw40tlnPhX87m/giphy.gif)
 ]
 
 .pull-right[
+
+Image on the right
+
 ![](https://media.giphy.com/media/3o6Ygfw40tlnPhX87m/giphy.gif)
 ]
 
 
+---
+
+background-image: url(https://user-images.githubusercontent.com/163582/53144527-35f7a500-3562-11e9-862e-892d3fd7036d.gif)
+background-position: 50% 60%
+background-size: 80%
+
+## How to Build Presentations in RStuido with xaringan
+
+
+.footnote[
+
+Source: [Xie, Y. (2019). The Ultimate Infinite Moon Reader for xaringan Slides](https://yihui.name/en/2019/02/ultimate-inf-mr/)
+
+]
 
 ---
 
-# Math Expressions
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-position: 10% 10%
+background-size: 10%
 
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
+class: middle
+
+## Introduction to xaringan
+
+- With xaringan you can easily generate HTML5 presentations.
+
+- The xaringan package is an [R Markdown](https://www.kirenz.com/project/markdown-first-steps/) extension based on the JavaScript library remark.js.
+
+- [Remark.js]((https://remarkjs.com) is an in-browser, markdown-driven slideshow tool.
+
+- This presentation covers the basic functionalities of xaringan and is mainly based on [Yihui Xie's](https://slides.yihui.name/xaringan/#1) and [Alison Hill's](https://github.com/rbind/apreshill/blob/master/static/slides/rladies-demo-slides.Rmd) xaringan introductions.
+
+- To learn more about xaringan, review the excellent [xaringan introduction](https://bookdown.org/yihui/rmarkdown/xaringan.html) from the package's author Yihui Xi. 
+
+---
+
+## Installation of xaringan
+
+* First of all, install the xaringan package:
+
+```{r eval=FALSE}
+install.packages("xaringan")
+```
+
+- Create a new R Markdown document from the RStuido menu: 
+
+ - `File -> New File -> R Markdown -> From Template -> Ninja Presentation`
+
+- Use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>1</sup> "Infinite Moon Reader" to live preview the slides.
+
+- Every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
+
+- Review this site for more information about the [Infinite Moon Reader](https://yihui.name/en/2019/02/ultimate-inf-mr/)
+
+.footnote[
+[1] See [this comments](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio. 
+]
+
+---
+
+## Xaringan uses YAML metadata
+
+.pull-left[
+
+- The metadata (title page, style,...) for xaringan is written in between the pair of three dashes (`---`) at the top of the document.
+
+- The syntax for the metadata is [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language, also called YAML metadata or the YAML frontmatter). 
+
+- YAML metadata typically consists of tag-value pairs separated by colons. 
+
+- The YAML metatdata for this document is shown at the right.
+
+]
+
+.pull-right[
+
+```markdown
+---
+title: "Build Presentations in R"
+subtitle: "with Xaringan"
+author: "Jan Kirenz"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+---
+```
+
+- Note that indentation matters in YAML, so do not forget to indent the sub-fields of a top field properly.
+
+- Visit the online book [bookdown](https://bookdown.org/yihui/bookdown/r-markdown.html) from Yihui Xi to learn more about YAML
+
+]
+
+---
+
+
+## Slides and properties: class
+
+
+.pull-left[
+
+- Every new slide is created under a horizontal rule (`---`). 
+
+- A slide can have properties, including `class` and `background-image`
+
+- Properties have to be written in the beginning of a slide, e.g.:
+
+]
+
+.pull-right[
+
+- Available **class** names are:
+
+- `left`, `center`, and `right` for the **horizontal alignment** of all elements on a slide 
+
+- `top`, `middle`, and `bottom` can be used for the **vertical alignment**.
+
+]
+
+
+```markdown
+---
+class: center, middle
+background-image: url("images/cool.png")
+```
+
+---
+
+## Slides and properties: background-image
+
+.pull-left[
+
+- Background images can be set via the `background-image` property. 
+
+- The image can be either a local file or an online image. 
+
+- The path should be put inside `url()`.
+
+- You can also set the background image size and position, e.g.,
+
+]
+
+.pull-right[
+
+- Available options are:
+
+- **background-position**:`center`, `left`, `right`, `top`, `middle`, and `bottom` or use percentages to specify the exact location ( e.g. `10% 20%`) for the alignment on a slide 
+
+- **size**: use `contain` to cover the whole page or use a specific number (e.g. `20%`) 
+
+]
+
+```markdown
+background-image: url("https://path/picture.png")
+background-position: center
+background-size: contain
+```
+
+---
+
+## Implementation of images
+
+* You can use simple Markdown code to implement images: 
+
+```markdown
+![Image description](path/image.png)
+```
+
+![Image description](https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg)
+
+---
+
+## Implementation of images
+
+* You may also use the package `knitr` to specify more options: 
+
+```r
+{r, out.width='25%', fig.align='center', fig.cap='RStudio Logo'}
+knitr::include_graphics('https://path/logo.svg')
+
+```
+
+<br />
+
+```{r, out.width='25%', fig.align='center', fig.cap='RStudio Logo', echo=FALSE}
+# hide this code in the output with echo=FALSE
+knitr::include_graphics('https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg')
+```
+
+
+---
+
+## Implementation of images
+
+* Or use HTML if you want to change the size of the image:
+
+```markdown
+<img src="path/image.png" width="200" height="200" />
+```
+
+<img src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" width="200" height="200" />
+
+---
+
+## Implementation of videos 
+
+* You can easily embed videos in xaringan presentation. As an example here are the steps to implement YouTube-videos:
+
+1. On a computer, go to the YouTube video you want to embed.
+1. Under the video, click SHARE Share.
+1. Click Embed.
+1. From the box that appears, copy the HTML code.
+1. Paste the code into your xaringan document
+
+
+.center[
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lJIrF4YjHfQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+]
+
+---
+
+## Content classes
+
+- You can assign classes to any elements on a slide.
+
+- The syntax is `.className[content]`. 
+
+- Basically it makes it possible to style any elements on a slide via CSS. There are a few built-in content classes: 
+ - `.left[ ]`, 
+ - `.center[ ]`, and 
+ - `.right[ ]`, 
+ 
+ to align elements horizontally on a slide, e.g., you may center an image:
+
+```markdown
+.center[![description of the image](images/foo.png)]
+```
+
+---
+
+## Content classes: sidebar layout
+
+.left-column[
+
+### Example of the sidebar layout
+
+### ... with two level-3 headings
+
+]
+
+.right-column[
+- The content inside `[ ]` can be anything, such as several paragraphs, or lists. 
+
+- The default theme of **xaringan** has provided four more content classes:
+
+- `.left-column[ ]` and `.right-column[ ]` provide a sidebar layout like the one on this page:
+
+ - The left sidebar is narrow (20% of the slide width), and the right column is the main column (75% of the slide width). 
+
+ - If you have multiple level-2 (`##`) or level-3 (`###`) headings in the left column, the last heading will be highlighted, with previous headings being grayed out.
+]
+
+---
+
+## Content classes: two-column layout
+
+- `.pull-left[ ]` and `.pull-right[ ]` provide a two-column layout, and the two columns are of the same width. Below is an example:
+
+    ```markdown
+    .pull-left[
+    - One bullet.
+
+    - Another bullet.
+    ]
+
+    .pull-right[
+    ![](https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg)
+    ]
+    ```
+
+
+.pull-left[
+- One bullet.
+
+- Another bullet.
+    ]
+
+.pull-right[
+![an image](https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg)
+    ]
+
+
+---
+
+## Content classes
+
+- You can design your own content classes if you know CSS. 
+
+- E.g., if you want to make text red via `.red[ ]`, you may define this in CSS:
+
+```{css}
+.red { color: red; }
+```
+
+
+- `.red[Text in red]` renders to .red[Text in red]
+
+
+---
+
+## Incremental slides
+
+.pull-left[
+
+* When you want to show content incrementally on a slide, you can use two dashes to separate the content. 
+
+* The two dashes can appear anywhere except inside content classes, so you can basically split your content in any way you like.
+
+* You can views the example code on the right on the next page
+
+]
+
+.pull-right[
+
+```
+## Incremental slides
+
+The easiest way to build  
+incremental slides is...
+--
+to use two dashes `--` to  
+separate content on a slide.
+--
+You can divide a  
+slide in _any way you want_.
+--
+- One bullet
+- Another bullet
+--
+- And one more
+--
+.center[
+![Saw](https://slides.yihui.name/
+gif/saw-branch.gif)
+Don't saw your slides too hard.
+]
+```
+]
+
+---
+
+## Incremental slides
+
+The easiest way to build incremental slides is...
+
+--
+
+to use two dashes `--` to separate content on a slide.
+
+--
+
+You can divide a slide in _any way you want_.
+
+--
+- One bullet
+
+- Another bullet
+
+--
+
+- And one more
+
+--
+
+.center[
+
+![Saw](https://slides.yihui.name/gif/saw-branch.gif)
+
+Don't saw your slides too hard.
+
+]
+
+---
+
+## R Plots
+
+* Implement R code with plots and change the figure size with `fig.height` and `fig.width` in the code chunck options:
+
+
+```markdown
+{r, fig.height=4, fig.width=5}
+```
+```{r, fig.height=3, fig.width=4}
+library(ggplot2)
+
+ggplot(cars, aes(speed, dist)) + geom_point() + theme_bw()
+```
+
+---
+
+## R output
+
+```r
+{r, fig.height=4, fig.width=10}
+```
+```{r, fig.height=4, fig.width=10}
+library(leaflet)
+leaflet() %>% addTiles() %>% setView(9.102360, 48.740760,  
+                                     zoom = 17)
+```
+
+
+---
+
+
+## Tables
+
+* If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+
+```{r}
+knitr::kable(head(iris), format = 'html')
+```
+
+---
+
+## Tables: DT package
+
+* The R package DT provides an R interface to the JavaScript library DataTables. 
+
+* R data objects (matrices or data frames) can be displayed as tables on HTML pages.
+
+* DataTables provides filtering, pagination, sorting, and many other features in the tables.
+
+* See this [DT-Table documentation](https://rstudio.github.io/DT/) for an overview of the different options.
+---
+
+## Tables: DT package
+
+```{r}
+library(DT)
+
+DT::datatable(head(iris, 10),
+  fillContainer = FALSE, options = list(pageLength = 4))
+```
+
+---
+
+## Math Expressions
+
+You can write LaTeX math expressions inside a pair of dollar signs, e.g. `$\alpha+\beta$` renders $\alpha+\beta$. You can use the display style with double dollar signs:
 
 ```
 $$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
@@ -116,41 +547,12 @@ Limitations:
 
 1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
 
----
-
-# R Code
-
-```{r comment='#'}
-
-fit = lm(dist ~ speed, data = cars)
-coef(summary(fit))
-```
 
 ---
 
-# R Plots
+## Highlight code
 
-```{r cars, fig.height=4, dev='svg'}
-library(ggplot2)
-
-ggplot(cars, aes(speed, dist)) + geom_point() + theme_bw()
-```
-
----
-
-# Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r}
-knitr::kable(head(iris), format = 'html')
-```
-
----
-
-# Highlight code
-
-- The option `highlightLines: true` of `nature` will highlight code lines that start with `*` or are wrapped in `{{ }}`;
+- The option `highlightLines: true` of `nature` will highlight code lines that end with `#<<` or are wrapped in `{{ }}`;
 
     ```yaml
     output:
@@ -163,45 +565,107 @@ knitr::kable(head(iris), format = 'html')
 
 ---
 
-# Highlight code
+## Highlight code
 
+* An example of using trailing comment #<< to highlight lines::
 
-.pull-left[
-An example using a leading `*`:
+```{r}
+a = 1
+b = 2
 
-    ```r
-    if (TRUE) {
-    ** message("Very important!")
-    }
-    ```
-Output:
-```r
-if (TRUE) {
-* message("Very important!")
-}
+c = a + b #<<
 ```
 
-This is invalid R code, so it is a plain fenced code block that is not executed.
-]
 
-.pull-right[
-An example using `{{}}`:
+* An example using {{}}
 
-    `r ''````{r tidy=FALSE}
-    if (TRUE) {
-    *{{ message("Very important!") }}
-    }
-    ```
-Output:
-```{r tidy=FALSE}
+```{r}
 if (TRUE) {
 {{ message("Very important!") }}
 }
 ```
 
-It is valid R code so you can run it.
+---
+
+
+## R Code Chunck Options
+
+
+* `include = FALSE` prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.
+
+```{r include = FALSE}
+1 + 1
+```
+
+* `echo = FALSE` prevents code, but not the results from appearing in the finished file. 
+
+```{r echo = FALSE}
+1 + 1 
+```
+
+
+* `message = FALSE` prevents messages that are generated by code from appearing in the finished file.
+
+* `warning = FALSE` prevents warnings that are generated by code from appearing in the finished.
+
+
+.footnote[
+
+Source: [RStudio](https://rmarkdown.rstudio.com/lesson-3.html)
+
 ]
 
+---
+
+## Comments
+
+* You can write notes for yourself to read in the presenter mode. 
+
+* Press the keyboard shortcut "p" while viewing the presentation. 
+
+* These notes are written under three question marks ??? after a slide.
+
+???
+
+This comment is not visible in the HTML output slide.
+
+
+---
+
+## Keyboard shortcuts 
+
+After opening slides generated from **xaringan**, you may press the key `h` (Help) or `?` on your keyboard to learn all possible keyboard shortcuts, which may help you better present your slides.
+
+- To go the previous slide, you may press `Up`/`Left` arrows, `PageUp`, or `k`.
+
+- To go the next slide, you may press `Right`/`Down` arrows, `PageDown`, `Space`, or `j`.
+
+- You may press `Home` to go to the first slide, or `End` to go to the last slide, if you have these keys.
+
+- Typing a number and pressing `Return` (or `Enter`), you can jump to a specific slide with that page number.
+
+---
+
+## Keyboard shortcuts 
+
+
+- Press `b` to black out a slide.
+
+- `m` to "mirror" a slide (reverse everything on the slide).
+
+- Press `f` to toggle the fullscreen mode.
+
+- Press `c` to clone the slides to a new browser window 
+
+ - slides in the two windows will be in sync as you navigate through them. 
+ 
+- Press `p` to toggle the presenter mode. 
+
+- The keys `c` and `p` can be very useful when you present with your own computer connected to a second screen (such as a projector). On the second screen, you can show the normal slides, while cloning the slides to your own computer screen and using the presenter mode. 
+
+- You may press `t` to restart the timer at any time.
+
+- Press `h` or `?` again to exit the help page.
 
 ---
 
