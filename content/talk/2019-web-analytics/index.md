@@ -2,7 +2,7 @@
 title: "Web Analytics"
 draft: false
 event: Weitere Informationen
-event_url: Master Wirtschaftsinformatik
+event_url: https://www.hdm-stuttgart.de/vorlesung_detail?vorlid=5214123
 location: Stuttgart
 summary: Webscraping, API's, Network Analysis, NLP, Dashboards
 
@@ -60,8 +60,15 @@ projects:
 math: true
 ---
 
-In der Veranstaltung befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen.
+In der Veranstaltung Web Analytics befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten aus dem Internet -  bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren und anderen Webpräsenzen. 
 
- Die Erfassung von Daten auf Webpräsenz wird mit Hilfe von Tracking-Methoden (bspw. mit JavaScript und Tools wie Google Tag Manager, Google Analytics, Matomo) sowie Methoden des Web-Scarping und der Nutzung von Programmierschnittstellen (Application Programming Interface, API) behandelt.
+Von besonderem Interesse sind in diesem Zusammenhang "offene Daten" (Open Data), die im Internet zur freien Weiterverwendung frei zugänglich gemacht werden (insbesondere von Organisationen wie der OECD, Weltbank und von staatlichen Stellen).  
 
- Im Rahmen der Datenanalyse und Datenvisualisierung (Programmierung von Dashboards) werden insbesondere Open Source-Technologien (insbesondere Python und R) genutzt.
+Wir werden insbesondere mit der Programmiersprache R arbeiten und die folgenden Inhalte behandeln:
+
+
+- Web-scraping
+- Data Science
+- Web-API's
+- Natural Language Processing bzw. Text Mining
+- Programmierung von Dashboards
