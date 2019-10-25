@@ -23,7 +23,7 @@
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introdution-to-textmining-in-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Introdution to Textmining in R&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction-to-textmining-in-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Introduction to Textmining in R&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#installation-of-r-packages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Installation of R packages&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#data-import&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Data import&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -47,8 +47,8 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;introdution-to-textmining-in-r&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Introdution to Textmining in R&lt;/h1&gt;
+&lt;div id=&#34;introduction-to-textmining-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Introduction to Textmining in R&lt;/h1&gt;
 &lt;p&gt;This post demonstrates how various R packages can be used for text mining in R. In particular, we start with common text transformations, perform various data explorations with term frequency (tf) and inverse document frequency (idf) and build a supervised classifiaction model that learns the difference between texts of different authors.&lt;/p&gt;
 &lt;p&gt;The content of this tutorial is based on the excellent book &lt;a href=&#34;https://www.tidytextmining.com&#34;&gt;“Textmining with R (2019)”&lt;/a&gt; from Julia Silge and David Robinson and the blog post &lt;a href=&#34;https://www.r-bloggers.com/text-classification-with-tidy-data-principles/&#34;&gt;“Text classification with tidy data principles (2018)”&lt;/a&gt; from Julia Silges.&lt;/p&gt;
 &lt;div id=&#34;installation-of-r-packages&#34; class=&#34;section level2&#34;&gt;
