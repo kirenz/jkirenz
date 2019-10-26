@@ -9,7 +9,7 @@ categories:
   - Statistics
   - R
   - German
-summary: Berechnung von einfachen Statistiken in R.  
+summary: Berechnung von Statistiken in R.  
 description: Deskriptive Statistiken in der Programmiersprache R berechen.
 image:
   caption: 'Photo by RStudio'
