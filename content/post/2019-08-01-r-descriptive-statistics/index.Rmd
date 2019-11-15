@@ -71,7 +71,7 @@ psych::describe(Advertising)
 
 ### Mittelwert
 
-Bei der Berechnung des *arithmetischen Mittelwerts* in R sollte immer die Anweisung gegeben werden, fehlende Werte auszuschließen (na.rm = "remove values which are not available"). Ansonsten stoppt R bei fehlenden Werten die Berechnung und gibt eine Fehlermeldung aus.  
+Bei der Berechnung des *arithmetischen Mittelwerts* in R sollte immer die Anweisung gegeben werden, fehlende Werte auszuschließen (na.rm = "remove values which are not available"). Ansonsten stoppt R bei fehlenden Werten die Berechnung und gibt eine Fehlermeldung aus.
 
 
 ```{r}
