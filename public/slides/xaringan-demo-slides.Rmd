@@ -468,7 +468,7 @@ Don't saw your slides too hard.
 
 ## R Plots
 
-* Implement R code with plots and change the figure size with `fig.height` and `fig.width` in the code chunck options:
+* Implement R code with plots and change the figure size with `fig.height` and `fig.width` in the code chunk options:
 
 
 ```markdown
@@ -588,7 +588,7 @@ if (TRUE) {
 ---
 
 
-## R Code Chunck Options
+## R Code chunk Options
 
 
 * `include = FALSE` prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.
