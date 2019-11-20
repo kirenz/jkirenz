@@ -1,14 +1,15 @@
 ---
-title: First Steps in Markdown
-date: "2019-08-25T10:00:00Z"
+title: Introduction to R Markdown
+date: "2019-11-18T10:00:00Z"
 external_link: ""
 image:
-  caption: "[Jupyter Notebook](https://jupyter.org)"
+  caption: "[R Markdown Notebook](https://rmarkdown.rstudio.com)"
   focal_point: Smart
-summary: First Steps in Markdown - Communicate Data Science Results in a Modern Way
-description: First Steps in Markdown - Communicate Data Science Results in a Modern Way
+summary: Introduction to R Markdown - Communicate Data Science Results in a Modern Way
+description: R Markdown - Communicate Data Science Results in a Modern Way
 tags:
 - Markdown
+- R Markdown
 url_code: ""
 url_pdf: ""
 url_slides: ""
@@ -16,31 +17,46 @@ url_video: ""
 links:
 - icon: file
   icon_pack: fas
-  name: slides
+  name: markdown intro
   url: /slides/markdown-first-steps/markdown-guide.html
-#- icon: github
-#  icon_pack: fab
-#  name: demo code
-#  url: https://github.com/kirenz/xaringan/blob/master/xaringan-demo-slides.Rmd
-- icon: book
+- icon: file
   icon_pack: fas
-  name: documentation
-  url: https://www.markdownguide.org/basic-syntax
+  name: markdown report
+  url: https://www.kirenz.com/slides/markdown-report/markdown-report.html#1
+#- icon: book
+#  icon_pack: fas
+#  name: documentation
+#  url: https://www.markdownguide.org/basic-syntax
 ---
 
-- HTML-presentation ["First Steps in Markdown"](/slides/markdown-first-steps/markdown-guide.html) (created in Markdown with the [R Xaringan package](https://www.kirenz.com/project/r-xaringan/).
+---
+
+- HTML-presentation ["First Steps in Markdown"](/slides/markdown-first-steps/markdown-guide.html) (created in Markdown with the [R Xaringan package](https://www.kirenz.com/project/r-xaringan/)).
+
+- [R Markdown Report in HTML](https://www.kirenz.com/slides/markdown-report/markdown-report.html#1)
 
 ---
 
 Markdown is one of the world’s most popular markup languages used in data science. Both **R Markdown** and **Jupyter Notebooks** use **Markdown** to provide an unified authoring framework for data science, combining code (Python, R, SQL,...), its results, and commentary in Markdown. The documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.
 
-According to Wickham & Grolemund (2016), Markdown files are designed to be used in three ways:
+According to [Wickham & Grolemund (2016)](https://r4ds.had.co.nz/r-markdown.html), Markdown files are designed to be used in three ways:
 
-- For communicating to decision makers, who want to focus on the conclusions, not the code behind the analysis.
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
-- For collaborating with other data scientists, who are interested in both your conclusions, and how you reached them ( i.e. the code).
+1. For **communicating** to decision makers, who want to focus on the conclusions, not the code behind the analysis.
 
-- As an environment in which to do data science, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.
+1. For **collaborating** with other data scientists, who are interested in both your conclusions, and how you reached them (i.e. the code).
+
+1. As an environment in which **to do data science**, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.
+
+</div>
+
+<br />
+
+Learn the most important basics of Markdown in this excellent interactive ["60 Seconds Markdown Tutorial"](https://commonmark.org/help/). 
 
 
 [Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O'Reilly Media, Inc.](https://r4ds.had.co.nz/r-markdown.html)

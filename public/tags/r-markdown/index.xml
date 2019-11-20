@@ -7,10 +7,43 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Thu, 01 Aug 2019 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Nov 2019 10:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction to R Markdown</title>
+      <link>/project/markdown-first-steps/</link>
+      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/markdown-first-steps/</guid>
+      <description>
+
+
+&lt;hr /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;HTML-presentation &lt;a href=&#34;/slides/markdown-first-steps/markdown-guide.html&#34;&gt;“First Steps in Markdown”&lt;/a&gt; (created in Markdown with the &lt;a href=&#34;https://www.kirenz.com/project/r-xaringan/&#34;&gt;R Xaringan package&lt;/a&gt;).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.kirenz.com/slides/markdown-report/markdown-report.html#1&#34;&gt;R Markdown Report in HTML&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;Markdown is one of the world’s most popular markup languages used in data science. Both &lt;strong&gt;R Markdown&lt;/strong&gt; and &lt;strong&gt;Jupyter Notebooks&lt;/strong&gt; use &lt;strong&gt;Markdown&lt;/strong&gt; to provide an unified authoring framework for data science, combining code (Python, R, SQL,…), its results, and commentary in Markdown. The documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.&lt;/p&gt;
+&lt;p&gt;According to &lt;a href=&#34;https://r4ds.had.co.nz/r-markdown.html&#34;&gt;Wickham &amp;amp; Grolemund (2016)&lt;/a&gt;, Markdown files are designed to be used in three ways:&lt;/p&gt;
+&lt;style&gt;
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+&lt;/style&gt;
+&lt;div class=&#34;blue&#34;&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;For &lt;strong&gt;communicating&lt;/strong&gt; to decision makers, who want to focus on the conclusions, not the code behind the analysis.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;For &lt;strong&gt;collaborating&lt;/strong&gt; with other data scientists, who are interested in both your conclusions, and how you reached them (i.e. the code).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;As an environment in which &lt;strong&gt;to do data science&lt;/strong&gt;, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Learn the most important basics of Markdown in this excellent interactive &lt;a href=&#34;https://commonmark.org/help/&#34;&gt;“60 Seconds Markdown Tutorial”&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://r4ds.had.co.nz/r-markdown.html&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O’Reilly Media, Inc.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Create Data Presentations with R Markdown</title>
