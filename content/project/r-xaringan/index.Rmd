@@ -1,0 +1,37 @@
+---
+title: Create Data Presentations with R Markdown 
+date: "2019-08-01T10:00:00Z"
+external_link: ""
+image:
+  caption: "[Photo by Teemu Paananen on Unsplash](https://unsplash.com/photos/bzdhc5b3Bxs)"
+  focal_point: Smart
+summary: Xaringan - An R package for creating slideshows with R Markdown.
+description: Create Data Presentations with R Markdown. Xaringan - An R package for creating slideshows with R Markdown. 
+tags:
+- R
+- DataReporting
+- R Markdown
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+links:
+- icon: file
+  icon_pack: fas
+  name: demo slides
+  url: ../../slides/xaringan-demo-slides.html
+- icon: github
+  icon_pack: fab
+  name: demo code
+  url: https://github.com/kirenz/xaringan/blob/master/xaringan-demo-slides.Rmd
+- icon: book
+  icon_pack: fas
+  name: Documentation
+  url: https://slides.yihui.name/xaringan/#1
+---
+
+The xaringan package is an R Markdown extension based on the JavaScript library [remark.js](https://remarkjs.com) to generate HTML5 presentations in different [themes](https://github.com/yihui/xaringan/tree/master/inst/rmarkdown/templates/xaringan/resources) ([Xie 2019](https://bookdown.org/yihui/rmarkdown/xaringan.html#ref-R-xaringan)).
+
+You can learn more about the usage of the xaringan package from this excellent [documentation](http://slides.yihui.name/xaringan/), which is actually a set of slides generated from xaringan. 
+
+Xie, Y. (2019). Xaringan: Presentation Ninja. [CRAN](https://CRAN.R-project.org/package=xaringan)
