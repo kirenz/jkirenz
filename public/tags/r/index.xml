@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Thu, 24 Oct 2019 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Nov 2019 10:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,7 +19,6 @@
       
       <guid>/talk/2019-programming-languages/</guid>
       <description>&lt;p&gt;Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Datenimport,&lt;/li&gt;
 &lt;li&gt;Verknüpfung von Tabellen,&lt;/li&gt;
@@ -29,15 +28,12 @@
 &lt;li&gt;Textanalysen und&lt;/li&gt;
 &lt;li&gt;bedingte Ausdrücke (Conditional Expressions)&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;kann auf eine Vielzahl von Datenbanken wie bspw.&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;PostgreSQL,&lt;/li&gt;
 &lt;li&gt;MySQL,&lt;/li&gt;
 &lt;li&gt;Microsoft Azure SQL Datenbank, Google BigQuery und Oracle angewendet werden.&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;Im Rahmen der Datenanalyse mit R werden neben den zentralen Grundkenntnissen der Programmiersprache R insbesondere Kompetenzen im Umgang mit Datentransformationen („Data Wrangling“), der explorativen Datenanalyse und Visualisierung von Daten (bspw. mit Hilfe eines Dashboards) vermittelt. Zudem wird die Erstellung und Ausgabe (bspw. als HTML, PDF, Word, Excel, PPT,…) von Reports in R markdown behandelt.&lt;/p&gt;
 </description>
     </item>
@@ -48,7 +44,11 @@
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/talk/2019-applied-statistics/</guid>
-      <description></description>
+      <description>
+
+
+
+</description>
     </item>
     
     <item>
@@ -2412,18 +2412,14 @@ throwing it. Then, disregarding the influence of the air resistance, I
       
       <guid>/project/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
 &lt;li&gt;(2) decreases or&lt;/li&gt;
 &lt;li&gt;(3) stays the same.&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;This can be done by calculating the covariance or correlation of two variables.&lt;/p&gt;
-
-&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34; target=&#34;_blank&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34; target=&#34;_blank&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
-
-&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34; target=&#34;_blank&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
+&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -2433,98 +2429,69 @@ throwing it. Then, disregarding the influence of the air resistance, I
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-first-steps/</guid>
-      <description>
-
-&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34; target=&#34;_blank&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
-
+      <description>&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
 &lt;h2 id=&#34;installing-r&#34;&gt;Installing R&lt;/h2&gt;
-
-&lt;p&gt;The first step is to install R. You can download and install R from the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt; (CRAN).&lt;/p&gt;
-
-&lt;p&gt;Windows:
-- Open the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.
-- Click on “CRAN”. You’ll see a list of mirror sites, organized by country.
-- Select a site near you.
-- Click on “Windows” under “Download and Install R”.
-- Click on “base”.
-- Click on the link for downloading the latest version of R (an .exe file).
-- When the download completes, double-click on the .exe file and answer the usual questions.&lt;/p&gt;
-
-&lt;p&gt;Mac:
-- Open the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.
-- Click on “CRAN”.
-- You’ll see a list of mirror sites, organized by country.
-- Select a site near you.
-- Click on “MacOS X”.
-- Click on the .pkg file for the latest version of R, under “Files:”, to download it.
-- When the download completes, double-click on the .pkg file and answer the usual questions.&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-rstudio&#34;&gt;Installing RStudio&lt;/h2&gt;
-
-&lt;p&gt;The next step is to install &lt;strong&gt;RStudio&lt;/strong&gt;, a free and open-source integrated development environment (IDE) for R. You can use it for viewing and running R scripts.&lt;/p&gt;
-
+&lt;p&gt;The first step is to install R. You can download and install R from the &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;Comprehensive R Archive Network&lt;/a&gt; (CRAN).&lt;/p&gt;
+&lt;p&gt;Windows:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34; target=&#34;_blank&#34;&gt;RStudio Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Open the &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Click on “CRAN”. You’ll see a list of mirror sites, organized by country.&lt;/li&gt;
+&lt;li&gt;Select a site near you.&lt;/li&gt;
+&lt;li&gt;Click on “Windows” under “Download and Install R”.&lt;/li&gt;
+&lt;li&gt;Click on “base”.&lt;/li&gt;
+&lt;li&gt;Click on the link for downloading the latest version of R (an .exe file).&lt;/li&gt;
+&lt;li&gt;When the download completes, double-click on the .exe file and answer the usual questions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mac:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open the &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;Comprehensive R Archive Network&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Click on “CRAN”.&lt;/li&gt;
+&lt;li&gt;You’ll see a list of mirror sites, organized by country.&lt;/li&gt;
+&lt;li&gt;Select a site near you.&lt;/li&gt;
+&lt;li&gt;Click on “MacOS X”.&lt;/li&gt;
+&lt;li&gt;Click on the .pkg file for the latest version of R, under “Files:”, to download it.&lt;/li&gt;
+&lt;li&gt;When the download completes, double-click on the .pkg file and answer the usual questions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installing-rstudio&#34;&gt;Installing RStudio&lt;/h2&gt;
+&lt;p&gt;The next step is to install &lt;strong&gt;RStudio&lt;/strong&gt;, a free and open-source integrated development environment (IDE) for R. You can use it for viewing and running R scripts.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34;&gt;RStudio Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Click the Download RStudio Desktop button.&lt;/li&gt;
 &lt;li&gt;Select the installation file for your system.&lt;/li&gt;
 &lt;li&gt;Run the installation file.&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;learn-r-basics&#34;&gt;Learn R Basics&lt;/h2&gt;
-
-&lt;p&gt;First of all, you can take an online course to master the basics of R: Visit the interactive &lt;a href=&#34;https://www.datacamp.com/getting-started?step=2&amp;amp;track=r&#34; target=&#34;_blank&#34;&gt;R-Course&lt;/a&gt; from DataCamp. With the knowledge gained in this courses, you will be ready to undertake your first very own data analysis.&lt;/p&gt;
-
+&lt;p&gt;First of all, you can take an online course to master the basics of R: Visit the interactive &lt;a href=&#34;https://www.datacamp.com/getting-started?step=2&amp;amp;track=r&#34;&gt;R-Course&lt;/a&gt; from DataCamp. With the knowledge gained in this courses, you will be ready to undertake your first very own data analysis.&lt;/p&gt;
 &lt;p&gt;There are also open and free resources and reference guides for R. Two examples are:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.statmethods.net/&#34; target=&#34;_blank&#34;&gt;Quick-R&lt;/a&gt;: a quick online reference for data input, basic statistics and plots&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/doc/contrib/Short-refcard.pdf&#34; target=&#34;_blank&#34;&gt;R reference card (PDF)&lt;/a&gt; by Tom Short&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statmethods.net/&#34;&gt;Quick-R&lt;/a&gt;: a quick online reference for data input, basic statistics and plots&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/doc/contrib/Short-refcard.pdf&#34;&gt;R reference card (PDF)&lt;/a&gt; by Tom Short&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;Two key things you need to know about R is that you can get help for a function using &lt;code&gt;help&lt;/code&gt; or &lt;code&gt;?&lt;/code&gt;, like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r,eval=FALSE&#34;&gt;?install.packages
+&lt;pre&gt;&lt;code class=&#34;language-{r,eval=FALSE}&#34; data-lang=&#34;{r,eval=FALSE}&#34;&gt;?install.packages
 help(&amp;quot;install.packages&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;and the hash character represents comments, so text following these
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the hash character represents comments, so text following these
 characters is not interpreted:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;##This is just a comment
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;installing-r-packages&#34;&gt;Installing R Packages&lt;/h2&gt;
-
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34; data-lang=&#34;{r}&#34;&gt;##This is just a comment
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;installing-r-packages&#34;&gt;Installing R Packages&lt;/h2&gt;
 &lt;p&gt;The first R command we will run is &lt;code&gt;install.packages&lt;/code&gt;.&lt;/p&gt;
-
 &lt;p&gt;An R package is a collection of functions, data, and documentation that extends the capabilities of base R.
 Many of these functions are stored in CRAN. You can easily install packages from within RStudio if you know
 the name of the packages.&lt;/p&gt;
-
 &lt;p&gt;As an example, we are going to install the
 package &lt;code&gt;dplyr&lt;/code&gt; which we use in our first data
 analysis examples:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r,eval=FALSE&#34;&gt;install.packages(&amp;quot;dplyr&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can then load the package into our R sessions using the &lt;code&gt;library&lt;/code&gt; function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;From now on you will see that we sometimes load packages without
+&lt;pre&gt;&lt;code class=&#34;language-{r,eval=FALSE}&#34; data-lang=&#34;{r,eval=FALSE}&#34;&gt;install.packages(&amp;quot;dplyr&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We can then load the package into our R sessions using the &lt;code&gt;library&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-{r}&#34; data-lang=&#34;{r}&#34;&gt;library(dplyr)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;From now on you will see that we sometimes load packages without
 installing them. This is because you only need to install a package once,
 but you need to reload it with the command &lt;code&gt;library&lt;/code&gt; every time you start
 a new R session.&lt;/p&gt;
-
 &lt;p&gt;If you try to load a package and get an error, it probably means you need to install it first.&lt;/p&gt;
-
-&lt;p&gt;Review the &lt;a href=&#34;https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html&#34; target=&#34;_blank&#34;&gt;dplyr-documentation&lt;/a&gt; to get an overview about the different functionalities of this package.&lt;/p&gt;
+&lt;p&gt;Review the &lt;a href=&#34;https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html&#34;&gt;dplyr-documentation&lt;/a&gt; to get an overview about the different functionalities of this package.&lt;/p&gt;
 </description>
     </item>
     
@@ -2558,24 +2525,22 @@ a new R session.&lt;/p&gt;
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-data-science-statistics/</guid>
-      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
-
+      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&amp;rdquo; provides an accessible overview of the field of statistical learning with applications in R. This book presents important modeling and prediction techniques, along with relevant applications. Topics include linear regression, classification, resampling methods, shrinkage approaches, tree-based methods, support vector machines, clustering, and more:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34; target=&#34;_blank&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;Statistical Thinking for the 21 Century&lt;/strong&gt;&amp;rdquo; and &amp;ldquo;&lt;strong&gt;Modern Dive: Statistical Inference via Data Science&lt;/strong&gt;&amp;rdquo; are both open-source digital textbooks which provide a great introduction into the fundamentals of modern quantitative methods which take advantage of today’s increased computing power to solve statistical problems with R:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34; target=&#34;_blank&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34; target=&#34;_blank&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

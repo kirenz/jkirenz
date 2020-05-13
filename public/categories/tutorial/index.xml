@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tutorial on Jan Kirenz</title>
+    <title>Tutorial on Jan Kirenz</title>
     <link>/categories/tutorial/</link>
-    <description>Recent content in tutorial on Jan Kirenz</description>
+    <description>Recent content in Tutorial on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
@@ -19,40 +19,27 @@
       
       <guid>/project/intro-machine-learning/</guid>
       <description>&lt;p&gt;A good place to start your journey into the basics of machine learning &amp;ndash;the science of getting computers to act without being explicitly programmed&amp;ndash; are the non-technical and easy to follow introductions to machine learning by Yufeng Guo from &lt;em&gt;Google&amp;rsquo;s AI Adventures&lt;/em&gt; video-series:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=HcqpanDadyQ&#34; title=&#34;What is Machine Learning?&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://img.youtube.com/vi/HcqpanDadyQ/0.jpg&#34; alt=&#34;What is Machine Learning?&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=nKW8Ndu7Mjw&#34; title=&#34;The 7 Steps of Machine Learning?&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg&#34; alt=&#34;The 7 Steps of Machine Learning&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ai.google/static/images/share.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/HcqpanDadyQ/0.jpg&#34; alt=&#34;What is Machine Learning?&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=HcqpanDadyQ%22What&#34;&gt;https://www.youtube.com/watch?v=HcqpanDadyQ&amp;quot;What&lt;/a&gt; is Machine Learning?&amp;quot;)&lt;/p&gt;
+&lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg&#34; alt=&#34;The 7 Steps of Machine Learning&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=nKW8Ndu7Mjw%22The&#34;&gt;https://www.youtube.com/watch?v=nKW8Ndu7Mjw&amp;quot;The&lt;/a&gt; 7 Steps of Machine Learning?&amp;quot;)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ai.google/static/images/share.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s Machine Learning Crash Course&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/&#34;&gt;Google&amp;rsquo;s Machine Learning Crash Course&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Google recently published a series of internal AI training resources originally developed for its engineers. The &lt;em&gt;crash course&lt;/em&gt; provides a fast-paced and practical overview about the fundamental concepts of machine learning. Here you can learn and apply fundamental machine learning concepts, get real-world examples with the companion &lt;a href=&#34;https://www.kaggle.com&#34; target=&#34;_blank&#34;&gt;Kaggle competition&lt;/a&gt;, or visit &lt;a href=&#34;https://ai.google/education/&#34; target=&#34;_blank&#34;&gt;Learn with Google AI&lt;/a&gt; to explore the full library of training resources.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://www.andrewng.org/content/uploads/2013/04/photo_about_w211.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;Google recently published a series of internal AI training resources originally developed for its engineers. The &lt;em&gt;crash course&lt;/em&gt; provides a fast-paced and practical overview about the fundamental concepts of machine learning. Here you can learn and apply fundamental machine learning concepts, get real-world examples with the companion &lt;a href=&#34;https://www.kaggle.com&#34;&gt;Kaggle competition&lt;/a&gt;, or visit &lt;a href=&#34;https://ai.google/education/&#34;&gt;Learn with Google AI&lt;/a&gt; to explore the full library of training resources.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andrewng.org/content/uploads/2013/04/photo_about_w211.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/machine-learning&#34; target=&#34;_blank&#34;&gt;Introduction to Machine Learning&lt;/a&gt; from Andrew Ng&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/machine-learning&#34;&gt;Introduction to Machine Learning&lt;/a&gt; from Andrew Ng&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;In this excellent course from Andrew Ng, you will learn about the most effective machine learning techniques, and gain practice implementing them and getting them to work for yourself.&lt;/p&gt;
-
 &lt;p&gt;This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. Topics include:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;(i) Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks).&lt;/li&gt;
 &lt;li&gt;(ii) Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning).&lt;/li&gt;
 &lt;li&gt;(iii) Best practices in machine learning (bias/variance theory; innovation process in machine learning and AI).&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
+&lt;hr&gt;
 </description>
     </item>
     
@@ -63,18 +50,14 @@
       
       <guid>/project/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
 &lt;li&gt;(2) decreases or&lt;/li&gt;
 &lt;li&gt;(3) stays the same.&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;This can be done by calculating the covariance or correlation of two variables.&lt;/p&gt;
-
-&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34; target=&#34;_blank&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34; target=&#34;_blank&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
-
-&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34; target=&#34;_blank&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
+&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -84,17 +67,11 @@
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-lasso-regression/</guid>
-      <description>
-
-&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
-
-&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
+      <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
+&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 </description>
     </item>
     
@@ -104,27 +81,18 @@
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-time-series/</guid>
-      <description>
-
-&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
-
+      <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Explaining seasonal patterns in sales&lt;/li&gt;
 &lt;li&gt;Predicting the expected number of incoming or churning customers&lt;/li&gt;
 &lt;li&gt;Estimating the effect of a newly launched product on number of sold units&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
+&lt;hr&gt;
+&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 </description>
     </item>
     
@@ -134,12 +102,8 @@
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-linear-regression/</guid>
-      <description>
-
-&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
-
+      <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Histogramms&lt;/li&gt;
 &lt;li&gt;Boxplots&lt;/li&gt;
@@ -152,8 +116,7 @@
 &lt;li&gt;Standard error&lt;/li&gt;
 &lt;li&gt;Confidence interval&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Download the linear regression tutorial Jupyter Notebook in &lt;a href=&#34;https://github.com/kirenz/linear-regression/blob/master/python-regression-tutorial.ipynb&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt; and open the file in Jupyter Notebook.&lt;/p&gt;
+&lt;p&gt;Download the linear regression tutorial Jupyter Notebook in &lt;a href=&#34;https://github.com/kirenz/linear-regression/blob/master/python-regression-tutorial.ipynb&#34;&gt;GitHub&lt;/a&gt; and open the file in Jupyter Notebook.&lt;/p&gt;
 </description>
     </item>
     
@@ -163,24 +126,22 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-data-science-statistics/</guid>
-      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
-
+      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&amp;rdquo; provides an accessible overview of the field of statistical learning with applications in R. This book presents important modeling and prediction techniques, along with relevant applications. Topics include linear regression, classification, resampling methods, shrinkage approaches, tree-based methods, support vector machines, clustering, and more:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34; target=&#34;_blank&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;Statistical Thinking for the 21 Century&lt;/strong&gt;&amp;rdquo; and &amp;ldquo;&lt;strong&gt;Modern Dive: Statistical Inference via Data Science&lt;/strong&gt;&amp;rdquo; are both open-source digital textbooks which provide a great introduction into the fundamentals of modern quantitative methods which take advantage of today’s increased computing power to solve statistical problems with R:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34; target=&#34;_blank&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34; target=&#34;_blank&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
