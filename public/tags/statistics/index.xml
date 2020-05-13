@@ -14,10 +14,10 @@
     
     <item>
       <title>Applied Statistics</title>
-      <link>/talk/2019-applied-statistics/</link>
+      <link>/teaching/2019-applied-statistics/</link>
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-applied-statistics/</guid>
+      <guid>/teaching/2019-applied-statistics/</guid>
       <description>
 
 
@@ -27,10 +27,10 @@
     
     <item>
       <title>Text Mining in R</title>
-      <link>/post/2019-09-16-r-text-mining/</link>
+      <link>/post/2019-09-text-mining-in-r/</link>
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-09-16-r-text-mining/</guid>
+      <guid>/post/2019-09-text-mining-in-r/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
@@ -2323,10 +2323,10 @@ throwing it. Then, disregarding the influence of the air resistance, I
     
     <item>
       <title>Social Network Analysis with Python</title>
-      <link>/post/2019-08-13-network_analysis/</link>
+      <link>/post/2019-08-social-network-analysis-with-python/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-13-network_analysis/</guid>
+      <guid>/post/2019-08-social-network-analysis-with-python/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2698,10 +2698,10 @@ plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/post/2019-08-12-python-lasso-regression-auto/</link>
+      <link>/post/2019-08-lasso-regression-with-python/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-12-python-lasso-regression-auto/</guid>
+      <guid>/post/2019-08-lasso-regression-with-python/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3165,10 +3165,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Correlation Tutorial with R</title>
-      <link>/project/r-correlation-tutorial/</link>
+      <link>/projects2/r-correlation-tutorial/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
       
-      <guid>/project/r-correlation-tutorial/</guid>
+      <guid>/projects2/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
@@ -3183,10 +3183,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/project/r-lasso-regression/</link>
+      <link>/projects2/r-lasso-regression/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-lasso-regression/</guid>
+      <guid>/projects2/r-lasso-regression/</guid>
       <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
 &lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
 &lt;hr&gt;
@@ -3197,10 +3197,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Time Series Analysis with Python</title>
-      <link>/project/python-time-series/</link>
+      <link>/projects2/python-time-series/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-time-series/</guid>
+      <guid>/projects2/python-time-series/</guid>
       <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
 &lt;ul&gt;
@@ -3218,10 +3218,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Deskriptive Statistik in R</title>
-      <link>/post/2019-08-01-r-descriptive-statistics/</link>
+      <link>/post/2019-08-deskriptive-statistik-in-r/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-01-r-descriptive-statistics/</guid>
+      <guid>/post/2019-08-deskriptive-statistik-in-r/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3382,10 +3382,10 @@ ggplot(Advertising, aes(sales)) +
     
     <item>
       <title>Linear Regression Tutorial with Python</title>
-      <link>/project/python-linear-regression/</link>
+      <link>/projects2/python-linear-regression/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-linear-regression/</guid>
+      <guid>/projects2/python-linear-regression/</guid>
       <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
 &lt;ul&gt;
@@ -3406,10 +3406,10 @@ ggplot(Advertising, aes(sales)) +
     
     <item>
       <title>Free books to learn Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-statistics/</link>
+      <link>/projects2/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-statistics/</guid>
+      <guid>/projects2/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;

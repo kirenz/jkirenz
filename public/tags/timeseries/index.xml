@@ -14,10 +14,10 @@
     
     <item>
       <title>Time Series Analysis with Python</title>
-      <link>/project/python-time-series/</link>
+      <link>/projects2/python-time-series/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-time-series/</guid>
+      <guid>/projects2/python-time-series/</guid>
       <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
 &lt;ul&gt;

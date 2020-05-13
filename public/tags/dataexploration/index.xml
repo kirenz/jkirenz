@@ -14,10 +14,10 @@
     
     <item>
       <title>Correlation Tutorial with R</title>
-      <link>/project/r-correlation-tutorial/</link>
+      <link>/projects2/r-correlation-tutorial/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
       
-      <guid>/project/r-correlation-tutorial/</guid>
+      <guid>/projects2/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
@@ -32,10 +32,10 @@
     
     <item>
       <title>Linear Regression Tutorial with Python</title>
-      <link>/project/python-linear-regression/</link>
+      <link>/projects2/python-linear-regression/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-linear-regression/</guid>
+      <guid>/projects2/python-linear-regression/</guid>
       <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
 &lt;ul&gt;
@@ -56,10 +56,10 @@
     
     <item>
       <title>Free books to learn Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-statistics/</link>
+      <link>/projects2/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-statistics/</guid>
+      <guid>/projects2/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;

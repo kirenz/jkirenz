@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/project/markdown-first-steps/</loc>
+    <loc>/projects2/markdown-first-steps/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
   
@@ -13,7 +13,7 @@
   </url>
   
   <url>
-    <loc>/project/</loc>
+    <loc>/projects2/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
   
@@ -48,7 +48,7 @@
   </url>
   
   <url>
-    <loc>/talk/2019-programming-languages/</loc>
+    <loc>/teaching/2019-programming-languages-for-data-science/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
   </url>
   
@@ -58,7 +58,7 @@
   </url>
   
   <url>
-    <loc>/talk/</loc>
+    <loc>/talks/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
   </url>
   
@@ -78,17 +78,17 @@
   </url>
   
   <url>
-    <loc>/talk/2019-web-analytics/</loc>
+    <loc>/teaching/2019-web-analytics/</loc>
     <lastmod>2019-10-14T08:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-big-data-web-analytics/</loc>
+    <loc>/teaching/2019-big-data-and-web-analytics/</loc>
     <lastmod>2019-10-11T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-applied-statistics/</loc>
+    <loc>/teaching/2019-applied-statistics/</loc>
     <lastmod>2019-08-01T02:20:01-07:00</lastmod>
   </url>
   
@@ -113,7 +113,7 @@
   </url>
   
   <url>
-    <loc>/post/2019-09-16-r-text-mining/</loc>
+    <loc>/post/2019-09-text-mining-in-r/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -123,12 +123,12 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/posts/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/programming-languages/</loc>
+    <loc>/projects2/programming-languages/</loc>
     <lastmod>2019-09-03T10:00:00+00:00</lastmod>
   </url>
   
@@ -143,7 +143,7 @@
   </url>
   
   <url>
-    <loc>/project/intro-machine-learning/</loc>
+    <loc>/projects2/intro-machine-learning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -163,7 +163,7 @@
   </url>
   
   <url>
-    <loc>/post/2019-08-13-network_analysis/</loc>
+    <loc>/post/2019-08-social-network-analysis-with-python/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>/project/python-network-analysis-intro/</loc>
+    <loc>/projects2/python-network-analysis-intro/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
   </url>
   
@@ -183,7 +183,7 @@
   </url>
   
   <url>
-    <loc>/post/2019-08-12-python-lasso-regression-auto/</loc>
+    <loc>/post/2019-08-lasso-regression-with-python/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -193,7 +193,7 @@
   </url>
   
   <url>
-    <loc>/project/r-correlation-tutorial/</loc>
+    <loc>/projects2/r-correlation-tutorial/</loc>
     <lastmod>2019-08-11T05:00:00+00:00</lastmod>
   </url>
   
@@ -203,7 +203,7 @@
   </url>
   
   <url>
-    <loc>/project/r-lasso-regression/</loc>
+    <loc>/projects2/r-lasso-regression/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -213,7 +213,7 @@
   </url>
   
   <url>
-    <loc>/project/python-time-series/</loc>
+    <loc>/projects2/python-time-series/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -223,7 +223,7 @@
   </url>
   
   <url>
-    <loc>/post/2019-08-01-r-descriptive-statistics/</loc>
+    <loc>/post/2019-08-deskriptive-statistik-in-r/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -233,7 +233,7 @@
   </url>
   
   <url>
-    <loc>/project/python-linear-regression/</loc>
+    <loc>/projects2/python-linear-regression/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -243,12 +243,12 @@
   </url>
   
   <url>
-    <loc>/project/python-first-steps/</loc>
+    <loc>/projects2/python-first-steps/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-first-steps/</loc>
+    <loc>/projects2/r-first-steps/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -258,7 +258,7 @@
   </url>
   
   <url>
-    <loc>/project/blogdown-book/</loc>
+    <loc>/projects2/blogdown-book/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -268,12 +268,12 @@
   </url>
   
   <url>
-    <loc>/project/r-xaringan/</loc>
+    <loc>/projects2/r-xaringan/</loc>
     <lastmod>2019-08-01T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-data-science-statistics/</loc>
+    <loc>/projects2/r-data-science-statistics/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -288,12 +288,12 @@
   </url>
   
   <url>
-    <loc>/post/2019-07-20-up-and-running-with-blogdown/</loc>
+    <loc>/post/2019-07-create-and-publish-a-website-with-r-and-hugo/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-web-analytics-social-media/</loc>
+    <loc>/teaching/2019-web-analytics-social-media-analytics/</loc>
     <lastmod>2019-05-16T09:00:00+00:00</lastmod>
   </url>
   

@@ -14,10 +14,10 @@
     
     <item>
       <title>Programming Languages for Data Science</title>
-      <link>/talk/2019-programming-languages/</link>
+      <link>/teaching/2019-programming-languages-for-data-science/</link>
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-programming-languages/</guid>
+      <guid>/teaching/2019-programming-languages-for-data-science/</guid>
       <description>&lt;p&gt;Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Datenimport,&lt;/li&gt;
@@ -40,10 +40,10 @@
     
     <item>
       <title>Applied Statistics</title>
-      <link>/talk/2019-applied-statistics/</link>
+      <link>/teaching/2019-applied-statistics/</link>
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-applied-statistics/</guid>
+      <guid>/teaching/2019-applied-statistics/</guid>
       <description>
 
 
@@ -53,10 +53,10 @@
     
     <item>
       <title>Text Mining in R</title>
-      <link>/post/2019-09-16-r-text-mining/</link>
+      <link>/post/2019-09-text-mining-in-r/</link>
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-09-16-r-text-mining/</guid>
+      <guid>/post/2019-09-text-mining-in-r/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
@@ -2349,10 +2349,10 @@ throwing it. Then, disregarding the influence of the air resistance, I
     
     <item>
       <title>Programming Languages for Data Science</title>
-      <link>/project/programming-languages/</link>
+      <link>/projects2/programming-languages/</link>
       <pubDate>Tue, 03 Sep 2019 10:00:00 +0000</pubDate>
       
-      <guid>/project/programming-languages/</guid>
+      <guid>/projects2/programming-languages/</guid>
       <description>
 
 
@@ -2407,10 +2407,10 @@ throwing it. Then, disregarding the influence of the air resistance, I
     
     <item>
       <title>Correlation Tutorial with R</title>
-      <link>/project/r-correlation-tutorial/</link>
+      <link>/projects2/r-correlation-tutorial/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
       
-      <guid>/project/r-correlation-tutorial/</guid>
+      <guid>/projects2/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
@@ -2425,10 +2425,10 @@ throwing it. Then, disregarding the influence of the air resistance, I
     
     <item>
       <title>First Steps in R</title>
-      <link>/project/r-first-steps/</link>
+      <link>/projects2/r-first-steps/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-first-steps/</guid>
+      <guid>/projects2/r-first-steps/</guid>
       <description>&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
@@ -2497,19 +2497,19 @@ a new R session.&lt;/p&gt;
     
     <item>
       <title>Creating Websites with R Markdown</title>
-      <link>/project/blogdown-book/</link>
+      <link>/projects2/blogdown-book/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/blogdown-book/</guid>
+      <guid>/projects2/blogdown-book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Create Data Presentations with R Markdown</title>
-      <link>/project/r-xaringan/</link>
+      <link>/projects2/r-xaringan/</link>
       <pubDate>Thu, 01 Aug 2019 10:00:00 +0000</pubDate>
       
-      <guid>/project/r-xaringan/</guid>
+      <guid>/projects2/r-xaringan/</guid>
       <description>
 
 
@@ -2521,10 +2521,10 @@ a new R session.&lt;/p&gt;
     
     <item>
       <title>Free books to learn Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-statistics/</link>
+      <link>/projects2/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-statistics/</guid>
+      <guid>/projects2/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
