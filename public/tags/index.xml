@@ -22,20 +22,20 @@
     </item>
     
     <item>
-      <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
-      
-      <guid>/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>R Markdown</title>
       <link>/tags/r-markdown/</link>
       <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
       
       <guid>/tags/r-markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
@@ -148,20 +148,20 @@
     </item>
     
     <item>
-      <title>book</title>
-      <link>/tags/book/</link>
-      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/book/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>DataReporting</title>
       <link>/tags/datareporting/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/datareporting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>book</title>
+      <link>/tags/book/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/book/</guid>
       <description></description>
     </item>
     

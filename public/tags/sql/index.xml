@@ -14,11 +14,12 @@
     
     <item>
       <title>Programming Languages for Data Science</title>
-      <link>/teaching/2019-programming-languages-for-data-science/</link>
+      <link>/talk/2019-programming-languages/</link>
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
-      <guid>/teaching/2019-programming-languages-for-data-science/</guid>
+      <guid>/talk/2019-programming-languages/</guid>
       <description>&lt;p&gt;Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Datenimport,&lt;/li&gt;
 &lt;li&gt;Verknüpfung von Tabellen,&lt;/li&gt;
@@ -28,22 +29,25 @@
 &lt;li&gt;Textanalysen und&lt;/li&gt;
 &lt;li&gt;bedingte Ausdrücke (Conditional Expressions)&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;kann auf eine Vielzahl von Datenbanken wie bspw.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;PostgreSQL,&lt;/li&gt;
 &lt;li&gt;MySQL,&lt;/li&gt;
 &lt;li&gt;Microsoft Azure SQL Datenbank, Google BigQuery und Oracle angewendet werden.&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;Im Rahmen der Datenanalyse mit R werden neben den zentralen Grundkenntnissen der Programmiersprache R insbesondere Kompetenzen im Umgang mit Datentransformationen („Data Wrangling“), der explorativen Datenanalyse und Visualisierung von Daten (bspw. mit Hilfe eines Dashboards) vermittelt. Zudem wird die Erstellung und Ausgabe (bspw. als HTML, PDF, Word, Excel, PPT,…) von Reports in R markdown behandelt.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Programming Languages for Data Science</title>
-      <link>/projects2/programming-languages/</link>
+      <link>/project/programming-languages/</link>
       <pubDate>Tue, 03 Sep 2019 10:00:00 +0000</pubDate>
       
-      <guid>/projects2/programming-languages/</guid>
+      <guid>/project/programming-languages/</guid>
       <description>
 
 

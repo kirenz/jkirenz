@@ -1,35 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/projects2/markdown-first-steps/</loc>
+    <loc>/project/markdown-first-steps/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-11-18T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/markdown/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/</loc>
+    <loc>/project/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2019-11-18T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/r-markdown/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -40,270 +45,299 @@
   <url>
     <loc>/authors/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/teaching/2019-programming-languages-for-data-science/</loc>
+    <loc>/talk/2019-programming-languages/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2019-10-24T09:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sql/</loc>
+    <lastmod>2019-10-24T09:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/seminar/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/talks/</loc>
-    <lastmod>2019-10-24T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/sql/</loc>
+    <loc>/talk/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/datascience/</loc>
     <lastmod>2019-10-14T08:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/talk/2019-web-analytics/</loc>
+    <lastmod>2019-10-14T08:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/lecture/</loc>
     <lastmod>2019-10-14T08:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/teaching/2019-web-analytics/</loc>
-    <lastmod>2019-10-14T08:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/teaching/2019-big-data-and-web-analytics/</loc>
+    <loc>/talk/2019-big-data-web-analytics/</loc>
     <lastmod>2019-10-11T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/teaching/2019-applied-statistics/</loc>
+    <loc>/talk/2019-applied-statistics/</loc>
     <lastmod>2019-08-01T02:20:01-07:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/python/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/statisticallearning/</loc>
     <lastmod>2019-08-01T02:20:01-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/statistics/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/r/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-09-text-mining-in-r/</loc>
+    <loc>/post/2019-09-16-r-text-mining/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/textmining/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/posts/</loc>
+    <loc>/post/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/projects2/programming-languages/</loc>
+    <loc>/project/programming-languages/</loc>
     <lastmod>2019-09-03T10:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/artificialintelligence/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/deeplearning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/intro-machine-learning/</loc>
+    <loc>/project/intro-machine-learning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/machinelearning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/tutorial/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/python/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-08-social-network-analysis-with-python/</loc>
+    <loc>/post/2019-08-13-network_analysis/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/statistics/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/python-network-analysis-intro/</loc>
+    <loc>/project/python-network-analysis-intro/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/networkanalysis/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-08-lasso-regression-with-python/</loc>
+    <loc>/post/2019-08-12-python-lasso-regression-auto/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/regression/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/r-correlation-tutorial/</loc>
+    <loc>/project/r-correlation-tutorial/</loc>
     <lastmod>2019-08-11T05:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/dataexploration/</loc>
     <lastmod>2019-08-11T05:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/r-lasso-regression/</loc>
+    <loc>/project/r-lasso-regression/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/regression/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/python-time-series/</loc>
+    <loc>/project/python-time-series/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/timeseries/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-08-deskriptive-statistik-in-r/</loc>
+    <loc>/post/2019-08-01-r-descriptive-statistics/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/german/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/python-linear-regression/</loc>
+    <loc>/project/python-linear-regression/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/python-first-steps/</loc>
+    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/r-first-steps/</loc>
+    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/course/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/python-first-steps/</loc>
-    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/projects2/r-first-steps/</loc>
-    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/book/</loc>
-    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/projects2/blogdown-book/</loc>
+    <loc>/project/blogdown-book/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/datareporting/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/projects2/r-xaringan/</loc>
+    <loc>/tags/book/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/r-xaringan/</loc>
     <lastmod>2019-08-01T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/projects2/r-data-science-statistics/</loc>
+    <loc>/project/r-data-science-statistics/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>/post/2019-07-20-up-and-running-with-blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-07-create-and-publish-a-website-with-r-and-hugo/</loc>
+    <loc>/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/teaching/2019-web-analytics-social-media-analytics/</loc>
+    <loc>/talk/2019-web-analytics-social-media/</loc>
     <lastmod>2019-05-16T09:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/contact/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -328,6 +362,7 @@
   
   <url>
     <loc>/publication_types/</loc>
+    <priority>0</priority>
   </url>
   
   <url>

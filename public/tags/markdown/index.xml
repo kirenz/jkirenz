@@ -14,10 +14,10 @@
     
     <item>
       <title>Introduction to R Markdown</title>
-      <link>/projects2/markdown-first-steps/</link>
+      <link>/project/markdown-first-steps/</link>
       <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
       
-      <guid>/projects2/markdown-first-steps/</guid>
+      <guid>/project/markdown-first-steps/</guid>
       <description>
 
 
@@ -47,10 +47,10 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
     
     <item>
       <title>Programming Languages for Data Science</title>
-      <link>/projects2/programming-languages/</link>
+      <link>/project/programming-languages/</link>
       <pubDate>Tue, 03 Sep 2019 10:00:00 +0000</pubDate>
       
-      <guid>/projects2/programming-languages/</guid>
+      <guid>/project/programming-languages/</guid>
       <description>
 
 
