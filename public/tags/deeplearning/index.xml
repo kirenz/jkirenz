@@ -19,40 +19,27 @@
       
       <guid>/project/intro-machine-learning/</guid>
       <description>&lt;p&gt;A good place to start your journey into the basics of machine learning &amp;ndash;the science of getting computers to act without being explicitly programmed&amp;ndash; are the non-technical and easy to follow introductions to machine learning by Yufeng Guo from &lt;em&gt;Google&amp;rsquo;s AI Adventures&lt;/em&gt; video-series:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=HcqpanDadyQ&#34; title=&#34;What is Machine Learning?&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://img.youtube.com/vi/HcqpanDadyQ/0.jpg&#34; alt=&#34;What is Machine Learning?&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=nKW8Ndu7Mjw&#34; title=&#34;The 7 Steps of Machine Learning?&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg&#34; alt=&#34;The 7 Steps of Machine Learning&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://ai.google/static/images/share.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/HcqpanDadyQ/0.jpg&#34; alt=&#34;What is Machine Learning?&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=HcqpanDadyQ%22What&#34;&gt;https://www.youtube.com/watch?v=HcqpanDadyQ&amp;quot;What&lt;/a&gt; is Machine Learning?&amp;quot;)&lt;/p&gt;
+&lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg&#34; alt=&#34;The 7 Steps of Machine Learning&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=nKW8Ndu7Mjw%22The&#34;&gt;https://www.youtube.com/watch?v=nKW8Ndu7Mjw&amp;quot;The&lt;/a&gt; 7 Steps of Machine Learning?&amp;quot;)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://ai.google/static/images/share.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/&#34; target=&#34;_blank&#34;&gt;Google&amp;rsquo;s Machine Learning Crash Course&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/&#34;&gt;Google&amp;rsquo;s Machine Learning Crash Course&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;Google recently published a series of internal AI training resources originally developed for its engineers. The &lt;em&gt;crash course&lt;/em&gt; provides a fast-paced and practical overview about the fundamental concepts of machine learning. Here you can learn and apply fundamental machine learning concepts, get real-world examples with the companion &lt;a href=&#34;https://www.kaggle.com&#34; target=&#34;_blank&#34;&gt;Kaggle competition&lt;/a&gt;, or visit &lt;a href=&#34;https://ai.google/education/&#34; target=&#34;_blank&#34;&gt;Learn with Google AI&lt;/a&gt; to explore the full library of training resources.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://www.andrewng.org/content/uploads/2013/04/photo_about_w211.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;Google recently published a series of internal AI training resources originally developed for its engineers. The &lt;em&gt;crash course&lt;/em&gt; provides a fast-paced and practical overview about the fundamental concepts of machine learning. Here you can learn and apply fundamental machine learning concepts, get real-world examples with the companion &lt;a href=&#34;https://www.kaggle.com&#34;&gt;Kaggle competition&lt;/a&gt;, or visit &lt;a href=&#34;https://ai.google/education/&#34;&gt;Learn with Google AI&lt;/a&gt; to explore the full library of training resources.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andrewng.org/content/uploads/2013/04/photo_about_w211.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/machine-learning&#34; target=&#34;_blank&#34;&gt;Introduction to Machine Learning&lt;/a&gt; from Andrew Ng&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coursera.org/learn/machine-learning&#34;&gt;Introduction to Machine Learning&lt;/a&gt; from Andrew Ng&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;In this excellent course from Andrew Ng, you will learn about the most effective machine learning techniques, and gain practice implementing them and getting them to work for yourself.&lt;/p&gt;
-
 &lt;p&gt;This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. Topics include:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;(i) Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks).&lt;/li&gt;
 &lt;li&gt;(ii) Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning).&lt;/li&gt;
 &lt;li&gt;(iii) Best practices in machine learning (bias/variance theory; innovation process in machine learning and AI).&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
+&lt;hr&gt;
 </description>
     </item>
     

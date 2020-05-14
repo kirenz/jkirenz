@@ -18,15 +18,11 @@
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/talk/2019-applied-statistics/</guid>
-<<<<<<< HEAD
       <description>
 
 
 
 </description>
-=======
-      <description></description>
->>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     </item>
     
     <item>
@@ -35,28 +31,22 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-data-science-statistics/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
-=======
-      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
-
->>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&amp;rdquo; provides an accessible overview of the field of statistical learning with applications in R. This book presents important modeling and prediction techniques, along with relevant applications. Topics include linear regression, classification, resampling methods, shrinkage approaches, tree-based methods, support vector machines, clustering, and more:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34; target=&#34;_blank&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;Statistical Thinking for the 21 Century&lt;/strong&gt;&amp;rdquo; and &amp;ldquo;&lt;strong&gt;Modern Dive: Statistical Inference via Data Science&lt;/strong&gt;&amp;rdquo; are both open-source digital textbooks which provide a great introduction into the fundamentals of modern quantitative methods which take advantage of today’s increased computing power to solve statistical problems with R:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34; target=&#34;_blank&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34; target=&#34;_blank&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

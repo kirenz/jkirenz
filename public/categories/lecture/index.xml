@@ -19,11 +19,8 @@
       
       <guid>/talk/2019-web-analytics/</guid>
       <description>&lt;p&gt;In der Veranstaltung Web Analytics befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten aus dem Internet -  bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren und anderen Webpräsenzen.&lt;/p&gt;
-
 &lt;p&gt;Von besonderem Interesse sind in diesem Zusammenhang &amp;ldquo;offene Daten&amp;rdquo; (Open Data), die im Internet zur freien Weiterverwendung frei zugänglich gemacht werden (insbesondere von Organisationen wie der OECD, Weltbank und von staatlichen Stellen).&lt;/p&gt;
-
 &lt;p&gt;Wir werden insbesondere mit der Programmiersprache R arbeiten und die folgenden Inhalte behandeln:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Web-scraping&lt;/li&gt;
 &lt;li&gt;Data Science&lt;/li&gt;

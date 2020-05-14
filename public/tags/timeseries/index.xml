@@ -18,31 +18,18 @@
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-time-series/</guid>
-<<<<<<< HEAD
       <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
-=======
-      <description>
-
-&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
-
->>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Explaining seasonal patterns in sales&lt;/li&gt;
 &lt;li&gt;Predicting the expected number of incoming or churning customers&lt;/li&gt;
 &lt;li&gt;Estimating the effect of a newly launched product on number of sold units&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
+&lt;hr&gt;
+&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 </description>
     </item>
     
