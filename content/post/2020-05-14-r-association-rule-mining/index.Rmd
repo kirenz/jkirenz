@@ -1,0 +1,555 @@
+---
+#aliases: []
+#projects: []
+title: Introduction to Association Rule Mining in R
+authors: [jan]
+date: '2020-05-14'
+tags: [Unsupervised Learning, R]
+categories:
+  - R
+summary: Association Rule Mining in R
+description: Association rule mining is one of the most popular data mining methods. To perform association rule analysis in R, we use the arules and arulesViz packages. 
+image:
+  caption: '[Photo by Peter Bond on Unsplash](https://unsplash.com/photos/KfvknMhkmw0)'
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+    toc_depth: 3
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE, 
+	fig.align = 'center'
+)
+library(tidyverse)
+library(knitr)
+```
+
+
+Association rule mining is one of the most popular data mining methods. This kind of analysis is also called *frequent itemset analysis*, *association analysis* or *association rule learning*. To perform the analysis in R, we use the `arules` and `arulesViz` packages. 
+
+# Introduction
+
+In association analysis, we are usually interested in the absolute number of customer transactions (also called baskets) that contain a particular set of items (usually products). A typical application of association analysis is the analysis of consumer buying behavior in supermarkets and chain stores where they record the contents of shopping carts brought to the register for checkout. These transaction data are normally recorded by point-of-sale scanners and often consist of [tuples](https://en.wikipedia.org/wiki/Tuple) of the form: {transaction ID, item ID, item ID, ...}. By finding frequent itemsets, a retailer can learn what is commonly bought together and use this information to increase sales in several ways. 
+
+Imagine there is a pair of different products (which we call *items*), *X* and *Y*, that are frequently bought together in a store (Ng & Soo, 2017):
+
+* Both X and Y can be placed on the same shelf, so that buyers of one item would be prompted to buy the other.
+* Promotional discounts could be applied to just one out of the two items.
+* Advertisements on X could be targeted at buyers who purchase Y.
+* X and Y could be combined into a new product, such as having Y in flavors of X.
+
+
+Note that online retailers like Amazon.com or online platforms like Spotify have little need for this kind of analysis, since it is designed to search for itemsets that appear frequently. If the online retailer was limited to frequent itemsets, they would miss all the opportunities that are present in the "long tail" to select advertisements for each customer individually (for example to recommend certain products or songs). Instead of searching for *frequent* itemsets, they use *similarity* search algorithms (like *collaborative filtering*) to detect similar customers that have a large fraction of their baskets in common, even if the absolute number of baskets is small. (Leskovec, Rajaraman, & Ullman, 2020)
+
+
+## The market-basket model
+
+Association rule mining is based on the so called "market-basket" model of data. This is essentially a many-many relationship between two kinds of elements, called **items** and **baskets** (also called **transactions**) with some assumptions about the shape of the data (Leskovec, Rajaraman, & Ullman, 2020): 
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 2px; padding: 10px;}
+</style>
+<div class = "blue">
+
+
+* Each basket (i.e. transaction) consists of a set of items (usually products).
+* Usually we assume that the number of items in a basket is small (much smaller than the total number of all items). 
+* The number of all baskets (transactions) is usually assumed to be very large. 
+* The data is assumed to be represented in a file consisting of a sequence of baskets (transactions). 
+
+</div>
+
+<br />
+
+To illustrate the logic of association rule mining, let's create a sequence of baskets (transactions) with a small number of items from different customers in a grocery store. Note that because we use a very simple example with only a few baskets and items, the results of the analysis will differ from the results we may obtain from a real world example. We save the data as a sequence of transactions with the name `market_basket`: 
+
+```{r}
+
+# create a list of baskets
+market_basket <-  
+  list(  
+  c("apple", "beer", "rice", "meat"),
+  c("apple", "beer", "rice"),
+  c("apple", "beer"), 
+  c("apple", "pear"),
+  c("milk", "beer", "rice", "meat"), 
+  c("milk", "beer", "rice"), 
+  c("milk", "beer"),
+  c("milk", "pear")
+  )
+
+# set transaction names (T1 to T8)
+names(market_basket) <- paste("T", c(1:8), sep = "")
+
+```
+
+Each basket includes so called **itemsets** (like {apple, beer, etc.}). You can observe that "apple" is bought together with "beer" in three transactions: 
+
+```{r out.width="30%", echo=FALSE, fig.align='center', fig.cap='Market basket example (Ng & Soo, 2017)'}
+
+knitr::include_graphics("https://annalyzin.files.wordpress.com/2016/04/association-rule-support-table.png?w=652&h=578")
+
+```
+
+
+The frequent-itemsets problem is that of finding sets of items that appear in many of the baskets. Hence, a set of items that appears in many baskets is said to be "frequent". 
+
+
+## Association rules
+
+While we are interested in extracting frequent sets of items, this information is often presented as a collection of *if–then rules*, called **association rules**. 
+
+The form of an association rule is {X -> Y}, where {X} is a set of items and {Y} is an item. The implication of this association rule is that if all of the items in {X} appear in some basket, then {Y} is "likely" to appear in that basket as well. 
+
+* {X} is also called **antecedent** or **left-hand-side (LHS)** and 
+* {Y} is called **consequent** or **right-hand-side (RHS)**.
+
+An example association rule for products from Apple could be {Apple iPad, Apple iPad Cover} -> {Apple Pencil}, meaning that if Apple's iPad and iPad Cover {X} are bought, customers are also likely to buy Apple's Pencil {Y}. Notice that the logical implication symbol "->" does not indicate a causal relationship between {X} and {Y}. It is merely an estimate of the conditional probability of {Y} given {X}.
+
+Now imagine a grocery store with tens of thousands of different products. We wouldn't want to calculate all associations between every possible combination of products. Instead, we would want to select only potentially "relevant" rules from the set of all possible rules. Therefore, we use the measures **support**,  **confidence** and **lift** to reduce the number of relationships we need to analyze:
+
+
+<div class = "blue">
+
+* Support is an indication of how frequently a set of items appear in baskets. 
+* Confidence is an indication of how often the support-rule has been found to be true.
+* Lift is a measure of association using both support and confidence.
+
+</div>
+
+<br />
+
+If we are looking for association rules {X -> Y} that apply to a reasonable fraction of the baskets, then the support of X must be reasonably high. In practice, such as for marketing in brick-and-mortar stores, "reasonably high" is often around 1% to 10% of the baskets. We also want the conﬁdence of the rule to be reasonably high, perhaps 50%, or else the rule has little practical effect. (Leskovec, Rajaraman, & Ullman, 2020)
+
+Furthermore, it must be assumed that there are not too many frequent itemsets and thus not too many candidates for high-support, high-conﬁdence association rules. The reason for this is that if we give companies to many association rules that meet our thresholds for support and conﬁdence, they cannot even read them, let alone act on them. Thus, it is normal to adjust the support and confidence thresholds so that we do not get too many frequent itemsets. (Leskovec, Rajaraman, & Ullman, 2020)
+
+
+Next, we take a closer look at the measures support, confidence and lift.
+
+
+# Association measures
+
+## Support
+
+The metric support tells us how popular a set of items is, as measured by the proportion of transactions in which the itemset appears.
+
+In our data, the support of {apple} is 4 out of 8, or 50%. The support of {apple, beer, rice} is 2 out of 8, or 25%.  
+
+$$Support(apple) = \frac{4}{8} = 0.5$$  
+
+Or in general, for a set of items X:  
+
+$$ Support(X) = \frac{frequency(X)}{n} $$  
+
+* with n = number of all transactions (baskets).  
+
+Usually, a specific support-threshold is used to reduce the number of itemsets we need to analyze. At the beginning of the analysis, we could set our support-threshold to 10%.
+
+
+## Confidence
+
+Confidence tells us how likely an item Y is purchased given that item X is purchased, expressed as {X -> Y}. It is measured by the proportion of transactions with item X, in which item Y also appears. The confidence of a rule is defined as:  
+
+
+$$ Confidence(X -> Y) = \frac{support(X \cup Y)}{support(X)} $$  
+
+Hence, the confidence can be interpreted as an estimate of the probability P(Y|X). In other words, this is the probability of finding the RHS (Y) of the rule in transactions under the condition that these transactions also contain the LHS (X) (Hornik, Grün, & Hahsler, 2005). Confidence is directed and gives different values for the rules X -> Y and Y -> X.
+
+Note that $support(X ∪ Y)$ means the support of the union of the items in X and Y. Since we usually state probabilities of events and not sets of items, we can rewrite $support(X \cup Y)$ as the probability $P(E_X \cap E_Y)$, where $E_{X}$ and $E_{Y}$ are the events that a transaction contains itemset X and Y, respectively (review [this site](https://michael.hahsler.net/research/association_rules/measures.html) from Michael Hahsler for a detailed explanation).
+
+In our example, the confidence that beer is purchased given that apple is purchased ({apple -> beer}) is 3 out of 4, or 75%. This means the conditional probability P(beer|apple) = 75%. Apple is the antecedent or left-hand-side (LHS) and beer is the consequent or **right-hand-side (RHS)**.
+
+
+$$Confidence(apple -> beer ) = \frac{support(apple ∪ beer)}{support(apple)} = \frac{\frac{3}{8}{}{}}{\frac{4}{8}{}} = \frac{3}{4} = 0.75$$  
+
+Note that the confidence measure might misrepresent the importance of an association. This is because it only accounts for how popular item Y is (in our case apple) but not X (in our case beer). 
+
+If beer is also very popular in general, there will be a higher chance that a transaction containing apple will also contain beer, thus inflating the confidence measure. To account for the base popularity of both items, we use a third measure called lift.
+
+
+## Lift
+
+Lift tells us how likely item Y is purchased when item X is purchased, while controlling for how popular items Y and X are. It measures how many times more often X and Y occur together than expected if they were statistically independent. 
+
+In our example, lift is calculated as:  
+
+$$Lift(apple -> beer ) = \frac{support(apple ∪ beer)}{support(apple) \times support(beer)}  = \frac{\frac{3}{8}{}{}}{\frac{4}{8}{\times \frac{6}{8}}} = \frac{\frac{3}{8}{}{}}{\frac{24}{64}} = \frac{\frac{3}{8}{}{}}{\frac{3}{8}} = 1$$  
+
+A lift value of:   
+
+* **lift = 1**: implies no association between items. 
+
+* **lift > 1**: greater than 1 means that item Y is likely to be bought if item X is bought, 
+
+* **lift < 1**: less than 1 means that item Y is unlikely to be bought if item X is bought.  
+
+
+The lift of {apple -> beer} is 1, which implies no association between the two items. 
+
+
+# A-Priori Algorithm
+
+There are different algorithms for finding frequent item-sets. In this tutorial we cover the main idea behind the **A-Priori Algorithm**, which reduces the number of itemsets we need to examine. It works by eliminating  itemsets by looking ﬁrst at smaller sets and recognizing that a large set cannot be frequent unless all its subsets are. Put simply, the algorithm states that if an itemset is infrequent, then all its subsets must also be infrequent. 
+
+This means that if item {beer} was found to be infrequent, we can expect the itemset {beer, pizza} to be equally or even more infrequent. So in consolidating the list of popular itemsets, we need not consider {beer, pizza}, nor any other itemset configuration that contains {beer}.
+
+The A-Priori Algorithm uses a so called *breadth-first* search strategy, which can be viewed in this decision tree: 
+
+```{r echo=FALSE, fig.align='center', fig.cap='Example of breadth-first search (source: [Matheny, 2007](https://en.wikipedia.org/wiki/Breadth-first_search#/media/File:Animated_BFS.gif)'}
+
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif")
+
+```
+
+
+Using this principle, the number of itemsets that have to be examined can be *pruned* (i.e. removing sections of the decision tree). 
+
+The list of popular itemsets can be obtained in these steps (Ng & Soo, 2017):
+
+<div class = "blue">
+
+* Step 0. Start with itemsets containing just a single item, such as {apple} and {pear}.
+
+* Step 1. Determine the support-threshold for itemsets. Keep the itemsets that meet your minimum support threshold, and remove itemsets that do not.
+
+* Step 2. Using the itemsets you have kept from Step 1, generate all the possible itemset configurations.
+
+* Step 3. Repeat Steps 1 & 2 until there are no more new itemsets.
+
+</div>
+
+This iterative process is illustrated in the animation below:
+
+
+```{r echo=FALSE, fig.align='center', fig.cap='A-Priori Algorithm (Ng & Soo, 2017)'}
+
+knitr::include_graphics("https://annalyzin.files.wordpress.com/2016/04/association-rules-apriori-tutorial-explanation.gif")
+
+```
+
+As seen in the animation, {apple} was determine to have low support, hence it was removed and all other itemset configurations that contain apple need not be considered. This reduced the number of itemsets to consider by more than half.
+
+Note that the **support threshold** that you pick in Step 1 could be based on a formal analysis or past experience. If you discover that sales of items beyond a certain proportion tend to have a significant impact on your profits, you might consider using that proportion as your support threshold (otherwise you may use 1% as a starting value).
+
+We have seen how the A-Priori Algorithm can be used to identify itemsets with high support. The same principle can also be used to identify item associations with high **confidence** or **lift**. Finding rules with high confidence or lift is less computationally taxing once high-support itemsets have been identified, because confidence and lift values are calculated using support values (Ng & Soo, 2017).
+
+Take for example the task of finding high-confidence rules. If the rule
+
+{beer, chips -> apple}
+
+has low confidence, all other rules with the same left hand side (LHS) items and with apple on the right hand side (RHS) would have low confidence too. Specifically, the rules  
+
+{beer -> apple, chips}
+{chips -> apple, beer}
+
+would have low confidence as well. As before, lower level candidate item rules can be pruned using the A-Priori Algorithm, so that fewer candidate rules need to be examined (Ng & Soo, 2017).
+
+In summary, when you apply the A-Priori Algorithm on a given set of transactions, your goal will be to find all rules with support confidence greater than or equal to your support threshold and confidence greater than or equal to your confidence threshold.  
+
+# Implementation in R
+
+
+```{r eval=FALSE}
+install.packages("arules")
+install.packages("arulesViz")
+```
+
+
+To perform the association analysis in R, we use the `arules` and `arulesViz` packages. Review Hornik et al. (2005) for a detailed description of the packages or visit the [arules documentation site](http://mhahsler.github.io/arules/).
+
+## Transform data
+
+First of all, you have to load the transaction data into an object of the "transaction class" to be able to analyze the data. This is done by using the following function of the `arules` package:
+
+```{r}
+library(arules)
+
+trans <- as(market_basket, "transactions")
+
+```
+
+## Inspect data
+
+Take a look at the dimensions of this object:
+
+```{r}
+
+dim(trans)
+
+```
+
+This means we have 8 transactions and 6 distinct items.
+
+Obtain a list of the distinct items in the data:
+
+```{r}
+
+itemLabels(trans)
+
+```
+
+View the summary of the transaction data:
+
+```{r}
+
+summary(trans)
+
+```
+
+
+The `summary()` gives us information about our transaction object:
+
+* There are 8 transactions (rows) and 6 items (columns) and we can view the most frequent items.
+
+* Density tells us the percentage of non-zero cells in this 8x6-matrix. 
+
+* Element length distribution: a set of 2 items in 4 transactions; 3 items in 2 of the transactions and 4 items in 2 transactions.
+
+
+Note that a matrix is called a **sparse matrix** if most of the elements are zero. By contrast, if most of the elements are nonzero, then the matrix is considered dense. The number of zero-valued elements divided by the total number of elements is called the *sparsity* of the matrix (which is equal to 1 minus the density of the matrix). 
+
+Take a look at all transactions and items in a matrix like fashion:
+
+```{r Matrix of transactions and items}
+
+image(trans)
+
+```
+
+You can observe that almost half of the "cells" (45,83 %) are non zero values.
+
+Display the relative item frequency:
+
+```{r fig.cap='Relative item frequency'}
+
+itemFrequencyPlot(trans, topN=10,  cex.names=1)
+
+```
+
+The items {apple}, {milk} and {rice} all have a relative item frequency (i.e. support) of 50%. 
+
+## A-Priori Algorithm
+
+The next step is to analyze the rules using the A-Priori Algorithm with the function `apriori()`. This function requires both a minimum support and a minimum confidence constraint at the same time. The option `parameter` will allow you to set the *support-threshold*, *confidence-threshold* as well as the maximum lenght of items (`maxlen`). If you do not provide threshold values, the function will perform the analysis with these default values: support-threshold of 0.1 and confidence-threshold of 0.8.
+
+
+```{r}
+
+#Min Support 0.3, confidence as 0.5.
+rules <- apriori(trans, 
+                 parameter = list(supp=0.3, conf=0.5, 
+                                  maxlen=10, 
+                                  target= "rules"))
+
+```
+
+In our simple example, we already know that by using a support-threshold of 0.3, we will eliminate {meat} and {pear} from our analysis, since they have support values below 0.3.
+
+The summary shows the following:
+
+```{r}
+
+summary(rules)
+
+```
+
+
+* Set of rules: 10.
+* Rule length distribution (LHS + RHS): 4 rules with a length of 1 item; 6 rules with a length of 2 items. 
+* Summary of quality measures: min, max, median, mean and quantile values for support, confidence and lift.
+* Mining info: number of transactions, support-threshold and confidence-threshold. 
+
+Inspect the 10 rules we obtained:
+
+```{r}
+
+inspect(rules)
+
+```
+
+
+The rules 1 to 4 with an empty LHS mean that no matter what other items are involved the item in the RHS will appear with the probability given by the rule's confidence (which equals the support). If you want to avoid these rules then use the argument `parameter=list(minlen=2)` ([stackoverflow](https://stackoverflow.com/a/38994066)).
+
+
+```{r}
+
+#Min Support 0.3, confidence as 0.5.
+rules <- apriori(trans, 
+                        parameter = list(supp=0.3, conf=0.5, 
+                                         maxlen=10, 
+                                         minlen=2,
+                                         target= "rules"))
+
+```
+
+```{r}
+
+inspect(rules)
+
+```
+
+
+We can observe that rule 6 states that {beer -> rice} has a support of 50% and a confidence of 67%. This means this rule was found in 50% of all transactions. The confidence that rice (LHS) is purchased given beer (RHS) is purchased (P(rice|beer)) is 67%. In other words, 67% of the times a customer buys beer, rice is bought as well. 
+
+## Set LHS and RHS
+
+If you want to analyze a specific rule, you can use the option `appearance` to set a LHS (if part) or RHS (then part) of the rule. 
+
+For example, to analyze what items customers buy *before* buying {beer}, we set `rhs=beer`and `default=lhs`:
+
+```{r}
+
+beer_rules_rhs <- apriori(trans, 
+                          parameter = list(supp=0.3, conf=0.5, 
+                                         maxlen=10, 
+                                         minlen=2),
+                          appearance = list(default="lhs", rhs="beer"))
+
+```
+
+Inspect the result:
+
+```{r}
+
+inspect(beer_rules_rhs)
+
+```
+
+
+It is also possible to analyze what items customers buy *after* buying {beer}:
+
+```{r}
+
+beer_rules_lhs <- apriori(trans, 
+                          parameter = list(supp=0.3, conf=0.5, 
+                                         maxlen=10, 
+                                         minlen=2),
+                          appearance = list(lhs="beer", default="rhs"))
+
+```
+
+
+Inspect the result:
+
+
+```{r}
+inspect(beer_rules_lhs)
+```
+
+
+## Visualizing association rules
+
+
+Mining association rules often results in a very large number of found rules, leaving the analyst with the task to go through all the rules and discover interesting ones. Sifting manually through large sets of rules is time consuming and strenuous. Therefore, in addition to our calculations of associations, we can use the package [`arulesViz`](https://github.com/mhahsler/arulesViz) to visualize our results as:
+
+* Scatter-plots,
+* interactive scatter-plots and
+* Individual rule representations.
+
+For a detailed discussion of the different visualization techniques, review Hahsler & Karpienko (2017).
+
+
+## Scatter-Plot
+
+A scatter plot for association rules uses two interest measures, one on each of the axes. The default plot for association rules in arulesViz is a scatter plot using support and confidence on the axes. The measure defined by shading (default: lift) is visualized by the color of the points. A color key is provided to the right of the plot.
+
+To visualize our association rules in a scatter plot, we use the function `plot()` of the arulesViz package. You can use the function as follows: `plot(x, method, measure, shading, control, data, engine)`. For a detailed description, review the [vignette of the package](https://cran.r-project.org/web/packages/arulesViz/arulesViz.pdf):
+
+* x: an object of class "rules" or "itemsets".
+* method: a string with value "scatterplot", "two-key plot", "matrix", "matrix3D", "mo-saic", "doubledecker", "graph", "paracoord" or "grouped", "iplots" selecting the visualization method. 
+* measure: measure(s) of interestingness (e.g., "support", "confidence", "lift", "order") used in the visualization.
+* shading: measure of interestingness used for the color of the points/arrows/nodes (e.g., "support", "confidence", "lift"). The default is "lift". 
+* control: a list of control parameters for the plot. The available control parameters depend
+on the used visualization method.
+* data: the dataset (class "transactions") used to generate the rules/itemsets. Only "mo-saic" and "doubledecker" require the original data.
+* engine: a string indicating the plotting engine used to render the plot. The "default" en- gine uses (mostly) grid, but some plots can produce interactive interactive grid visualizations using engine "interactive", or HTML widgets using engine "html- widget".
+
+
+For a basic plot with default settings, just insert the object x (in our case rules). This visualization method draws a two dimensional scatter plot with different measures of interestingness (parameter "measure") on the axes and a third measure (parameter "shading") is represented by the color of the points.
+
+```{r fig.cap='Scatter plot'}
+library(arulesViz)
+
+plot(rules)
+
+```
+
+The plot shows support on the x-axis and confidence on the y-axis. Lift ist shown as a color with different levels ranging from grey to red. 
+
+We could also use only "confidence" as a specific measure of interest: 
+
+```{r fig.cap='Scatter plot with confidence as measure of interest'}
+
+plot(rules, measure = "confidence")
+
+```
+
+There is a special value for shading called "order" which produces a two-key plot where the color of the points represents the length (order) of the rule if you select `method = "two-key plot`. This is basically a scatterplot with `shading = "order"`:
+
+```{r fig.cap='Two-key plot'}
+
+plot(rules, method = "two-key plot")
+
+```
+
+
+
+## Interactive scatter-plot
+
+Plot an interactive scatter plot for association rules using [plotly](https://plotly-r.com/index.html):
+
+```{r fig.cap='Interactive scatter-plot'}
+
+plot(rules, engine = "plotly")
+
+```
+
+## Graph-based visualization
+
+Graph-based techniques concentrate on the relationship between individual items in the rule set. They represent the rules (or itemsets) as a graph with items as labeled vertices, and rules (or itemsets) represented as vertices connected to items using arrows. 
+
+For rules, the LHS items are connected with arrows pointing to the vertex representing the rule and the RHS has an arrow pointing to the item.
+
+Several engines are available. The default engine uses igraph (plot.igraph and tkplot for the interactive visualization). ... arguments are passed on to the respective plotting function (use for color, etc.).
+
+The network graph below shows associations between selected items. Larger circles imply higher support, while red circles imply higher lift. Graphs only work well with very few rules, why we only use a subset of 10 rules from our data:
+
+```{r fig.cap='Graph-based visualization'}
+
+subrules <- head(rules, n = 10, by = "confidence")
+
+plot(subrules, method = "graph",  engine = "htmlwidget")
+
+```
+
+
+
+## Parallel coordinate plot
+
+Represents the rules (or itemsets) as a parallel coordinate plot (from LHS to RHS). 
+
+```{r fig.cap='Parallel coordinate plot'}
+
+plot(subrules, method="paracoord")
+
+```
+
+The plot indicates that if a customer buys rice, he is likely to buy beer as well: {rice -> beer}. The same is true for the opposite direction: {beer -> rice}.
+
+# References
+
+
+Hahsler, M., & Karpienko, R. (2017). Visualizing association rules in hierarchical groups. Journal of Business Economics, 87(3), 317–335. https://doi.org/10.1007/s11573-016-0822-8
+
+Hornik, K., Grün, B., & Hahsler, M. (2005). arules - A computational environment for mining association rules and frequent item sets. Journal of Statistical Software, 14(15), 1–25.
+
+Leskovec, J., Rajaraman, A., & Ullman, J. D. (2020). Mining of massive data sets. Cambridge university press.
+
+Ng, A., & Soo, K. (2017). Numsense! Data Science for the Layman: No Math Added. Leanpub.

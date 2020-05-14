@@ -7,10 +7,564 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Mon, 18 Nov 2019 10:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction to Association Rule Mining in R</title>
+      <link>/post/2020-05-14-r-association-rule-mining/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020-05-14-r-association-rule-mining/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/vis/vis.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/vis/vis.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/visNetwork-binding/visNetwork.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Introduction&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#the-market-basket-model&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; The market-basket model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#association-rules&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Association rules&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#association-measures&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Association measures&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#support&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Support&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#confidence&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; Confidence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#lift&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; Lift&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#a-priori-algorithm&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; A-Priori Algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#implementation-in-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Implementation in R&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#transform-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Transform data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#inspect-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Inspect data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#a-priori-algorithm-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; A-Priori Algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#set-lhs-and-rhs&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.4&lt;/span&gt; Set LHS and RHS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#visualizing-association-rules&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.5&lt;/span&gt; Visualizing association rules&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#scatter-plot&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.6&lt;/span&gt; Scatter-Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#interactive-scatter-plot&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.7&lt;/span&gt; Interactive scatter-plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#graph-based-visualization&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.8&lt;/span&gt; Graph-based visualization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#parallel-coordinate-plot&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.9&lt;/span&gt; Parallel coordinate plot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Association rule mining is one of the most popular data mining methods. This kind of analysis is also called &lt;em&gt;frequent itemset analysis&lt;/em&gt;, &lt;em&gt;association analysis&lt;/em&gt; or &lt;em&gt;association rule learning&lt;/em&gt;. To perform the analysis in R, we use the &lt;code&gt;arules&lt;/code&gt; and &lt;code&gt;arulesViz&lt;/code&gt; packages.&lt;/p&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Introduction&lt;/h1&gt;
+&lt;p&gt;In association analysis, we are usually interested in the absolute number of customer transactions (also called baskets) that contain a particular set of items (usually products). A typical application of association analysis is the analysis of consumer buying behavior in supermarkets and chain stores where they record the contents of shopping carts brought to the register for checkout. These transaction data are normally recorded by point-of-sale scanners and often consist of &lt;a href=&#34;https://en.wikipedia.org/wiki/Tuple&#34;&gt;tuples&lt;/a&gt; of the form: {transaction ID, item ID, item ID, …}. By finding frequent itemsets, a retailer can learn what is commonly bought together and use this information to increase sales in several ways.&lt;/p&gt;
+&lt;p&gt;Imagine there is a pair of different products (which we call &lt;em&gt;items&lt;/em&gt;), &lt;em&gt;X&lt;/em&gt; and &lt;em&gt;Y&lt;/em&gt;, that are frequently bought together in a store (Ng &amp;amp; Soo, 2017):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Both X and Y can be placed on the same shelf, so that buyers of one item would be prompted to buy the other.&lt;/li&gt;
+&lt;li&gt;Promotional discounts could be applied to just one out of the two items.&lt;/li&gt;
+&lt;li&gt;Advertisements on X could be targeted at buyers who purchase Y.&lt;/li&gt;
+&lt;li&gt;X and Y could be combined into a new product, such as having Y in flavors of X.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that online retailers like Amazon.com or online platforms like Spotify have little need for this kind of analysis, since it is designed to search for itemsets that appear frequently. If the online retailer was limited to frequent itemsets, they would miss all the opportunities that are present in the “long tail” to select advertisements for each customer individually (for example to recommend certain products or songs). Instead of searching for &lt;em&gt;frequent&lt;/em&gt; itemsets, they use &lt;em&gt;similarity&lt;/em&gt; search algorithms (like &lt;em&gt;collaborative filtering&lt;/em&gt;) to detect similar customers that have a large fraction of their baskets in common, even if the absolute number of baskets is small. (Leskovec, Rajaraman, &amp;amp; Ullman, 2020)&lt;/p&gt;
+&lt;div id=&#34;the-market-basket-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; The market-basket model&lt;/h2&gt;
+&lt;p&gt;Association rule mining is based on the so called “market-basket” model of data. This is essentially a many-many relationship between two kinds of elements, called &lt;strong&gt;items&lt;/strong&gt; and &lt;strong&gt;baskets&lt;/strong&gt; (also called &lt;strong&gt;transactions&lt;/strong&gt;) with some assumptions about the shape of the data (Leskovec, Rajaraman, &amp;amp; Ullman, 2020):&lt;/p&gt;
+&lt;style&gt;
+div.blue { background-color:#e6f0ff; border-radius: 2px; padding: 10px;}
+&lt;/style&gt;
+&lt;div class=&#34;blue&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;Each basket (i.e. transaction) consists of a set of items (usually products).&lt;/li&gt;
+&lt;li&gt;Usually we assume that the number of items in a basket is small (much smaller than the total number of all items).&lt;/li&gt;
+&lt;li&gt;The number of all baskets (transactions) is usually assumed to be very large.&lt;/li&gt;
+&lt;li&gt;The data is assumed to be represented in a file consisting of a sequence of baskets (transactions).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;To illustrate the logic of association rule mining, let’s create a sequence of baskets (transactions) with a small number of items from different customers in a grocery store. Note that because we use a very simple example with only a few baskets and items, the results of the analysis will differ from the results we may obtain from a real world example. We save the data as a sequence of transactions with the name &lt;code&gt;market_basket&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# create a list of baskets
+market_basket &amp;lt;-  
+  list(  
+  c(&amp;quot;apple&amp;quot;, &amp;quot;beer&amp;quot;, &amp;quot;rice&amp;quot;, &amp;quot;meat&amp;quot;),
+  c(&amp;quot;apple&amp;quot;, &amp;quot;beer&amp;quot;, &amp;quot;rice&amp;quot;),
+  c(&amp;quot;apple&amp;quot;, &amp;quot;beer&amp;quot;), 
+  c(&amp;quot;apple&amp;quot;, &amp;quot;pear&amp;quot;),
+  c(&amp;quot;milk&amp;quot;, &amp;quot;beer&amp;quot;, &amp;quot;rice&amp;quot;, &amp;quot;meat&amp;quot;), 
+  c(&amp;quot;milk&amp;quot;, &amp;quot;beer&amp;quot;, &amp;quot;rice&amp;quot;), 
+  c(&amp;quot;milk&amp;quot;, &amp;quot;beer&amp;quot;),
+  c(&amp;quot;milk&amp;quot;, &amp;quot;pear&amp;quot;)
+  )
+
+# set transaction names (T1 to T8)
+names(market_basket) &amp;lt;- paste(&amp;quot;T&amp;quot;, c(1:8), sep = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each basket includes so called &lt;strong&gt;itemsets&lt;/strong&gt; (like {apple, beer, etc.}). You can observe that “apple” is bought together with “beer” in three transactions:&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-2&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://annalyzin.files.wordpress.com/2016/04/association-rule-support-table.png?w=652&amp;h=578&#34; alt=&#34;Market basket example (Ng &amp;amp; Soo, 2017)&#34; width=&#34;30%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1.1: Market basket example (Ng &amp;amp; Soo, 2017)
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The frequent-itemsets problem is that of finding sets of items that appear in many of the baskets. Hence, a set of items that appears in many baskets is said to be “frequent”.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;association-rules&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; Association rules&lt;/h2&gt;
+&lt;p&gt;While we are interested in extracting frequent sets of items, this information is often presented as a collection of &lt;em&gt;if–then rules&lt;/em&gt;, called &lt;strong&gt;association rules&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The form of an association rule is {X -&amp;gt; Y}, where {X} is a set of items and {Y} is an item. The implication of this association rule is that if all of the items in {X} appear in some basket, then {Y} is “likely” to appear in that basket as well.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;{X} is also called &lt;strong&gt;antecedent&lt;/strong&gt; or &lt;strong&gt;left-hand-side (LHS)&lt;/strong&gt; and&lt;/li&gt;
+&lt;li&gt;{Y} is called &lt;strong&gt;consequent&lt;/strong&gt; or &lt;strong&gt;right-hand-side (RHS)&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An example association rule for products from Apple could be {Apple iPad, Apple iPad Cover} -&amp;gt; {Apple Pencil}, meaning that if Apple’s iPad and iPad Cover {X} are bought, customers are also likely to buy Apple’s Pencil {Y}. Notice that the logical implication symbol “-&amp;gt;” does not indicate a causal relationship between {X} and {Y}. It is merely an estimate of the conditional probability of {Y} given {X}.&lt;/p&gt;
+&lt;p&gt;Now imagine a grocery store with tens of thousands of different products. We wouldn’t want to calculate all associations between every possible combination of products. Instead, we would want to select only potentially “relevant” rules from the set of all possible rules. Therefore, we use the measures &lt;strong&gt;support&lt;/strong&gt;, &lt;strong&gt;confidence&lt;/strong&gt; and &lt;strong&gt;lift&lt;/strong&gt; to reduce the number of relationships we need to analyze:&lt;/p&gt;
+&lt;div class=&#34;blue&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;Support is an indication of how frequently a set of items appear in baskets.&lt;/li&gt;
+&lt;li&gt;Confidence is an indication of how often the support-rule has been found to be true.&lt;/li&gt;
+&lt;li&gt;Lift is a measure of association using both support and confidence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;If we are looking for association rules {X -&amp;gt; Y} that apply to a reasonable fraction of the baskets, then the support of X must be reasonably high. In practice, such as for marketing in brick-and-mortar stores, “reasonably high” is often around 1% to 10% of the baskets. We also want the conﬁdence of the rule to be reasonably high, perhaps 50%, or else the rule has little practical effect. (Leskovec, Rajaraman, &amp;amp; Ullman, 2020)&lt;/p&gt;
+&lt;p&gt;Furthermore, it must be assumed that there are not too many frequent itemsets and thus not too many candidates for high-support, high-conﬁdence association rules. The reason for this is that if we give companies to many association rules that meet our thresholds for support and conﬁdence, they cannot even read them, let alone act on them. Thus, it is normal to adjust the support and confidence thresholds so that we do not get too many frequent itemsets. (Leskovec, Rajaraman, &amp;amp; Ullman, 2020)&lt;/p&gt;
+&lt;p&gt;Next, we take a closer look at the measures support, confidence and lift.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;association-measures&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Association measures&lt;/h1&gt;
+&lt;div id=&#34;support&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Support&lt;/h2&gt;
+&lt;p&gt;The metric support tells us how popular a set of items is, as measured by the proportion of transactions in which the itemset appears.&lt;/p&gt;
+&lt;p&gt;In our data, the support of {apple} is 4 out of 8, or 50%. The support of {apple, beer, rice} is 2 out of 8, or 25%.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Support(apple) = \frac{4}{8} = 0.5\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Or in general, for a set of items X:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ Support(X) = \frac{frequency(X)}{n} \]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;with n = number of all transactions (baskets).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Usually, a specific support-threshold is used to reduce the number of itemsets we need to analyze. At the beginning of the analysis, we could set our support-threshold to 10%.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;confidence&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; Confidence&lt;/h2&gt;
+&lt;p&gt;Confidence tells us how likely an item Y is purchased given that item X is purchased, expressed as {X -&amp;gt; Y}. It is measured by the proportion of transactions with item X, in which item Y also appears. The confidence of a rule is defined as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ Confidence(X -&amp;gt; Y) = \frac{support(X \cup Y)}{support(X)} \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hence, the confidence can be interpreted as an estimate of the probability P(Y|X). In other words, this is the probability of finding the RHS (Y) of the rule in transactions under the condition that these transactions also contain the LHS (X) (Hornik, Grün, &amp;amp; Hahsler, 2005). Confidence is directed and gives different values for the rules X -&amp;gt; Y and Y -&amp;gt; X.&lt;/p&gt;
+&lt;p&gt;Note that &lt;span class=&#34;math inline&#34;&gt;\(support(X ∪ Y)\)&lt;/span&gt; means the support of the union of the items in X and Y. Since we usually state probabilities of events and not sets of items, we can rewrite &lt;span class=&#34;math inline&#34;&gt;\(support(X \cup Y)\)&lt;/span&gt; as the probability &lt;span class=&#34;math inline&#34;&gt;\(P(E_X \cap E_Y)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(E_{X}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(E_{Y}\)&lt;/span&gt; are the events that a transaction contains itemset X and Y, respectively (review &lt;a href=&#34;https://michael.hahsler.net/research/association_rules/measures.html&#34;&gt;this site&lt;/a&gt; from Michael Hahsler for a detailed explanation).&lt;/p&gt;
+&lt;p&gt;In our example, the confidence that beer is purchased given that apple is purchased ({apple -&amp;gt; beer}) is 3 out of 4, or 75%. This means the conditional probability P(beer|apple) = 75%. Apple is the antecedent or left-hand-side (LHS) and beer is the consequent or &lt;strong&gt;right-hand-side (RHS)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Confidence(apple -&amp;gt; beer ) = \frac{support(apple ∪ beer)}{support(apple)} = \frac{\frac{3}{8}{}{}}{\frac{4}{8}{}} = \frac{3}{4} = 0.75\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note that the confidence measure might misrepresent the importance of an association. This is because it only accounts for how popular item Y is (in our case apple) but not X (in our case beer).&lt;/p&gt;
+&lt;p&gt;If beer is also very popular in general, there will be a higher chance that a transaction containing apple will also contain beer, thus inflating the confidence measure. To account for the base popularity of both items, we use a third measure called lift.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;lift&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; Lift&lt;/h2&gt;
+&lt;p&gt;Lift tells us how likely item Y is purchased when item X is purchased, while controlling for how popular items Y and X are. It measures how many times more often X and Y occur together than expected if they were statistically independent.&lt;/p&gt;
+&lt;p&gt;In our example, lift is calculated as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Lift(apple -&amp;gt; beer ) = \frac{support(apple ∪ beer)}{support(apple) \times support(beer)}  = \frac{\frac{3}{8}{}{}}{\frac{4}{8}{\times \frac{6}{8}}} = \frac{\frac{3}{8}{}{}}{\frac{24}{64}} = \frac{\frac{3}{8}{}{}}{\frac{3}{8}} = 1\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;A lift value of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;lift = 1&lt;/strong&gt;: implies no association between items.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;lift &amp;gt; 1&lt;/strong&gt;: greater than 1 means that item Y is likely to be bought if item X is bought,&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;lift &amp;lt; 1&lt;/strong&gt;: less than 1 means that item Y is unlikely to be bought if item X is bought.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The lift of {apple -&amp;gt; beer} is 1, which implies no association between the two items.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-priori-algorithm&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; A-Priori Algorithm&lt;/h1&gt;
+&lt;p&gt;There are different algorithms for finding frequent item-sets. In this tutorial we cover the main idea behind the &lt;strong&gt;A-Priori Algorithm&lt;/strong&gt;, which reduces the number of itemsets we need to examine. It works by eliminating itemsets by looking ﬁrst at smaller sets and recognizing that a large set cannot be frequent unless all its subsets are. Put simply, the algorithm states that if an itemset is infrequent, then all its subsets must also be infrequent.&lt;/p&gt;
+&lt;p&gt;This means that if item {beer} was found to be infrequent, we can expect the itemset {beer, pizza} to be equally or even more infrequent. So in consolidating the list of popular itemsets, we need not consider {beer, pizza}, nor any other itemset configuration that contains {beer}.&lt;/p&gt;
+&lt;p&gt;The A-Priori Algorithm uses a so called &lt;em&gt;breadth-first&lt;/em&gt; search strategy, which can be viewed in this decision tree:&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-3&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif&#34; alt=&#34;Example of breadth-first search (source: [Matheny, 2007](https://en.wikipedia.org/wiki/Breadth-first_search#/media/File:Animated_BFS.gif)&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.1: Example of breadth-first search (source: &lt;a href=&#34;https://en.wikipedia.org/wiki/Breadth-first_search#/media/File:Animated_BFS.gif&#34;&gt;Matheny, 2007&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Using this principle, the number of itemsets that have to be examined can be &lt;em&gt;pruned&lt;/em&gt; (i.e. removing sections of the decision tree).&lt;/p&gt;
+&lt;p&gt;The list of popular itemsets can be obtained in these steps (Ng &amp;amp; Soo, 2017):&lt;/p&gt;
+&lt;div class=&#34;blue&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Step 0. Start with itemsets containing just a single item, such as {apple} and {pear}.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Step 1. Determine the support-threshold for itemsets. Keep the itemsets that meet your minimum support threshold, and remove itemsets that do not.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Step 2. Using the itemsets you have kept from Step 1, generate all the possible itemset configurations.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Step 3. Repeat Steps 1 &amp;amp; 2 until there are no more new itemsets.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;This iterative process is illustrated in the animation below:&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-4&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://annalyzin.files.wordpress.com/2016/04/association-rules-apriori-tutorial-explanation.gif&#34; alt=&#34;A-Priori Algorithm (Ng &amp;amp; Soo, 2017)&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.2: A-Priori Algorithm (Ng &amp;amp; Soo, 2017)
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;As seen in the animation, {apple} was determine to have low support, hence it was removed and all other itemset configurations that contain apple need not be considered. This reduced the number of itemsets to consider by more than half.&lt;/p&gt;
+&lt;p&gt;Note that the &lt;strong&gt;support threshold&lt;/strong&gt; that you pick in Step 1 could be based on a formal analysis or past experience. If you discover that sales of items beyond a certain proportion tend to have a significant impact on your profits, you might consider using that proportion as your support threshold (otherwise you may use 1% as a starting value).&lt;/p&gt;
+&lt;p&gt;We have seen how the A-Priori Algorithm can be used to identify itemsets with high support. The same principle can also be used to identify item associations with high &lt;strong&gt;confidence&lt;/strong&gt; or &lt;strong&gt;lift&lt;/strong&gt;. Finding rules with high confidence or lift is less computationally taxing once high-support itemsets have been identified, because confidence and lift values are calculated using support values (Ng &amp;amp; Soo, 2017).&lt;/p&gt;
+&lt;p&gt;Take for example the task of finding high-confidence rules. If the rule&lt;/p&gt;
+&lt;p&gt;{beer, chips -&amp;gt; apple}&lt;/p&gt;
+&lt;p&gt;has low confidence, all other rules with the same left hand side (LHS) items and with apple on the right hand side (RHS) would have low confidence too. Specifically, the rules&lt;/p&gt;
+&lt;p&gt;{beer -&amp;gt; apple, chips}
+{chips -&amp;gt; apple, beer}&lt;/p&gt;
+&lt;p&gt;would have low confidence as well. As before, lower level candidate item rules can be pruned using the A-Priori Algorithm, so that fewer candidate rules need to be examined (Ng &amp;amp; Soo, 2017).&lt;/p&gt;
+&lt;p&gt;In summary, when you apply the A-Priori Algorithm on a given set of transactions, your goal will be to find all rules with support confidence greater than or equal to your support threshold and confidence greater than or equal to your confidence threshold.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;implementation-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Implementation in R&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;arules&amp;quot;)
+install.packages(&amp;quot;arulesViz&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To perform the association analysis in R, we use the &lt;code&gt;arules&lt;/code&gt; and &lt;code&gt;arulesViz&lt;/code&gt; packages. Review Hornik et al. (2005) for a detailed description of the packages or visit the &lt;a href=&#34;http://mhahsler.github.io/arules/&#34;&gt;arules documentation site&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;transform-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Transform data&lt;/h2&gt;
+&lt;p&gt;First of all, you have to load the transaction data into an object of the “transaction class” to be able to analyze the data. This is done by using the following function of the &lt;code&gt;arules&lt;/code&gt; package:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(arules)
+
+trans &amp;lt;- as(market_basket, &amp;quot;transactions&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;inspect-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Inspect data&lt;/h2&gt;
+&lt;p&gt;Take a look at the dimensions of this object:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(trans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8 6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This means we have 8 transactions and 6 distinct items.&lt;/p&gt;
+&lt;p&gt;Obtain a list of the distinct items in the data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;itemLabels(trans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;apple&amp;quot; &amp;quot;beer&amp;quot;  &amp;quot;meat&amp;quot;  &amp;quot;milk&amp;quot;  &amp;quot;pear&amp;quot;  &amp;quot;rice&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;View the summary of the transaction data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(trans)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## transactions as itemMatrix in sparse format with
+##  8 rows (elements/itemsets/transactions) and
+##  6 columns (items) and a density of 0.4583333 
+## 
+## most frequent items:
+##    beer   apple    milk    rice    meat (Other) 
+##       6       4       4       4       2       2 
+## 
+## element (itemset/transaction) length distribution:
+## sizes
+## 2 3 4 
+## 4 2 2 
+## 
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.00    2.00    2.50    2.75    3.25    4.00 
+## 
+## includes extended item information - examples:
+##   labels
+## 1  apple
+## 2   beer
+## 3   meat
+## 
+## includes extended transaction information - examples:
+##   transactionID
+## 1            T1
+## 2            T2
+## 3            T3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;summary()&lt;/code&gt; gives us information about our transaction object:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;There are 8 transactions (rows) and 6 items (columns) and we can view the most frequent items.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Density tells us the percentage of non-zero cells in this 8x6-matrix.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Element length distribution: a set of 2 items in 4 transactions; 3 items in 2 of the transactions and 4 items in 2 transactions.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that a matrix is called a &lt;strong&gt;sparse matrix&lt;/strong&gt; if most of the elements are zero. By contrast, if most of the elements are nonzero, then the matrix is considered dense. The number of zero-valued elements divided by the total number of elements is called the &lt;em&gt;sparsity&lt;/em&gt; of the matrix (which is equal to 1 minus the density of the matrix).&lt;/p&gt;
+&lt;p&gt;Take a look at all transactions and items in a matrix like fashion:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;image(trans)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-05-14-r-association-rule-mining/index_files/figure-html/Matrix%20of%20transactions%20and%20items-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You can observe that almost half of the “cells” (45,83 %) are non zero values.&lt;/p&gt;
+&lt;p&gt;Display the relative item frequency:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;itemFrequencyPlot(trans, topN=10,  cex.names=1)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-10&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/2020-05-14-r-association-rule-mining/index_files/figure-html/unnamed-chunk-10-1.png&#34; alt=&#34;Relative item frequency&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.1: Relative item frequency
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The items {apple}, {milk} and {rice} all have a relative item frequency (i.e. support) of 50%.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-priori-algorithm-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; A-Priori Algorithm&lt;/h2&gt;
+&lt;p&gt;The next step is to analyze the rules using the A-Priori Algorithm with the function &lt;code&gt;apriori()&lt;/code&gt;. This function requires both a minimum support and a minimum confidence constraint at the same time. The option &lt;code&gt;parameter&lt;/code&gt; will allow you to set the &lt;em&gt;support-threshold&lt;/em&gt;, &lt;em&gt;confidence-threshold&lt;/em&gt; as well as the maximum lenght of items (&lt;code&gt;maxlen&lt;/code&gt;). If you do not provide threshold values, the function will perform the analysis with these default values: support-threshold of 0.1 and confidence-threshold of 0.8.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Min Support 0.3, confidence as 0.5.
+rules &amp;lt;- apriori(trans, 
+                 parameter = list(supp=0.3, conf=0.5, 
+                                  maxlen=10, 
+                                  target= &amp;quot;rules&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Apriori
+## 
+## Parameter specification:
+##  confidence minval smax arem  aval originalSupport maxtime support minlen
+##         0.5    0.1    1 none FALSE            TRUE       5     0.3      1
+##  maxlen target   ext
+##      10  rules FALSE
+## 
+## Algorithmic control:
+##  filter tree heap memopt load sort verbose
+##     0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+## 
+## Absolute minimum support count: 2 
+## 
+## set item appearances ...[0 item(s)] done [0.00s].
+## set transactions ...[6 item(s), 8 transaction(s)] done [0.00s].
+## sorting and recoding items ... [4 item(s)] done [0.00s].
+## creating transaction tree ... done [0.00s].
+## checking subsets of size 1 2 done [0.00s].
+## writing ... [10 rule(s)] done [0.00s].
+## creating S4 object  ... done [0.00s].&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In our simple example, we already know that by using a support-threshold of 0.3, we will eliminate {meat} and {pear} from our analysis, since they have support values below 0.3.&lt;/p&gt;
+&lt;p&gt;The summary shows the following:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(rules)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## set of 10 rules
+## 
+## rule length distribution (lhs + rhs):sizes
+## 1 2 
+## 4 6 
+## 
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0     1.0     2.0     1.6     2.0     2.0 
+## 
+## summary of quality measures:
+##     support        confidence          lift           count    
+##  Min.   :0.375   Min.   :0.5000   Min.   :1.000   Min.   :3.0  
+##  1st Qu.:0.375   1st Qu.:0.5000   1st Qu.:1.000   1st Qu.:3.0  
+##  Median :0.500   Median :0.5833   Median :1.000   Median :4.0  
+##  Mean   :0.475   Mean   :0.6417   Mean   :1.067   Mean   :3.8  
+##  3rd Qu.:0.500   3rd Qu.:0.7500   3rd Qu.:1.000   3rd Qu.:4.0  
+##  Max.   :0.750   Max.   :1.0000   Max.   :1.333   Max.   :6.0  
+## 
+## mining info:
+##   data ntransactions support confidence
+##  trans             8     0.3        0.5&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Set of rules: 10.&lt;/li&gt;
+&lt;li&gt;Rule length distribution (LHS + RHS): 4 rules with a length of 1 item; 6 rules with a length of 2 items.&lt;/li&gt;
+&lt;li&gt;Summary of quality measures: min, max, median, mean and quantile values for support, confidence and lift.&lt;/li&gt;
+&lt;li&gt;Mining info: number of transactions, support-threshold and confidence-threshold.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Inspect the 10 rules we obtained:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;inspect(rules)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      lhs        rhs     support confidence lift     count
+## [1]  {}      =&amp;gt; {apple} 0.500   0.5000000  1.000000 4    
+## [2]  {}      =&amp;gt; {milk}  0.500   0.5000000  1.000000 4    
+## [3]  {}      =&amp;gt; {rice}  0.500   0.5000000  1.000000 4    
+## [4]  {}      =&amp;gt; {beer}  0.750   0.7500000  1.000000 6    
+## [5]  {apple} =&amp;gt; {beer}  0.375   0.7500000  1.000000 3    
+## [6]  {beer}  =&amp;gt; {apple} 0.375   0.5000000  1.000000 3    
+## [7]  {milk}  =&amp;gt; {beer}  0.375   0.7500000  1.000000 3    
+## [8]  {beer}  =&amp;gt; {milk}  0.375   0.5000000  1.000000 3    
+## [9]  {rice}  =&amp;gt; {beer}  0.500   1.0000000  1.333333 4    
+## [10] {beer}  =&amp;gt; {rice}  0.500   0.6666667  1.333333 4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The rules 1 to 4 with an empty LHS mean that no matter what other items are involved the item in the RHS will appear with the probability given by the rule’s confidence (which equals the support). If you want to avoid these rules then use the argument &lt;code&gt;parameter=list(minlen=2)&lt;/code&gt; (&lt;a href=&#34;https://stackoverflow.com/a/38994066&#34;&gt;stackoverflow&lt;/a&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Min Support 0.3, confidence as 0.5.
+rules &amp;lt;- apriori(trans, 
+                        parameter = list(supp=0.3, conf=0.5, 
+                                         maxlen=10, 
+                                         minlen=2,
+                                         target= &amp;quot;rules&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Apriori
+## 
+## Parameter specification:
+##  confidence minval smax arem  aval originalSupport maxtime support minlen
+##         0.5    0.1    1 none FALSE            TRUE       5     0.3      2
+##  maxlen target   ext
+##      10  rules FALSE
+## 
+## Algorithmic control:
+##  filter tree heap memopt load sort verbose
+##     0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+## 
+## Absolute minimum support count: 2 
+## 
+## set item appearances ...[0 item(s)] done [0.00s].
+## set transactions ...[6 item(s), 8 transaction(s)] done [0.00s].
+## sorting and recoding items ... [4 item(s)] done [0.00s].
+## creating transaction tree ... done [0.00s].
+## checking subsets of size 1 2 done [0.00s].
+## writing ... [6 rule(s)] done [0.00s].
+## creating S4 object  ... done [0.00s].&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;inspect(rules)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs        rhs     support confidence lift     count
+## [1] {apple} =&amp;gt; {beer}  0.375   0.7500000  1.000000 3    
+## [2] {beer}  =&amp;gt; {apple} 0.375   0.5000000  1.000000 3    
+## [3] {milk}  =&amp;gt; {beer}  0.375   0.7500000  1.000000 3    
+## [4] {beer}  =&amp;gt; {milk}  0.375   0.5000000  1.000000 3    
+## [5] {rice}  =&amp;gt; {beer}  0.500   1.0000000  1.333333 4    
+## [6] {beer}  =&amp;gt; {rice}  0.500   0.6666667  1.333333 4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can observe that rule 6 states that {beer -&amp;gt; rice} has a support of 50% and a confidence of 67%. This means this rule was found in 50% of all transactions. The confidence that rice (LHS) is purchased given beer (RHS) is purchased (P(rice|beer)) is 67%. In other words, 67% of the times a customer buys beer, rice is bought as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;set-lhs-and-rhs&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.4&lt;/span&gt; Set LHS and RHS&lt;/h2&gt;
+&lt;p&gt;If you want to analyze a specific rule, you can use the option &lt;code&gt;appearance&lt;/code&gt; to set a LHS (if part) or RHS (then part) of the rule.&lt;/p&gt;
+&lt;p&gt;For example, to analyze what items customers buy &lt;em&gt;before&lt;/em&gt; buying {beer}, we set &lt;code&gt;rhs=beer&lt;/code&gt;and &lt;code&gt;default=lhs&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beer_rules_rhs &amp;lt;- apriori(trans, 
+                          parameter = list(supp=0.3, conf=0.5, 
+                                         maxlen=10, 
+                                         minlen=2),
+                          appearance = list(default=&amp;quot;lhs&amp;quot;, rhs=&amp;quot;beer&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Apriori
+## 
+## Parameter specification:
+##  confidence minval smax arem  aval originalSupport maxtime support minlen
+##         0.5    0.1    1 none FALSE            TRUE       5     0.3      2
+##  maxlen target   ext
+##      10  rules FALSE
+## 
+## Algorithmic control:
+##  filter tree heap memopt load sort verbose
+##     0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+## 
+## Absolute minimum support count: 2 
+## 
+## set item appearances ...[1 item(s)] done [0.00s].
+## set transactions ...[6 item(s), 8 transaction(s)] done [0.00s].
+## sorting and recoding items ... [4 item(s)] done [0.00s].
+## creating transaction tree ... done [0.00s].
+## checking subsets of size 1 2 done [0.00s].
+## writing ... [3 rule(s)] done [0.00s].
+## creating S4 object  ... done [0.00s].&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inspect the result:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;inspect(beer_rules_rhs)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs        rhs    support confidence lift     count
+## [1] {apple} =&amp;gt; {beer} 0.375   0.75       1.000000 3    
+## [2] {milk}  =&amp;gt; {beer} 0.375   0.75       1.000000 3    
+## [3] {rice}  =&amp;gt; {beer} 0.500   1.00       1.333333 4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is also possible to analyze what items customers buy &lt;em&gt;after&lt;/em&gt; buying {beer}:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;beer_rules_lhs &amp;lt;- apriori(trans, 
+                          parameter = list(supp=0.3, conf=0.5, 
+                                         maxlen=10, 
+                                         minlen=2),
+                          appearance = list(lhs=&amp;quot;beer&amp;quot;, default=&amp;quot;rhs&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Apriori
+## 
+## Parameter specification:
+##  confidence minval smax arem  aval originalSupport maxtime support minlen
+##         0.5    0.1    1 none FALSE            TRUE       5     0.3      2
+##  maxlen target   ext
+##      10  rules FALSE
+## 
+## Algorithmic control:
+##  filter tree heap memopt load sort verbose
+##     0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+## 
+## Absolute minimum support count: 2 
+## 
+## set item appearances ...[1 item(s)] done [0.00s].
+## set transactions ...[6 item(s), 8 transaction(s)] done [0.00s].
+## sorting and recoding items ... [4 item(s)] done [0.00s].
+## creating transaction tree ... done [0.00s].
+## checking subsets of size 1 2 done [0.00s].
+## writing ... [3 rule(s)] done [0.00s].
+## creating S4 object  ... done [0.00s].&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Inspect the result:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;inspect(beer_rules_lhs)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs       rhs     support confidence lift     count
+## [1] {beer} =&amp;gt; {apple} 0.375   0.5000000  1.000000 3    
+## [2] {beer} =&amp;gt; {milk}  0.375   0.5000000  1.000000 3    
+## [3] {beer} =&amp;gt; {rice}  0.500   0.6666667  1.333333 4&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualizing-association-rules&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.5&lt;/span&gt; Visualizing association rules&lt;/h2&gt;
+&lt;p&gt;Mining association rules often results in a very large number of found rules, leaving the analyst with the task to go through all the rules and discover interesting ones. Sifting manually through large sets of rules is time consuming and strenuous. Therefore, in addition to our calculations of associations, we can use the package &lt;a href=&#34;https://github.com/mhahsler/arulesViz&#34;&gt;&lt;code&gt;arulesViz&lt;/code&gt;&lt;/a&gt; to visualize our results as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scatter-plots,&lt;/li&gt;
+&lt;li&gt;interactive scatter-plots and&lt;/li&gt;
+&lt;li&gt;Individual rule representations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a detailed discussion of the different visualization techniques, review Hahsler &amp;amp; Karpienko (2017).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;scatter-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.6&lt;/span&gt; Scatter-Plot&lt;/h2&gt;
+&lt;p&gt;A scatter plot for association rules uses two interest measures, one on each of the axes. The default plot for association rules in arulesViz is a scatter plot using support and confidence on the axes. The measure defined by shading (default: lift) is visualized by the color of the points. A color key is provided to the right of the plot.&lt;/p&gt;
+&lt;p&gt;To visualize our association rules in a scatter plot, we use the function &lt;code&gt;plot()&lt;/code&gt; of the arulesViz package. You can use the function as follows: &lt;code&gt;plot(x, method, measure, shading, control, data, engine)&lt;/code&gt;. For a detailed description, review the &lt;a href=&#34;https://cran.r-project.org/web/packages/arulesViz/arulesViz.pdf&#34;&gt;vignette of the package&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x: an object of class “rules” or “itemsets”.&lt;/li&gt;
+&lt;li&gt;method: a string with value “scatterplot”, “two-key plot”, “matrix”, “matrix3D”, “mo-saic”, “doubledecker”, “graph”, “paracoord” or “grouped”, “iplots” selecting the visualization method.&lt;/li&gt;
+&lt;li&gt;measure: measure(s) of interestingness (e.g., “support”, “confidence”, “lift”, “order”) used in the visualization.&lt;/li&gt;
+&lt;li&gt;shading: measure of interestingness used for the color of the points/arrows/nodes (e.g., “support”, “confidence”, “lift”). The default is “lift”.&lt;/li&gt;
+&lt;li&gt;control: a list of control parameters for the plot. The available control parameters depend
+on the used visualization method.&lt;/li&gt;
+&lt;li&gt;data: the dataset (class “transactions”) used to generate the rules/itemsets. Only “mo-saic” and “doubledecker” require the original data.&lt;/li&gt;
+&lt;li&gt;engine: a string indicating the plotting engine used to render the plot. The “default” en- gine uses (mostly) grid, but some plots can produce interactive interactive grid visualizations using engine “interactive”, or HTML widgets using engine “html- widget”.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a basic plot with default settings, just insert the object x (in our case rules). This visualization method draws a two dimensional scatter plot with different measures of interestingness (parameter “measure”) on the axes and a third measure (parameter “shading”) is represented by the color of the points.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(arulesViz)
+
+plot(rules)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-20&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/2020-05-14-r-association-rule-mining/index_files/figure-html/unnamed-chunk-20-1.png&#34; alt=&#34;Scatter plot&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.2: Scatter plot
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The plot shows support on the x-axis and confidence on the y-axis. Lift ist shown as a color with different levels ranging from grey to red.&lt;/p&gt;
+&lt;p&gt;We could also use only “confidence” as a specific measure of interest:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rules, measure = &amp;quot;confidence&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-21&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/2020-05-14-r-association-rule-mining/index_files/figure-html/unnamed-chunk-21-1.png&#34; alt=&#34;Scatter plot with confidence as measure of interest&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.3: Scatter plot with confidence as measure of interest
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;There is a special value for shading called “order” which produces a two-key plot where the color of the points represents the length (order) of the rule if you select &lt;code&gt;method = &#34;two-key plot&lt;/code&gt;. This is basically a scatterplot with &lt;code&gt;shading = &#34;order&#34;&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rules, method = &amp;quot;two-key plot&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-22&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/2020-05-14-r-association-rule-mining/index_files/figure-html/unnamed-chunk-22-1.png&#34; alt=&#34;Two-key plot&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.4: Two-key plot
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;interactive-scatter-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.7&lt;/span&gt; Interactive scatter-plot&lt;/h2&gt;
+&lt;p&gt;Plot an interactive scatter plot for association rules using &lt;a href=&#34;https://plotly-r.com/index.html&#34;&gt;plotly&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rules, engine = &amp;quot;plotly&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-23&#34;&gt;&lt;/span&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;visdat&#34;:{&#34;2c2be2cdf0d&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;2c2be2cdf0d&#34;,&#34;attrs&#34;:{&#34;2c2be2cdf0d&#34;:{&#34;x&#34;:[0.373346867557848,0.377369146996643,0.375952479192056,0.372515940181911,0.500604235514766,0.501004825507989],&#34;y&#34;:[0.750615238446146,0.500003982396383,0.749567694180398,0.500463832698907,0.99942207884702,0.665848194714662],&#34;hoverinfo&#34;:&#34;text&#34;,&#34;text&#34;:[&#34;[1]&lt;BR&gt; &lt;B&gt;{apple}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.75 &lt;BR&gt;lift: 1&#34;,&#34;[2]&lt;BR&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{apple}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.5 &lt;BR&gt;lift: 1&#34;,&#34;[3]&lt;BR&gt; &lt;B&gt;{milk}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.75 &lt;BR&gt;lift: 1&#34;,&#34;[4]&lt;BR&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{milk}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.5 &lt;BR&gt;lift: 1&#34;,&#34;[5]&lt;BR&gt; &lt;B&gt;{rice}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.5 &lt;BR&gt;confidence: 1 &lt;BR&gt;lift: 1.33&#34;,&#34;[6]&lt;BR&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{rice}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.5 &lt;BR&gt;confidence: 0.667 &lt;BR&gt;lift: 1.33&#34;],&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:[],&#34;color&#34;:[1,1,1,1,1.33333333333333,1.33333333333333],&#34;colors&#34;:[&#34;#EEEEEEFF&#34;,&#34;#EE0000FF&#34;],&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20],&#34;type&#34;:&#34;scatter&#34;}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;support&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;confidence&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:false,&#34;legend&#34;:{&#34;yanchor&#34;:&#34;top&#34;,&#34;y&#34;:0.5}},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[0.373346867557848,0.377369146996643,0.375952479192056,0.372515940181911,0.500604235514766,0.501004825507989],&#34;y&#34;:[0.750615238446146,0.500003982396383,0.749567694180398,0.500463832698907,0.99942207884702,0.665848194714662],&#34;hoverinfo&#34;:[&#34;text&#34;,&#34;text&#34;,&#34;text&#34;,&#34;text&#34;,&#34;text&#34;,&#34;text&#34;],&#34;text&#34;:[&#34;[1]&lt;BR&gt; &lt;B&gt;{apple}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.75 &lt;BR&gt;lift: 1&#34;,&#34;[2]&lt;BR&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{apple}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.5 &lt;BR&gt;lift: 1&#34;,&#34;[3]&lt;BR&gt; &lt;B&gt;{milk}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.75 &lt;BR&gt;lift: 1&#34;,&#34;[4]&lt;BR&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{milk}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.375 &lt;BR&gt;confidence: 0.5 &lt;BR&gt;lift: 1&#34;,&#34;[5]&lt;BR&gt; &lt;B&gt;{rice}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.5 &lt;BR&gt;confidence: 1 &lt;BR&gt;lift: 1.33&#34;,&#34;[6]&lt;BR&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{rice}&lt;\/B&gt; &lt;BR&gt;&lt;BR&gt;support: 0.5 &lt;BR&gt;confidence: 0.667 &lt;BR&gt;lift: 1.33&#34;],&#34;mode&#34;:&#34;markers&#34;,&#34;type&#34;:&#34;scatter&#34;,&#34;marker&#34;:{&#34;colorbar&#34;:{&#34;title&#34;:&#34;&#34;,&#34;ticklen&#34;:2},&#34;cmin&#34;:1,&#34;cmax&#34;:1.33333333333333,&#34;colorscale&#34;:[[&#34;0&#34;,&#34;rgba(238,238,238,1)&#34;],[&#34;0.0416666666666665&#34;,&#34;rgba(241,231,228,1)&#34;],[&#34;0.0833333333333331&#34;,&#34;rgba(244,223,218,1)&#34;],[&#34;0.125&#34;,&#34;rgba(247,216,208,1)&#34;],[&#34;0.166666666666667&#34;,&#34;rgba(249,208,198,1)&#34;],[&#34;0.208333333333333&#34;,&#34;rgba(251,201,188,1)&#34;],[&#34;0.25&#34;,&#34;rgba(252,193,178,1)&#34;],[&#34;0.291666666666667&#34;,&#34;rgba(253,186,168,1)&#34;],[&#34;0.333333333333334&#34;,&#34;rgba(254,178,158,1)&#34;],[&#34;0.375&#34;,&#34;rgba(255,170,149,1)&#34;],[&#34;0.416666666666667&#34;,&#34;rgba(255,163,139,1)&#34;],[&#34;0.458333333333333&#34;,&#34;rgba(255,155,130,1)&#34;],[&#34;0.5&#34;,&#34;rgba(255,147,120,1)&#34;],[&#34;0.541666666666667&#34;,&#34;rgba(255,139,111,1)&#34;],[&#34;0.583333333333333&#34;,&#34;rgba(254,131,102,1)&#34;],[&#34;0.625&#34;,&#34;rgba(253,123,92,1)&#34;],[&#34;0.666666666666666&#34;,&#34;rgba(252,114,83,1)&#34;],[&#34;0.708333333333334&#34;,&#34;rgba(251,105,74,1)&#34;],[&#34;0.75&#34;,&#34;rgba(250,96,65,1)&#34;],[&#34;0.791666666666667&#34;,&#34;rgba(248,86,56,1)&#34;],[&#34;0.833333333333333&#34;,&#34;rgba(246,76,46,1)&#34;],[&#34;0.875&#34;,&#34;rgba(245,65,37,1)&#34;],[&#34;0.916666666666667&#34;,&#34;rgba(242,51,26,1)&#34;],[&#34;0.958333333333333&#34;,&#34;rgba(240,34,14,1)&#34;],[&#34;1&#34;,&#34;rgba(238,0,0,1)&#34;]],&#34;showscale&#34;:false,&#34;color&#34;:[1,1,1,1,1.33333333333333,1.33333333333333],&#34;line&#34;:{&#34;colorbar&#34;:{&#34;title&#34;:&#34;&#34;,&#34;ticklen&#34;:2},&#34;cmin&#34;:1,&#34;cmax&#34;:1.33333333333333,&#34;colorscale&#34;:[[&#34;0&#34;,&#34;rgba(238,238,238,1)&#34;],[&#34;0.0416666666666665&#34;,&#34;rgba(241,231,228,1)&#34;],[&#34;0.0833333333333331&#34;,&#34;rgba(244,223,218,1)&#34;],[&#34;0.125&#34;,&#34;rgba(247,216,208,1)&#34;],[&#34;0.166666666666667&#34;,&#34;rgba(249,208,198,1)&#34;],[&#34;0.208333333333333&#34;,&#34;rgba(251,201,188,1)&#34;],[&#34;0.25&#34;,&#34;rgba(252,193,178,1)&#34;],[&#34;0.291666666666667&#34;,&#34;rgba(253,186,168,1)&#34;],[&#34;0.333333333333334&#34;,&#34;rgba(254,178,158,1)&#34;],[&#34;0.375&#34;,&#34;rgba(255,170,149,1)&#34;],[&#34;0.416666666666667&#34;,&#34;rgba(255,163,139,1)&#34;],[&#34;0.458333333333333&#34;,&#34;rgba(255,155,130,1)&#34;],[&#34;0.5&#34;,&#34;rgba(255,147,120,1)&#34;],[&#34;0.541666666666667&#34;,&#34;rgba(255,139,111,1)&#34;],[&#34;0.583333333333333&#34;,&#34;rgba(254,131,102,1)&#34;],[&#34;0.625&#34;,&#34;rgba(253,123,92,1)&#34;],[&#34;0.666666666666666&#34;,&#34;rgba(252,114,83,1)&#34;],[&#34;0.708333333333334&#34;,&#34;rgba(251,105,74,1)&#34;],[&#34;0.75&#34;,&#34;rgba(250,96,65,1)&#34;],[&#34;0.791666666666667&#34;,&#34;rgba(248,86,56,1)&#34;],[&#34;0.833333333333333&#34;,&#34;rgba(246,76,46,1)&#34;],[&#34;0.875&#34;,&#34;rgba(245,65,37,1)&#34;],[&#34;0.916666666666667&#34;,&#34;rgba(242,51,26,1)&#34;],[&#34;0.958333333333333&#34;,&#34;rgba(240,34,14,1)&#34;],[&#34;1&#34;,&#34;rgba(238,0,0,1)&#34;]],&#34;showscale&#34;:false,&#34;color&#34;:[1,1,1,1,1.33333333333333,1.33333333333333]}},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[0.372515940181911,0.501004825507989],&#34;y&#34;:[0.500003982396383,0.99942207884702],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;opacity&#34;:0,&#34;hoverinfo&#34;:&#34;none&#34;,&#34;showlegend&#34;:false,&#34;marker&#34;:{&#34;colorbar&#34;:{&#34;title&#34;:&#34;lift&#34;,&#34;ticklen&#34;:2,&#34;len&#34;:0.5,&#34;lenmode&#34;:&#34;fraction&#34;,&#34;y&#34;:1,&#34;yanchor&#34;:&#34;top&#34;},&#34;cmin&#34;:1,&#34;cmax&#34;:1.33333333333333,&#34;colorscale&#34;:[[&#34;0&#34;,&#34;rgba(238,238,238,1)&#34;],[&#34;0.0416666666666665&#34;,&#34;rgba(241,231,228,1)&#34;],[&#34;0.0833333333333331&#34;,&#34;rgba(244,223,218,1)&#34;],[&#34;0.125&#34;,&#34;rgba(247,216,208,1)&#34;],[&#34;0.166666666666667&#34;,&#34;rgba(249,208,198,1)&#34;],[&#34;0.208333333333333&#34;,&#34;rgba(251,201,188,1)&#34;],[&#34;0.25&#34;,&#34;rgba(252,193,178,1)&#34;],[&#34;0.291666666666667&#34;,&#34;rgba(253,186,168,1)&#34;],[&#34;0.333333333333334&#34;,&#34;rgba(254,178,158,1)&#34;],[&#34;0.375&#34;,&#34;rgba(255,170,149,1)&#34;],[&#34;0.416666666666667&#34;,&#34;rgba(255,163,139,1)&#34;],[&#34;0.458333333333333&#34;,&#34;rgba(255,155,130,1)&#34;],[&#34;0.5&#34;,&#34;rgba(255,147,120,1)&#34;],[&#34;0.541666666666667&#34;,&#34;rgba(255,139,111,1)&#34;],[&#34;0.583333333333333&#34;,&#34;rgba(254,131,102,1)&#34;],[&#34;0.625&#34;,&#34;rgba(253,123,92,1)&#34;],[&#34;0.666666666666666&#34;,&#34;rgba(252,114,83,1)&#34;],[&#34;0.708333333333334&#34;,&#34;rgba(251,105,74,1)&#34;],[&#34;0.75&#34;,&#34;rgba(250,96,65,1)&#34;],[&#34;0.791666666666667&#34;,&#34;rgba(248,86,56,1)&#34;],[&#34;0.833333333333333&#34;,&#34;rgba(246,76,46,1)&#34;],[&#34;0.875&#34;,&#34;rgba(245,65,37,1)&#34;],[&#34;0.916666666666667&#34;,&#34;rgba(242,51,26,1)&#34;],[&#34;0.958333333333333&#34;,&#34;rgba(240,34,14,1)&#34;],[&#34;1&#34;,&#34;rgba(238,0,0,1)&#34;]],&#34;showscale&#34;:true,&#34;color&#34;:[1,1.33333333333333],&#34;line&#34;:{&#34;color&#34;:&#34;rgba(255,127,14,1)&#34;}},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null}],&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.5: Interactive scatter-plot
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;graph-based-visualization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.8&lt;/span&gt; Graph-based visualization&lt;/h2&gt;
+&lt;p&gt;Graph-based techniques concentrate on the relationship between individual items in the rule set. They represent the rules (or itemsets) as a graph with items as labeled vertices, and rules (or itemsets) represented as vertices connected to items using arrows.&lt;/p&gt;
+&lt;p&gt;For rules, the LHS items are connected with arrows pointing to the vertex representing the rule and the RHS has an arrow pointing to the item.&lt;/p&gt;
+&lt;p&gt;Several engines are available. The default engine uses igraph (plot.igraph and tkplot for the interactive visualization). … arguments are passed on to the respective plotting function (use for color, etc.).&lt;/p&gt;
+&lt;p&gt;The network graph below shows associations between selected items. Larger circles imply higher support, while red circles imply higher lift. Graphs only work well with very few rules, why we only use a subset of 10 rules from our data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;subrules &amp;lt;- head(rules, n = 10, by = &amp;quot;confidence&amp;quot;)
+
+plot(subrules, method = &amp;quot;graph&amp;quot;,  engine = &amp;quot;htmlwidget&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-24&#34;&gt;&lt;/span&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;visNetwork html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;nodes&#34;:{&#34;id&#34;:[1,2,3,4,5,6,7,8,9,10],&#34;label&#34;:[&#34;rice&#34;,&#34;apple&#34;,&#34;milk&#34;,&#34;beer&#34;,&#34;rule 1&#34;,&#34;rule 2&#34;,&#34;rule 3&#34;,&#34;rule 4&#34;,&#34;rule 5&#34;,&#34;rule 6&#34;],&#34;group&#34;:[&#34;item&#34;,&#34;item&#34;,&#34;item&#34;,&#34;item&#34;,&#34;rule&#34;,&#34;rule&#34;,&#34;rule&#34;,&#34;rule&#34;,&#34;rule&#34;,&#34;rule&#34;],&#34;value&#34;:[1,1,1,1,100,1,1,100,1,1],&#34;color&#34;:[&#34;#CBD2FC&#34;,&#34;#CBD2FC&#34;,&#34;#CBD2FC&#34;,&#34;#CBD2FC&#34;,&#34;#EE1B1B&#34;,&#34;#EEDCDC&#34;,&#34;#EEDCDC&#34;,&#34;#EE1B1B&#34;,&#34;#EEDCDC&#34;,&#34;#EEDCDC&#34;],&#34;title&#34;:[&#34;rice&#34;,&#34;apple&#34;,&#34;milk&#34;,&#34;beer&#34;,&#34;&lt;B&gt;[1]&lt;\/B&gt;&lt;BR&gt;&lt;B&gt;{rice}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&lt;BR&gt;support = 0.5&lt;BR&gt;confidence = 1&lt;BR&gt;lift = 1.33&lt;BR&gt;count = 4&lt;BR&gt;order = 2&#34;,&#34;&lt;B&gt;[2]&lt;\/B&gt;&lt;BR&gt;&lt;B&gt;{apple}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&lt;BR&gt;support = 0.375&lt;BR&gt;confidence = 0.75&lt;BR&gt;lift = 1&lt;BR&gt;count = 3&lt;BR&gt;order = 2&#34;,&#34;&lt;B&gt;[3]&lt;\/B&gt;&lt;BR&gt;&lt;B&gt;{milk}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&lt;BR&gt;support = 0.375&lt;BR&gt;confidence = 0.75&lt;BR&gt;lift = 1&lt;BR&gt;count = 3&lt;BR&gt;order = 2&#34;,&#34;&lt;B&gt;[4]&lt;\/B&gt;&lt;BR&gt;&lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{rice}&lt;\/B&gt;&lt;BR&gt;&lt;BR&gt;support = 0.5&lt;BR&gt;confidence = 0.667&lt;BR&gt;lift = 1.33&lt;BR&gt;count = 4&lt;BR&gt;order = 2&#34;,&#34;&lt;B&gt;[5]&lt;\/B&gt;&lt;BR&gt;&lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{apple}&lt;\/B&gt;&lt;BR&gt;&lt;BR&gt;support = 0.375&lt;BR&gt;confidence = 0.5&lt;BR&gt;lift = 1&lt;BR&gt;count = 3&lt;BR&gt;order = 2&#34;,&#34;&lt;B&gt;[6]&lt;\/B&gt;&lt;BR&gt;&lt;B&gt;{beer}&lt;\/B&gt;&lt;BR&gt;&amp;nbsp;&amp;nbsp; =&gt; &lt;B&gt;{milk}&lt;\/B&gt;&lt;BR&gt;&lt;BR&gt;support = 0.375&lt;BR&gt;confidence = 0.5&lt;BR&gt;lift = 1&lt;BR&gt;count = 3&lt;BR&gt;order = 2&#34;],&#34;shape&#34;:[&#34;box&#34;,&#34;box&#34;,&#34;box&#34;,&#34;box&#34;,&#34;circle&#34;,&#34;circle&#34;,&#34;circle&#34;,&#34;circle&#34;,&#34;circle&#34;,&#34;circle&#34;],&#34;x&#34;:[1,0.622025168237994,-1,0.209752925412518,0.841722780596659,0.660018052911227,-0.536587755114388,0.500202494577971,0.239327800764795,-0.460380004602411],&#34;y&#34;:[1,-1,0.32187958176185,0.104628396727376,0.490537591371417,-0.469423503736561,0.0236247927126421,0.764327554234668,-0.611686548528727,0.439884095089312]},&#34;edges&#34;:{&#34;from&#34;:[1,2,3,4,4,4,5,6,7,8,9,10],&#34;to&#34;:[5,6,7,8,9,10,4,4,4,1,2,3],&#34;arrows&#34;:[&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;,&#34;to&#34;]},&#34;nodesToDataframe&#34;:true,&#34;edgesToDataframe&#34;:true,&#34;options&#34;:{&#34;width&#34;:&#34;100%&#34;,&#34;height&#34;:&#34;100%&#34;,&#34;nodes&#34;:{&#34;shape&#34;:&#34;dot&#34;,&#34;scaling&#34;:{&#34;label&#34;:{&#34;enabled&#34;:true}},&#34;physics&#34;:false},&#34;manipulation&#34;:{&#34;enabled&#34;:false},&#34;edges&#34;:{&#34;smooth&#34;:false},&#34;physics&#34;:{&#34;stabilization&#34;:false},&#34;interaction&#34;:{&#34;hover&#34;:true}},&#34;groups&#34;:[&#34;item&#34;,&#34;rule&#34;],&#34;width&#34;:null,&#34;height&#34;:null,&#34;idselection&#34;:{&#34;enabled&#34;:true,&#34;style&#34;:&#34;width: 150px; height: 26px&#34;,&#34;useLabels&#34;:true,&#34;main&#34;:&#34;Select by id&#34;},&#34;byselection&#34;:{&#34;enabled&#34;:false,&#34;style&#34;:&#34;width: 150px; height: 26px&#34;,&#34;multiple&#34;:false,&#34;hideColor&#34;:&#34;rgba(200,200,200,0.5)&#34;,&#34;highlight&#34;:false},&#34;main&#34;:null,&#34;submain&#34;:null,&#34;footer&#34;:null,&#34;background&#34;:&#34;rgba(0, 0, 0, 0)&#34;,&#34;igraphlayout&#34;:{&#34;type&#34;:&#34;square&#34;},&#34;tooltipStay&#34;:300,&#34;tooltipStyle&#34;:&#34;position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);&#34;,&#34;highlight&#34;:{&#34;enabled&#34;:true,&#34;hoverNearest&#34;:true,&#34;degree&#34;:1,&#34;algorithm&#34;:&#34;all&#34;,&#34;hideColor&#34;:&#34;rgba(200,200,200,0.5)&#34;,&#34;labelOnly&#34;:true},&#34;collapse&#34;:{&#34;enabled&#34;:false,&#34;fit&#34;:false,&#34;resetHighlight&#34;:true,&#34;clusterOptions&#34;:null,&#34;keepCoord&#34;:true,&#34;labelSuffix&#34;:&#34;(cluster)&#34;}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.6: Graph-based visualization
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parallel-coordinate-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.9&lt;/span&gt; Parallel coordinate plot&lt;/h2&gt;
+&lt;p&gt;Represents the rules (or itemsets) as a parallel coordinate plot (from LHS to RHS).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(subrules, method=&amp;quot;paracoord&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-25&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/2020-05-14-r-association-rule-mining/index_files/figure-html/unnamed-chunk-25-1.png&#34; alt=&#34;Parallel coordinate plot&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4.7: Parallel coordinate plot
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The plot indicates that if a customer buys rice, he is likely to buy beer as well: {rice -&amp;gt; beer}. The same is true for the opposite direction: {beer -&amp;gt; rice}.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; References&lt;/h1&gt;
+&lt;p&gt;Hahsler, M., &amp;amp; Karpienko, R. (2017). Visualizing association rules in hierarchical groups. Journal of Business Economics, 87(3), 317–335. &lt;a href=&#34;https://doi.org/10.1007/s11573-016-0822-8&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1007/s11573-016-0822-8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hornik, K., Grün, B., &amp;amp; Hahsler, M. (2005). arules - A computational environment for mining association rules and frequent item sets. Journal of Statistical Software, 14(15), 1–25.&lt;/p&gt;
+&lt;p&gt;Leskovec, J., Rajaraman, A., &amp;amp; Ullman, J. D. (2020). Mining of massive data sets. Cambridge university press.&lt;/p&gt;
+&lt;p&gt;Ng, A., &amp;amp; Soo, K. (2017). Numsense! Data Science for the Layman: No Math Added. Leanpub.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Programming Languages for Data Science</title>

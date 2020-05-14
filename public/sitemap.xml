@@ -3,6 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/authors/jan/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-05-14-r-association-rule-mining/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/unsupervised-learning/</loc>
+    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/markdown-first-steps/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
@@ -18,33 +63,8 @@
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2019-11-18T10:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/r-markdown/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-11-18T10:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/jan/</loc>
-    <lastmod>2019-10-24T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/</loc>
-    <lastmod>2019-10-24T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-10-24T09:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -108,22 +128,12 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/2019-09-16-r-text-mining/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/textmining/</loc>
-    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
