@@ -48,7 +48,15 @@
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/talk/2019-applied-statistics/</guid>
+<<<<<<< HEAD
+      <description>
+
+
+
+</description>
+=======
       <description></description>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     </item>
     
     <item>
@@ -2433,6 +2441,11 @@ throwing it. Then, disregarding the influence of the air resistance, I
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-first-steps/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
@@ -2441,6 +2454,7 @@ throwing it. Then, disregarding the influence of the air resistance, I
 
 &lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34; target=&#34;_blank&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;h2 id=&#34;installing-r&#34;&gt;Installing R&lt;/h2&gt;
 
 &lt;p&gt;The first step is to install R. You can download and install R from the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt; (CRAN).&lt;/p&gt;
@@ -2558,8 +2572,12 @@ a new R session.&lt;/p&gt;
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-data-science-statistics/</guid>
+<<<<<<< HEAD
+      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
+=======
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

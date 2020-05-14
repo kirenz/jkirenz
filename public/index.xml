@@ -13,6 +13,22 @@
     
     
     <item>
+<<<<<<< HEAD
+      <title>Projects</title>
+      <link>/project/</link>
+      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
+      
+      <guid>/project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Seminars &amp; Workshops</title>
+      <link>/talk/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/</guid>
+=======
       <title>Introduction to R Markdown</title>
       <link>/project/markdown-first-steps/</link>
       <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
@@ -113,10 +129,18 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/talk/2019-applied-statistics/</guid>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
       <description></description>
     </item>
     
     <item>
+<<<<<<< HEAD
+      <title>Tutorials</title>
+      <link>/post/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/</guid>
+=======
       <title>Text Mining in R</title>
       <link>/post/2019-09-16-r-text-mining/</link>
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
@@ -3801,6 +3825,7 @@ a new R session.&lt;/p&gt;
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/blogdown-book/</guid>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
       <description></description>
     </item>
     

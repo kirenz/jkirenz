@@ -80,7 +80,15 @@
       <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/talk/2019-applied-statistics/</guid>
+<<<<<<< HEAD
+      <description>
+
+
+
+</description>
+=======
       <description></description>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     </item>
     
     <item>
@@ -3293,6 +3301,13 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-lasso-regression/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
+&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
@@ -3304,6 +3319,7 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 </description>
     </item>
     
@@ -3313,10 +3329,14 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-time-series/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3507,10 +3527,14 @@ ggplot(Advertising, aes(sales)) +
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-linear-regression/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3536,12 +3560,17 @@ ggplot(Advertising, aes(sales)) +
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-first-steps/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;first-steps-in-python&#34;&gt;First Steps in Python&lt;/h1&gt;
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/Python_overview.pdf&#34;&gt;Python overview&lt;/a&gt; to get an overview about Python and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;first-steps-in-python&#34;&gt;First Steps in Python&lt;/h1&gt;
 
 &lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/Python_overview.pdf&#34; target=&#34;_blank&#34;&gt;Python overview&lt;/a&gt; to get an overview about Python and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;p&gt;First of all, install &lt;strong&gt;Anaconda&lt;/strong&gt; - it&amp;rsquo;s a free and open-source distribution of the Python programming language that aims to simplify package management and deployment. It already contains Jupyter Notebook (see below) and other important data science modules.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3591,6 +3620,11 @@ ggplot(Advertising, aes(sales)) +
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-first-steps/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
@@ -3599,6 +3633,7 @@ ggplot(Advertising, aes(sales)) +
 
 &lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34; target=&#34;_blank&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;h2 id=&#34;installing-r&#34;&gt;Installing R&lt;/h2&gt;
 
 &lt;p&gt;The first step is to install R. You can download and install R from the &lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34;&gt;Comprehensive R Archive Network&lt;/a&gt; (CRAN).&lt;/p&gt;
@@ -3692,8 +3727,12 @@ a new R session.&lt;/p&gt;
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-data-science-statistics/</guid>
+<<<<<<< HEAD
+      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
+=======
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

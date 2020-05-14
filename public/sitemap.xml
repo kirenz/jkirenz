@@ -14,7 +14,11 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/project/</loc>
+=======
     <loc>/tags/markdown/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -72,7 +76,11 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/talk/</loc>
+=======
     <loc>/categories/seminar/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -94,7 +102,11 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/talk/2019-web-analytics/</loc>
+=======
     <loc>/categories/lecture/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-10-14T08:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -277,12 +289,20 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/project/python-first-steps/</loc>
+=======
     <loc>/project/r-first-steps/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/project/r-first-steps/</loc>
+=======
     <loc>/categories/course/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -293,7 +313,11 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/project/blogdown-book/</loc>
+=======
     <loc>/tags/datareporting/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -326,7 +350,11 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+    <loc>/post/2019-07-20-up-and-running-with-blogdown/</loc>
+=======
     <loc>/tags/blogdown/</loc>
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

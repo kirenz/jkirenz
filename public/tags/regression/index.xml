@@ -18,6 +18,13 @@
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/r-lasso-regression/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
+&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
@@ -29,6 +36,7 @@
 &lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 </description>
     </item>
     
@@ -38,10 +46,14 @@
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/python-linear-regression/</guid>
+<<<<<<< HEAD
+      <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
+=======
       <description>
 
 &lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 
+>>>>>>> 5b4f11a004ab5d532500113c7a94cd15366cfa9b
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
 
 &lt;ul&gt;
