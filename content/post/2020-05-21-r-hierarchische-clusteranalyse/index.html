@@ -8,7 +8,7 @@ tags: [Unsupervised Learning, R]
 categories:
   - R
 summary: Hierarchische Clusteranalyse mit Ward in R
-description: Hierarchische Clusteranalyse mit Ward in R
+description: Grundlagen der hierarchischen Clusteranalyse mit Ward in R. Mit Erläuterungen zur euklidischen Distanz und Manhattan Metrik.
 image:
   caption: '[Photo by Markus Spiske on Unsplash](https://unsplash.com/photos/qjnAnF0jIGk)'
   focal_point: ''
@@ -22,9 +22,7 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#grundlagen"><span class="toc-section-number">1</span> Grundlagen</a><ul>
-<li><a href="#voraussetzungen"><span class="toc-section-number">1.1</span> Voraussetzungen</a></li>
-</ul></li>
+<li><a href="#grundlagen"><span class="toc-section-number">1</span> Grundlagen</a></li>
 <li><a href="#proximitätsmaß"><span class="toc-section-number">2</span> Proximitätsmaß</a><ul>
 <li><a href="#euklidische-distanz"><span class="toc-section-number">2.1</span> Euklidische Distanz</a></li>
 <li><a href="#quadrierte-euklidische-distanz"><span class="toc-section-number">2.2</span> Quadrierte euklidische Distanz</a></li>
@@ -32,7 +30,7 @@ output:
 </ul></li>
 <li><a href="#clustering-algorithmus"><span class="toc-section-number">3</span> Clustering-Algorithmus</a></li>
 <li><a href="#implementierung-in-r"><span class="toc-section-number">4</span> Implementierung in R</a><ul>
-<li><a href="#datenbereiningung"><span class="toc-section-number">4.1</span> Datenbereiningung</a><ul>
+<li><a href="#datenvorbereitung"><span class="toc-section-number">4.1</span> Datenvorbereitung</a><ul>
 <li><a href="#variablenauswahl"><span class="toc-section-number">4.1.1</span> Variablenauswahl</a></li>
 <li><a href="#fehlende-werte"><span class="toc-section-number">4.1.2</span> Fehlende Werte</a></li>
 <li><a href="#standardisierung"><span class="toc-section-number">4.1.3</span> Standardisierung</a></li>
@@ -50,13 +48,11 @@ output:
 <p>Die Clusteranalyse ist ein exploratives Verfahren um Ähnlichkeitsstrukturen in Daten zu erkennen. Bei den Untersuchungsobjekten einer Clusteranalyse kann es sich sowohl um Personen, Produkte oder um beliebige andere Einheiten wie Filme, Länder oder Unternehmen handeln. Durch die Anwendung der Clusteranalyse können diese Objekte anhand ihrer Eigenschaftsausprägungen zu Clustern zusammengefasst werden. Dabei soll jedes Cluster in sich möglichst gleichartig (homogen) sein und sich gleichzeitig von den anderen Clustern möglichst stark unterscheiden (heterogen).
 Beispielsweise erfasst der Streaminganbieter Netflix die Sehgewohnheiten seiner Abonnenten und hat auf dieser Grundlage über 2000 Mikro-Cluster, sogenannte “Taste Communities”, gebildet (<a href="https://www.vulture.com/2018/06/how-netflix-swallowed-tv-industry.html">New York Magazine, 2018</a>). Den Mitgliedern der jeweiligen Clustern sollen anhand der jeweiligen Clusterzugehörigkeit möglichst passende Inhalte vorgeschlagen werden. Die Filme können dabei ebenfalls anhand unterschiedlicher Merkmale geclustert und im Anschluss mit aussagekräftigen Bezeichnungen versehen werden:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
-<img src="netflix.png" alt="Zusammenhänge zwischen verschiedenen Serien, dargestellt in Clustern (Quelle: [Netflix, 2017](https://media.netflix.com/de/press-releases/decoding-the-defenders-netflix-unveils-the-gateway-shows-that-lead-to-a-heroic-binge))" width="40%" />
+<img src="netflix.png" alt="Zusammenhänge zwischen verschiedenen Serien, dargestellt in Clustern (Quelle: [Netflix, 2017](https://media.netflix.com/de/press-releases/decoding-the-defenders-netflix-unveils-the-gateway-shows-that-lead-to-a-heroic-binge))" width="70%" />
 <p class="caption">
 Figure 1.1: Zusammenhänge zwischen verschiedenen Serien, dargestellt in Clustern (Quelle: <a href="https://media.netflix.com/de/press-releases/decoding-the-defenders-netflix-unveils-the-gateway-shows-that-lead-to-a-heroic-binge">Netflix, 2017</a>)
 </p>
 </div>
-<div id="voraussetzungen" class="section level2">
-<h2><span class="header-section-number">1.1</span> Voraussetzungen</h2>
 <p>Wichtige Voraussetzungen, die bei der Durchführung der Analyse beachtet werden sollten <a href="https://www.methodenberatung.uzh.ch/de/datenanalyse_spss/interdependenz/gruppierung/cluster.html">(Universität Zürich, 2018)</a>:</p>
 <ul>
 <li>Die Analyse kann für unterschiedliche Datentypen (kategoriale und metrische Daten) genutzt werden.</li>
@@ -65,7 +61,6 @@ Figure 1.1: Zusammenhänge zwischen verschiedenen Serien, dargestellt in Cluster
 </ul>
 <p>Bei der Berechnung der Cluster wird nach bestimmten Regeln entschieden, wie die Objekte zu Clustern zusammengefasst werden. Das Ergebnis dieses Prozesses hängt nicht nur von der Wahl des Clustering-Algorithmus ab, sondern auch davon, wie die Distanz oder Ähnlichkeit zwischen den Objekten bestimmt wird.</p>
 <p>Zu Beginn der Clusteranalyse wird daher in Abhängigkeit von den vorliegenden Datentypen ein sogenanntes <em>Proximitätsmaß</em> gewählt.</p>
-</div>
 </div>
 <div id="proximitätsmaß" class="section level1">
 <h1><span class="header-section-number">2</span> Proximitätsmaß</h1>
@@ -184,7 +179,7 @@ Figure 3.5: Median Linkage (Quelle: <a href="https://upload.wikimedia.org/wikipe
 <p><span class="math display">\[s^2 = \frac{1}{n} \sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
 <p>Formel der totalen Varianz (Streuung eines multivariaten Datensatzes mit <span class="math inline">\(p\)</span> Variablen <span class="math inline">\(X_j\)</span>):</p>
 <p><span class="math display">\[T = \frac{1}{n}\sum_{j=1}^{p}  \sum_{i=1}^{n}(x_{ij} - \bar{x_j})^2\]</span></p>
-<p>In den Formeln wird ersichtlich, dass <span class="math inline">\((x_i-\bar{x})\)</span> mit der bereits bekannten quadrierten euklidischen Distanz <span class="math inline">\(d^2(x_i,\bar{x})\)</span> übereinstimmt. Es wird also für jedes Cluster die Summe der quadrierten Distanzen der Einzelfälle vom jeweiligen Cluster-Mittelwert berechnet. Diese Werte werden dann über alle Variablen aufsummiert. Im nächsten Schritt werden jeweils jene zwei Cluster fusioniert, deren Zusammenfügen die geringste Erhöhung der Gesamtsumme der quadrierten Distanzen zur Folge hat.</p>
+<p>In den Formeln wird ersichtlich, dass <span class="math inline">\((x_i-\bar{x})^2\)</span> mit der bereits bekannten quadrierten euklidischen Distanz <span class="math inline">\(d^2(x_i,\bar{x})\)</span> übereinstimmt. Es wird also für jedes Cluster die Summe der quadrierten Distanzen der Einzelfälle vom jeweiligen Cluster-Mittelwert berechnet. Diese Werte werden dann über alle Variablen <span class="math inline">\(p\)</span> aufsummiert. Im nächsten Schritt werden jeweils jene zwei Cluster fusioniert, deren Zusammenfügen die geringste Erhöhung der Gesamtsumme der quadrierten Distanzen zur Folge hat.</p>
 <p>In dieser Abbildung sind die Ergebnisse der verschiedenen Clustering-Algorithmen für unterschiedliche Datensätze exemplarisch dargestellt (Quelle: <a href="https://scikit-learn.org/stable/modules/clustering.html">scikit-learn</a>):</p>
 <p><img src="linkage_comparison.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Bei den agglomerativen Verfahren führt das single linkage Verfahren in einigen Fällen zu einer sehr einseitigen Verteilung der Cluster. Die Ward Methode führt dagegen in den meisten Fällen zu einer relativ ausgeglichenen Aufteilung. Im folgenden Beispiel wird ebenfalls die Ward-Methode genutzt.</p>
@@ -226,8 +221,8 @@ df &lt;- df %&gt;%
   ylab(&quot;Lebenserwartung&quot;) +
   xlab(&quot;Bruttoinlandsprodukt pro Einwohner (logarithmiert)&quot;) </code></pre>
 <p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div id="datenbereiningung" class="section level2">
-<h2><span class="header-section-number">4.1</span> Datenbereiningung</h2>
+<div id="datenvorbereitung" class="section level2">
+<h2><span class="header-section-number">4.1</span> Datenvorbereitung</h2>
 <div id="variablenauswahl" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Variablenauswahl</h3>
 <p>Wir erzeugen einen neuen Datensatz <code>df_cl</code>, in welchem nur die Variablen enthalten sind, die für die Clusteranalyse genutzt werden sollen. Zusätzlich nutzen wir die Variable <code>country_name</code>, um in einem späteren Schritt die Daten sinnvoll beschriften zu können.</p>
@@ -304,7 +299,7 @@ df_cl$logged_gdp_per_capita_sc &lt;-  scale(df_cl$logged_gdp_per_capita,
 
 plot(hc)</code></pre>
 <p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Die “optimale” Anzahl der Cluster sollte insbesondere anhand inhalticher Interpretationen in Hinblick einer größtmöglichen Plausibilität der gebildeten Cluster geschehen. Zusätzlich kann der größte Zuwachs der Heterogenität in dem Dendrogramm als Entscheidungskriterium genutzt werden. Bei unseren Daten entsteht der größte Heterogenitätszuwachs zwischen einer 4-Cluster und 2-Cluster-Lösung. Hier erscheint daher eine Clusteranzahl von 4 eine relativ sinnvolle Gruppierung der Daten zu ermöglichen.</p>
+<p>Die “optimale” Anzahl der Cluster sollte insbesondere anhand inhalticher Interpretationen in Hinblick einer größtmöglichen Plausibilität der gebildeten Cluster geschehen. Zusätzlich kann der größte (bzw. ein großer) Zuwachs der Heterogenität in dem Dendrogramm als Entscheidungskriterium genutzt werden. Bei unseren Daten entsteht der größte Heterogenitätszuwachs zwischen einer 2-Cluster und 1-Cluster-Lösung. Der Heterogenitätszuwachs zwischen einer 4-Cluster und 2-Cluster-Lösung ist ebenfalls relativ groß. Wir entscheiden uns hier für eine Clusteranzahl von 4, hätten jedoch auch die 2-Cluster-Lösung wählen können. Wie bereits erwähnt existiert bei diesem Verfahren oftmals keine eindeutige “optimale” Lösung, da jeweils auch die Interpretiertbarkeit der Cluster auf Grundlage inhaltlicher Überlegungen eine wichtige Rolle spielt.</p>
 <p>Darstellung des Dendrogramms mit roten Grenzen bei einer Größe von 4 Clustern:</p>
 <pre class="r"><code>hc$labels &lt;- df$country_name
 
@@ -332,5 +327,29 @@ rect.hclust(hc, k = 4, border = &quot;red&quot;)</code></pre>
   xlab(&quot;Bruttoinlandsprodukt pro Einwohner (logarithmiert)&quot;) +
   theme(legend.title=element_blank())</code></pre>
 <p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Zum Vergleich, hier noch die Aufteilung der Daten bei einer Wahl von 2 Clustern:</p>
+<pre class="r"><code>plot(hc)
+
+rect.hclust(hc, k = 2, border = &quot;red&quot;)</code></pre>
+<p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>gruppen_2 &lt;- cutree(hc, k = 2) 
+
+df_cl$cluster_2 &lt;- gruppen_2</code></pre>
+<p>Darstellung der 2-Cluster-Lösung in einem Punktediagramm:</p>
+<pre class="r"><code>df_cl %&gt;% 
+  ggplot(aes(logged_gdp_per_capita, 
+             healthy_life_expectancy, 
+             label = country_name, 
+             color = factor(cluster_2))) +
+  geom_point() +
+  geom_text(size = 3,
+            check_overlap = FALSE,
+            vjust = 0, nudge_y = 0.5,
+            show.legend = FALSE) +
+  theme_classic() +
+  ylab(&quot;Lebenserwartung&quot;) +
+  xlab(&quot;Bruttoinlandsprodukt pro Einwohner (logarithmiert)&quot;) +
+  theme(legend.title=element_blank())</code></pre>
+<p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>

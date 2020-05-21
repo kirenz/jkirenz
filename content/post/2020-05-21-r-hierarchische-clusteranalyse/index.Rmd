@@ -8,7 +8,7 @@ tags: [Unsupervised Learning, R]
 categories:
   - R
 summary: Hierarchische Clusteranalyse mit Ward in R
-description: Hierarchische Clusteranalyse mit Ward in R
+description: Grundlagen der hierarchischen Clusteranalyse mit Ward in R. Mit Erläuterungen zur euklidischen Distanz und Manhattan Metrik.
 image:
   caption: '[Photo by Markus Spiske on Unsplash](https://unsplash.com/photos/qjnAnF0jIGk)'
   focal_point: ''
@@ -40,14 +40,13 @@ library(knitr)
 Die Clusteranalyse ist ein exploratives Verfahren um Ähnlichkeitsstrukturen in Daten zu erkennen. Bei den Untersuchungsobjekten einer Clusteranalyse kann es sich sowohl um Personen, Produkte oder um beliebige andere Einheiten wie Filme, Länder oder Unternehmen handeln. Durch die Anwendung der Clusteranalyse können diese Objekte anhand ihrer Eigenschaftsausprägungen zu Clustern zusammengefasst werden. Dabei soll jedes Cluster in sich möglichst gleichartig (homogen) sein und sich gleichzeitig von den anderen Clustern möglichst stark unterscheiden (heterogen). 
 Beispielsweise erfasst der Streaminganbieter Netflix die Sehgewohnheiten seiner Abonnenten und hat auf dieser Grundlage über 2000 Mikro-Cluster, sogenannte "Taste Communities", gebildet ([New York Magazine, 2018](https://www.vulture.com/2018/06/how-netflix-swallowed-tv-industry.html)). Den Mitgliedern der jeweiligen Clustern sollen anhand der jeweiligen Clusterzugehörigkeit möglichst passende Inhalte vorgeschlagen werden. Die Filme können dabei ebenfalls anhand unterschiedlicher Merkmale geclustert und im Anschluss mit aussagekräftigen Bezeichnungen versehen werden: 
 
-```{r echo=FALSE, out.width="40%", fig.align='center', fig.cap="Zusammenhänge zwischen verschiedenen Serien, dargestellt in Clustern (Quelle: [Netflix, 2017](https://media.netflix.com/de/press-releases/decoding-the-defenders-netflix-unveils-the-gateway-shows-that-lead-to-a-heroic-binge))"}
+```{r echo=FALSE, out.width="70%", fig.align='center', fig.cap="Zusammenhänge zwischen verschiedenen Serien, dargestellt in Clustern (Quelle: [Netflix, 2017](https://media.netflix.com/de/press-releases/decoding-the-defenders-netflix-unveils-the-gateway-shows-that-lead-to-a-heroic-binge))"}
 
 knitr::include_graphics("netflix.png")
 
 ```
 
 
-## Voraussetzungen
 
 Wichtige Voraussetzungen, die bei der Durchführung der Analyse beachtet werden sollten [(Universität Zürich, 2018)](https://www.methodenberatung.uzh.ch/de/datenanalyse_spss/interdependenz/gruppierung/cluster.html):
 
@@ -212,7 +211,7 @@ Formel der totalen Varianz (Streuung eines multivariaten Datensatzes mit $p$ Var
 
 $$T = \frac{1}{n}\sum_{j=1}^{p}  \sum_{i=1}^{n}(x_{ij} - \bar{x_j})^2$$ 
 
-In den Formeln wird ersichtlich, dass $(x_i-\bar{x})$ mit der bereits bekannten quadrierten euklidischen Distanz $d^2(x_i,\bar{x})$ übereinstimmt. Es wird also für jedes Cluster die Summe der quadrierten Distanzen der Einzelfälle vom jeweiligen Cluster-Mittelwert berechnet. Diese Werte werden dann über alle Variablen aufsummiert. Im nächsten Schritt werden jeweils jene zwei Cluster fusioniert, deren Zusammenfügen die geringste Erhöhung der Gesamtsumme der quadrierten Distanzen zur Folge hat.
+In den Formeln wird ersichtlich, dass $(x_i-\bar{x})^2$ mit der bereits bekannten quadrierten euklidischen Distanz $d^2(x_i,\bar{x})$ übereinstimmt. Es wird also für jedes Cluster die Summe der quadrierten Distanzen der Einzelfälle vom jeweiligen Cluster-Mittelwert berechnet. Diese Werte werden dann über alle Variablen $p$ aufsummiert. Im nächsten Schritt werden jeweils jene zwei Cluster fusioniert, deren Zusammenfügen die geringste Erhöhung der Gesamtsumme der quadrierten Distanzen zur Folge hat.
 
 In dieser Abbildung sind die Ergebnisse der verschiedenen Clustering-Algorithmen für unterschiedliche Datensätze exemplarisch dargestellt (Quelle: [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html)):
 
@@ -284,7 +283,7 @@ df %>%
 ```
 
 
-## Datenbereiningung
+## Datenvorbereitung
 
 ### Variablenauswahl
 
@@ -418,7 +417,7 @@ plot(hc)
 
 ```
 
-Die "optimale" Anzahl der Cluster sollte insbesondere anhand inhalticher Interpretationen in Hinblick einer größtmöglichen Plausibilität der gebildeten Cluster geschehen. Zusätzlich kann der größte Zuwachs der Heterogenität in dem Dendrogramm als Entscheidungskriterium genutzt werden. Bei unseren Daten entsteht der größte Heterogenitätszuwachs zwischen einer 4-Cluster und 2-Cluster-Lösung. Hier erscheint daher eine Clusteranzahl von 4 eine relativ sinnvolle Gruppierung der Daten zu ermöglichen. 
+Die "optimale" Anzahl der Cluster sollte insbesondere anhand inhalticher Interpretationen in Hinblick einer größtmöglichen Plausibilität der gebildeten Cluster geschehen. Zusätzlich kann der größte (bzw. ein großer) Zuwachs der Heterogenität in dem Dendrogramm als Entscheidungskriterium genutzt werden. Bei unseren Daten entsteht der größte Heterogenitätszuwachs zwischen einer 2-Cluster und 1-Cluster-Lösung. Der Heterogenitätszuwachs zwischen einer 4-Cluster und 2-Cluster-Lösung ist ebenfalls relativ groß. Wir entscheiden uns hier für eine Clusteranzahl von 4, hätten jedoch auch die 2-Cluster-Lösung wählen können. Wie bereits erwähnt existiert bei diesem Verfahren oftmals keine eindeutige "optimale" Lösung, da jeweils auch die Interpretiertbarkeit der Cluster auf Grundlage inhaltlicher Überlegungen eine wichtige Rolle spielt. 
 
 Darstellung des Dendrogramms mit roten Grenzen bei einer Größe von 4 Clustern:
 
@@ -468,4 +467,42 @@ df_cl %>%
   theme(legend.title=element_blank())
 
 ```
+
+
+Zum Vergleich, hier noch die Aufteilung der Daten bei einer Wahl von 2 Clustern:
+
+
+```{r}
+
+plot(hc)
+
+rect.hclust(hc, k = 2, border = "red")
+
+gruppen_2 <- cutree(hc, k = 2) 
+
+df_cl$cluster_2 <- gruppen_2
+
+```
+
+Darstellung der 2-Cluster-Lösung in einem Punktediagramm:
+
+```{r}
+
+df_cl %>% 
+  ggplot(aes(logged_gdp_per_capita, 
+             healthy_life_expectancy, 
+             label = country_name, 
+             color = factor(cluster_2))) +
+  geom_point() +
+  geom_text(size = 3,
+            check_overlap = FALSE,
+            vjust = 0, nudge_y = 0.5,
+            show.legend = FALSE) +
+  theme_classic() +
+  ylab("Lebenserwartung") +
+  xlab("Bruttoinlandsprodukt pro Einwohner (logarithmiert)") +
+  theme(legend.title=element_blank())
+
+```
+
 
