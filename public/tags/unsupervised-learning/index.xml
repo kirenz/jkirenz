@@ -245,9 +245,11 @@ df &amp;lt;- df %&amp;gt;%
 &lt;div id=&#34;standardisierung&#34; class=&#34;section level3&#34; number=&#34;4.1.3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1.3&lt;/span&gt; Standardisierung&lt;/h3&gt;
 &lt;p&gt;Damit die Werte der Variablen in einem einheitlichen Werteintervall vorliegen, nutzen wir für die Standardisierung der Daten die z-Transformation. Mit Hilfe dieser Standardisierung wird der Mittelwert auf 0 und die Standardabweichung der Variablen auf 1 gesetzt. Die Formel dafür lautet:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[z = \frac{x - \bar{x}}{s}\]&lt;/span&gt;
-* &lt;span class=&#34;math inline&#34;&gt;\(\bar{x}\)&lt;/span&gt;: Mittelwert der Daten
-* &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;: Standardabweichung der Daten&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[z = \frac{x - \bar{x}}{s}\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar{x}\)&lt;/span&gt;: Mittelwert der Daten&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;: Standardabweichung der Daten&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Wir führen die Standardisierung mit Hilfe des Befehls &lt;code&gt;scale()&lt;/code&gt; durch und speichern die neuen Variablen in dem Datensatz ab.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_cl$healthy_life_expectancy_sc &amp;lt;-  scale(df_cl$healthy_life_expectancy, 
                                            center = TRUE, 

@@ -323,6 +323,7 @@ df_cl <- drop_na(df_cl)
 Damit die Werte der Variablen in einem einheitlichen Werteintervall vorliegen, nutzen wir für die Standardisierung der Daten die z-Transformation. Mit Hilfe dieser Standardisierung wird der Mittelwert auf 0 und die Standardabweichung der Variablen auf 1 gesetzt. Die Formel dafür lautet:
 
 $$z = \frac{x - \bar{x}}{s}$$ 
+
 * $\bar{x}$: Mittelwert der Daten
 * $s$: Standardabweichung der Daten 
 

@@ -948,9 +948,11 @@ df &lt;- df %&gt;%
 <div id="standardisierung" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Standardisierung</h3>
 <p>Damit die Werte der Variablen in einem einheitlichen Werteintervall vorliegen, nutzen wir für die Standardisierung der Daten die z-Transformation. Mit Hilfe dieser Standardisierung wird der Mittelwert auf 0 und die Standardabweichung der Variablen auf 1 gesetzt. Die Formel dafür lautet:</p>
-<p><span class="math display">\[z = \frac{x - \bar{x}}{s}\]</span>
-* <span class="math inline">\(\bar{x}\)</span>: Mittelwert der Daten
-* <span class="math inline">\(s\)</span>: Standardabweichung der Daten</p>
+<p><span class="math display">\[z = \frac{x - \bar{x}}{s}\]</span></p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span>: Mittelwert der Daten</li>
+<li><span class="math inline">\(s\)</span>: Standardabweichung der Daten</li>
+</ul>
 <p>Wir führen die Standardisierung mit Hilfe des Befehls <code>scale()</code> durch und speichern die neuen Variablen in dem Datensatz ab.</p>
 <pre class="r"><code>df_cl$healthy_life_expectancy_sc &lt;-  scale(df_cl$healthy_life_expectancy, 
                                            center = TRUE, 
