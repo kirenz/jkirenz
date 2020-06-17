@@ -722,18 +722,22 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
 <li><a href="#grundlagen"><span class="toc-section-number">1</span> Grundlagen</a></li>
-<li><a href="#proximitätsmaß"><span class="toc-section-number">2</span> Proximitätsmaß</a><ul>
+<li><a href="#proximitätsmaß"><span class="toc-section-number">2</span> Proximitätsmaß</a>
+<ul>
 <li><a href="#euklidische-distanz"><span class="toc-section-number">2.1</span> Euklidische Distanz</a></li>
 <li><a href="#quadrierte-euklidische-distanz"><span class="toc-section-number">2.2</span> Quadrierte euklidische Distanz</a></li>
 <li><a href="#l_1-distanz"><span class="toc-section-number">2.3</span> <span class="math inline">\(L_1\)</span>-Distanz</a></li>
 </ul></li>
 <li><a href="#clustering-algorithmus"><span class="toc-section-number">3</span> Clustering-Algorithmus</a></li>
-<li><a href="#implementierung-in-r"><span class="toc-section-number">4</span> Implementierung in R</a><ul>
-<li><a href="#datenvorbereitung"><span class="toc-section-number">4.1</span> Datenvorbereitung</a><ul>
+<li><a href="#implementierung-in-r"><span class="toc-section-number">4</span> Implementierung in R</a>
+<ul>
+<li><a href="#datenvorbereitung"><span class="toc-section-number">4.1</span> Datenvorbereitung</a>
+<ul>
 <li><a href="#variablenauswahl"><span class="toc-section-number">4.1.1</span> Variablenauswahl</a></li>
 <li><a href="#fehlende-werte"><span class="toc-section-number">4.1.2</span> Fehlende Werte</a></li>
 <li><a href="#standardisierung"><span class="toc-section-number">4.1.3</span> Standardisierung</a></li>
@@ -746,7 +750,7 @@
 </div>
 
 <p><em>In diesem Tutorial werden die Grundlagen der Clusteranalyse beschrieben und die hierarchische Clusteranalyse mit der Ward-Methode in R umgesetzt.</em></p>
-<div id="grundlagen" class="section level1">
+<div id="grundlagen" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Grundlagen</h1>
 <p>Die Clusteranalyse ist ein exploratives Verfahren um Ähnlichkeitsstrukturen in Daten zu erkennen. Bei den Untersuchungsobjekten einer Clusteranalyse kann es sich sowohl um Personen, Produkte oder um beliebige andere Einheiten wie Filme, Länder oder Unternehmen handeln. Durch die Anwendung der Clusteranalyse können diese Objekte anhand ihrer Eigenschaftsausprägungen zu Clustern zusammengefasst werden. Dabei soll jedes Cluster in sich möglichst gleichartig (homogen) sein und sich gleichzeitig von den anderen Clustern möglichst stark unterscheiden (heterogen).
 Beispielsweise erfasst der Streaminganbieter Netflix die Sehgewohnheiten seiner Abonnenten und hat auf dieser Grundlage über 2000 Mikro-Cluster, sogenannte “Taste Communities”, gebildet (<a href="https://www.vulture.com/2018/06/how-netflix-swallowed-tv-industry.html">New York Magazine, 2018</a>). Den Mitgliedern der jeweiligen Clustern sollen anhand der jeweiligen Clusterzugehörigkeit möglichst passende Inhalte vorgeschlagen werden. Die Filme können dabei ebenfalls anhand unterschiedlicher Merkmale geclustert und im Anschluss mit aussagekräftigen Bezeichnungen versehen werden:</p>
@@ -765,7 +769,7 @@ Figure 1.1: Zusammenhänge zwischen verschiedenen Serien, dargestellt in Cluster
 <p>Bei der Berechnung der Cluster wird nach bestimmten Regeln entschieden, wie die Objekte zu Clustern zusammengefasst werden. Das Ergebnis dieses Prozesses hängt nicht nur von der Wahl des Clustering-Algorithmus ab, sondern auch davon, wie die Distanz oder Ähnlichkeit zwischen den Objekten bestimmt wird.</p>
 <p>Zu Beginn der Clusteranalyse wird daher in Abhängigkeit von den vorliegenden Datentypen ein sogenanntes <em>Proximitätsmaß</em> gewählt.</p>
 </div>
-<div id="proximitätsmaß" class="section level1">
+<div id="proximitätsmaß" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Proximitätsmaß</h1>
 <p>Mit Hilfe des Proximitätsmaßes wird die Distanz zwischen den Objekten berechnet. In Abhängigkeit von dem Skalenniveau der Variablen wird eine Distanzfunktion zur Bestimmung des Abstandes (Distanz) zweier Elemente oder eine Ähnlichkeitsfunktion zur Bestimmung der Ähnlichkeit verwendet:</p>
 <ul>
@@ -773,7 +777,7 @@ Figure 1.1: Zusammenhänge zwischen verschiedenen Serien, dargestellt in Cluster
 <li><p>Bei metrischen Variablen werden Distanzmaße genutzt.</p></li>
 </ul>
 <p>In diesem Tutorial behandeln wir die Distanzmaße “euklidische Distanz” (auch <span class="math inline">\(L_2\)</span> genannt), “quadrierte euklidische Distanz” und die “L1-Distanz” (auch Manhattan-Metrik, Manhattan-Distanz, Mannheimer Metrik, Taxi- oder Cityblock-Metrik geannt).</p>
-<div id="euklidische-distanz" class="section level2">
+<div id="euklidische-distanz" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Euklidische Distanz</h2>
 <p>Mit Hilfe der euklidischen Distanz kann der Abstand zwischen zwei Punkten als gerade Linie in einem Raum berechnet werden (“Luftliniendistanz”). Anders formuliert ist der euklidische Abstand zweier Punkte die mit einem Lineal gemessene Länge einer Strecke, die diese zwei Punkte verbindet. Ein Distanzwert von Null bedeutet dabei, dass die Objekte einen Abstand von Null aufweisen, also identisch sind.</p>
 <p>Die Formel für die Berechnung der euklidischen Distanz für <span class="math inline">\(n\)</span> verschiedenen Variablen lautet:</p>
@@ -800,7 +804,7 @@ Figure 2.1: Die euklidische Distanz von Punkt A zu Punkt B (Quelle: <a href="htt
 <p><span class="math display">\[d(A,B) = \sqrt{(112225) }\]</span></p>
 <p><span class="math display">\[d(A,B) = 335\]</span></p>
 </div>
-<div id="quadrierte-euklidische-distanz" class="section level2">
+<div id="quadrierte-euklidische-distanz" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Quadrierte euklidische Distanz</h2>
 <p>Anstelle der einfachen euklidischen Distanz kann auch die quadrierte euklidische Distanz als Distanzmaß genutzt werden. Dadurch werden größere Abweichungen stärker gewichtet. Die Formel der quadrierten euklidischen Distanz lautet:</p>
 <p><span class="math display">\[d^2(A,B) = \sum_{i=1}^{n}(A_i - B_i)^2\]</span></p>
@@ -809,7 +813,7 @@ Figure 2.1: Die euklidische Distanz von Punkt A zu Punkt B (Quelle: <a href="htt
 <p><span class="math display">\[d^2(A,B) = (70-330)^2 + (40-228)^2\]</span></p>
 <p><span class="math display">\[d^2(A,B) = 112225\]</span></p>
 </div>
-<div id="l_1-distanz" class="section level2">
+<div id="l_1-distanz" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> <span class="math inline">\(L_1\)</span>-Distanz</h2>
 <p>Die <span class="math inline">\(L_1\)</span>-Distanz (auch Manhattan-Metrik, Manhattan-Distanz, Mannheimer Metrik, Taxi- oder Cityblock-Metrik) ist eine Metrik, in der die Distanz <span class="math inline">\(d\)</span> zwischen zwei Punkten <span class="math inline">\(A\)</span> und <span class="math inline">\(B\)</span> als die Summe der absoluten Differenzen ihrer Einzelkoordinaten definiert wird. Dies ist insbesondere bei der Berechnung von geografischen Abständen relevant, bei welchen der Abstand zwischen zwei Punkten über vordefinierte Wege (bspw. Straßen in einer Stadt mit einer blockartigen Struktur wie in Manhattan oder Mannheim) zurückgelegt werden muss.</p>
 <div class="figure" style="text-align: center"><span id="fig:manhattan-distance"></span>
@@ -821,15 +825,15 @@ Figure 2.2: Die L1 Distanz von Punkt A zu Punkt B als Manhatten-Metrik. <a href=
 <p>Wie aus der Abbildung ersichtlich wird, existieren mehrere Möglichkeiten, den Abstand zwischen den Punkten A und B zu berechnen. Wichtig ist jedoch, dass die “Straßen” nicht verlassen werden dürfen. D.h. es können bspw. zwei Blöcke nach oben (Norden) und dann drei Blöcke nach rechts (Osten) auf der Fahrbahn zurückgelegt werden, um von Punkt A aus Punkt B zu erreichen. Unabhängig von dem gewählten Pfad ist die Distanz aufgrund der blockartigen Struktur immer die gleiche.</p>
 <p>Allgemein lautet die Formel für die Berechnung des L1-Abstands wie folgt:</p>
 <p><span class="math display">\[d(A,B) = \sum_{i} |A_i - B_i|\]</span></p>
-<p>In unserem Fall:</p>
+<p>In unserem Fall gilt:</p>
 <p><span class="math display">\[d(A,B) = |x_A - x_B| + |y_A - y_B |\]</span></p>
-<p><span class="math display">\[d(A,B) = |70 - 330| + |40 - 220 |\]</span></p>
+<p><span class="math display">\[d(A,B) = |70 - 330| + |40 - 228 |\]</span></p>
 <p><span class="math display">\[d(A,B) = |-260 | + |-188|\]</span></p>
 <p><span class="math display">\[d(A,B) = 260 + 188\]</span></p>
 <p><span class="math display">\[d(A,B) = 448 \]</span></p>
 </div>
 </div>
-<div id="clustering-algorithmus" class="section level1">
+<div id="clustering-algorithmus" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Clustering-Algorithmus</h1>
 <p>Ist das Proximitätsmaß berechnet, so wird anhand eines Clustering-Algorithmus die eigentliche Gruppierung der Daten vorgenommen. In dieser Abbildung sind beispielhaft einige Clustering-Algorithmen aufgeführt:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
@@ -887,7 +891,7 @@ Figure 3.5: Median Linkage (Quelle: <a href="https://upload.wikimedia.org/wikipe
 <p><img src="linkage_comparison.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Bei den agglomerativen Verfahren führt das single linkage Verfahren in einigen Fällen zu einer sehr einseitigen Verteilung der Cluster. Die Ward Methode führt dagegen in den meisten Fällen zu einer relativ ausgeglichenen Aufteilung. Im folgenden Beispiel wird ebenfalls die Ward-Methode genutzt.</p>
 </div>
-<div id="implementierung-in-r" class="section level1">
+<div id="implementierung-in-r" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Implementierung in R</h1>
 <p>Für die Durchführung der hierarchischen Clusteranalyse mit der Ward-Methode nutzen wir die Daten des World Happiness Reports aus dem Jahr 2020. Der World Happiness Report ist ein jährlich vom Sustainable Development Solutions Network der Vereinten Nationen veröffentlichter Bericht. Der Bericht enthält Ranglisten zur Lebenszufriedenheit in verschiedenen Ländern der Welt und Datenanalysen aus verschiedenen Perspektiven (siehe <a href="https://worldhappiness.report">Helliwell et al., 2020</a>).</p>
 <p>Import der Daten:</p>
@@ -924,16 +928,16 @@ df &lt;- df %&gt;%
   ylab(&quot;Lebenserwartung&quot;) +
   xlab(&quot;Bruttoinlandsprodukt pro Einwohner (logarithmiert)&quot;) </code></pre>
 <p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div id="datenvorbereitung" class="section level2">
+<div id="datenvorbereitung" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Datenvorbereitung</h2>
-<div id="variablenauswahl" class="section level3">
+<div id="variablenauswahl" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Variablenauswahl</h3>
 <p>Wir erzeugen einen neuen Datensatz <code>df_cl</code>, in welchem nur die Variablen enthalten sind, die für die Clusteranalyse genutzt werden sollen. Zusätzlich nutzen wir die Variable <code>country_name</code>, um in einem späteren Schritt die Daten sinnvoll beschriften zu können.</p>
 <pre class="r"><code>df_cl &lt;- select(df, c(&quot;country_name&quot;, 
                       &quot;logged_gdp_per_capita&quot;, 
                       &quot;healthy_life_expectancy&quot;))</code></pre>
 </div>
-<div id="fehlende-werte" class="section level3">
+<div id="fehlende-werte" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Fehlende Werte</h3>
 <p>Wir prüfen, ob in den Daten fehlende Werte vorliegen:</p>
 <pre class="r"><code>sum(is.na(df_cl))</code></pre>
@@ -941,7 +945,7 @@ df &lt;- df %&gt;%
 <p>In diesem Datensatz liegen keine fehlenden Werte vor. Falls dies in einem anderen Projekt jedoch der Fall sein sollte, könnten wir diese fehlenden Werte mit dem Befehl <code>drop_na()</code> entfernen:</p>
 <pre class="r"><code>df_cl &lt;- drop_na(df_cl)</code></pre>
 </div>
-<div id="standardisierung" class="section level3">
+<div id="standardisierung" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Standardisierung</h3>
 <p>Damit die Werte der Variablen in einem einheitlichen Werteintervall vorliegen, nutzen wir für die Standardisierung der Daten die z-Transformation. Mit Hilfe dieser Standardisierung wird der Mittelwert auf 0 und die Standardabweichung der Variablen auf 1 gesetzt. Die Formel dafür lautet:</p>
 <p><span class="math display">\[z = \frac{x - \bar{x}}{s}\]</span>
@@ -970,7 +974,7 @@ df_cl$logged_gdp_per_capita_sc &lt;-  scale(df_cl$logged_gdp_per_capita,
 <p><img src="/post/2020-05-21-r-hierarchische-clusteranalyse/index_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="proximitätsmaß-1" class="section level2">
+<div id="proximitätsmaß-1" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Proximitätsmaß</h2>
 <p>Wir nutzen als Proximitätsmaß die euklidische Distanz und speichern das Ergebnis der Funktion <code>dist()</code>, welche die Distanz zwischen allen Ländern berechnet, mit der Bezeichnung <code>d</code> ab. Da wir die Variable <code>country_name</code> nicht mit in die Berechnung einbeziehen möchten, entfernen wir diese in dem <code>select()</code>-Befehl.</p>
 <pre class="r"><code>d &lt;- 
@@ -978,7 +982,7 @@ df_cl$logged_gdp_per_capita_sc &lt;-  scale(df_cl$logged_gdp_per_capita,
   select(-country_name) %&gt;% 
   dist(method = &quot;euclidean&quot;)</code></pre>
 </div>
-<div id="hierarchische-clusteranalyse" class="section level2">
+<div id="hierarchische-clusteranalyse" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Hierarchische Clusteranalyse</h2>
 <p>Im nächsten Schritt wird die hierarchische Clusteranalyse mit dem Befehl <code>hclust()</code> angewendet. Dafür übergeben wir der Funktion das Datenobjekt <code>d</code>, welches die euklidischen Distanzen zwischen den Ländern enthält (für weitere Hinweise zu der Funktion, siehe diesen Beitrag auf <a href="https://stats.stackexchange.com/a/109962">stackoverflow</a>).</p>
 <pre class="r"><code>hc &lt;- hclust(d, method = &quot;ward.D2&quot;) </code></pre>
@@ -991,7 +995,7 @@ df_cl$logged_gdp_per_capita_sc &lt;-  scale(df_cl$logged_gdp_per_capita,
 ## [19] 41.2573679</code></pre>
 <p>Die geringste Distanz zwischen zwei Clustern beträgt zu Beginn (wenn jedes Land sein eigenes Cluster darstellt) 0.44. Dies war also der geringste Abstand zwischen zwei Ländern. Danach steigt der Abstand monoton steigend an, da immer unähnlichere Cluster (d.h. mit einem größeren Abstand zueinander) fusioniert werden. Bei der letzten Zusammenführung der Cluster in ein einziges gemeinsames Cluster nimmt die Distanz den Maximalwert von 41 an. Damit die Werte leichter interpretierbar sind, wird der Prozess üblicherweise in einem sogenannten Dendrogramm dargestellt.</p>
 </div>
-<div id="dendrogramm" class="section level2">
+<div id="dendrogramm" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Dendrogramm</h2>
 <p>Mit Hilfe des Dendrogramms kann das Ergebnis des Clustering-Algorithmus dargestellt werden. Das Dendrogramm liest sich dabei von unten nach oben und beschreibt in diese Richtung den Prozess des Clusterings. Die vertikale Achse beschreibt die Heterogenität der Cluster mit der bereits erwähnten “Cophenetic Distance” (die in der Abbildung als <code>Height</code> bezeichnet wird). Auf der unteren Seite des Dendrogramms sind alle Fälle einzeln aufgelistet. Zunächst entspricht also jedes Land einem Cluster, was sich daran zeigt, dass jeder Fall eine eigene horizontale Linie aufweist. Diese Cluster werden von unten nach oben sukzessive zu größeren Clustern zusammengefügt. Die vertikalen Linien zeigen an, dass zwei Cluster fusioniert werden.</p>
 <p>Darstellung des Dendrogramms:</p>

@@ -133,12 +133,12 @@ Allgemein lautet die Formel für die Berechnung des L1-Abstands wie folgt:
 
 $$d(A,B) = \sum_{i} |A_i - B_i|$$
 
-In unserem Fall:
+In unserem Fall gilt:
 
 
 $$d(A,B) = |x_A - x_B| + |y_A - y_B |$$
 
-$$d(A,B) = |70 - 330| + |40 - 220 |$$
+$$d(A,B) = |70 - 330| + |40 - 228 |$$
 
 $$d(A,B) = |-260 | + |-188|$$
 
