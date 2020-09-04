@@ -1,19 +1,19 @@
 ---
-title: "Web Analytics & Social Media Analytics"
+title: "Applied Statistics"
 draft: false
 event: Weitere Informationen
-event_url: https://www.hdm-weiterbildung.de/berufsbegleitende-masterangebote/data-science-and-business-analytics
+event_url: https://www.hdm-weiterbildung.de/angebote/kontaktstudium/applied-statistics
 location: Stuttgart
-summary: Webscraping, API's, Network Analysis, NLP, Dashboards
+summary: Einführung in Statistical Learning
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2019-05-16T09:00:00Z"
-date_end: "2019-07-03T10:00:00Z"
+date: "2020-12-04T09:00:00Z"
+date_end: "2020-12-18T10:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2019-06-01T00:00:00Z"
+publishDate: "2020-09-03T00:00:00Z"
 
 authors: [jan]
 tags: [DataScience]
@@ -60,4 +60,24 @@ projects:
 math: true
 ---
 
-A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API's, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.  
+In dem Kurs Angewandte Statistik (Applied Statistics) werden zentrale statistische Methoden und Modelle für die fundierte Analyse quantitativer Daten behandelt. Der Schwerpunkt der Veranstaltung liegt in der Vermittlung moderner statistischer Verfahren (bspw. Lasso Regression, Generalized Additive Models, Cross Validation, Bootstrapping) anhand praxisbezogener Fallstudien. In den Fallstudien werden die statistischen Berechnungen und Modellierungen anhand der populären Programmiersprachen R und Python vorgestellt. 
+
+Inhaltliche Schwerpunkte:
+
+*	Deskriptive Statistik
+*	Explorative Datenanalyse 
+*	Wahrscheinlichkeitstheorie und Bayes-Theorem 
+*	Hypothesentests
+*	Regression 
+*	Klassifikation
+*	Cross Validation und Bootstrapping 
+*	Feature-Subset-Selection 
+*	Regularization
+*	Nicht lineare Modelle
+
+Nach Abschluss des Moduls verfügen die Teilnehmenden über:
+
+*	Umfangreiches Wissen zu modernen statistischen Methoden und Modellen für die fundierte Analyse unterschiedlicher Datentypen.  
+*	Die Fähigkeit, Ergebnisse statistischer Analysen zu interpretieren.
+*	Kenntnisse für eine verständliche und visuell ansprechende Ergebnisdarstellung.
+*	Anwendungsbezogene Kenntnisse statistischer Programmierung in Python und R.

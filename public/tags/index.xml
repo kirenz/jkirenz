@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Dec 2020 09:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DataScience</title>
+      <link>/tags/datascience/</link>
+      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/tags/datascience/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>R</title>
@@ -54,15 +63,6 @@
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
       <guid>/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DataScience</title>
-      <link>/tags/datascience/</link>
-      <pubDate>Mon, 14 Oct 2019 08:00:00 +0000</pubDate>
-      
-      <guid>/tags/datascience/</guid>
       <description></description>
     </item>
     

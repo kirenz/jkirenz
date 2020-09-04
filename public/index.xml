@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Seminars &amp; Workshops</title>
+      <link>/talk/</link>
+      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tutorials</title>
       <link>/post/</link>
       <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
@@ -27,15 +36,6 @@
       <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
       
       <guid>/project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Seminars &amp; Workshops</title>
-      <link>/talk/</link>
-      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/talk/</guid>
       <description></description>
     </item>
     

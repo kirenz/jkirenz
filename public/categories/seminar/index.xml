@@ -7,10 +7,40 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Thu, 24 Oct 2019 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Dec 2020 09:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/categories/seminar/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Applied Statistics</title>
+      <link>/talk/2019-web-analytics-social-media/</link>
+      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      
+      <guid>/talk/2019-web-analytics-social-media/</guid>
+      <description>&lt;p&gt;In dem Kurs Angewandte Statistik (Applied Statistics) werden zentrale statistische Methoden und Modelle für die fundierte Analyse quantitativer Daten behandelt. Der Schwerpunkt der Veranstaltung liegt in der Vermittlung moderner statistischer Verfahren (bspw. Lasso Regression, Generalized Additive Models, Cross Validation, Bootstrapping) anhand praxisbezogener Fallstudien. In den Fallstudien werden die statistischen Berechnungen und Modellierungen anhand der populären Programmiersprachen R und Python vorgestellt.&lt;/p&gt;
+&lt;p&gt;Inhaltliche Schwerpunkte:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Deskriptive Statistik&lt;/li&gt;
+&lt;li&gt;Explorative Datenanalyse&lt;/li&gt;
+&lt;li&gt;Wahrscheinlichkeitstheorie und Bayes-Theorem&lt;/li&gt;
+&lt;li&gt;Hypothesentests&lt;/li&gt;
+&lt;li&gt;Regression&lt;/li&gt;
+&lt;li&gt;Klassifikation&lt;/li&gt;
+&lt;li&gt;Cross Validation und Bootstrapping&lt;/li&gt;
+&lt;li&gt;Feature-Subset-Selection&lt;/li&gt;
+&lt;li&gt;Regularization&lt;/li&gt;
+&lt;li&gt;Nicht lineare Modelle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nach Abschluss des Moduls verfügen die Teilnehmenden über:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Umfangreiches Wissen zu modernen statistischen Methoden und Modellen für die fundierte Analyse unterschiedlicher Datentypen.&lt;/li&gt;
+&lt;li&gt;Die Fähigkeit, Ergebnisse statistischer Analysen zu interpretieren.&lt;/li&gt;
+&lt;li&gt;Kenntnisse für eine verständliche und visuell ansprechende Ergebnisdarstellung.&lt;/li&gt;
+&lt;li&gt;Anwendungsbezogene Kenntnisse statistischer Programmierung in Python und R.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Programming Languages for Data Science</title>
@@ -48,16 +78,6 @@
 
 
 
-</description>
-    </item>
-    
-    <item>
-      <title>Web Analytics &amp; Social Media Analytics</title>
-      <link>/talk/2019-web-analytics-social-media/</link>
-      <pubDate>Thu, 16 May 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-web-analytics-social-media/</guid>
-      <description>&lt;p&gt;A hands-on data science and data engineering seminar, where students learn how to scrape websites, use API&amp;rsquo;s, use natural language processing (NLP), perform a network analysis and build dashboards with Python and R.&lt;/p&gt;
 </description>
     </item>
     
