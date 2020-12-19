@@ -41,8 +41,8 @@
 &lt;li&gt;&lt;a href=&#34;#model-specification&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Model specification&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#create-workflow&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Create workflow&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#evaluate-model&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Evaluate model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#last-fit-and-evaluation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; Last fit and evaluation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#last-fit-and-evaluation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Last fit and evaluation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -815,11 +815,11 @@ lm_wflow_eval%&amp;gt;%
 ##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
 ## 1 rmse    standard   69040.        5 787.      Preprocessor1_Model1
 ## 2 rsq     standard       0.644     5   0.00983 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Usually, we would fit multiple models and select the one with the smallest RMSE. In this example, we only demonstrate the process with one model.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;last-fit-and-evaluation&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Last fit and evaluation&lt;/h1&gt;
-&lt;p&gt;Fit the final best model to the training set and evaluate the test set with the function &lt;a href=&#34;https://tune.tidymodels.org/reference/last_fit.html&#34;&gt;&lt;code&gt;last_fit()&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;div id=&#34;last-fit-and-evaluation&#34; class=&#34;section level2&#34; number=&#34;3.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; Last fit and evaluation&lt;/h2&gt;
+&lt;p&gt;Fit the best model to the training set and evaluate the test set with the function &lt;a href=&#34;https://tune.tidymodels.org/reference/last_fit.html&#34;&gt;&lt;code&gt;last_fit()&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_lm &amp;lt;- last_fit(lm_wflow, split = new_split)
 
 # Show RMSE and RSQ
@@ -830,6 +830,7 @@ last_fit_lm %&amp;gt;%
 ##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
 ## 1 rmse    standard   68182.    Preprocessor1_Model1
 ## 2 rsq     standard       0.650 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

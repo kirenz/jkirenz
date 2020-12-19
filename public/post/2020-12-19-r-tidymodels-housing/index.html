@@ -365,7 +365,7 @@
 
 <div class="article-header d-xl-none">
   <div class="featured-image" style="background-image: url('/post/2020-12-19-r-tidymodels-housing/featured_hud345a08f68d9db972192440967007b00_203521_800x0_resize_q90_lanczos.jpg');"></div>
-  <span class="article-header-caption"><a href="https://unsplash.com/photos/Oaqk7qqNh_c">Photo by Patrick Tomasso on Unsplash</a></span>
+  <span class="article-header-caption">[Photo: Tidymodels)</span>
 </div>
 
 
@@ -543,7 +543,7 @@
     <div class="col-6">
       <div class="split-header-image">
         <img src="/post/2020-12-19-r-tidymodels-housing/featured_hud345a08f68d9db972192440967007b00_203521_680x500_fill_q90_lanczos_smart1.jpg" itemprop="image" alt="">
-        <span class="article-header-caption"><a href="https://unsplash.com/photos/Oaqk7qqNh_c">Photo by Patrick Tomasso on Unsplash</a></span>
+        <span class="article-header-caption">[Photo: Tidymodels)</span>
       </div>
     </div>
   </div>
@@ -744,8 +744,8 @@
 <li><a href="#model-specification"><span class="toc-section-number">3.1</span> Model specification</a></li>
 <li><a href="#create-workflow"><span class="toc-section-number">3.2</span> Create workflow</a></li>
 <li><a href="#evaluate-model"><span class="toc-section-number">3.3</span> Evaluate model</a></li>
+<li><a href="#last-fit-and-evaluation"><span class="toc-section-number">3.4</span> Last fit and evaluation</a></li>
 </ul></li>
-<li><a href="#last-fit-and-evaluation"><span class="toc-section-number">4</span> Last fit and evaluation</a></li>
 </ul>
 </div>
 
@@ -1518,11 +1518,11 @@ lm_wflow_eval%&gt;%
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;               
 ## 1 rmse    standard   69040.        5 787.      Preprocessor1_Model1
 ## 2 rsq     standard       0.644     5   0.00983 Preprocessor1_Model1</code></pre>
+<p>Usually, we would fit multiple models and select the one with the smallest RMSE. In this example, we only demonstrate the process with one model.</p>
 </div>
-</div>
-<div id="last-fit-and-evaluation" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Last fit and evaluation</h1>
-<p>Fit the final best model to the training set and evaluate the test set with the function <a href="https://tune.tidymodels.org/reference/last_fit.html"><code>last_fit()</code></a>:</p>
+<div id="last-fit-and-evaluation" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Last fit and evaluation</h2>
+<p>Fit the best model to the training set and evaluate the test set with the function <a href="https://tune.tidymodels.org/reference/last_fit.html"><code>last_fit()</code></a>:</p>
 <pre class="r"><code>last_fit_lm &lt;- last_fit(lm_wflow, split = new_split)
 
 # Show RMSE and RSQ
@@ -1533,6 +1533,7 @@ last_fit_lm %&gt;%
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
 ## 1 rmse    standard   68182.    Preprocessor1_Model1
 ## 2 rsq     standard       0.650 Preprocessor1_Model1</code></pre>
+</div>
 </div>
 
     </div>
