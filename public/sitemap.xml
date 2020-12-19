@@ -3,350 +3,365 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/authors/jan/</loc>
+    <loc>https://kirenz.com/authors/jan/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/authors/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/categories/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/post/2020-12-19-r-tidymodels-housing/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/machine-learning/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/r/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/categories/r/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/statistics/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/tidymodels/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/categories/tidymodels/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/post/</loc>
+    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/talk/2019-web-analytics-social-media/</loc>
     <lastmod>2020-12-04T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-web-analytics-social-media/</loc>
+    <loc>https://kirenz.com/tags/datascience/</loc>
     <lastmod>2020-12-04T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/</loc>
+    <loc>https://kirenz.com/categories/seminar/</loc>
     <lastmod>2020-12-04T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://kirenz.com/talk/</loc>
     <lastmod>2020-12-04T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/datascience/</loc>
-    <lastmod>2020-12-04T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/seminar/</loc>
-    <lastmod>2020-12-04T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/</loc>
-    <lastmod>2020-12-04T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-12-04T09:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020-05-21-r-hierarchische-clusteranalyse/</loc>
+    <loc>https://kirenz.com/post/2020-05-21-r-hierarchische-clusteranalyse/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2020-05-14-r-association-rule-mining/</loc>
+    <loc>https://kirenz.com/post/2020-05-14-r-association-rule-mining/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
+    <loc>https://kirenz.com/tags/unsupervised-learning/</loc>
     <lastmod>2020-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/unsupervised-learning/</loc>
-    <lastmod>2020-05-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/markdown-first-steps/</loc>
+    <loc>https://kirenz.com/project/markdown-first-steps/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/markdown/</loc>
+    <loc>https://kirenz.com/tags/markdown/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/</loc>
+    <loc>https://kirenz.com/project/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/r-markdown/</loc>
+    <loc>https://kirenz.com/tags/r-markdown/</loc>
     <lastmod>2019-11-18T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-programming-languages/</loc>
+    <loc>https://kirenz.com/talk/2019-programming-languages/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/sql/</loc>
+    <loc>https://kirenz.com/tags/sql/</loc>
     <lastmod>2019-10-24T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/lecture/</loc>
+    <loc>https://kirenz.com/categories/lecture/</loc>
     <lastmod>2019-10-14T08:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-web-analytics/</loc>
+    <loc>https://kirenz.com/talk/2019-web-analytics/</loc>
     <lastmod>2019-10-14T08:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-big-data-web-analytics/</loc>
+    <loc>https://kirenz.com/talk/2019-big-data-web-analytics/</loc>
     <lastmod>2019-10-11T09:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2019-applied-statistics/</loc>
-    <lastmod>2019-08-01T02:20:01-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/python/</loc>
-    <lastmod>2019-08-12T10:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/statisticallearning/</loc>
-    <lastmod>2019-08-01T02:20:01-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/statistics/</loc>
+    <loc>https://kirenz.com/post/2019-09-16-r-text-mining/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-09-16-r-text-mining/</loc>
+    <loc>https://kirenz.com/categories/textmining/</loc>
     <lastmod>2019-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/textmining/</loc>
-    <lastmod>2019-09-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/programming-languages/</loc>
+    <loc>https://kirenz.com/project/programming-languages/</loc>
     <lastmod>2019-09-03T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/artificialintelligence/</loc>
+    <loc>https://kirenz.com/tags/artificialintelligence/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/deeplearning/</loc>
+    <loc>https://kirenz.com/tags/deeplearning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/intro-machine-learning/</loc>
+    <loc>https://kirenz.com/project/intro-machine-learning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/machinelearning/</loc>
+    <loc>https://kirenz.com/tags/machinelearning/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/tutorial/</loc>
+    <loc>https://kirenz.com/categories/tutorial/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/python/</loc>
+    <loc>https://kirenz.com/categories/python/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-08-13-network_analysis/</loc>
+    <loc>https://kirenz.com/post/2019-08-13-network_analysis/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/statistics/</loc>
+    <loc>https://kirenz.com/categories/statistics/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/python-network-analysis-intro/</loc>
+    <loc>https://kirenz.com/project/python-network-analysis-intro/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/networkanalysis/</loc>
+    <loc>https://kirenz.com/tags/networkanalysis/</loc>
     <lastmod>2019-08-12T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-08-12-python-lasso-regression-auto/</loc>
+    <loc>https://kirenz.com/tags/python/</loc>
+    <lastmod>2019-08-12T10:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/regression/</loc>
+    <loc>https://kirenz.com/categories/regression/</loc>
     <lastmod>2019-08-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-correlation-tutorial/</loc>
+    <loc>https://kirenz.com/project/r-correlation-tutorial/</loc>
     <lastmod>2019-08-11T05:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/dataexploration/</loc>
+    <loc>https://kirenz.com/tags/dataexploration/</loc>
     <lastmod>2019-08-11T05:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-lasso-regression/</loc>
+    <loc>https://kirenz.com/project/r-lasso-regression/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/regression/</loc>
+    <loc>https://kirenz.com/tags/regression/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/python-time-series/</loc>
+    <loc>https://kirenz.com/project/python-time-series/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/timeseries/</loc>
+    <loc>https://kirenz.com/tags/timeseries/</loc>
     <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-08-01-r-descriptive-statistics/</loc>
+    <loc>https://kirenz.com/post/2019-08-01-r-descriptive-statistics/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/german/</loc>
+    <loc>https://kirenz.com/categories/german/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/python-linear-regression/</loc>
+    <loc>https://kirenz.com/project/python-linear-regression/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/course/</loc>
+    <loc>https://kirenz.com/categories/course/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/python-first-steps/</loc>
+    <loc>https://kirenz.com/project/python-first-steps/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-first-steps/</loc>
+    <loc>https://kirenz.com/project/r-first-steps/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/book/</loc>
+    <loc>https://kirenz.com/tags/book/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/blogdown-book/</loc>
+    <loc>https://kirenz.com/project/blogdown-book/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/datareporting/</loc>
+    <loc>https://kirenz.com/tags/datareporting/</loc>
     <lastmod>2019-08-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-xaringan/</loc>
+    <loc>https://kirenz.com/project/r-xaringan/</loc>
     <lastmod>2019-08-01T10:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/r-data-science-statistics/</loc>
+    <loc>https://kirenz.com/project/r-data-science-statistics/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
+    <loc>https://kirenz.com/tags/statisticallearning/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/blogdown/</loc>
+    <loc>https://kirenz.com/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-07-20-up-and-running-with-blogdown/</loc>
+    <loc>https://kirenz.com/post/2019-07-20-up-and-running-with-blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/contact/</loc>
+    <loc>https://kirenz.com/contact/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://kirenz.com/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/projects/</loc>
+    <loc>https://kirenz.com/projects/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/teaching/</loc>
+    <loc>https://kirenz.com/teaching/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/license/</loc>
+    <loc>https://kirenz.com/license/</loc>
     <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/alison/</loc>
+    <loc>https://kirenz.com/authors/alison/</loc>
   </url>
   
   <url>
-    <loc>/publication_types/</loc>
+    <loc>https://kirenz.com/publication_types/</loc>
   </url>
   
   <url>
-    <loc>/publication/</loc>
+    <loc>https://kirenz.com/publication/</loc>
   </url>
   
 </urlset>

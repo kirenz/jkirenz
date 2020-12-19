@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>German on Jan Kirenz</title>
-    <link>/categories/german/</link>
+    <link>https://kirenz.com/categories/german/</link>
     <description>Recent content in German on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/german/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/german/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Deskriptive Statistik in R</title>
-      <link>/post/2019-08-01-r-descriptive-statistics/</link>
+      <link>https://kirenz.com/post/2019-08-01-r-descriptive-statistics/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-01-r-descriptive-statistics/</guid>
+      <guid>https://kirenz.com/post/2019-08-01-r-descriptive-statistics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -144,7 +144,7 @@ ggplot(Advertising, aes(sales)) +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
   labs(title=&amp;quot;Histogramm für Sales&amp;quot;, x=&amp;quot;Sales&amp;quot;, y=&amp;quot;Anzahl&amp;quot;) +
   plot_1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Darstellung der Verteilung in einer Dichtefunktion:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 
@@ -160,7 +160,7 @@ ggplot(Advertising, aes(sales)) +
   geom_text(aes(x=median(sales), y=0.01), colour = &amp;quot;grey&amp;quot;, size = 3, label=&amp;quot;Median&amp;quot;, hjust=1, family=&amp;quot;Arial&amp;quot;) +
   labs(x=&amp;quot;Produktabsatz (in Tausend Einheiten)&amp;quot;, y = &amp;quot;Dichte&amp;quot;, title = &amp;quot;Wahrscheinlichkeitsdichtefunktion&amp;quot;) +
   plot_1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In der Abbildung kann man erkennen, dass es sich um eine asymmetrische Verteilung handelt (d.h. es liegt eine Abweichung von der Normalverteilung vor). Konkret handelt es sich um eine rechtsschiefe Verteilung (Mittelwert &amp;gt; Median; Schiefe = + 0.40).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;kurtosis&#34; class=&#34;section level3&#34;&gt;

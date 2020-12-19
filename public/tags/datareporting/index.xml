@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DataReporting on Jan Kirenz</title>
-    <link>/tags/datareporting/</link>
+    <link>https://kirenz.com/tags/datareporting/</link>
     <description>Recent content in DataReporting on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/datareporting/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/datareporting/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating Websites with R Markdown</title>
-      <link>/project/blogdown-book/</link>
+      <link>https://kirenz.com/project/blogdown-book/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/blogdown-book/</guid>
+      <guid>https://kirenz.com/project/blogdown-book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Create Data Presentations with R Markdown</title>
-      <link>/project/r-xaringan/</link>
+      <link>https://kirenz.com/project/r-xaringan/</link>
       <pubDate>Thu, 01 Aug 2019 10:00:00 +0000</pubDate>
       
-      <guid>/project/r-xaringan/</guid>
+      <guid>https://kirenz.com/project/r-xaringan/</guid>
       <description>
 
 

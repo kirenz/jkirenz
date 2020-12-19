@@ -2,112 +2,121 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Jan Kirenz</title>
-    <link>/categories/</link>
+    <link>https://kirenz.com/categories/</link>
     <description>Recent content in Categories on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Fri, 04 Dec 2020 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Seminar</title>
-      <link>/categories/seminar/</link>
-      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      <title>R</title>
+      <link>https://kirenz.com/categories/r/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/seminar/</guid>
+      <guid>https://kirenz.com/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      <title>Tidymodels</title>
+      <link>https://kirenz.com/categories/tidymodels/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/r/</guid>
+      <guid>https://kirenz.com/categories/tidymodels/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Seminar</title>
+      <link>https://kirenz.com/categories/seminar/</link>
+      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/categories/seminar/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lecture</title>
-      <link>/categories/lecture/</link>
+      <link>https://kirenz.com/categories/lecture/</link>
       <pubDate>Mon, 14 Oct 2019 08:00:00 +0000</pubDate>
       
-      <guid>/categories/lecture/</guid>
+      <guid>https://kirenz.com/categories/lecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TextMining</title>
-      <link>/categories/textmining/</link>
+      <link>https://kirenz.com/categories/textmining/</link>
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/textmining/</guid>
+      <guid>https://kirenz.com/categories/textmining/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tutorial</title>
-      <link>/categories/tutorial/</link>
+      <link>https://kirenz.com/categories/tutorial/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tutorial/</guid>
+      <guid>https://kirenz.com/categories/tutorial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>/categories/python/</link>
+      <link>https://kirenz.com/categories/python/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/python/</guid>
+      <guid>https://kirenz.com/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Statistics</title>
-      <link>/categories/statistics/</link>
+      <link>https://kirenz.com/categories/statistics/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/statistics/</guid>
+      <guid>https://kirenz.com/categories/statistics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Regression</title>
-      <link>/categories/regression/</link>
+      <link>https://kirenz.com/categories/regression/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/regression/</guid>
+      <guid>https://kirenz.com/categories/regression/</guid>
       <description></description>
     </item>
     
     <item>
       <title>German</title>
-      <link>/categories/german/</link>
+      <link>https://kirenz.com/categories/german/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/german/</guid>
+      <guid>https://kirenz.com/categories/german/</guid>
       <description></description>
     </item>
     
     <item>
       <title>course</title>
-      <link>/categories/course/</link>
+      <link>https://kirenz.com/categories/course/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/course/</guid>
+      <guid>https://kirenz.com/categories/course/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blogdown</title>
-      <link>/categories/blogdown/</link>
+      <link>https://kirenz.com/categories/blogdown/</link>
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/blogdown/</guid>
+      <guid>https://kirenz.com/categories/blogdown/</guid>
       <description></description>
     </item>
     

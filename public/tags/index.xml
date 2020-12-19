@@ -2,184 +2,202 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Jan Kirenz</title>
-    <link>/tags/</link>
+    <link>https://kirenz.com/tags/</link>
     <description>Recent content in Tags on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Fri, 04 Dec 2020 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>DataScience</title>
-      <link>/tags/datascience/</link>
-      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      <title>Machine Learning</title>
+      <link>https://kirenz.com/tags/machine-learning/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/datascience/</guid>
+      <guid>https://kirenz.com/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      <link>https://kirenz.com/tags/r/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Unsupervised Learning</title>
-      <link>/tags/unsupervised-learning/</link>
-      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/unsupervised-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Markdown</title>
-      <link>/tags/markdown/</link>
-      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
-      
-      <guid>/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Markdown</title>
-      <link>/tags/r-markdown/</link>
-      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
-      
-      <guid>/tags/r-markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>/tags/sql/</link>
-      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
-      
-      <guid>/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>/tags/python/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>StatisticalLearning</title>
-      <link>/tags/statisticallearning/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/statisticallearning/</guid>
+      <guid>https://kirenz.com/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Statistics</title>
-      <link>/tags/statistics/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      <link>https://kirenz.com/tags/statistics/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/statistics/</guid>
+      <guid>https://kirenz.com/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tidymodels</title>
+      <link>https://kirenz.com/tags/tidymodels/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/tidymodels/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DataScience</title>
+      <link>https://kirenz.com/tags/datascience/</link>
+      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/datascience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unsupervised Learning</title>
+      <link>https://kirenz.com/tags/unsupervised-learning/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/unsupervised-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://kirenz.com/tags/markdown/</link>
+      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Markdown</title>
+      <link>https://kirenz.com/tags/r-markdown/</link>
+      <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/r-markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>https://kirenz.com/tags/sql/</link>
+      <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/sql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ArtificialIntelligence</title>
-      <link>/tags/artificialintelligence/</link>
+      <link>https://kirenz.com/tags/artificialintelligence/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/artificialintelligence/</guid>
+      <guid>https://kirenz.com/tags/artificialintelligence/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DeepLearning</title>
-      <link>/tags/deeplearning/</link>
+      <link>https://kirenz.com/tags/deeplearning/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/deeplearning/</guid>
+      <guid>https://kirenz.com/tags/deeplearning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MachineLearning</title>
-      <link>/tags/machinelearning/</link>
+      <link>https://kirenz.com/tags/machinelearning/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/machinelearning/</guid>
+      <guid>https://kirenz.com/tags/machinelearning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>NetworkAnalysis</title>
-      <link>/tags/networkanalysis/</link>
+      <link>https://kirenz.com/tags/networkanalysis/</link>
       <pubDate>Mon, 12 Aug 2019 10:00:00 +0000</pubDate>
       
-      <guid>/tags/networkanalysis/</guid>
+      <guid>https://kirenz.com/tags/networkanalysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://kirenz.com/tags/python/</link>
+      <pubDate>Mon, 12 Aug 2019 10:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DataExploration</title>
-      <link>/tags/dataexploration/</link>
+      <link>https://kirenz.com/tags/dataexploration/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
       
-      <guid>/tags/dataexploration/</guid>
+      <guid>https://kirenz.com/tags/dataexploration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Regression</title>
-      <link>/tags/regression/</link>
+      <link>https://kirenz.com/tags/regression/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/regression/</guid>
+      <guid>https://kirenz.com/tags/regression/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TimeSeries</title>
-      <link>/tags/timeseries/</link>
+      <link>https://kirenz.com/tags/timeseries/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/timeseries/</guid>
+      <guid>https://kirenz.com/tags/timeseries/</guid>
       <description></description>
     </item>
     
     <item>
       <title>book</title>
-      <link>/tags/book/</link>
+      <link>https://kirenz.com/tags/book/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/book/</guid>
+      <guid>https://kirenz.com/tags/book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DataReporting</title>
-      <link>/tags/datareporting/</link>
+      <link>https://kirenz.com/tags/datareporting/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/datareporting/</guid>
+      <guid>https://kirenz.com/tags/datareporting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StatisticalLearning</title>
+      <link>https://kirenz.com/tags/statisticallearning/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/statisticallearning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blogdown</title>
-      <link>/tags/blogdown/</link>
+      <link>https://kirenz.com/tags/blogdown/</link>
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/blogdown/</guid>
+      <guid>https://kirenz.com/tags/blogdown/</guid>
       <description></description>
     </item>
     

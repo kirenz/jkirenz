@@ -2,35 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>StatisticalLearning on Jan Kirenz</title>
-    <link>/tags/statisticallearning/</link>
+    <link>https://kirenz.com/tags/statisticallearning/</link>
     <description>Recent content in StatisticalLearning on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Mon, 30 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/statisticallearning/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/statisticallearning/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Applied Statistics</title>
-      <link>/talk/2019-applied-statistics/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-applied-statistics/</guid>
-      <description>
-
-
-
-</description>
-    </item>
     
     <item>
       <title>Free books to learn Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-statistics/</link>
+      <link>https://kirenz.com/project/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-statistics/</guid>
+      <guid>https://kirenz.com/project/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;

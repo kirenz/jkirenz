@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NetworkAnalysis on Jan Kirenz</title>
-    <link>/tags/networkanalysis/</link>
+    <link>https://kirenz.com/tags/networkanalysis/</link>
     <description>Recent content in NetworkAnalysis on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Mon, 12 Aug 2019 10:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/networkanalysis/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/networkanalysis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Introduction to Network Analysis with Python</title>
-      <link>/project/python-network-analysis-intro/</link>
+      <link>https://kirenz.com/project/python-network-analysis-intro/</link>
       <pubDate>Mon, 12 Aug 2019 10:00:00 +0000</pubDate>
       
-      <guid>/project/python-network-analysis-intro/</guid>
+      <guid>https://kirenz.com/project/python-network-analysis-intro/</guid>
       <description>
 
 
 &lt;p&gt;NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Material:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/slides/Social_Network_Analysis_Networkx/social-network-analysis.html&#34;&gt;Introduction to network presentation slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kirenz.com/slides/Social_Network_Analysis_Networkx/social-network-analysis.html&#34;&gt;Introduction to network presentation slides&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/13samMteoTnAkUoHul1iV5pA0bc4qmYjGge019HcT1F4/edit?usp=sharing&#34;&gt;Network analysis tasks with code templates&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

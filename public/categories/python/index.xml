@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Jan Kirenz</title>
-    <link>/categories/python/</link>
+    <link>https://kirenz.com/categories/python/</link>
     <description>Recent content in Python on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Social Network Analysis with Python</title>
-      <link>/post/2019-08-13-network_analysis/</link>
+      <link>https://kirenz.com/post/2019-08-13-network_analysis/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-13-network_analysis/</guid>
+      <guid>https://kirenz.com/post/2019-08-13-network_analysis/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -86,7 +86,7 @@ Average degree:   2.6667&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we visualize the network with the &lt;code&gt;draw_networkx()&lt;/code&gt; function.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;plt.figure(figsize=(5,5))
 nx.draw_networkx(G_symmetric);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_8_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_8_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;asymmetric-networks-directed&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; Asymmetric Networks (directed)&lt;/h3&gt;
@@ -101,7 +101,7 @@ G_asymmetric.add_edge(&amp;#39;D&amp;#39;,&amp;#39;E&amp;#39;)&lt;/code&gt;&lt;/
 &lt;p&gt;To make sure that all nodes are distinctly visible in the network, use the &lt;code&gt;spring_layout()&lt;/code&gt; function, followed by the &lt;code&gt;draw_networkx()&lt;/code&gt; function.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;nx.spring_layout(G_asymmetric)
 nx.draw_networkx(G_asymmetric)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_12_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_12_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;weighted-networks&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3&lt;/span&gt; Weighted Networks&lt;/h3&gt;
@@ -135,7 +135,7 @@ nx.draw_networkx_labels(G_weighted, pos, font_size=20, font_family=&amp;#39;sans
 plt.axis(&amp;#39;off&amp;#39;)
 plt.show();
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_15_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_15_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;clustering-coefficient&#34; class=&#34;section level2&#34;&gt;
@@ -176,10 +176,10 @@ functions respectively.&lt;/p&gt;
 &lt;p&gt;And so if you use &lt;code&gt;M = nx.bfs_tree(G_symmetric, &#39;Michelle&#39;)&lt;/code&gt; and now draw this tree, we will get a network structure telling how we can reach other nodes of the network starting from Michelle .&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;S = nx.bfs_tree(G_symmetric, &amp;#39;Steven&amp;#39;)
 nx.draw_networkx(S)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_29_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_29_0.png&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;M = nx.bfs_tree(G_symmetric, &amp;#39;Michelle&amp;#39;)
 nx.draw_networkx(M)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_30_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_30_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;eccentricity&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3.4&lt;/span&gt; Eccentricity&lt;/h3&gt;
@@ -255,7 +255,7 @@ nx.draw_networkx(G_symmetric, pos=pos, with_labels=True,
                  node_color=node_color,
                  node_size=node_size )
 plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_45_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_45_0.png&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;sorted(betCent, key=betCent.get, reverse=True)[:5]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;[&amp;#39;Steven&amp;#39;, &amp;#39;Michelle&amp;#39;, &amp;#39;Laura&amp;#39;, &amp;#39;Marc&amp;#39;, &amp;#39;John&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;
@@ -358,7 +358,7 @@ Average degree: 43.6910&lt;/p&gt;
 &lt;p&gt;The network consists of 4,039 nodes, connected via 88,234 edges.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;plt.figure(figsize=(20,20))
 nx.draw_networkx(G_fb);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/net1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/net1.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can also visualize the network such that the node color varies with Degree and node size with Betweenness Centrality. The code to do this is:&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;pos = nx.spring_layout(G_fb)
 betCent = nx.betweenness_centrality(G_fb, normalized=True, endpoints=True)
@@ -369,7 +369,7 @@ nx.draw_networkx(G_fb, pos=pos, with_labels=False,
                  node_color=node_color,
                  node_size=node_size )
 plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/net2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/net2.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You can also know the labels of the nodes with the highest betweenness centrality using:&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;sorted(betCent, key=betCent.get, reverse=True)[:5]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can see that some nodes are common between Degree Centrality, which is a measure of degree, and Betweenness Centrality which controls the information flow.&lt;/p&gt;
@@ -389,10 +389,10 @@ plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/post/2019-08-12-python-lasso-regression-auto/</link>
+      <link>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-12-python-lasso-regression-auto/</guid>
+      <guid>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -766,7 +766,7 @@ plt.xlim(0, 6)
 plt.title(r&amp;#39;Evaluate lasso regression with lamdas: 0 = 0.001, 1= 0.01, 2 = 0.1, 3 = 0.5, 4= 1, 5= 2, 6 = 10&amp;#39;)
 plt.legend(loc=&amp;#39;best&amp;#39;)
 plt.grid()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;identify-best-lambda-and-coefficients&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; Identify best lambda and coefficients&lt;/h2&gt;
@@ -824,7 +824,7 @@ plt.xlim(0, 19)
 plt.title(r&amp;#39;Evaluate 5-fold cv with different lamdas&amp;#39;)
 plt.legend(loc=&amp;#39;best&amp;#39;)
 plt.grid()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;best-model&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8&lt;/span&gt; Best Model&lt;/h2&gt;

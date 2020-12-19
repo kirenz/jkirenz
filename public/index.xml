@@ -2,87 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jan Kirenz</title>
-    <link>/</link>
+    <link>https://kirenz.com/</link>
     <description>Recent content on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Seminars &amp; Workshops</title>
-      <link>/talk/</link>
-      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
+      <title>Tutorials</title>
+      <link>https://kirenz.com/post/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/talk/</guid>
+      <guid>https://kirenz.com/post/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tutorials</title>
-      <link>/post/</link>
-      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      <title>Seminars &amp; Workshops</title>
+      <link>https://kirenz.com/talk/</link>
+      <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
       
-      <guid>/post/</guid>
+      <guid>https://kirenz.com/talk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>/project/</link>
+      <link>https://kirenz.com/project/</link>
       <pubDate>Mon, 18 Nov 2019 10:00:00 +0000</pubDate>
       
-      <guid>/project/</guid>
+      <guid>https://kirenz.com/project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>About / Contact</title>
-      <link>/contact/</link>
+      <link>https://kirenz.com/contact/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/contact/</guid>
+      <guid>https://kirenz.com/contact/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>/projects/</link>
+      <link>https://kirenz.com/projects/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/</guid>
+      <guid>https://kirenz.com/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Seminars &amp; Lectures</title>
-      <link>/teaching/</link>
+      <link>https://kirenz.com/teaching/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/teaching/</guid>
+      <guid>https://kirenz.com/teaching/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LICENSE: CC-BY-SA</title>
-      <link>/license/</link>
+      <link>https://kirenz.com/license/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
       
-      <guid>/license/</guid>
-      <description>&lt;p&gt;My &lt;a href=&#34;/post/&#34;&gt;blog posts&lt;/a&gt; are released under a &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34;&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
+      <guid>https://kirenz.com/license/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;https://kirenz.com/post/&#34;&gt;blog posts&lt;/a&gt; are released under a &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34;&gt;Creative Commons Attribution-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
     <item>
       <title>Publications</title>
-      <link>/publication/</link>
+      <link>https://kirenz.com/publication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/publication/</guid>
+      <guid>https://kirenz.com/publication/</guid>
       <description></description>
     </item>
     

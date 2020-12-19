@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DeepLearning on Jan Kirenz</title>
-    <link>/tags/deeplearning/</link>
+    <link>https://kirenz.com/tags/deeplearning/</link>
     <description>Recent content in DeepLearning on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Fri, 16 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Learn the Basics of AI</title>
-      <link>/project/intro-machine-learning/</link>
+      <link>https://kirenz.com/project/intro-machine-learning/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/intro-machine-learning/</guid>
+      <guid>https://kirenz.com/project/intro-machine-learning/</guid>
       <description>&lt;p&gt;A good place to start your journey into the basics of machine learning &amp;ndash;the science of getting computers to act without being explicitly programmed&amp;ndash; are the non-technical and easy to follow introductions to machine learning by Yufeng Guo from &lt;em&gt;Google&amp;rsquo;s AI Adventures&lt;/em&gt; video-series:&lt;/p&gt;
 &lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/HcqpanDadyQ/0.jpg&#34; alt=&#34;What is Machine Learning?&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=HcqpanDadyQ%22What&#34;&gt;https://www.youtube.com/watch?v=HcqpanDadyQ&amp;quot;What&lt;/a&gt; is Machine Learning?&amp;quot;)&lt;/p&gt;
 &lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg&#34; alt=&#34;The 7 Steps of Machine Learning&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=nKW8Ndu7Mjw%22The&#34;&gt;https://www.youtube.com/watch?v=nKW8Ndu7Mjw&amp;quot;The&lt;/a&gt; 7 Steps of Machine Learning?&amp;quot;)&lt;/p&gt;

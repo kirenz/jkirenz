@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorial on Jan Kirenz</title>
-    <link>/categories/tutorial/</link>
+    <link>https://kirenz.com/categories/tutorial/</link>
     <description>Recent content in Tutorial on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Fri, 16 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Learn the Basics of AI</title>
-      <link>/project/intro-machine-learning/</link>
+      <link>https://kirenz.com/project/intro-machine-learning/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/intro-machine-learning/</guid>
+      <guid>https://kirenz.com/project/intro-machine-learning/</guid>
       <description>&lt;p&gt;A good place to start your journey into the basics of machine learning &amp;ndash;the science of getting computers to act without being explicitly programmed&amp;ndash; are the non-technical and easy to follow introductions to machine learning by Yufeng Guo from &lt;em&gt;Google&amp;rsquo;s AI Adventures&lt;/em&gt; video-series:&lt;/p&gt;
 &lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/HcqpanDadyQ/0.jpg&#34; alt=&#34;What is Machine Learning?&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=HcqpanDadyQ%22What&#34;&gt;https://www.youtube.com/watch?v=HcqpanDadyQ&amp;quot;What&lt;/a&gt; is Machine Learning?&amp;quot;)&lt;/p&gt;
 &lt;p&gt;[&lt;img src=&#34;https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg&#34; alt=&#34;The 7 Steps of Machine Learning&#34;&gt;](&lt;a href=&#34;https://www.youtube.com/watch?v=nKW8Ndu7Mjw%22The&#34;&gt;https://www.youtube.com/watch?v=nKW8Ndu7Mjw&amp;quot;The&lt;/a&gt; 7 Steps of Machine Learning?&amp;quot;)&lt;/p&gt;
@@ -45,10 +45,10 @@
     
     <item>
       <title>Correlation Tutorial with R</title>
-      <link>/project/r-correlation-tutorial/</link>
+      <link>https://kirenz.com/project/r-correlation-tutorial/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
       
-      <guid>/project/r-correlation-tutorial/</guid>
+      <guid>https://kirenz.com/project/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
@@ -63,10 +63,10 @@
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/project/r-lasso-regression/</link>
+      <link>https://kirenz.com/project/r-lasso-regression/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-lasso-regression/</guid>
+      <guid>https://kirenz.com/project/r-lasso-regression/</guid>
       <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
 &lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
 &lt;hr&gt;
@@ -77,10 +77,10 @@
     
     <item>
       <title>Time Series Analysis with Python</title>
-      <link>/project/python-time-series/</link>
+      <link>https://kirenz.com/project/python-time-series/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-time-series/</guid>
+      <guid>https://kirenz.com/project/python-time-series/</guid>
       <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
 &lt;ul&gt;
@@ -98,10 +98,10 @@
     
     <item>
       <title>Linear Regression Tutorial with Python</title>
-      <link>/project/python-linear-regression/</link>
+      <link>https://kirenz.com/project/python-linear-regression/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-linear-regression/</guid>
+      <guid>https://kirenz.com/project/python-linear-regression/</guid>
       <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
 &lt;ul&gt;
@@ -122,10 +122,10 @@
     
     <item>
       <title>Free books to learn Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-statistics/</link>
+      <link>https://kirenz.com/project/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-statistics/</guid>
+      <guid>https://kirenz.com/project/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;

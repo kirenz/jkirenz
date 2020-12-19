@@ -1,0 +1,351 @@
+---
+#aliases: []
+#projects: []
+title: Data Science with Tidymodels, Workflows and Recipes
+authors: [jan]
+date: '2020-12-19'
+tags: [Statistics, R, Machine Learning, Tidymodels]
+categories:
+  - R
+  - Tidymodels
+summary: Introduction to Tidymodels, Workflows and Recipes
+description: How to use Tidymodels, Workflows and Recipes for Machine Learning and Statistics
+image:
+  caption: '[Photo by Patrick Tomasso on Unsplash](https://unsplash.com/photos/Oaqk7qqNh_c)'
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+    toc_depth: 3
+---
+
+
+```{r setup, include=FALSE}
+library(kableExtra)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+*The following examples are adapted from the excellent book “Hands-on machine learning with scikit-learn, keras and tensorflow” from A. Geron and the [tidymodels documentation](https://www.tidymodels.org/start/recipes/)*
+
+In this tutorial you will learn how to specify a simple regression model with the tidymodels package using recipes, which is designed to help you preprocess your data before training your model. 
+
+To use the code in this article, you will need to install the following packages: 
+
+* [tidyverse](https://www.tidyverse.org/) 
+* [tidymodels](https://www.tidymodels.org/) 
+* [skimr](https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html) 
+* [GGally](https://ggobi.github.io/ggally/index.html)
+* [ggmap](https://github.com/dkahle/ggmap)
+
+```{r}
+
+library(tidyverse)
+library(tidymodels)
+library(skimr)
+library(GGally)
+library(ggmap)
+
+```
+
+
+In this example, our goal is to build a model of housing prices in California. In particular, the model should learn from California census data and be able to predict the median house price in any district (population of 600 to 3000 people), given some predictor variables. We use the root mean square error (RMSE) as a performance measure for our regression problem.
+
+
+# Data understanding
+
+In Data Understanding, we first
+
+- Import data 
+- Get an overview about the data structure
+- Discover and visualize the data to gain insights 
+
+## Imort Data
+
+First of all, let's import the data:
+
+```{r}
+
+LINK <- "https://raw.githubusercontent.com/kirenz/datasets/master/housing.csv"
+housing_df <- read_csv(LINK)
+
+```
+
+## Data overview
+
+Next, we take a look at the data structure:
+
+California census top 4 rows of the DataFrame: 
+
+```{r}
+
+head(housing_df, 4)
+
+```
+
+Data info:
+
+```{r}
+
+glimpse(housing_df)
+
+```
+
+Data summary of numerical and categorical attributes using a function from the package `skimr`:
+
+```{r}
+
+skim(housing_df)
+
+```
+
+Count levels of our categorical variable:
+
+```{r}
+
+housing_df %>% 
+  count(ocean_proximity,
+        sort = TRUE)
+
+```
+
+
+The function `ggscatmat` from the package `GGally` creates a matrix with scatterplots, densities and correlations for numeric columns. In our code, we enter the dataset `housing_df`, choose columns 6 to 9, a color column for our categorical variable `ocean_proximity`, and an alpha level of 0.8 (for transparency).
+
+```{r }
+
+ggscatmat(housing_df, columns = 6:9, color="ocean_proximity", alpha=0.8)
+
+```
+
+To obtain an overview of even more visualizations, we can use the function `ggpairs`:
+
+```{r }
+
+ggpairs(housing_df)
+
+```
+
+
+## Data exploration
+
+A Geographical scatterplot of the data:
+
+```{r point-long-lat, fig.cap="Scatterplot of longitude and latitude", out.width='80%'}
+
+housing_df %>% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = "cornflowerblue")
+
+```
+
+A better visualization that highlights high-density areas:
+
+```{r point-long-lat-a, fig.cap="Scatterplot of longitude and latitude that highlights high-density areas", out.width='80%'}
+
+housing_df %>% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = "cornflowerblue", alpha = 0.1) 
+  
+```
+
+California housing prices: 
+
+- red is expensive, 
+- purple is cheap and 
+- larger circles indicate areas with a larger population.
+
+
+```{r plot-ca-prices, fig.cap="California housing_df prices", out.width='80%'}
+
+housing_df %>% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(aes(size = population, color = median_house_value), 
+             alpha = 0.4) +
+  scale_colour_gradientn(colours=rev(rainbow(4)))
+
+```
+
+
+
+```{r}
+library(ggmap)
+
+qmplot(x = longitude, 
+       y = latitude, 
+       data = housing_df, 
+       geom = "point", 
+       color = median_house_value, 
+       size = population,
+       alpha = 0.4) +
+  scale_colour_gradientn(colours=rev(rainbow(4)))
+
+```
+
+# Data preparation 
+
+## Data splitting
+
+Before we build our model, we first split data into training and test set using stratified sampling.
+
+Let's assume we would know that the median income is a very important attribute to predict median housing prices. Therefore, we would want to create a training and test set using stratified sampling. 
+
+A *stratum* (plural strata) refers to a subset (part) of the population (entire collection of items under consideration) which is being sampled:
+
+
+```{r hist-med-income, fig.cap="Histogram of Median Income", out.width='80%'}
+
+housing_df %>% 
+  ggplot(aes(median_income)) +
+  geom_histogram(bins = 30)
+
+```
+
+We want to ensure that the test set is representative of the various categories of incomes in the whole dataset. In other words, we would like to have instances for each *stratum*, or else the estimate of a stratum's importance may be biased. This means that you should not have too many strata, and each stratum should be large enough. We use 5 strata in our example.
+
+
+```{r}
+set.seed(42)
+
+new_split <- initial_split(housing_df, 
+                           prop = 3/4, 
+                           strata = median_income, 
+                           breaks = 5)
+
+new_train <- training(new_split) 
+new_test <- testing(new_split)
+
+```
+
+
+
+## Recipes
+
+Next, we use a `recipe()` to build a set of steps for data preprocessing and feature engineering.
+
+Recipes are built as a series of preprocessing steps, such as:
+
+* converting qualitative predictors to indicator variables (also known as dummy variables),
+* transforming data to be on a different scale (e.g., taking the logarithm of a variable),
+* transforming whole groups of predictors together,
+* extracting key features from raw variables (e.g., getting the day of the week out of a date variable),
+
+In summary, the idea of the [recipes package](https://recipes.tidymodels.org) is to define a recipe or blueprint that can be used to sequentially define the encodings and preprocessing of the data (i.e. “feature engineering”) before we build our models.
+
+
+1. First, we must tell the `recipe()` what our model is going to be (using a formula here) and what our training data is.
+
+2. `step_novel()` will convert all nominal variables to factors.
+
+3. We then convert the factor columns into (one or more) numeric binary (0 and 1) variables for the levels of the training data.
+
+4. We remove any numeric variables that have zero variance.
+
+5. We normalize (center and scale) the numeric variables. 
+
+```{r}
+
+housing_rec <-
+  recipe(median_house_value ~ ., data = new_train) %>%
+  step_novel(all_nominal(), -all_outcomes()) %>%
+  step_dummy(all_nominal()) %>%
+  step_zv(all_predictors()) %>%
+  step_normalize(all_predictors())
+
+# Show the content of our recipe
+housing_rec
+  
+```
+
+
+Now it's time to **specify** and then **fit** our models. 
+
+
+# Model building
+
+## Model specification
+
+1. Pick a `model type`: choose from this [list](https://www.tidymodels.org/find/parsnip/)
+2. Set the `engine`: choose from this [list](https://www.tidymodels.org/find/parsnip/)
+3. Set the `mode`: regression or classification
+
+```{r}
+library(tidymodels)
+
+lm_spec <- # your model specification
+  linear_reg() %>%  # model type
+  set_engine(engine = "lm") %>%  # model engine
+  set_mode("regression") # model mode
+
+# Show your model specification
+lm_spec
+
+```
+
+To combine the data preparation with the model building, we use the package [workflows](https://workflows.tidymodels.org). 
+
+A workflow is an object that can bundle together your pre-processing, modeling, and post-processing requests
+
+## Create workflow
+
+
+```{r}
+
+lm_wflow <-
+ workflow() %>%
+ add_model(lm_spec) %>% 
+ add_recipe(housing_rec)
+
+```
+
+## Evaluate model
+
+We build a validation set with K-fold crossvalidation:
+
+```{r}
+
+set.seed(100)
+
+cv_folds <-
+ vfold_cv(new_train, 
+          v = 5, 
+          strata = median_income,
+          breaks = 5) 
+
+cv_folds
+
+```
+
+Now we can fit the model and collect the performance metrics with `collect_metrics()`:
+
+```{r}
+
+lm_wflow_eval <- 
+  lm_wflow %>% 
+  fit_resamples(
+    median_house_value ~ ., 
+    resamples = cv_folds
+    ) 
+
+lm_wflow_eval%>% 
+    collect_metrics()
+
+```
+
+
+# Last fit and evaluation 
+
+Fit the final best model to the training set and evaluate the test set with the function [`last_fit()`](https://tune.tidymodels.org/reference/last_fit.html):
+
+
+```{r}
+
+last_fit_lm <- last_fit(lm_wflow, split = new_split)
+
+# Show RMSE and RSQ
+last_fit_lm %>% 
+  collect_metrics()
+
+```
+

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TimeSeries on Jan Kirenz</title>
-    <link>/tags/timeseries/</link>
+    <link>https://kirenz.com/tags/timeseries/</link>
     <description>Recent content in TimeSeries on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Sun, 11 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/timeseries/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/timeseries/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Time Series Analysis with Python</title>
-      <link>/project/python-time-series/</link>
+      <link>https://kirenz.com/project/python-time-series/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-time-series/</guid>
+      <guid>https://kirenz.com/project/python-time-series/</guid>
       <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
 &lt;ul&gt;

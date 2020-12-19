@@ -2,37 +2,846 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistics on Jan Kirenz</title>
-    <link>/tags/statistics/</link>
+    <link>https://kirenz.com/tags/statistics/</link>
     <description>Recent content in Statistics on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Mon, 30 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Applied Statistics</title>
-      <link>/talk/2019-applied-statistics/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      <title>Data Science with Tidymodels, Workflows and Recipes</title>
+      <link>https://kirenz.com/post/2020-12-19-r-tidymodels-housing/</link>
+      <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-applied-statistics/</guid>
+      <guid>https://kirenz.com/post/2020-12-19-r-tidymodels-housing/</guid>
       <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#data-understanding&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Data understanding&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#imort-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Imort Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-overview&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Data overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-exploration&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Data exploration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-preparation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Data preparation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#data-splitting&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Data splitting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#recipes&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; Recipes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#model-building&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Model building&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#model-specification&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Model specification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#create-workflow&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Create workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#evaluate-model&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Evaluate model&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#last-fit-and-evaluation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Last fit and evaluation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
+&lt;p&gt;&lt;em&gt;The following examples are adapted from the excellent book “Hands-on machine learning with scikit-learn, keras and tensorflow” from A. Geron and the &lt;a href=&#34;https://www.tidymodels.org/start/recipes/&#34;&gt;tidymodels documentation&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In this tutorial you will learn how to specify a simple regression model with the tidymodels package using recipes, which is designed to help you preprocess your data before training your model.&lt;/p&gt;
+&lt;p&gt;To use the code in this article, you will need to install the following packages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tidyverse.org/&#34;&gt;tidyverse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tidymodels.org/&#34;&gt;tidymodels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html&#34;&gt;skimr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ggobi.github.io/ggally/index.html&#34;&gt;GGally&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dkahle/ggmap&#34;&gt;ggmap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(tidymodels)
+library(skimr)
+library(GGally)
+library(ggmap)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this example, our goal is to build a model of housing prices in California. In particular, the model should learn from California census data and be able to predict the median house price in any district (population of 600 to 3000 people), given some predictor variables. We use the root mean square error (RMSE) as a performance measure for our regression problem.&lt;/p&gt;
+&lt;div id=&#34;data-understanding&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Data understanding&lt;/h1&gt;
+&lt;p&gt;In Data Understanding, we first&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Import data&lt;/li&gt;
+&lt;li&gt;Get an overview about the data structure&lt;/li&gt;
+&lt;li&gt;Discover and visualize the data to gain insights&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;imort-data&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Imort Data&lt;/h2&gt;
+&lt;p&gt;First of all, let’s import the data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LINK &amp;lt;- &amp;quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing.csv&amp;quot;
+housing_df &amp;lt;- read_csv(LINK)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-overview&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; Data overview&lt;/h2&gt;
+&lt;p&gt;Next, we take a look at the data structure:&lt;/p&gt;
+&lt;p&gt;California census top 4 rows of the DataFrame:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(housing_df, 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 10
+##   longitude latitude housing_median_… total_rooms total_bedrooms population
+##       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1     -122.     37.9               41         880            129        322
+## 2     -122.     37.9               21        7099           1106       2401
+## 3     -122.     37.8               52        1467            190        496
+## 4     -122.     37.8               52        1274            235        558
+## # … with 4 more variables: households &amp;lt;dbl&amp;gt;, median_income &amp;lt;dbl&amp;gt;,
+## #   median_house_value &amp;lt;dbl&amp;gt;, ocean_proximity &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Data info:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(housing_df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 20,640
+## Columns: 10
+## $ longitude          &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.…
+## $ latitude           &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 3…
+## $ housing_median_age &amp;lt;dbl&amp;gt; 41, 21, 52, 52, 52, 52, 52, 52, 42, 52, 52, 52, 52…
+## $ total_rooms        &amp;lt;dbl&amp;gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555…
+## $ total_bedrooms     &amp;lt;dbl&amp;gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707,…
+## $ population         &amp;lt;dbl&amp;gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 1…
+## $ households         &amp;lt;dbl&amp;gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714,…
+## $ median_income      &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.…
+## $ median_house_value &amp;lt;dbl&amp;gt; 452600, 358500, 352100, 341300, 342200, 269700, 29…
+## $ ocean_proximity    &amp;lt;chr&amp;gt; &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;N…&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Data summary of numerical and categorical attributes using a function from the package &lt;code&gt;skimr&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;skim(housing_df)&lt;/code&gt;&lt;/pre&gt;
+&lt;table style=&#34;width: auto;&#34; class=&#34;table table-condensed&#34;&gt;
+&lt;caption&gt;
+&lt;span id=&#34;tab:unnamed-chunk-5&#34;&gt;Table 1.1: &lt;/span&gt;Data summary
+&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Name
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+housing_df
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Number of rows
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+20640
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Number of columns
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+_______________________
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Column type frequency:
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+character
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+numeric
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+________________________
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Group variables
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+None
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: character&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+skim_variable
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n_missing
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+complete_rate
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+min
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+max
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+empty
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n_unique
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+whitespace
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ocean_proximity
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+skim_variable
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+n_missing
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+complete_rate
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+mean
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+sd
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p0
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p25
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p50
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p75
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p100
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+hist
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+longitude
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-119.57
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-124.35
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-121.80
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-118.49
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-118.01
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-114.31
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▂▆▃▇▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+latitude
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+35.63
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+32.54
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+33.93
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+34.26
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+37.71
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+41.95
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▇▁▅▂▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+housing_median_age
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+28.64
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.59
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+18.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+29.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+37.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+52.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▃▇▇▇▅
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+total_rooms
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2635.76
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2181.62
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1447.75
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2127.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3148.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+39320.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▇▁▁▁▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+total_bedrooms
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+207
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.99
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+537.87
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+421.39
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+296.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+435.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+647.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6445.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▇▁▁▁▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+population
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1425.48
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1132.46
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+787.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1166.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1725.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+35682.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▇▁▁▁▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+households
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+499.54
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+382.33
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+280.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+409.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+605.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6082.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▇▁▁▁▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+median_income
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.87
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.90
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.50
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2.56
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.53
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.74
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▇▇▁▁▁
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+median_house_value
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+206855.82
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+115395.62
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+14999.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+119600.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+179700.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+264725.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+500001.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+▅▇▅▂▂
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Count levels of our categorical variable:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  count(ocean_proximity,
+        sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 2
+##   ocean_proximity     n
+##   &amp;lt;chr&amp;gt;           &amp;lt;int&amp;gt;
+## 1 &amp;lt;1H OCEAN        9136
+## 2 INLAND           6551
+## 3 NEAR OCEAN       2658
+## 4 NEAR BAY         2290
+## 5 ISLAND              5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;ggscatmat&lt;/code&gt; from the package &lt;code&gt;GGally&lt;/code&gt; creates a matrix with scatterplots, densities and correlations for numeric columns. In our code, we enter the dataset &lt;code&gt;housing_df&lt;/code&gt;, choose columns 6 to 9, a color column for our categorical variable &lt;code&gt;ocean_proximity&lt;/code&gt;, and an alpha level of 0.8 (for transparency).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggscatmat(housing_df, columns = 6:9, color=&amp;quot;ocean_proximity&amp;quot;, alpha=0.8)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To obtain an overview of even more visualizations, we can use the function &lt;code&gt;ggpairs&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggpairs(housing_df)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-exploration&#34; class=&#34;section level2&#34; number=&#34;1.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Data exploration&lt;/h2&gt;
+&lt;p&gt;A Geographical scatterplot of the data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = &amp;quot;cornflowerblue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:point-long-lat&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;index_files/figure-html/point-long-lat-1.png&#34; alt=&#34;Scatterplot of longitude and latitude&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1.1: Scatterplot of longitude and latitude
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;A better visualization that highlights high-density areas:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = &amp;quot;cornflowerblue&amp;quot;, alpha = 0.1) &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:point-long-lat-a&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;index_files/figure-html/point-long-lat-a-1.png&#34; alt=&#34;Scatterplot of longitude and latitude that highlights high-density areas&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1.2: Scatterplot of longitude and latitude that highlights high-density areas
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;California housing prices:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;red is expensive,&lt;/li&gt;
+&lt;li&gt;purple is cheap and&lt;/li&gt;
+&lt;li&gt;larger circles indicate areas with a larger population.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(aes(size = population, color = median_house_value), 
+             alpha = 0.4) +
+  scale_colour_gradientn(colours=rev(rainbow(4)))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plot-ca-prices&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;index_files/figure-html/plot-ca-prices-1.png&#34; alt=&#34;California housing_df prices&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1.3: California housing_df prices
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggmap)
 
+qmplot(x = longitude, 
+       y = latitude, 
+       data = housing_df, 
+       geom = &amp;quot;point&amp;quot;, 
+       color = median_house_value, 
+       size = population,
+       alpha = 0.4) +
+  scale_colour_gradientn(colours=rev(rainbow(4)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-preparation&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Data preparation&lt;/h1&gt;
+&lt;div id=&#34;data-splitting&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Data splitting&lt;/h2&gt;
+&lt;p&gt;Before we build our model, we first split data into training and test set using stratified sampling.&lt;/p&gt;
+&lt;p&gt;Let’s assume we would know that the median income is a very important attribute to predict median housing prices. Therefore, we would want to create a training and test set using stratified sampling.&lt;/p&gt;
+&lt;p&gt;A &lt;em&gt;stratum&lt;/em&gt; (plural strata) refers to a subset (part) of the population (entire collection of items under consideration) which is being sampled:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  ggplot(aes(median_income)) +
+  geom_histogram(bins = 30)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:hist-med-income&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;index_files/figure-html/hist-med-income-1.png&#34; alt=&#34;Histogram of Median Income&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2.1: Histogram of Median Income
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;We want to ensure that the test set is representative of the various categories of incomes in the whole dataset. In other words, we would like to have instances for each &lt;em&gt;stratum&lt;/em&gt;, or else the estimate of a stratum’s importance may be biased. This means that you should not have too many strata, and each stratum should be large enough. We use 5 strata in our example.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(42)
+
+new_split &amp;lt;- initial_split(housing_df, 
+                           prop = 3/4, 
+                           strata = median_income, 
+                           breaks = 5)
+
+new_train &amp;lt;- training(new_split) 
+new_test &amp;lt;- testing(new_split)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;recipes&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; Recipes&lt;/h2&gt;
+&lt;p&gt;Next, we use a &lt;code&gt;recipe()&lt;/code&gt; to build a set of steps for data preprocessing and feature engineering.&lt;/p&gt;
+&lt;p&gt;Recipes are built as a series of preprocessing steps, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;converting qualitative predictors to indicator variables (also known as dummy variables),&lt;/li&gt;
+&lt;li&gt;transforming data to be on a different scale (e.g., taking the logarithm of a variable),&lt;/li&gt;
+&lt;li&gt;transforming whole groups of predictors together,&lt;/li&gt;
+&lt;li&gt;extracting key features from raw variables (e.g., getting the day of the week out of a date variable),&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In summary, the idea of the &lt;a href=&#34;https://recipes.tidymodels.org&#34;&gt;recipes package&lt;/a&gt; is to define a recipe or blueprint that can be used to sequentially define the encodings and preprocessing of the data (i.e. “feature engineering”) before we build our models.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;First, we must tell the &lt;code&gt;recipe()&lt;/code&gt; what our model is going to be (using a formula here) and what our training data is.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_novel()&lt;/code&gt; will convert all nominal variables to factors.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We then convert the factor columns into (one or more) numeric binary (0 and 1) variables for the levels of the training data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We remove any numeric variables that have zero variance.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We normalize (center and scale) the numeric variables.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_rec &amp;lt;-
+  recipe(median_house_value ~ ., data = new_train) %&amp;gt;%
+  step_novel(all_nominal(), -all_outcomes()) %&amp;gt;%
+  step_dummy(all_nominal()) %&amp;gt;%
+  step_zv(all_predictors()) %&amp;gt;%
+  step_normalize(all_predictors())
+
+# Show the content of our recipe
+housing_rec&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Data Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          9
+## 
+## Operations:
+## 
+## Novel factor level assignment for all_nominal(), -all_outcomes()
+## Dummy variables from all_nominal()
+## Zero variance filter on all_predictors()
+## Centering and scaling for all_predictors()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now it’s time to &lt;strong&gt;specify&lt;/strong&gt; and then &lt;strong&gt;fit&lt;/strong&gt; our models.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-building&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Model building&lt;/h1&gt;
+&lt;div id=&#34;model-specification&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Model specification&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Pick a &lt;code&gt;model type&lt;/code&gt;: choose from this &lt;a href=&#34;https://www.tidymodels.org/find/parsnip/&#34;&gt;list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Set the &lt;code&gt;engine&lt;/code&gt;: choose from this &lt;a href=&#34;https://www.tidymodels.org/find/parsnip/&#34;&gt;list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Set the &lt;code&gt;mode&lt;/code&gt;: regression or classification&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidymodels)
+
+lm_spec &amp;lt;- # your model specification
+  linear_reg() %&amp;gt;%  # model type
+  set_engine(engine = &amp;quot;lm&amp;quot;) %&amp;gt;%  # model engine
+  set_mode(&amp;quot;regression&amp;quot;) # model mode
+
+# Show your model specification
+lm_spec&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Linear Regression Model Specification (regression)
+## 
+## Computational engine: lm&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To combine the data preparation with the model building, we use the package &lt;a href=&#34;https://workflows.tidymodels.org&#34;&gt;workflows&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A workflow is an object that can bundle together your pre-processing, modeling, and post-processing requests&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;create-workflow&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Create workflow&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm_wflow &amp;lt;-
+ workflow() %&amp;gt;%
+ add_model(lm_spec) %&amp;gt;% 
+ add_recipe(housing_rec)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;evaluate-model&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Evaluate model&lt;/h2&gt;
+&lt;p&gt;We build a validation set with K-fold crossvalidation:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(100)
+
+cv_folds &amp;lt;-
+ vfold_cv(new_train, 
+          v = 5, 
+          strata = median_income,
+          breaks = 5) 
+
+cv_folds&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## #  5-fold cross-validation using stratification 
+## # A tibble: 5 x 2
+##   splits               id   
+##   &amp;lt;list&amp;gt;               &amp;lt;chr&amp;gt;
+## 1 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold1
+## 2 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold2
+## 3 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold3
+## 4 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold4
+## 5 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can fit the model and collect the performance metrics with &lt;code&gt;collect_metrics()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm_wflow_eval &amp;lt;- 
+  lm_wflow %&amp;gt;% 
+  fit_resamples(
+    median_house_value ~ ., 
+    resamples = cv_folds
+    ) 
+
+lm_wflow_eval%&amp;gt;% 
+    collect_metrics()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 6
+##   .metric .estimator      mean     n   std_err .config             
+##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 rmse    standard   69040.        5 787.      Preprocessor1_Model1
+## 2 rsq     standard       0.644     5   0.00983 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;last-fit-and-evaluation&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Last fit and evaluation&lt;/h1&gt;
+&lt;p&gt;Fit the final best model to the training set and evaluate the test set with the function &lt;a href=&#34;https://tune.tidymodels.org/reference/last_fit.html&#34;&gt;&lt;code&gt;last_fit()&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_lm &amp;lt;- last_fit(lm_wflow, split = new_split)
+
+# Show RMSE and RSQ
+last_fit_lm %&amp;gt;% 
+  collect_metrics()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 4
+##   .metric .estimator .estimate .config             
+##   &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 rmse    standard   68182.    Preprocessor1_Model1
+## 2 rsq     standard       0.650 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Text Mining in R</title>
-      <link>/post/2019-09-16-r-text-mining/</link>
+      <link>https://kirenz.com/post/2019-09-16-r-text-mining/</link>
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-09-16-r-text-mining/</guid>
+      <guid>https://kirenz.com/post/2019-09-16-r-text-mining/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://kirenz.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -776,7 +1585,7 @@ tb %&amp;gt;%
   labs(fill= &amp;quot;Author&amp;quot;, title=&amp;quot;Word frequency&amp;quot;, subtitle=&amp;quot;n &amp;gt; 100&amp;quot;)+
   theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
   scale_fill_brewer() &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Plot top 20 terms by author:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 
@@ -800,7 +1609,7 @@ tb %&amp;gt;%
        y= &amp;quot;Word Count&amp;quot;)+
   theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
   scale_fill_brewer()   &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You may notice expressions like “_k”, “co” in the Einstein text and “fig” in the Tesla text. Let’s remove these and other less meaningful words with a custom list of stop words and use anti_join() to remove them.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;newstopwords &amp;lt;- tibble(word = c(&amp;quot;eq&amp;quot;, &amp;quot;co&amp;quot;, &amp;quot;rc&amp;quot;, &amp;quot;ac&amp;quot;, &amp;quot;ak&amp;quot;, &amp;quot;bn&amp;quot;, 
                                    &amp;quot;fig&amp;quot;, &amp;quot;file&amp;quot;, &amp;quot;cg&amp;quot;, &amp;quot;cb&amp;quot;, &amp;quot;cm&amp;quot;,
@@ -830,14 +1639,14 @@ tb %&amp;gt;%
        y= &amp;quot;Word Count&amp;quot;)+
   theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
   scale_fill_brewer()   &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You also may want to visualize the most frequent terms as a simple word cloud:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(wordcloud)
 
 tb %&amp;gt;%
   count(word) %&amp;gt;%
   with(wordcloud(word, n, max.words = 15))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;term-frequency-and-inverse-document-frequency-tf-idf&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Term frequency and inverse document frequency (tf-idf)&lt;/h2&gt;
@@ -875,7 +1684,7 @@ plot_tb %&amp;gt;%
        y= &amp;quot;tf-idf&amp;quot;) +
   theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
   scale_fill_brewer()  &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In particular, the &lt;code&gt;bind_tf_idf&lt;/code&gt; function in the &lt;code&gt;tidytext&lt;/code&gt; package takes a tidy text dataset as input with one row per token (term), per document. One column (word here) contains the terms/tokens, one column contains the documents (authors in this case), and the last necessary column contains the counts, how many times each document contains each term (n in this example).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tf_idf &amp;lt;- tb %&amp;gt;%
   count(author, word, sort = TRUE) %&amp;gt;%
@@ -1710,7 +2519,7 @@ ggraph(bigram_graph, layout = &amp;quot;fr&amp;quot;) +
   geom_edge_link() +
   geom_node_point() +
   geom_node_text(aes(label = name), vjust = 1, hjust = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-34-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-34-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Finally, we will change some settings to obtain to a better looking graph:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;We add the &lt;code&gt;edge_alpha&lt;/code&gt; aesthetic to the link layer to make links transparent based on how common or rare the bigram is.&lt;/p&gt;&lt;/li&gt;
@@ -1729,7 +2538,7 @@ ggraph(bigram_graph, layout = &amp;quot;fr&amp;quot;) +
   geom_node_point(color = &amp;quot;lightblue&amp;quot;, size = 5) +
   geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-35-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-35-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;classification-with-logistic-regression&#34; class=&#34;section level1&#34;&gt;
@@ -1886,7 +2695,7 @@ coefs %&amp;gt;%
   theme_classic(base_size = 12) +
   theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;)) +
   scale_fill_brewer()  &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-44-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-44-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;model-evaluation-with-test-data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.5&lt;/span&gt; Model evaluation with test data&lt;/h2&gt;
@@ -2021,7 +2830,7 @@ comment_classes %&amp;gt;%
   ) +
   theme_classic(base_size = 12) +
   theme(plot.title = element_text(lineheight=.8, face=&amp;quot;bold&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-47-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-09-16-r-text-mining/index_files/figure-html/unnamed-chunk-47-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Let’s obtain the accuracy (AUC - the fraction of predictions that a classification model got right) on the test data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;auc &amp;lt;- comment_classes %&amp;gt;%
   roc_auc(author, probability)&lt;/code&gt;&lt;/pre&gt;
@@ -2323,10 +3132,10 @@ throwing it. Then, disregarding the influence of the air resistance, I
     
     <item>
       <title>Social Network Analysis with Python</title>
-      <link>/post/2019-08-13-network_analysis/</link>
+      <link>https://kirenz.com/post/2019-08-13-network_analysis/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-13-network_analysis/</guid>
+      <guid>https://kirenz.com/post/2019-08-13-network_analysis/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2395,7 +3204,7 @@ Average degree:   2.6667&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we visualize the network with the &lt;code&gt;draw_networkx()&lt;/code&gt; function.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;plt.figure(figsize=(5,5))
 nx.draw_networkx(G_symmetric);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_8_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_8_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;asymmetric-networks-directed&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; Asymmetric Networks (directed)&lt;/h3&gt;
@@ -2410,7 +3219,7 @@ G_asymmetric.add_edge(&amp;#39;D&amp;#39;,&amp;#39;E&amp;#39;)&lt;/code&gt;&lt;/
 &lt;p&gt;To make sure that all nodes are distinctly visible in the network, use the &lt;code&gt;spring_layout()&lt;/code&gt; function, followed by the &lt;code&gt;draw_networkx()&lt;/code&gt; function.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;nx.spring_layout(G_asymmetric)
 nx.draw_networkx(G_asymmetric)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_12_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_12_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;weighted-networks&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3&lt;/span&gt; Weighted Networks&lt;/h3&gt;
@@ -2444,7 +3253,7 @@ nx.draw_networkx_labels(G_weighted, pos, font_size=20, font_family=&amp;#39;sans
 plt.axis(&amp;#39;off&amp;#39;)
 plt.show();
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_15_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_15_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;clustering-coefficient&#34; class=&#34;section level2&#34;&gt;
@@ -2485,10 +3294,10 @@ functions respectively.&lt;/p&gt;
 &lt;p&gt;And so if you use &lt;code&gt;M = nx.bfs_tree(G_symmetric, &#39;Michelle&#39;)&lt;/code&gt; and now draw this tree, we will get a network structure telling how we can reach other nodes of the network starting from Michelle .&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;S = nx.bfs_tree(G_symmetric, &amp;#39;Steven&amp;#39;)
 nx.draw_networkx(S)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_29_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_29_0.png&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;M = nx.bfs_tree(G_symmetric, &amp;#39;Michelle&amp;#39;)
 nx.draw_networkx(M)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_30_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_30_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;eccentricity&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3.4&lt;/span&gt; Eccentricity&lt;/h3&gt;
@@ -2564,7 +3373,7 @@ nx.draw_networkx(G_symmetric, pos=pos, with_labels=True,
                  node_color=node_color,
                  node_size=node_size )
 plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/output_45_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/output_45_0.png&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;sorted(betCent, key=betCent.get, reverse=True)[:5]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;[&amp;#39;Steven&amp;#39;, &amp;#39;Michelle&amp;#39;, &amp;#39;Laura&amp;#39;, &amp;#39;Marc&amp;#39;, &amp;#39;John&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;
@@ -2667,7 +3476,7 @@ Average degree: 43.6910&lt;/p&gt;
 &lt;p&gt;The network consists of 4,039 nodes, connected via 88,234 edges.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;plt.figure(figsize=(20,20))
 nx.draw_networkx(G_fb);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/net1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/net1.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can also visualize the network such that the node color varies with Degree and node size with Betweenness Centrality. The code to do this is:&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;pos = nx.spring_layout(G_fb)
 betCent = nx.betweenness_centrality(G_fb, normalized=True, endpoints=True)
@@ -2678,7 +3487,7 @@ nx.draw_networkx(G_fb, pos=pos, with_labels=False,
                  node_color=node_color,
                  node_size=node_size )
 plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-13-network_analysis/net2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-13-network_analysis/net2.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You can also know the labels of the nodes with the highest betweenness centrality using:&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;sorted(betCent, key=betCent.get, reverse=True)[:5]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can see that some nodes are common between Degree Centrality, which is a measure of degree, and Betweenness Centrality which controls the information flow.&lt;/p&gt;
@@ -2698,10 +3507,10 @@ plt.axis(&amp;#39;off&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/post/2019-08-12-python-lasso-regression-auto/</link>
+      <link>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-12-python-lasso-regression-auto/</guid>
+      <guid>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3075,7 +3884,7 @@ plt.xlim(0, 6)
 plt.title(r&amp;#39;Evaluate lasso regression with lamdas: 0 = 0.001, 1= 0.01, 2 = 0.1, 3 = 0.5, 4= 1, 5= 2, 6 = 10&amp;#39;)
 plt.legend(loc=&amp;#39;best&amp;#39;)
 plt.grid()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;identify-best-lambda-and-coefficients&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; Identify best lambda and coefficients&lt;/h2&gt;
@@ -3133,7 +3942,7 @@ plt.xlim(0, 19)
 plt.title(r&amp;#39;Evaluate 5-fold cv with different lamdas&amp;#39;)
 plt.legend(loc=&amp;#39;best&amp;#39;)
 plt.grid()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;best-model&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8&lt;/span&gt; Best Model&lt;/h2&gt;
@@ -3165,10 +3974,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Correlation Tutorial with R</title>
-      <link>/project/r-correlation-tutorial/</link>
+      <link>https://kirenz.com/project/r-correlation-tutorial/</link>
       <pubDate>Sun, 11 Aug 2019 05:00:00 +0000</pubDate>
       
-      <guid>/project/r-correlation-tutorial/</guid>
+      <guid>https://kirenz.com/project/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
@@ -3183,10 +3992,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/project/r-lasso-regression/</link>
+      <link>https://kirenz.com/project/r-lasso-regression/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-lasso-regression/</guid>
+      <guid>https://kirenz.com/project/r-lasso-regression/</guid>
       <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
 &lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
 &lt;hr&gt;
@@ -3197,10 +4006,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Time Series Analysis with Python</title>
-      <link>/project/python-time-series/</link>
+      <link>https://kirenz.com/project/python-time-series/</link>
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-time-series/</guid>
+      <guid>https://kirenz.com/project/python-time-series/</guid>
       <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
 &lt;ul&gt;
@@ -3218,10 +4027,10 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Deskriptive Statistik in R</title>
-      <link>/post/2019-08-01-r-descriptive-statistics/</link>
+      <link>https://kirenz.com/post/2019-08-01-r-descriptive-statistics/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-01-r-descriptive-statistics/</guid>
+      <guid>https://kirenz.com/post/2019-08-01-r-descriptive-statistics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3348,7 +4157,7 @@ ggplot(Advertising, aes(sales)) +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
   labs(title=&amp;quot;Histogramm für Sales&amp;quot;, x=&amp;quot;Sales&amp;quot;, y=&amp;quot;Anzahl&amp;quot;) +
   plot_1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Darstellung der Verteilung in einer Dichtefunktion:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 
@@ -3364,7 +4173,7 @@ ggplot(Advertising, aes(sales)) +
   geom_text(aes(x=median(sales), y=0.01), colour = &amp;quot;grey&amp;quot;, size = 3, label=&amp;quot;Median&amp;quot;, hjust=1, family=&amp;quot;Arial&amp;quot;) +
   labs(x=&amp;quot;Produktabsatz (in Tausend Einheiten)&amp;quot;, y = &amp;quot;Dichte&amp;quot;, title = &amp;quot;Wahrscheinlichkeitsdichtefunktion&amp;quot;) +
   plot_1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-01-r-descriptive-statistics/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In der Abbildung kann man erkennen, dass es sich um eine asymmetrische Verteilung handelt (d.h. es liegt eine Abweichung von der Normalverteilung vor). Konkret handelt es sich um eine rechtsschiefe Verteilung (Mittelwert &amp;gt; Median; Schiefe = + 0.40).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;kurtosis&#34; class=&#34;section level3&#34;&gt;
@@ -3382,10 +4191,10 @@ ggplot(Advertising, aes(sales)) +
     
     <item>
       <title>Linear Regression Tutorial with Python</title>
-      <link>/project/python-linear-regression/</link>
+      <link>https://kirenz.com/project/python-linear-regression/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-linear-regression/</guid>
+      <guid>https://kirenz.com/project/python-linear-regression/</guid>
       <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
 &lt;ul&gt;
@@ -3406,10 +4215,10 @@ ggplot(Advertising, aes(sales)) +
     
     <item>
       <title>Free books to learn Data Science &amp; Statistics with R</title>
-      <link>/project/r-data-science-statistics/</link>
+      <link>https://kirenz.com/project/r-data-science-statistics/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-data-science-statistics/</guid>
+      <guid>https://kirenz.com/project/r-data-science-statistics/</guid>
       <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;

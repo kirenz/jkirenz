@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Seminar on Jan Kirenz</title>
-    <link>/categories/seminar/</link>
+    <link>https://kirenz.com/categories/seminar/</link>
     <description>Recent content in Seminar on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Fri, 04 Dec 2020 09:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/seminar/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/seminar/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Applied Statistics</title>
-      <link>/talk/2019-web-analytics-social-media/</link>
+      <link>https://kirenz.com/talk/2019-web-analytics-social-media/</link>
       <pubDate>Fri, 04 Dec 2020 09:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-web-analytics-social-media/</guid>
+      <guid>https://kirenz.com/talk/2019-web-analytics-social-media/</guid>
       <description>&lt;p&gt;In dem Kurs Angewandte Statistik (Applied Statistics) werden zentrale statistische Methoden und Modelle für die fundierte Analyse quantitativer Daten behandelt. Der Schwerpunkt der Veranstaltung liegt in der Vermittlung moderner statistischer Verfahren (bspw. Lasso Regression, Generalized Additive Models, Cross Validation, Bootstrapping) anhand praxisbezogener Fallstudien. In den Fallstudien werden die statistischen Berechnungen und Modellierungen anhand der populären Programmiersprachen R und Python vorgestellt.&lt;/p&gt;
 &lt;p&gt;Inhaltliche Schwerpunkte:&lt;/p&gt;
 &lt;ul&gt;
@@ -44,10 +44,10 @@
     
     <item>
       <title>Programming Languages for Data Science</title>
-      <link>/talk/2019-programming-languages/</link>
+      <link>https://kirenz.com/talk/2019-programming-languages/</link>
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-programming-languages/</guid>
+      <guid>https://kirenz.com/talk/2019-programming-languages/</guid>
       <description>&lt;p&gt;Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Datenimport,&lt;/li&gt;
@@ -65,19 +65,6 @@
 &lt;li&gt;Microsoft Azure SQL Datenbank, Google BigQuery und Oracle angewendet werden.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Im Rahmen der Datenanalyse mit R werden neben den zentralen Grundkenntnissen der Programmiersprache R insbesondere Kompetenzen im Umgang mit Datentransformationen („Data Wrangling“), der explorativen Datenanalyse und Visualisierung von Daten (bspw. mit Hilfe eines Dashboards) vermittelt. Zudem wird die Erstellung und Ausgabe (bspw. als HTML, PDF, Word, Excel, PPT,…) von Reports in R markdown behandelt.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Applied Statistics</title>
-      <link>/talk/2019-applied-statistics/</link>
-      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/talk/2019-applied-statistics/</guid>
-      <description>
-
-
-
 </description>
     </item>
     

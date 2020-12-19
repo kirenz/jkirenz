@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>course on Jan Kirenz</title>
-    <link>/categories/course/</link>
+    <link>https://kirenz.com/categories/course/</link>
     <description>Recent content in course on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Sat, 03 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/course/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/course/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>First Steps in Python</title>
-      <link>/project/python-first-steps/</link>
+      <link>https://kirenz.com/project/python-first-steps/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/python-first-steps/</guid>
+      <guid>https://kirenz.com/project/python-first-steps/</guid>
       <description>&lt;h1 id=&#34;first-steps-in-python&#34;&gt;First Steps in Python&lt;/h1&gt;
 &lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first_steps_in_python/blob/master/Python_overview.pdf&#34;&gt;Python overview&lt;/a&gt; to get an overview about Python and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;
 &lt;p&gt;First of all, install &lt;strong&gt;Anaconda&lt;/strong&gt; - it&amp;rsquo;s a free and open-source distribution of the Python programming language that aims to simplify package management and deployment. It already contains Jupyter Notebook (see below) and other important data science modules.&lt;/p&gt;
@@ -68,10 +68,10 @@
     
     <item>
       <title>First Steps in R</title>
-      <link>/project/r-first-steps/</link>
+      <link>https://kirenz.com/project/r-first-steps/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/r-first-steps/</guid>
+      <guid>https://kirenz.com/project/r-first-steps/</guid>
       <description>&lt;h1 id=&#34;first-steps-in-r&#34;&gt;First Steps in R&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/200px-R_logo.svg.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Download the PDF &lt;a href=&#34;https://github.com/kirenz/first-steps-in-r/blob/master/R_overview.pdf&#34;&gt;R overview&lt;/a&gt; to get an overview about R and a list of helpful resources (you need to download the file in order to use the embedded links).&lt;/p&gt;

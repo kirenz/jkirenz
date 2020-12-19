@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>lecture on Jan Kirenz</title>
-    <link>/categories/lecture/</link>
+    <link>https://kirenz.com/categories/lecture/</link>
     <description>Recent content in lecture on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Mon, 14 Oct 2019 08:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/lecture/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/lecture/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Web Analytics</title>
-      <link>/talk/2019-web-analytics/</link>
+      <link>https://kirenz.com/talk/2019-web-analytics/</link>
       <pubDate>Mon, 14 Oct 2019 08:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-web-analytics/</guid>
+      <guid>https://kirenz.com/talk/2019-web-analytics/</guid>
       <description>&lt;p&gt;In der Veranstaltung Web Analytics befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten aus dem Internet -  bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren und anderen Webpräsenzen.&lt;/p&gt;
 &lt;p&gt;Von besonderem Interesse sind in diesem Zusammenhang &amp;ldquo;offene Daten&amp;rdquo; (Open Data), die im Internet zur freien Weiterverwendung frei zugänglich gemacht werden (insbesondere von Organisationen wie der OECD, Weltbank und von staatlichen Stellen).&lt;/p&gt;
 &lt;p&gt;Wir werden insbesondere mit der Programmiersprache R arbeiten und die folgenden Inhalte behandeln:&lt;/p&gt;
@@ -33,10 +33,10 @@
     
     <item>
       <title>Big Data and Web Analytics</title>
-      <link>/talk/2019-big-data-web-analytics/</link>
+      <link>https://kirenz.com/talk/2019-big-data-web-analytics/</link>
       <pubDate>Fri, 11 Oct 2019 09:00:00 +0000</pubDate>
       
-      <guid>/talk/2019-big-data-web-analytics/</guid>
+      <guid>https://kirenz.com/talk/2019-big-data-web-analytics/</guid>
       <description>&lt;p&gt;&amp;lsquo;In der Veranstaltung Web Analytics &amp;amp; Big Data befassen wir uns mit der Erfassung und Analyse von strukturierten und unstrukturierten (großen) Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen. Die dadurch gewonnenen Erkenntnisse sollen einen Beitrag zu dem systematischen Aufbau und der Pflege dauerhafter und profitabler Kundenbeziehungen leisten und beziehen sich insbesondere auf die Phasen der Kundengewinnung, Kundenbindung und Vermeidung der Kundenabwanderung innerhalb des Customer Lifecycle Managements.&amp;rsquo;&lt;/p&gt;
 </description>
     </item>

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Regression on Jan Kirenz</title>
-    <link>/categories/regression/</link>
+    <link>https://kirenz.com/categories/regression/</link>
     <description>Recent content in Regression on Jan Kirenz</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
     <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/categories/regression/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://kirenz.com/categories/regression/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lasso Regression with Python</title>
-      <link>/post/2019-08-12-python-lasso-regression-auto/</link>
+      <link>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</link>
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-12-python-lasso-regression-auto/</guid>
+      <guid>https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -391,7 +391,7 @@ plt.xlim(0, 6)
 plt.title(r&amp;#39;Evaluate lasso regression with lamdas: 0 = 0.001, 1= 0.01, 2 = 0.1, 3 = 0.5, 4= 1, 5= 2, 6 = 10&amp;#39;)
 plt.legend(loc=&amp;#39;best&amp;#39;)
 plt.grid()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/output_27_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;identify-best-lambda-and-coefficients&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; Identify best lambda and coefficients&lt;/h2&gt;
@@ -449,7 +449,7 @@ plt.xlim(0, 19)
 plt.title(r&amp;#39;Evaluate 5-fold cv with different lamdas&amp;#39;)
 plt.legend(loc=&amp;#39;best&amp;#39;)
 plt.grid()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2019-08-12-python-lasso-regression-auto/output_35_0.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;best-model&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8&lt;/span&gt; Best Model&lt;/h2&gt;
