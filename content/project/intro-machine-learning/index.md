@@ -12,7 +12,7 @@ tags:
 - MachineLearning
 - DeepLearning
 - ArtificialIntelligence
-date: "2019-08-16T00:00:00Z"
+date: "2021-01-07T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
 #external_link: "https://ohsu-math630.netlify.com/"
@@ -43,14 +43,52 @@ url_video: ""
 slides: ""
 ---
 
+**General introduction to machine learning**
+
 A good place to start your journey into the basics of machine learning --the science of getting computers to act without being explicitly programmed-- are the non-technical and easy to follow introductions to machine learning by Yufeng Guo from *Google's AI Adventures* video-series:
 
 [![What is Machine Learning?](https://img.youtube.com/vi/HcqpanDadyQ/0.jpg)](https://www.youtube.com/watch?v=HcqpanDadyQ"What is Machine Learning?")
 
 [![The 7 Steps of Machine Learning](https://img.youtube.com/vi/nKW8Ndu7Mjw/0.jpg)](https://www.youtube.com/watch?v=nKW8Ndu7Mjw"The 7 Steps of Machine Learning?")
 
+---
+
+**Overview about the different machine learning algorithms**
+
+Vasily Zubarev provides a very casual introduction to machine learning using easy to understand language and real-world examples in his blog vas3k.
+
+* [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/?ref=hn)
 
 ---
+
+
+**Interactive visual example of a decision tree algorithm**
+
+R2D3 is an experiment in expressing statistical thinking with interactive design and they provide an excellent visual introduction to machine learning: 
+
+* [Visual introduction to machine learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)
+
+
+---
+
+
+In this video, Google's Laurence Moroney will guide you through the basic principles of machine learning (especially deep learning):
+
+* [![Machine Learning Zero to Hero (Google I/O'19)](https://img.youtube.com/vi/VwVg9jCtqaU/0.jpg)](https://www.youtube.com/watch?v=VwVg9jCtqaU"Machine Learning Zero to Hero (Google I/O'19), Laurence Moroney")
+
+
+---
+
+**Introduction to Recommender Systems**
+
+CS50 is Harvard University's introduction to the intellectual enterprises of computer science and the art of programming. They provide an easy to follow introduction to recommender systems:  
+
+[![Recommender Systems](https://img.youtube.com/vi/Eeg1DEeWUjA/0.jpg)](https://www.youtube.com/watch?v=Eeg1DEeWUjA"Recommender Systems")
+
+
+---
+
+**Overview about crucial machine learning content**
 
 ![](https://ai.google/static/images/share.png)
 
@@ -60,6 +98,19 @@ A good place to start your journey into the basics of machine learning --the sci
 Google recently published a series of internal AI training resources originally developed for its engineers. The *crash course* provides a fast-paced and practical overview about the fundamental concepts of machine learning. Here you can learn and apply fundamental machine learning concepts, get real-world examples with the companion [Kaggle competition](https://www.kaggle.com), or visit [Learn with Google AI](https://ai.google/education/) to explore the full library of training resources.
 
 ---
+
+**Introduction to Neural Networks**
+
+Excellent introduction to neural networks created by Grant Sanderson. 
+
+
+[![Neural networks](https://img.youtube.com/vi/aircAruvnKk/0.jpg)](https://www.youtube.com/watch?v=aircAruvnKk"What is Machine Learning?")
+
+---
+
+Advanced material:
+
+**Detailed machine learning course with code development** 
 
 ![](https://www.andrewng.org/content/uploads/2013/04/photo_about_w211.jpg)
 
