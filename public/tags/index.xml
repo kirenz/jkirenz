@@ -7,10 +7,37 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sat, 19 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://kirenz.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ArtificialIntelligence</title>
+      <link>https://kirenz.com/tags/artificialintelligence/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/artificialintelligence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DeepLearning</title>
+      <link>https://kirenz.com/tags/deeplearning/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/deeplearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MachineLearning</title>
+      <link>https://kirenz.com/tags/machinelearning/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/machinelearning/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Machine Learning</title>
@@ -90,33 +117,6 @@
       <pubDate>Thu, 24 Oct 2019 09:00:00 +0000</pubDate>
       
       <guid>https://kirenz.com/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ArtificialIntelligence</title>
-      <link>https://kirenz.com/tags/artificialintelligence/</link>
-      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kirenz.com/tags/artificialintelligence/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DeepLearning</title>
-      <link>https://kirenz.com/tags/deeplearning/</link>
-      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kirenz.com/tags/deeplearning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MachineLearning</title>
-      <link>https://kirenz.com/tags/machinelearning/</link>
-      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kirenz.com/tags/machinelearning/</guid>
       <description></description>
     </item>
     
