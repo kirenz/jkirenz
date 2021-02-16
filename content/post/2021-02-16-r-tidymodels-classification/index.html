@@ -1,0 +1,835 @@
+---
+#aliases: []
+#projects: []
+title: Data Science with Tidymodels, Workflows and Recipes
+authors: [jan]
+date: '2020-12-19'
+tags: [Statistics, R, Machine Learning, Tidymodels]
+categories:
+  - R
+  - Tidymodels
+summary: Introduction to Tidymodels, Workflows and Recipes
+description: How to use Tidymodels, Workflows and Recipes for Machine Learning and Statistics
+image:
+  caption: '[Photo: Tidymodels)'
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+    toc_depth: 3
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#data-understanding"><span class="toc-section-number">1</span> Data understanding</a>
+<ul>
+<li><a href="#imort-data"><span class="toc-section-number">1.1</span> Imort Data</a></li>
+<li><a href="#data-overview"><span class="toc-section-number">1.2</span> Data overview</a></li>
+<li><a href="#data-exploration"><span class="toc-section-number">1.3</span> Data exploration</a></li>
+</ul></li>
+<li><a href="#data-preparation"><span class="toc-section-number">2</span> Data preparation</a>
+<ul>
+<li><a href="#data-splitting"><span class="toc-section-number">2.1</span> Data splitting</a></li>
+<li><a href="#recipes"><span class="toc-section-number">2.2</span> Recipes</a></li>
+</ul></li>
+<li><a href="#model-building"><span class="toc-section-number">3</span> Model building</a>
+<ul>
+<li><a href="#model-specification"><span class="toc-section-number">3.1</span> Model specification</a></li>
+<li><a href="#create-workflow"><span class="toc-section-number">3.2</span> Create workflow</a></li>
+<li><a href="#evaluate-model"><span class="toc-section-number">3.3</span> Evaluate model</a></li>
+<li><a href="#last-fit-and-evaluation"><span class="toc-section-number">3.4</span> Last fit and evaluation</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p><em>The following examples are adapted from the excellent book “Hands-on machine learning with scikit-learn, keras and tensorflow” from A. Geron and the <a href="https://www.tidymodels.org/start/recipes/">tidymodels documentation</a></em></p>
+<p>In this tutorial you will learn how to specify a simple regression model with the tidymodels package using recipes, which is designed to help you preprocess your data before training your model.</p>
+<p>To use the code in this article, you will need to install the following packages:</p>
+<ul>
+<li><a href="https://www.tidyverse.org/">tidyverse</a></li>
+<li><a href="https://www.tidymodels.org/">tidymodels</a></li>
+<li><a href="https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html">skimr</a></li>
+<li><a href="https://ggobi.github.io/ggally/index.html">GGally</a></li>
+<li><a href="https://github.com/dkahle/ggmap">ggmap</a></li>
+</ul>
+<pre class="r"><code>library(tidyverse)
+library(tidymodels)
+library(skimr)
+library(GGally)
+library(ggmap)</code></pre>
+<p>In this example, our goal is to build a model of housing prices in California. In particular, the model should learn from California census data and be able to predict the median house price in any district (population of 600 to 3000 people), given some predictor variables. We use the root mean square error (RMSE) as a performance measure for our regression problem.</p>
+<div id="data-understanding" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Data understanding</h1>
+<p>In Data Understanding, we first</p>
+<ul>
+<li>Import data</li>
+<li>Get an overview about the data structure</li>
+<li>Discover and visualize the data to gain insights</li>
+</ul>
+<div id="imort-data" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Imort Data</h2>
+<p>First of all, let’s import the data:</p>
+<pre class="r"><code>LINK &lt;- &quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing.csv&quot;
+housing_df &lt;- read_csv(LINK)</code></pre>
+</div>
+<div id="data-overview" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data overview</h2>
+<p>Next, we take a look at the data structure:</p>
+<p>California census top 4 rows of the DataFrame:</p>
+<pre class="r"><code>head(housing_df, 4)</code></pre>
+<pre><code>## # A tibble: 4 x 10
+##   longitude latitude housing_median_… total_rooms total_bedrooms population
+##       &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+## 1     -122.     37.9               41         880            129        322
+## 2     -122.     37.9               21        7099           1106       2401
+## 3     -122.     37.8               52        1467            190        496
+## 4     -122.     37.8               52        1274            235        558
+## # … with 4 more variables: households &lt;dbl&gt;, median_income &lt;dbl&gt;,
+## #   median_house_value &lt;dbl&gt;, ocean_proximity &lt;chr&gt;</code></pre>
+<p>Data info:</p>
+<pre class="r"><code>glimpse(housing_df)</code></pre>
+<pre><code>## Rows: 20,640
+## Columns: 10
+## $ longitude          &lt;dbl&gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.…
+## $ latitude           &lt;dbl&gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 3…
+## $ housing_median_age &lt;dbl&gt; 41, 21, 52, 52, 52, 52, 52, 52, 42, 52, 52, 52, 52…
+## $ total_rooms        &lt;dbl&gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555…
+## $ total_bedrooms     &lt;dbl&gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707,…
+## $ population         &lt;dbl&gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 1…
+## $ households         &lt;dbl&gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714,…
+## $ median_income      &lt;dbl&gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.…
+## $ median_house_value &lt;dbl&gt; 452600, 358500, 352100, 341300, 342200, 269700, 29…
+## $ ocean_proximity    &lt;chr&gt; &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;N…</code></pre>
+<p>Data summary of numerical and categorical attributes using a function from the package <code>skimr</code>:</p>
+<pre class="r"><code>skim(housing_df)</code></pre>
+<table style="width: auto;" class="table table-condensed">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 1.1: </span>Data summary
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Name
+</td>
+<td style="text-align:left;">
+housing_df
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of rows
+</td>
+<td style="text-align:left;">
+20640
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of columns
+</td>
+<td style="text-align:left;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+_______________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Column type frequency:
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+________________________
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Group variables
+</td>
+<td style="text-align:left;">
+None
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+empty
+</th>
+<th style="text-align:right;">
+n_unique
+</th>
+<th style="text-align:right;">
+whitespace
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ocean_proximity
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+p0
+</th>
+<th style="text-align:right;">
+p25
+</th>
+<th style="text-align:right;">
+p50
+</th>
+<th style="text-align:right;">
+p75
+</th>
+<th style="text-align:right;">
+p100
+</th>
+<th style="text-align:left;">
+hist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+longitude
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+-119.57
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+-124.35
+</td>
+<td style="text-align:right;">
+-121.80
+</td>
+<td style="text-align:right;">
+-118.49
+</td>
+<td style="text-align:right;">
+-118.01
+</td>
+<td style="text-align:right;">
+-114.31
+</td>
+<td style="text-align:left;">
+▂▆▃▇▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+latitude
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+35.63
+</td>
+<td style="text-align:right;">
+2.14
+</td>
+<td style="text-align:right;">
+32.54
+</td>
+<td style="text-align:right;">
+33.93
+</td>
+<td style="text-align:right;">
+34.26
+</td>
+<td style="text-align:right;">
+37.71
+</td>
+<td style="text-align:right;">
+41.95
+</td>
+<td style="text-align:left;">
+▇▁▅▂▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+housing_median_age
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+28.64
+</td>
+<td style="text-align:right;">
+12.59
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+18.00
+</td>
+<td style="text-align:right;">
+29.00
+</td>
+<td style="text-align:right;">
+37.00
+</td>
+<td style="text-align:right;">
+52.00
+</td>
+<td style="text-align:left;">
+▃▇▇▇▅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_rooms
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+2635.76
+</td>
+<td style="text-align:right;">
+2181.62
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+1447.75
+</td>
+<td style="text-align:right;">
+2127.00
+</td>
+<td style="text-align:right;">
+3148.00
+</td>
+<td style="text-align:right;">
+39320.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_bedrooms
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+<td style="text-align:right;">
+537.87
+</td>
+<td style="text-align:right;">
+421.39
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+296.00
+</td>
+<td style="text-align:right;">
+435.00
+</td>
+<td style="text-align:right;">
+647.00
+</td>
+<td style="text-align:right;">
+6445.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+population
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+1425.48
+</td>
+<td style="text-align:right;">
+1132.46
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+787.00
+</td>
+<td style="text-align:right;">
+1166.00
+</td>
+<td style="text-align:right;">
+1725.00
+</td>
+<td style="text-align:right;">
+35682.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+households
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+499.54
+</td>
+<td style="text-align:right;">
+382.33
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+280.00
+</td>
+<td style="text-align:right;">
+409.00
+</td>
+<td style="text-align:right;">
+605.00
+</td>
+<td style="text-align:right;">
+6082.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median_income
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+3.87
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+2.56
+</td>
+<td style="text-align:right;">
+3.53
+</td>
+<td style="text-align:right;">
+4.74
+</td>
+<td style="text-align:right;">
+15.00
+</td>
+<td style="text-align:left;">
+▇▇▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median_house_value
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+206855.82
+</td>
+<td style="text-align:right;">
+115395.62
+</td>
+<td style="text-align:right;">
+14999.00
+</td>
+<td style="text-align:right;">
+119600.00
+</td>
+<td style="text-align:right;">
+179700.00
+</td>
+<td style="text-align:right;">
+264725.00
+</td>
+<td style="text-align:right;">
+500001.00
+</td>
+<td style="text-align:left;">
+▅▇▅▂▂
+</td>
+</tr>
+</tbody>
+</table>
+<p>Count levels of our categorical variable:</p>
+<pre class="r"><code>housing_df %&gt;% 
+  count(ocean_proximity,
+        sort = TRUE)</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   ocean_proximity     n
+##   &lt;chr&gt;           &lt;int&gt;
+## 1 &lt;1H OCEAN        9136
+## 2 INLAND           6551
+## 3 NEAR OCEAN       2658
+## 4 NEAR BAY         2290
+## 5 ISLAND              5</code></pre>
+<p>The function <code>ggscatmat</code> from the package <code>GGally</code> creates a matrix with scatterplots, densities and correlations for numeric columns. In our code, we enter the dataset <code>housing_df</code>, choose columns 6 to 9, a color column for our categorical variable <code>ocean_proximity</code>, and an alpha level of 0.8 (for transparency).</p>
+<pre class="r"><code>ggscatmat(housing_df, columns = 6:9, color=&quot;ocean_proximity&quot;, alpha=0.8)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>To obtain an overview of even more visualizations, we can use the function <code>ggpairs</code>:</p>
+<pre class="r"><code>ggpairs(housing_df)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="data-exploration" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Data exploration</h2>
+<p>A Geographical scatterplot of the data:</p>
+<pre class="r"><code>housing_df %&gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = &quot;cornflowerblue&quot;)</code></pre>
+<div class="figure"><span id="fig:point-long-lat"></span>
+<img src="index_files/figure-html/point-long-lat-1.png" alt="Scatterplot of longitude and latitude" width="80%" />
+<p class="caption">
+Figure 1.1: Scatterplot of longitude and latitude
+</p>
+</div>
+<p>A better visualization that highlights high-density areas:</p>
+<pre class="r"><code>housing_df %&gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = &quot;cornflowerblue&quot;, alpha = 0.1) </code></pre>
+<div class="figure"><span id="fig:point-long-lat-a"></span>
+<img src="index_files/figure-html/point-long-lat-a-1.png" alt="Scatterplot of longitude and latitude that highlights high-density areas" width="80%" />
+<p class="caption">
+Figure 1.2: Scatterplot of longitude and latitude that highlights high-density areas
+</p>
+</div>
+<p>California housing prices:</p>
+<ul>
+<li>red is expensive,</li>
+<li>purple is cheap and</li>
+<li>larger circles indicate areas with a larger population.</li>
+</ul>
+<pre class="r"><code>housing_df %&gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(aes(size = population, color = median_house_value), 
+             alpha = 0.4) +
+  scale_colour_gradientn(colours=rev(rainbow(4)))</code></pre>
+<div class="figure"><span id="fig:plot-ca-prices"></span>
+<img src="index_files/figure-html/plot-ca-prices-1.png" alt="California housing_df prices" width="80%" />
+<p class="caption">
+Figure 1.3: California housing_df prices
+</p>
+</div>
+<pre class="r"><code>library(ggmap)
+
+qmplot(x = longitude, 
+       y = latitude, 
+       data = housing_df, 
+       geom = &quot;point&quot;, 
+       color = median_house_value, 
+       size = population,
+       alpha = 0.4) +
+  scale_colour_gradientn(colours=rev(rainbow(4)))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>
+<div id="data-preparation" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Data preparation</h1>
+<div id="data-splitting" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Data splitting</h2>
+<p>Before we build our model, we first split data into training and test set using stratified sampling.</p>
+<p>Let’s assume we would know that the median income is a very important attribute to predict median housing prices. Therefore, we would want to create a training and test set using stratified sampling.</p>
+<p>A <em>stratum</em> (plural strata) refers to a subset (part) of the population (entire collection of items under consideration) which is being sampled:</p>
+<pre class="r"><code>housing_df %&gt;% 
+  ggplot(aes(median_income)) +
+  geom_histogram(bins = 30)</code></pre>
+<div class="figure"><span id="fig:hist-med-income"></span>
+<img src="index_files/figure-html/hist-med-income-1.png" alt="Histogram of Median Income" width="80%" />
+<p class="caption">
+Figure 2.1: Histogram of Median Income
+</p>
+</div>
+<p>We want to ensure that the test set is representative of the various categories of incomes in the whole dataset. In other words, we would like to have instances for each <em>stratum</em>, or else the estimate of a stratum’s importance may be biased. This means that you should not have too many strata, and each stratum should be large enough. We use 5 strata in our example.</p>
+<pre class="r"><code>set.seed(42)
+
+new_split &lt;- initial_split(housing_df, 
+                           prop = 3/4, 
+                           strata = median_income, 
+                           breaks = 5)
+
+new_train &lt;- training(new_split) 
+new_test &lt;- testing(new_split)</code></pre>
+</div>
+<div id="recipes" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Recipes</h2>
+<p>Next, we use a <code>recipe()</code> to build a set of steps for data preprocessing and feature engineering.</p>
+<p>Recipes are built as a series of preprocessing steps, such as:</p>
+<ul>
+<li>converting qualitative predictors to indicator variables (also known as dummy variables),</li>
+<li>transforming data to be on a different scale (e.g., taking the logarithm of a variable),</li>
+<li>transforming whole groups of predictors together,</li>
+<li>extracting key features from raw variables (e.g., getting the day of the week out of a date variable),</li>
+</ul>
+<p>In summary, the idea of the <a href="https://recipes.tidymodels.org">recipes package</a> is to define a recipe or blueprint that can be used to sequentially define the encodings and preprocessing of the data (i.e. “feature engineering”) before we build our models.</p>
+<ol style="list-style-type: decimal">
+<li><p>First, we must tell the <code>recipe()</code> what our model is going to be (using a formula here) and what our training data is.</p></li>
+<li><p><code>step_novel()</code> will convert all nominal variables to factors.</p></li>
+<li><p>We then convert the factor columns into (one or more) numeric binary (0 and 1) variables for the levels of the training data.</p></li>
+<li><p>We remove any numeric variables that have zero variance.</p></li>
+<li><p>We normalize (center and scale) the numeric variables.</p></li>
+</ol>
+<pre class="r"><code>housing_rec &lt;-
+  recipe(median_house_value ~ ., data = new_train) %&gt;%
+  step_novel(all_nominal(), -all_outcomes()) %&gt;%
+  step_dummy(all_nominal()) %&gt;%
+  step_zv(all_predictors()) %&gt;%
+  step_normalize(all_predictors())
+
+# Show the content of our recipe
+housing_rec</code></pre>
+<pre><code>## Data Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          9
+## 
+## Operations:
+## 
+## Novel factor level assignment for all_nominal(), -all_outcomes()
+## Dummy variables from all_nominal()
+## Zero variance filter on all_predictors()
+## Centering and scaling for all_predictors()</code></pre>
+<p>Now it’s time to <strong>specify</strong> and then <strong>fit</strong> our models.</p>
+</div>
+</div>
+<div id="model-building" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Model building</h1>
+<div id="model-specification" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Model specification</h2>
+<ol style="list-style-type: decimal">
+<li>Pick a <code>model type</code>: choose from this <a href="https://www.tidymodels.org/find/parsnip/">list</a></li>
+<li>Set the <code>engine</code>: choose from this <a href="https://www.tidymodels.org/find/parsnip/">list</a></li>
+<li>Set the <code>mode</code>: regression or classification</li>
+</ol>
+<pre class="r"><code>library(tidymodels)
+
+lm_spec &lt;- # your model specification
+  linear_reg() %&gt;%  # model type
+  set_engine(engine = &quot;lm&quot;) %&gt;%  # model engine
+  set_mode(&quot;regression&quot;) # model mode
+
+# Show your model specification
+lm_spec</code></pre>
+<pre><code>## Linear Regression Model Specification (regression)
+## 
+## Computational engine: lm</code></pre>
+<p>To combine the data preparation with the model building, we use the package <a href="https://workflows.tidymodels.org">workflows</a>.</p>
+<p>A workflow is an object that can bundle together your pre-processing, modeling, and post-processing requests</p>
+</div>
+<div id="create-workflow" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Create workflow</h2>
+<pre class="r"><code>lm_wflow &lt;-
+ workflow() %&gt;%
+ add_model(lm_spec) %&gt;% 
+ add_recipe(housing_rec)</code></pre>
+</div>
+<div id="evaluate-model" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Evaluate model</h2>
+<p>We build a validation set with K-fold crossvalidation:</p>
+<pre class="r"><code>set.seed(100)
+
+cv_folds &lt;-
+ vfold_cv(new_train, 
+          v = 5, 
+          strata = median_income,
+          breaks = 5) 
+
+cv_folds</code></pre>
+<pre><code>## #  5-fold cross-validation using stratification 
+## # A tibble: 5 x 2
+##   splits               id   
+##   &lt;list&gt;               &lt;chr&gt;
+## 1 &lt;split [12.4K/3.1K]&gt; Fold1
+## 2 &lt;split [12.4K/3.1K]&gt; Fold2
+## 3 &lt;split [12.4K/3.1K]&gt; Fold3
+## 4 &lt;split [12.4K/3.1K]&gt; Fold4
+## 5 &lt;split [12.4K/3.1K]&gt; Fold5</code></pre>
+<p>Now we can fit the model and collect the performance metrics with <code>collect_metrics()</code>:</p>
+<pre class="r"><code>lm_wflow_eval &lt;- 
+  lm_wflow %&gt;% 
+  fit_resamples(
+    median_house_value ~ ., 
+    resamples = cv_folds
+    ) 
+
+lm_wflow_eval%&gt;% 
+    collect_metrics()</code></pre>
+<pre><code>## # A tibble: 2 x 6
+##   .metric .estimator      mean     n   std_err .config             
+##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;               
+## 1 rmse    standard   69040.        5 787.      Preprocessor1_Model1
+## 2 rsq     standard       0.644     5   0.00983 Preprocessor1_Model1</code></pre>
+<p>Usually, we would fit multiple models and select the one with the smallest RMSE. In this example, we only demonstrate the process with one model.</p>
+</div>
+<div id="last-fit-and-evaluation" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Last fit and evaluation</h2>
+<p>Fit the best model to the training set and evaluate the test set with the function <a href="https://tune.tidymodels.org/reference/last_fit.html"><code>last_fit()</code></a>:</p>
+<pre class="r"><code>last_fit_lm &lt;- last_fit(lm_wflow, split = new_split)
+
+# Show RMSE and RSQ
+last_fit_lm %&gt;% 
+  collect_metrics()</code></pre>
+<pre><code>## # A tibble: 2 x 4
+##   .metric .estimator .estimate .config             
+##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+## 1 rmse    standard   68182.    Preprocessor1_Model1
+## 2 rsq     standard       0.650 Preprocessor1_Model1</code></pre>
+</div>
+</div>
