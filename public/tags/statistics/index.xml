@@ -836,6 +836,15 @@ last_fit_lm %&amp;gt;%
     </item>
     
     <item>
+      <title>Applied Statistics</title>
+      <link>https://kirenz.com/talk/2019-applied-statistics/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/talk/2019-applied-statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Text Mining in R</title>
       <link>https://kirenz.com/post/2019-09-16-r-text-mining/</link>
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
@@ -3980,14 +3989,18 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
       
       <guid>https://kirenz.com/project/r-correlation-tutorial/</guid>
       <description>&lt;p&gt;Correlation is a way of measuring the extent to which two variables are related. This means we need to analyze whether as one variable increases, the other&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;(1) increases,&lt;/li&gt;
 &lt;li&gt;(2) decreases or&lt;/li&gt;
 &lt;li&gt;(3) stays the same.&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;This can be done by calculating the covariance or correlation of two variables.&lt;/p&gt;
-&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
-&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In this &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.md&#34; target=&#34;_blank&#34;&gt;Correlation Tutorial in R&lt;/a&gt;, we  use a small dataset to illustrate the concepts of covariance and correlation. You may also download the &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation.Rmd&#34; target=&#34;_blank&#34;&gt;Rmarkdown file&lt;/a&gt; and open it in RStudio.&lt;/p&gt;
+
+&lt;p&gt;Check your understanding with &lt;a href=&#34;https://github.com/kirenz/correlation/blob/master/Correlation_task.pdf&#34; target=&#34;_blank&#34;&gt;multiple choice tasks&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -3997,11 +4010,17 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kirenz.com/project/r-lasso-regression/</guid>
-      <description>&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
-&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
+      <description>
+
+&lt;h1 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h1&gt;
+
+&lt;p&gt;In statistics and machine learning, lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces (&lt;a href=&#34;https://en.wikipedia.org/wiki/Lasso_(statistics)&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt;).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Lasso Regression with Python (Auto Data): &lt;a href=&#34;https://github.com/kirenz/lasso-regression/blob/master/python-lasso-regression-auto.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 </description>
     </item>
     
@@ -4011,18 +4030,27 @@ mean_squared_error(y_test, reg_best.predict(X_test))&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 11 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kirenz.com/project/python-time-series/</guid>
-      <description>&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
+      <description>
+
+&lt;h1 id=&#34;time-series-analysis-with-python&#34;&gt;Time Series Analysis with Python&lt;/h1&gt;
+
 &lt;p&gt;Time series analysis can be used in a multitude of business applications for forecasting a quantity into the future and explaining its historical patterns. Here are just a few examples of possible use cases:&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Explaining seasonal patterns in sales&lt;/li&gt;
 &lt;li&gt;Predicting the expected number of incoming or churning customers&lt;/li&gt;
 &lt;li&gt;Estimating the effect of a newly launched product on number of sold units&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Introduction to Time Series Analysis with Python: Fit &lt;strong&gt;ARIMA&lt;/strong&gt; and &lt;strong&gt;SARIMAX-Models&lt;/strong&gt; with &lt;code&gt;Statsmodel&lt;/code&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/time-series-first-steps.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Introduction to Facebook&amp;rsquo;s time series analysis modul &lt;strong&gt;Prophet&lt;/strong&gt;: &lt;a href=&#34;https://github.com/kirenz/time-series-analysis/blob/master/Prophet.ipynb&#34; target=&#34;_blank&#34;&gt;Jupyter Notebook&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 </description>
     </item>
     
@@ -4196,8 +4224,12 @@ ggplot(Advertising, aes(sales)) +
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kirenz.com/project/python-linear-regression/</guid>
-      <description>&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
+      <description>
+
+&lt;h1 id=&#34;linear-regression-tutorial-in-python&#34;&gt;Linear Regression Tutorial in Python&lt;/h1&gt;
+
 &lt;p&gt;Linear regression is the fundamental starting point for all regression methods. In this Jupyter Notebook, we fit a regression model in Python and take a closer look at the following topics:&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Histogramms&lt;/li&gt;
 &lt;li&gt;Boxplots&lt;/li&gt;
@@ -4210,7 +4242,8 @@ ggplot(Advertising, aes(sales)) +
 &lt;li&gt;Standard error&lt;/li&gt;
 &lt;li&gt;Confidence interval&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Download the linear regression tutorial Jupyter Notebook in &lt;a href=&#34;https://github.com/kirenz/linear-regression/blob/master/python-regression-tutorial.ipynb&#34;&gt;GitHub&lt;/a&gt; and open the file in Jupyter Notebook.&lt;/p&gt;
+
+&lt;p&gt;Download the linear regression tutorial Jupyter Notebook in &lt;a href=&#34;https://github.com/kirenz/linear-regression/blob/master/python-regression-tutorial.ipynb&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt; and open the file in Jupyter Notebook.&lt;/p&gt;
 </description>
     </item>
     
@@ -4220,22 +4253,24 @@ ggplot(Advertising, aes(sales)) +
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kirenz.com/project/r-data-science-statistics/</guid>
-      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
+      <description>&lt;p&gt;&amp;ldquo;&lt;strong&gt;R for Data Science&lt;/strong&gt;&amp;rdquo; offers an excellent introduction into data science in R with a focus on the popular package collection &lt;a href=&#34;https://www.tidyverse.org&#34; target=&#34;_blank&#34;&gt;tidyverse&lt;/a&gt;. See how the &lt;em&gt;tidyverse&lt;/em&gt; makes data science faster, easier and more fun:&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://r4ds.had.co.nz&#34; target=&#34;_blank&#34;&gt;Wickham, H., &amp;amp; Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. O&amp;rsquo;Reilly Media, Inc.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&amp;rdquo; provides an accessible overview of the field of statistical learning with applications in R. This book presents important modeling and prediction techniques, along with relevant applications. Topics include linear regression, classification, resampling methods, shrinkage approaches, tree-based methods, support vector machines, clustering, and more:&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.statlearning.com&#34; target=&#34;_blank&#34;&gt;James, G., Witten, D., Hastie, T., &amp;amp; Tibshirani, R. (2013). An introduction to statistical learning with applications in R (Corr. 7th printing 2017). New York: Springer.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;&amp;ldquo;&lt;strong&gt;Statistical Thinking for the 21 Century&lt;/strong&gt;&amp;rdquo; and &amp;ldquo;&lt;strong&gt;Modern Dive: Statistical Inference via Data Science&lt;/strong&gt;&amp;rdquo; are both open-source digital textbooks which provide a great introduction into the fundamentals of modern quantitative methods which take advantage of today’s increased computing power to solve statistical problems with R:&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://statsthinking21.org&#34; target=&#34;_blank&#34;&gt;Poldrack, R. A. (2019). Statistical Thinking for the 21 Century. http://thinkstats.org.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://moderndive.com/index.html#sec:intro-for-students&#34; target=&#34;_blank&#34;&gt;Ismay, C. &amp;amp; Kim, A. Y. (2019). Modern Dive: Statistical Inference via Data Science. https://moderndive.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

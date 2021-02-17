@@ -5117,7 +5117,7 @@ ggplot(Advertising, aes(sales)) +
 &lt;li&gt;If you are going to use &lt;a href=&#34;https://www.netlify.com&#34;&gt;Netlify&lt;/a&gt; to host the site, you can name this repository anything you want!
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    You can see some of the repo names used by members of the &lt;!-- raw HTML omitted --&gt;rbind&lt;!-- raw HTML omitted --&gt; organization &lt;!-- raw HTML omitted --&gt;here&lt;!-- raw HTML omitted --&gt;.
+    You can see some of the repo names used by members of the &lt;code&gt;rbind&lt;/code&gt; organization &lt;a href=&#34;https://github.com/rbind/repositories&#34;&gt;here&lt;/a&gt;.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/li&gt;
@@ -5211,7 +5211,7 @@ new_site() # default theme is lithium
 install_theme(&amp;quot;gcushen/hugo-academic&amp;quot;, theme_example = TRUE, update_config = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    Now is a good time to re-read about &lt;!-- raw HTML omitted --&gt;blogdown::serve_site()&lt;!-- raw HTML omitted --&gt; and &lt;!-- raw HTML omitted --&gt;how &lt;!-- raw HTML omitted --&gt;LiveReload&lt;!-- raw HTML omitted --&gt; works&lt;!-- raw HTML omitted --&gt; (and how it blocks your R console by default)
+    Now is a good time to re-read about &lt;code&gt;blogdown::serve_site()&lt;/code&gt; and &lt;a href=&#34;https://bookdown.org/yihui/blogdown/a-quick-example.html&#34;&gt;how &lt;em&gt;LiveReload&lt;/em&gt; works&lt;/a&gt; (and how it blocks your R console by default)
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
@@ -5232,7 +5232,7 @@ install_theme(&amp;quot;gcushen/hugo-academic&amp;quot;, theme_example = TRUE, u
 baseurl = &amp;quot;/&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
   &lt;div&gt;
-    Make sure that the &lt;!-- raw HTML omitted --&gt;baseurl =&lt;!-- raw HTML omitted --&gt; listed ends with a trailing slash &lt;!-- raw HTML omitted --&gt;/&lt;!-- raw HTML omitted --&gt;!
+    Make sure that the &lt;code&gt;baseurl =&lt;/code&gt; listed ends with a trailing slash &lt;code&gt;/&lt;/code&gt;!
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
@@ -5291,7 +5291,7 @@ blogdown::new_post(ext = &amp;#39;.md&amp;#39;) # md is the default!&lt;/code&gt
     ext = getOption(&amp;quot;blogdown.ext&amp;quot;, &amp;quot;.md&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    Remember to use the &lt;!-- raw HTML omitted --&gt;Serve Site&lt;!-- raw HTML omitted --&gt; addin again so that you can immediately view your changes with every save using &lt;!-- raw HTML omitted --&gt;LiveReload&lt;!-- raw HTML omitted --&gt;.
+    Remember to use the &lt;strong&gt;Serve Site&lt;/strong&gt; addin again so that you can immediately view your changes with every save using &lt;em&gt;LiveReload&lt;/em&gt;.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
@@ -5307,7 +5307,7 @@ blogdown::new_post(ext = &amp;#39;.md&amp;#39;) # md is the default!&lt;/code&gt
 &lt;p&gt;After you edit your &lt;code&gt;.Rmd&lt;/code&gt; post, in addition to saving the changes in your &lt;code&gt;.Rmd&lt;/code&gt; file, you &lt;em&gt;must&lt;/em&gt; use &lt;code&gt;blogdown::serve_site&lt;/code&gt;- this is how the output &lt;code&gt;html&lt;/code&gt; file needs to be generated.&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
   &lt;div&gt;
-    Do &lt;!-- raw HTML omitted --&gt;not&lt;!-- raw HTML omitted --&gt; knit your &lt;!-- raw HTML omitted --&gt;.Rmd&lt;!-- raw HTML omitted --&gt; posts- use &lt;!-- raw HTML omitted --&gt;blogdown::serve_site&lt;!-- raw HTML omitted --&gt; instead. If you happen to hit the knit button, just &lt;!-- raw HTML omitted --&gt;Serve Site&lt;!-- raw HTML omitted --&gt; again to rewrite the &lt;!-- raw HTML omitted --&gt;.html&lt;!-- raw HTML omitted --&gt; file.
+    Do &lt;em&gt;not&lt;/em&gt; knit your &lt;code&gt;.Rmd&lt;/code&gt; posts- use &lt;code&gt;blogdown::serve_site&lt;/code&gt; instead. If you happen to hit the knit button, just &lt;strong&gt;Serve Site&lt;/strong&gt; again to rewrite the &lt;code&gt;.html&lt;/code&gt; file.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
@@ -5325,7 +5325,7 @@ output:
 ---&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    Remember to use the &lt;!-- raw HTML omitted --&gt;Serve Site&lt;!-- raw HTML omitted --&gt; addin again so that you can immediately view your changes with every save using &lt;!-- raw HTML omitted --&gt;LiveReload&lt;!-- raw HTML omitted --&gt; and your &lt;!-- raw HTML omitted --&gt;.html&lt;!-- raw HTML omitted --&gt; file is properly output.
+    Remember to use the &lt;strong&gt;Serve Site&lt;/strong&gt; addin again so that you can immediately view your changes with every save using &lt;em&gt;LiveReload&lt;/em&gt; and your &lt;code&gt;.html&lt;/code&gt; file is properly output.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
@@ -5364,7 +5364,7 @@ Hugo Static Site Generator v0.20.7 darwin/amd64 BuildDate: 2017-05-08T18:37:40-0
 &lt;p&gt;Netlify will deploy your site and assign you a random subdomain name of the form &lt;code&gt;random-word-12345.netlify.com&lt;/code&gt;. You should know that you can change this; e.g. to &lt;code&gt;mynewsite.netlify.com&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    Anytime you change your subdomain name, you need to update the &lt;!-- raw HTML omitted --&gt;baseurl&lt;!-- raw HTML omitted --&gt; in your &lt;!-- raw HTML omitted --&gt;config.toml&lt;!-- raw HTML omitted --&gt; file (e.g., baseurl = “&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://mynewsite.netlify.com/&#34;&gt;https://mynewsite.netlify.com/&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;”).
+    Anytime you change your subdomain name, you need to update the &lt;code&gt;baseurl&lt;/code&gt; in your &lt;code&gt;config.toml&lt;/code&gt; file (e.g., baseurl = “&lt;a href=&#34;https://mynewsite.netlify.com/&#34; class=&#34;uri&#34;&gt;&lt;a href=&#34;https://mynewsite.netlify.com/&#34; target=&#34;_blank&#34;&gt;https://mynewsite.netlify.com/&lt;/a&gt;&lt;/a&gt;”).
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;
@@ -5400,7 +5400,7 @@ Hugo Static Site Generator v0.20.7 darwin/amd64 BuildDate: 2017-05-08T18:37:40-0
 &lt;p&gt;You may want a different &lt;a href=&#34;https://bookdown.org/yihui/blogdown/domain-name.html&#34;&gt;domain name&lt;/a&gt; than the one provided by Netlify. Alison opted for a free subdomain &lt;code&gt;*.rbind.io&lt;/code&gt; offered by RStudio. To do the same, head over to the &lt;a href=&#34;https://github.com/rbind/support/issues&#34;&gt;rbind/support GitHub page&lt;/a&gt; and open a new issue. All you need to do is let them know what your Netlify subdomain name is (&lt;code&gt;*.netlify.com&lt;/code&gt;), and what you want your subdomain name to be (&lt;code&gt;*.rbind.io&lt;/code&gt;). The &lt;a href=&#34;https://support.rbind.io&#34;&gt;&lt;code&gt;rbind&lt;/code&gt; support team&lt;/a&gt; will help you take it from there!&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
-    Again, you will need to update the &lt;!-- raw HTML omitted --&gt;baseurl&lt;!-- raw HTML omitted --&gt; in your &lt;!-- raw HTML omitted --&gt;config.toml&lt;!-- raw HTML omitted --&gt; file to reflect your new rbind subdomain name (so Alison’s is baseurl = “&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://alison.rbind.io/&#34;&gt;https://alison.rbind.io/&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;”).
+    Again, you will need to update the &lt;code&gt;baseurl&lt;/code&gt; in your &lt;code&gt;config.toml&lt;/code&gt; file to reflect your new rbind subdomain name (so Alison’s is baseurl = “&lt;a href=&#34;https://alison.rbind.io/&#34; class=&#34;uri&#34;&gt;&lt;a href=&#34;https://alison.rbind.io/&#34; target=&#34;_blank&#34;&gt;https://alison.rbind.io/&lt;/a&gt;&lt;/a&gt;”).
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/p&gt;

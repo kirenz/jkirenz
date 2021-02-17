@@ -121,20 +121,29 @@
     </item>
     
     <item>
+      <title>Python</title>
+      <link>https://kirenz.com/tags/python/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StatisticalLearning</title>
+      <link>https://kirenz.com/tags/statisticallearning/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/tags/statisticallearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>NetworkAnalysis</title>
       <link>https://kirenz.com/tags/networkanalysis/</link>
       <pubDate>Mon, 12 Aug 2019 10:00:00 +0000</pubDate>
       
       <guid>https://kirenz.com/tags/networkanalysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://kirenz.com/tags/python/</link>
-      <pubDate>Mon, 12 Aug 2019 10:00:00 +0000</pubDate>
-      
-      <guid>https://kirenz.com/tags/python/</guid>
       <description></description>
     </item>
     
@@ -166,15 +175,6 @@
     </item>
     
     <item>
-      <title>book</title>
-      <link>https://kirenz.com/tags/book/</link>
-      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kirenz.com/tags/book/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>DataReporting</title>
       <link>https://kirenz.com/tags/datareporting/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
@@ -184,11 +184,11 @@
     </item>
     
     <item>
-      <title>StatisticalLearning</title>
-      <link>https://kirenz.com/tags/statisticallearning/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <title>book</title>
+      <link>https://kirenz.com/tags/book/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kirenz.com/tags/statisticallearning/</guid>
+      <guid>https://kirenz.com/tags/book/</guid>
       <description></description>
     </item>
     

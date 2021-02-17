@@ -19,7 +19,9 @@
       
       <guid>https://kirenz.com/talk/2019-web-analytics-social-media/</guid>
       <description>&lt;p&gt;In dem Kurs Angewandte Statistik (Applied Statistics) werden zentrale statistische Methoden und Modelle für die fundierte Analyse quantitativer Daten behandelt. Der Schwerpunkt der Veranstaltung liegt in der Vermittlung moderner statistischer Verfahren (bspw. Lasso Regression, Generalized Additive Models, Cross Validation, Bootstrapping) anhand praxisbezogener Fallstudien. In den Fallstudien werden die statistischen Berechnungen und Modellierungen anhand der populären Programmiersprachen R und Python vorgestellt.&lt;/p&gt;
+
 &lt;p&gt;Inhaltliche Schwerpunkte:&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Deskriptive Statistik&lt;/li&gt;
 &lt;li&gt;Explorative Datenanalyse&lt;/li&gt;
@@ -32,9 +34,11 @@
 &lt;li&gt;Regularization&lt;/li&gt;
 &lt;li&gt;Nicht lineare Modelle&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;Nach Abschluss des Moduls verfügen die Teilnehmenden über:&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;Umfangreiches Wissen zu modernen statistischen Methoden und Modellen für die fundierte Analyse unterschiedlicher Datentypen.&lt;/li&gt;
+&lt;li&gt;Umfangreiches Wissen zu modernen statistischen Methoden und Modellen für die fundierte Analyse unterschiedlicher Datentypen.&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Die Fähigkeit, Ergebnisse statistischer Analysen zu interpretieren.&lt;/li&gt;
 &lt;li&gt;Kenntnisse für eine verständliche und visuell ansprechende Ergebnisdarstellung.&lt;/li&gt;
 &lt;li&gt;Anwendungsbezogene Kenntnisse statistischer Programmierung in Python und R.&lt;/li&gt;
@@ -49,6 +53,7 @@
       
       <guid>https://kirenz.com/talk/2019-programming-languages/</guid>
       <description>&lt;p&gt;Anhand von mehreren Fallstudien wird zunächst die Extraktion, Bearbeitung und Analyse von Daten in unterschiedlichen Datenbanken mit Hilfe von SQL eingehend behandelt. Der dabei gelernte SQL-Syntax – bspw.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Datenimport,&lt;/li&gt;
 &lt;li&gt;Verknüpfung von Tabellen,&lt;/li&gt;
@@ -58,12 +63,15 @@
 &lt;li&gt;Textanalysen und&lt;/li&gt;
 &lt;li&gt;bedingte Ausdrücke (Conditional Expressions)&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;kann auf eine Vielzahl von Datenbanken wie bspw.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;PostgreSQL,&lt;/li&gt;
 &lt;li&gt;MySQL,&lt;/li&gt;
 &lt;li&gt;Microsoft Azure SQL Datenbank, Google BigQuery und Oracle angewendet werden.&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;Im Rahmen der Datenanalyse mit R werden neben den zentralen Grundkenntnissen der Programmiersprache R insbesondere Kompetenzen im Umgang mit Datentransformationen („Data Wrangling“), der explorativen Datenanalyse und Visualisierung von Daten (bspw. mit Hilfe eines Dashboards) vermittelt. Zudem wird die Erstellung und Ausgabe (bspw. als HTML, PDF, Word, Excel, PPT,…) von Reports in R markdown behandelt.&lt;/p&gt;
 </description>
     </item>
@@ -75,8 +83,11 @@
       
       <guid>https://kirenz.com/talk/2019-web-analytics/</guid>
       <description>&lt;p&gt;In der Veranstaltung Web Analytics befassen wir uns mit der Erfassung, Analyse und Visualisierung von strukturierten und unstrukturierten Daten aus dem Internet -  bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren und anderen Webpräsenzen.&lt;/p&gt;
+
 &lt;p&gt;Von besonderem Interesse sind in diesem Zusammenhang &amp;ldquo;offene Daten&amp;rdquo; (Open Data), die im Internet zur freien Weiterverwendung frei zugänglich gemacht werden (insbesondere von Organisationen wie der OECD, Weltbank und von staatlichen Stellen).&lt;/p&gt;
+
 &lt;p&gt;Wir werden insbesondere mit der Programmiersprache R arbeiten und die folgenden Inhalte behandeln:&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Web-scraping&lt;/li&gt;
 &lt;li&gt;Data Science&lt;/li&gt;
@@ -95,6 +106,15 @@
       <guid>https://kirenz.com/talk/2019-big-data-web-analytics/</guid>
       <description>&lt;p&gt;&amp;lsquo;In der Veranstaltung Web Analytics &amp;amp; Big Data befassen wir uns mit der Erfassung und Analyse von strukturierten und unstrukturierten (großen) Daten - bspw. Daten aus sozialen Medien, Multi-Media-Plattformen, Microblogs, Foren, Webpräsenzen. Die dadurch gewonnenen Erkenntnisse sollen einen Beitrag zu dem systematischen Aufbau und der Pflege dauerhafter und profitabler Kundenbeziehungen leisten und beziehen sich insbesondere auf die Phasen der Kundengewinnung, Kundenbindung und Vermeidung der Kundenabwanderung innerhalb des Customer Lifecycle Managements.&amp;rsquo;&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Applied Statistics</title>
+      <link>https://kirenz.com/talk/2019-applied-statistics/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/talk/2019-applied-statistics/</guid>
+      <description></description>
     </item>
     
   </channel>
