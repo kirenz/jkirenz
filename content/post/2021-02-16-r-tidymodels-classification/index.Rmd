@@ -23,21 +23,17 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, 	fig.align = 'center', error=TRUE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 	fig.align = 'center')
 library(tidyverse)
 library(skimr)
 library(GGally)
 library(ggmap)
+library(tidymodels)
 library(visdat)
 library(corrr)
 library(ggsignif)
 library(gt)
 library(vip)
-library(themis)
-library(purrr)
-library(tidyr)
-library(tidymodels)
-
 
 theme_set(theme_classic())
 ```
@@ -382,7 +378,7 @@ We first make a copy of the training data since we don't want to alter our data 
 data_explore <- train_data
 ```
 
-Next, we take a closer look at the relationships between our variables. In particular, we are interested in the relationships between ur *dependent* variable `price_category` and all other variables. The goal is to identify possible *predictor variables* which we could use in our models to predict the `price_category`. 
+Next, we take a closer look at the relationships between our variables. In particular, we are interested in the relationships between our *dependent* variable `price_category` and all other variables. The goal is to identify possible *predictor variables* which we could use in our models to predict the `price_category`. 
 
 
 ### Geographical overview
@@ -1003,7 +999,7 @@ filter(all_coef, term == "median_income")
 
 #### Performance metrics
 
-Show average performance over all folds (note that we use `log_res`):
+Show average performance over all folds:
 
 ```{r}
 log_res %>%  collect_metrics(summarize = TRUE)
@@ -1079,8 +1075,7 @@ Plot predicted probability distributions for our two classes.
 log_res %>%
   collect_predictions() %>% 
   ggplot() +
-  geom_density(aes(x = .pred_above, 
-                   fill = price_category), 
+  geom_density(aes(x = .pred_above, fill = price_category), 
                alpha = 0.5)
 ```
 
