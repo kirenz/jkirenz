@@ -52,8 +52,8 @@ In this tutorial, we'll build the following classification models using the tidy
 Furthermore, we follow the data science lifecycle process proposed by @Wirth2000:
 
 
-```{r crisp1, fig.margin = TRUE, echo = FALSE, out.width = "50%", out.height = "50%", fig.cap = "Cross Industry Standard Process for Data Mining (@Wirth2000)"}
-knitr::include_graphics("css/CRISP-DM.png")
+```{r crisp1, fig.margin = TRUE, echo = FALSE, out.width = "50%", out.height = "50%", fig.cap = "Cross Industry Standard Process for Data Mining (Wirth & Hipp, 2000)"}
+knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/CRISP-DM.png")
 ```
 
 
@@ -74,10 +74,10 @@ In our example, the goal is to build a classification model to predict the type 
 
 Note that in our classification example we again use the dataset from the previous regession tutorial. Therefore, we first need to create our categorical dependent variable from the numeric variable median house value. We will do this in the phase data understanding during the creation of new variables. Afterwards, we will remove the numeric variable median house value from our data. 
 
-Let's assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The **data processing components** (also called data pipeline) are shown in \@ref(fig:datapipeline-class) (you can use [Google's architectural templates](https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265) to draw the data pipeline).
+Let's assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The **data processing components** (also called data pipeline) are shown in the figure below (you can use [Google's architectural templates](https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265) to draw a data pipeline).
 
 ```{r datapipeline-class, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "Data processing components"}
-knitr::include_graphics("css/data-pipeline.png")
+knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/data-pipeline.png")
 ```
 
 
