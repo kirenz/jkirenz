@@ -17,13 +17,13 @@ a:hover {
 .navbar-light .navbar-nav>.nav-item>.nav-link:focus,
 .navbar-light .navbar-nav>.nav-item>.nav-link:hover,
 .navbar-light .navbar-nav>.nav-item>.nav-link:active {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .navbar-light .navbar-nav > li.nav-item > a.active, 
 .navbar-light .navbar-nav > li.nav-item > a.active:focus, 
 .navbar-light .navbar-nav > li.nav-item > a.active:hover {
-  font-weight: 700;
+  font-weight: 600;
   transition: color .2s ease;
 }
 
