@@ -23,7 +23,8 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, 	fig.align = 'center', error=TRUE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 	fig.align = 'center')
+
 library(tidyverse)
 library(skimr)
 library(GGally)
@@ -38,8 +39,6 @@ library(purrr)
 library(tidyr)
 library(tidymodels)
 
-
-theme_set(theme_classic())
 ```
 
 
@@ -51,9 +50,11 @@ In this tutorial, we'll build the following classification models using the tidy
 * Random Forest,
 * XGBoost (extreme gradient boosted trees),
 * K-nearest neighbor
-* Neural network
+* Neural network 
 
-Furthermore, we follow the data science lifecycle process proposed by @Wirth2000:
+Note that due to performance reasons, I only show the code for the neural net but don't actually run it.  
+
+Furthermore, we follow this data science lifecycle process:
 
 
 ```{r crisp1clas, fig.margin = TRUE, echo = FALSE, out.width = "50%", out.height = "50%", fig.cap = "Cross Industry Standard Process for Data Mining (Wirth & Hipp, 2000)"}
@@ -651,7 +652,7 @@ test_data <- testing(data_split)
 
 ## Data prepropecessing recipe 
 
-The type of data preprocessing is dependent on the data and the type of model being fit. The excellent book "Tidy Modeling with R" provides an [appendix with recommendations for baseline levels of preprocessing](https://www.tmwr.org/pre-proc-table.html) that are needed for various model functions (@Kuhn2021) 
+The type of data preprocessing is dependent on the data and the type of model being fit. The excellent book "Tidy Modeling with R" provides an [appendix with recommendations for baseline levels of preprocessing](https://www.tmwr.org/pre-proc-table.html) that are needed for various model functions. 
 
 
 Let’s create a base `recipe` for all of our classification models. Note that the sequence of steps matter:
@@ -840,7 +841,7 @@ knn_spec <-
 
 To use the neural network model, you will need to install the following packages: `keras`. You will also need the python keras library installed (see `?keras::install_keras()`).
 
-```{r}
+```{r eval = FALSE}
 library(keras)
 
 nnet_spec <-
@@ -909,7 +910,7 @@ knn_wflow <-
 
 Bundle recipe and model:
 
-```{r}
+```{r eval =FALSE}
 nnet_wflow <-
  workflow() %>%
  add_recipe(housing_rec) %>% 
@@ -953,9 +954,9 @@ The above described method to obtain `log_res` is fine if we are not interested 
 
 ```{r}
 # save model coefficients for a fitted model object from a workflow
+
 get_model <- function(x) {
-  pull_workflow_fit(x) %>% 
-    tidy()
+  pull_workflow_fit(x) %>% tidy()
 }
 
 # same as before with one exception
@@ -971,8 +972,6 @@ log_res_2 <-
       save_pred = TRUE,
       extract = get_model) # use extract and our new function
     ) 
-
-log_res_2
 
 ```
 
@@ -1034,7 +1033,7 @@ log_pred <-
 Now we can use the predictions to create a *confusion matrix* with `conf_mat()`:
 
 ```{r}
-log_pred %>%
+log_pred %>% 
   conf_mat(price_category, .pred_class) 
 ```
 
@@ -1042,7 +1041,7 @@ Additionally, the confusion matrix can quickly be visualized in different format
 
 
 ```{r}
-log_pred %>%
+log_pred %>% 
   conf_mat(price_category, .pred_class) %>% 
   autoplot(type = "mosaic")
 ```
@@ -1050,7 +1049,7 @@ log_pred %>%
 Or type heatmap:
 
 ```{r}
-log_pred %>%
+log_pred %>% 
   conf_mat(price_category, .pred_class) %>% 
   autoplot(type = "heatmap")
 ```
@@ -1062,7 +1061,7 @@ We can also make an ROC curve for our 5 folds. Since the category we are predict
 
 ```{r}
 
-log_pred %>%
+log_pred %>% 
   group_by(id) %>% # id contains our folds
   roc_curve(price_category, .pred_above) %>% 
   autoplot()
@@ -1076,8 +1075,7 @@ Visit [Google developer's Machine Learning Crashcourse](https://developers.googl
 Plot predicted probability distributions for our two classes.
 
 ```{r}
-log_res %>%
-  collect_predictions() %>% 
+log_pred %>% 
   ggplot() +
   geom_density(aes(x = .pred_above, 
                    fill = price_category), 
@@ -1147,7 +1145,7 @@ knn_res %>% collect_metrics(summarize = TRUE)
 
 We don't repeat all of the steps shown in logistic regression and just focus on the performance metrics.
 
-```{r}
+```{r eval=FALSE}
 nnet_res <- 
   nnet_wflow %>% 
   fit_resamples(
@@ -1159,7 +1157,6 @@ nnet_res <-
     control = control_resamples(save_pred = TRUE)
     ) 
 
-nnet_res %>% collect_metrics(summarize = TRUE)
 ```
 
 
@@ -1189,17 +1186,19 @@ knn_metrics <-
   collect_metrics(summarise = TRUE) %>%
   mutate(model = "Knn")
 
-nnet_metrics <- 
-  nnet_res %>% 
-  collect_metrics(summarise = TRUE) %>%
-  mutate(model = "Neural Net")
+# nnet_metrics <- 
+#   nnet_res %>% 
+#   collect_metrics(summarise = TRUE) %>%
+#   mutate(model = "Neural Net")
 
 # create dataframe with all models
-model_compare <- bind_rows(log_metrics,
+model_compare <- bind_rows(
+                          log_metrics,
                            rf_metrics,
                            xgb_metrics,
                            knn_metrics,
-                           nnet_metrics) 
+                         # nnet_metrics
+                           ) 
 
 # change data structure
 model_comp <- 

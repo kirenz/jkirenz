@@ -7,10 +7,3011 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; Jan Kirenz, {year}</copyright>
-    <lastBuildDate>Sat, 19 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://kirenz.com/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Classification with Tidymodels, Workflows and Recipes</title>
+      <link>https://kirenz.com/post/2021-02-17-r-classification-tidymodels/</link>
+      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kirenz.com/post/2021-02-17-r-classification-tidymodels/</guid>
+      <description>
+&lt;script src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#business-understanding&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Business understanding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-understanding&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Data understanding&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#imort-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Imort Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#clean-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; Clean data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#format-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; Format data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#missing-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; Missing data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#create-new-variables&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5&lt;/span&gt; Create new variables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-overview&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.6&lt;/span&gt; Data overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-splitting&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.7&lt;/span&gt; Data splitting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-exploration&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8&lt;/span&gt; Data exploration&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#create-data-copy&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.1&lt;/span&gt; Create data copy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#geographical-overview&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.2&lt;/span&gt; Geographical overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#numerical-variables&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.3&lt;/span&gt; Numerical variables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#categorical-variables&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.4&lt;/span&gt; Categorical variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-preparation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Data preparation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#data-preparation-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Data preparation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-prepropecessing-recipe&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Data prepropecessing recipe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#validation-set&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Validation set&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#model-building&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Model building&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#specify-models&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Specify models&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#logistic-regression&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1.1&lt;/span&gt; Logistic regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#random-forest&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1.2&lt;/span&gt; Random forest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#boosted-tree-xgboost&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1.3&lt;/span&gt; Boosted tree (XGBoost)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#k-nearest-neighbor&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1.4&lt;/span&gt; K-nearest neighbor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#neural-network&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1.5&lt;/span&gt; Neural network&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#create-workflows&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Create workflows&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#logistic-regression-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2.1&lt;/span&gt; Logistic regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#random-forest-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2.2&lt;/span&gt; Random forest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#xgboost&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2.3&lt;/span&gt; XGBoost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#k-nearest-neighbor-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2.4&lt;/span&gt; K-nearest neighbor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#neural-network-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2.5&lt;/span&gt; Neural network&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#evaluate-models&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; Evaluate models&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#logistic-regression-2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3.1&lt;/span&gt; Logistic regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#random-forest-2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3.2&lt;/span&gt; Random forest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#xgboost-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3.3&lt;/span&gt; XGBoost&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#k-nearest-neighbor-2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3.4&lt;/span&gt; K-nearest neighbor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#neural-network-2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3.5&lt;/span&gt; Neural network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#compare-models&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3.6&lt;/span&gt; Compare models&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#last-evaluation-on-test-set&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.4&lt;/span&gt; Last evaluation on test set&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;The content of this tutorial is mainly based on the excellent books “Hands-on machine learning with scikit-learn, keras and tensorflow” from Aurélien Géron (2019) and “Tidy Modeling with R” from Max Kuhn and Julia Silge (2021)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In this tutorial, we’ll build the following classification models using the tidymodels framework, which is a collection of R packages for modeling and machine learning using &lt;a href=&#34;https://www.tidyverse.org/&#34;&gt;tidyverse&lt;/a&gt; principles:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Logistic Regression&lt;/li&gt;
+&lt;li&gt;Random Forest,&lt;/li&gt;
+&lt;li&gt;XGBoost (extreme gradient boosted trees),&lt;/li&gt;
+&lt;li&gt;K-nearest neighbor&lt;/li&gt;
+&lt;li&gt;Neural network&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that due to performance reasons, I only show the code for the neural net but don’t actually run it.&lt;/p&gt;
+&lt;p&gt;Furthermore, we follow this data science lifecycle process:&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:crisp1clas&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://data-science-tidymodels.netlify.app/css/CRISP-DM.png&#34; alt=&#34;Cross Industry Standard Process for Data Mining (Wirth &amp;amp; Hipp, 2000)&#34; width=&#34;50%&#34; height=&#34;50%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp;amp; Hipp, 2000)
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;business-understanding&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Business understanding&lt;/h1&gt;
+&lt;p&gt;In business understanding, you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Define your (business) goal&lt;/li&gt;
+&lt;li&gt;Frame the problem (regression, classification,…)&lt;/li&gt;
+&lt;li&gt;Choose a performance measure&lt;/li&gt;
+&lt;li&gt;Show the data processing components&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;First of all, we take a look at the big picture and define the objective of our data science project in business terms.&lt;/p&gt;
+&lt;p&gt;In our example, the goal is to build a classification model to predict the type of median housing prices in districts in California. In particular, the model should learn from California census data and be able to predict wether the median house price in a district (population of 600 to 3000 people) is below or above a certain threshold, given some predictor variables. Hence, we face a &lt;strong&gt;supervised learning&lt;/strong&gt; situation and should use a &lt;strong&gt;classification model&lt;/strong&gt; to predict the categorical outcomes (below or above the preice). Furthermore, we use the &lt;strong&gt;F1-Score&lt;/strong&gt; as a performance measure for our classification problem.&lt;/p&gt;
+&lt;p&gt;Note that in our classification example we again use the dataset from the previous regession tutorial. Therefore, we first need to create our categorical dependent variable from the numeric variable median house value. We will do this in the phase data understanding during the creation of new variables. Afterwards, we will remove the numeric variable median house value from our data.&lt;/p&gt;
+&lt;p&gt;Let’s assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The &lt;strong&gt;data processing components&lt;/strong&gt; (also called data pipeline) are shown in the figure below (you can use &lt;a href=&#34;https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265&#34;&gt;Google’s architectural templates&lt;/a&gt; to draw a data pipeline).&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:datapipeline-class2&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://data-science-tidymodels.netlify.app/css/data-pipeline.png&#34; alt=&#34;Data processing components&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1.1: Data processing components
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-understanding&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Data understanding&lt;/h1&gt;
+&lt;p&gt;In Data Understanding, you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Import data&lt;/li&gt;
+&lt;li&gt;Clean data&lt;/li&gt;
+&lt;li&gt;Format data properly&lt;/li&gt;
+&lt;li&gt;Create new variables&lt;/li&gt;
+&lt;li&gt;Get an overview about the complete data&lt;/li&gt;
+&lt;li&gt;Split data into training and test set using stratified sampling&lt;/li&gt;
+&lt;li&gt;Discover and visualize the data to gain insights&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;imort-data&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Imort Data&lt;/h2&gt;
+&lt;p&gt;First of all, let’s import the data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+LINK &amp;lt;- &amp;quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv&amp;quot;
+housing_df &amp;lt;- read_csv(LINK)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;clean-data&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; Clean data&lt;/h2&gt;
+&lt;p&gt;To get a first impression of the data we take a look at the top 4 rows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gt)
+
+housing_df %&amp;gt;% 
+  slice_head(n = 4) %&amp;gt;% 
+  gt() # print output using gt&lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#pfjhbbquvc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pfjhbbquvc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pfjhbbquvc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pfjhbbquvc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pfjhbbquvc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pfjhbbquvc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pfjhbbquvc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pfjhbbquvc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pfjhbbquvc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pfjhbbquvc .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#pfjhbbquvc .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#pfjhbbquvc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pfjhbbquvc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#pfjhbbquvc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pfjhbbquvc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pfjhbbquvc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pfjhbbquvc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pfjhbbquvc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pfjhbbquvc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pfjhbbquvc .gt_left {
+  text-align: left;
+}
+
+#pfjhbbquvc .gt_center {
+  text-align: center;
+}
+
+#pfjhbbquvc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pfjhbbquvc .gt_font_normal {
+  font-weight: normal;
+}
+
+#pfjhbbquvc .gt_font_bold {
+  font-weight: bold;
+}
+
+#pfjhbbquvc .gt_font_italic {
+  font-style: italic;
+}
+
+#pfjhbbquvc .gt_super {
+  font-size: 65%;
+}
+
+#pfjhbbquvc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;pfjhbbquvc&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;longitude&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;latitude&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;housing_median_age&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;total_rooms&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;total_bedrooms&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;population&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;households&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;median_income&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;median_house_value&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;ocean_proximity&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;-122.23&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;37.88&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;41.0years&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;880&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;129&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;322&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;126&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;8.3252&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;452600.0$&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;NEAR BAY&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;-122.22&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;37.86&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;21.0&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;7099&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;1106&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;2401&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;1138&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;8.3014&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;358500.0&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;NEAR BAY&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;-122.24&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;37.85&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;52.0&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;1467&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;190&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;496&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;177&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;7.2574&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;352100.0&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;NEAR BAY&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;-122.25&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;37.85&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;52.0&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;1274&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;235&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;558&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;219&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;5.6431&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;341300.0&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_left&#34;&gt;NEAR BAY&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Notice the values in the first row of the variables &lt;code&gt;housing_median_age&lt;/code&gt;and &lt;code&gt;median_house_value&lt;/code&gt;. We need to remove the strings “years” and “$”. Therefore, we use the function &lt;code&gt;str_remove_all&lt;/code&gt; from the &lt;code&gt;stringr&lt;/code&gt; package. Since there could be multiple wrong entries of the same type, we apply our corrections to all of the rows of the corresponding variable:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
+
+housing_df &amp;lt;- 
+  housing_df %&amp;gt;% 
+  mutate(
+    housing_median_age = str_remove_all(housing_median_age, &amp;quot;[years]&amp;quot;),
+    median_house_value = str_remove_all(median_house_value, &amp;quot;[$]&amp;quot;)
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We don’t cover the phase of data cleaning in detail in this tutorial. However, in a real data science project, data cleaning is usually a very time consuming process.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;format-data&#34; class=&#34;section level2&#34; number=&#34;2.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; Format data&lt;/h2&gt;
+&lt;p&gt;Next, we take a look at the data structure and check wether all data formats are correct:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Numeric variables should be formatted as integers (&lt;code&gt;int&lt;/code&gt;) or double precision floating point numbers (&lt;code&gt;dbl&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Categorical (nominal and ordinal) variables should usually be formatted as factors (&lt;code&gt;fct&lt;/code&gt;) and not characters (&lt;code&gt;chr&lt;/code&gt;). Especially, if they don’t have many levels.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(housing_df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 20,640
+## Columns: 10
+## $ longitude          &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.…
+## $ latitude           &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 3…
+## $ housing_median_age &amp;lt;chr&amp;gt; &amp;quot;41.0&amp;quot;, &amp;quot;21.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;5…
+## $ total_rooms        &amp;lt;dbl&amp;gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555…
+## $ total_bedrooms     &amp;lt;dbl&amp;gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707,…
+## $ population         &amp;lt;dbl&amp;gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 1…
+## $ households         &amp;lt;dbl&amp;gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714,…
+## $ median_income      &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.…
+## $ median_house_value &amp;lt;chr&amp;gt; &amp;quot;452600.0&amp;quot;, &amp;quot;358500.0&amp;quot;, &amp;quot;352100.0&amp;quot;, &amp;quot;341300.0&amp;quot;, &amp;quot;3…
+## $ ocean_proximity    &amp;lt;chr&amp;gt; &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;N…&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The package &lt;code&gt;visdat&lt;/code&gt; helps us to explore the data class structure visually:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(visdat)
+
+vis_dat(housing_df)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can observe that the numeric variables &lt;code&gt;housing_media_age&lt;/code&gt; and &lt;code&gt;median_house_value&lt;/code&gt; are declared as characters (&lt;code&gt;chr&lt;/code&gt;) instead of numeric. We choose to format the variables as &lt;code&gt;dbl&lt;/code&gt;, since the values could be floating-point numbers.&lt;/p&gt;
+&lt;p&gt;Furthermore, the categorical variable &lt;code&gt;ocean_proximity&lt;/code&gt; is formatted as character instead of factor. Let’s take a look at the levels of the variable:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  count(ocean_proximity,
+        sort = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 2
+##   ocean_proximity     n
+##   &amp;lt;chr&amp;gt;           &amp;lt;int&amp;gt;
+## 1 &amp;lt;1H OCEAN        9136
+## 2 INLAND           6551
+## 3 NEAR OCEAN       2658
+## 4 NEAR BAY         2290
+## 5 ISLAND              5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The variable has only 5 levels and therefore should be formatted as a factor.&lt;/p&gt;
+&lt;p&gt;Note that it is usually a good idea to first take care of the numerical variables. Afterwards, we can easily convert all remaining character variables to factors using the function &lt;code&gt;across&lt;/code&gt; from the dplyr package (which is part of the tidyverse).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# convert to numeric
+housing_df &amp;lt;- 
+  housing_df %&amp;gt;% 
+  mutate(
+    housing_median_age = as.numeric(housing_median_age),
+    median_house_value = as.numeric(median_house_value)
+  )
+
+# convert all remaining character variables to factors 
+housing_df &amp;lt;- 
+  housing_df %&amp;gt;% 
+  mutate(across(where(is.character), as.factor))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;missing-data&#34; class=&#34;section level2&#34; number=&#34;2.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4&lt;/span&gt; Missing data&lt;/h2&gt;
+&lt;p&gt;Now let’s turn our attention to missing data. Missing data can be viewed with the function &lt;code&gt;vis_miss&lt;/code&gt; from the package &lt;code&gt;visdat&lt;/code&gt;. We arrange the data by columns with most missingness:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vis_miss(housing_df, sort_miss = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Here an alternative method to obtain missing data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is.na(housing_df) %&amp;gt;% colSums()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          longitude           latitude housing_median_age        total_rooms 
+##                  0                  0                  0                  0 
+##     total_bedrooms         population         households      median_income 
+##                207                  0                  0                  0 
+## median_house_value    ocean_proximity 
+##                  0                  0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have a missing rate of 0.1% (207 cases) in our variable &lt;code&gt;total_bedroms&lt;/code&gt;. This can cause problems for some algorithms. We will take care of this issue during our data preparation phase.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;create-new-variables&#34; class=&#34;section level2&#34; number=&#34;2.5&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5&lt;/span&gt; Create new variables&lt;/h2&gt;
+&lt;p&gt;One very important thing you may want to do at the beginning of your data science project is to create new variable combinations. For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the &lt;em&gt;total number of rooms&lt;/em&gt; in a district is not very useful if you don’t know how many households there are. What you really want is the &lt;em&gt;number of rooms per household&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Similarly, the total number of bedrooms by itself is not very useful: you probably want to compare it to the number of rooms.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;And the &lt;em&gt;population per household&lt;/em&gt; also seems like an interesting attribute combination to look at.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let’s create these new attributes:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df &amp;lt;- 
+  housing_df %&amp;gt;% 
+  mutate(rooms_per_household = total_rooms/households,
+        bedrooms_per_room = total_bedrooms/total_rooms,
+        population_per_household = population/households)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Furthermore, in our example we need to create our dependent variable and drop the original numeric variable.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df &amp;lt;- 
+  housing_df %&amp;gt;% 
+  mutate(price_category = case_when( 
+    median_house_value &amp;lt; 150000 ~ &amp;quot;below&amp;quot;,
+    median_house_value &amp;gt;= 150000 ~ &amp;quot;above&amp;quot;,
+    )) %&amp;gt;% 
+  mutate(price_category = as.factor(price_category)) %&amp;gt;% 
+  select(-median_house_value)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since we created the new label &lt;code&gt;price_category&lt;/code&gt; from the variable &lt;code&gt;median_house_value&lt;/code&gt; it is crucial that we never use the variable &lt;code&gt;median_house_value&lt;/code&gt; as a predictor in our models. Therefore we drop it.&lt;/p&gt;
+&lt;p&gt;Take a look at our dependent variable and create a table with the package &lt;a href=&#34;https://gt.rstudio.com/&#34;&gt;&lt;code&gt;gt&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gt)
+
+housing_df %&amp;gt;% 
+  count(price_category, # count observations
+        name =&amp;quot;districts_total&amp;quot;) %&amp;gt;%  # name the new variable 
+  mutate(percent = districts_total/sum(districts_total)) %&amp;gt;%  # calculate percentages
+  gt() # create table&lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#pcvgfufbwe .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pcvgfufbwe .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pcvgfufbwe .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pcvgfufbwe .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pcvgfufbwe .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pcvgfufbwe .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pcvgfufbwe .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pcvgfufbwe .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pcvgfufbwe .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pcvgfufbwe .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#pcvgfufbwe .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#pcvgfufbwe .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pcvgfufbwe .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#pcvgfufbwe .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pcvgfufbwe .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pcvgfufbwe .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pcvgfufbwe .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pcvgfufbwe .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pcvgfufbwe .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pcvgfufbwe .gt_left {
+  text-align: left;
+}
+
+#pcvgfufbwe .gt_center {
+  text-align: center;
+}
+
+#pcvgfufbwe .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pcvgfufbwe .gt_font_normal {
+  font-weight: normal;
+}
+
+#pcvgfufbwe .gt_font_bold {
+  font-weight: bold;
+}
+
+#pcvgfufbwe .gt_font_italic {
+  font-style: italic;
+}
+
+#pcvgfufbwe .gt_super {
+  font-size: 65%;
+}
+
+#pcvgfufbwe .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;pcvgfufbwe&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;price_category&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;districts_total&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;percent&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;above&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;13084&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;0.6339147&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;below&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;7556&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;0.3660853&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Let’s make a nice looking table:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  count(price_category, 
+        name =&amp;quot;districts_total&amp;quot;) %&amp;gt;%
+  mutate(percent = districts_total/sum(districts_total)*100,
+         percent = round(percent, 2)) %&amp;gt;%
+ gt() %&amp;gt;%
+  tab_header(
+    title = &amp;quot;California median house prices&amp;quot;,
+    subtitle = &amp;quot;Districts above and below 150.000$&amp;quot;
+  ) %&amp;gt;%
+  cols_label(
+    price_category = &amp;quot;Price&amp;quot;,
+    districts_total = &amp;quot;Districts&amp;quot;,
+    percent = &amp;quot;Percent&amp;quot;
+  ) %&amp;gt;% 
+  fmt_number(
+    columns = vars(districts_total),
+    suffixing = TRUE
+  ) &lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#dcgfdqfonu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dcgfdqfonu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dcgfdqfonu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dcgfdqfonu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dcgfdqfonu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dcgfdqfonu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dcgfdqfonu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dcgfdqfonu .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dcgfdqfonu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dcgfdqfonu .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#dcgfdqfonu .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#dcgfdqfonu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dcgfdqfonu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#dcgfdqfonu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dcgfdqfonu .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dcgfdqfonu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dcgfdqfonu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dcgfdqfonu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dcgfdqfonu .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dcgfdqfonu .gt_left {
+  text-align: left;
+}
+
+#dcgfdqfonu .gt_center {
+  text-align: center;
+}
+
+#dcgfdqfonu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dcgfdqfonu .gt_font_normal {
+  font-weight: normal;
+}
+
+#dcgfdqfonu .gt_font_bold {
+  font-weight: bold;
+}
+
+#dcgfdqfonu .gt_font_italic {
+  font-style: italic;
+}
+
+#dcgfdqfonu .gt_super {
+  font-size: 65%;
+}
+
+#dcgfdqfonu .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;dcgfdqfonu&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  &lt;thead class=&#34;gt_header&#34;&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_title gt_font_normal&#34; style&gt;California median house prices&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_subtitle gt_font_normal gt_bottom_border&#34; style&gt;Districts above and below 150.000$&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Price&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Districts&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Percent&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;above&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;13.08K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;63.39&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;below&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;7.56K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;36.61&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-overview&#34; class=&#34;section level2&#34; number=&#34;2.6&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; Data overview&lt;/h2&gt;
+&lt;p&gt;After we took care of our data issues, we can obtain a data summary of all numerical and categorical attributes using a function from the package &lt;code&gt;skimr&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;skim(housing_df)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-14&#34;&gt;Table 2.1: &lt;/span&gt;Data summary&lt;/caption&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Name&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;housing_df&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of rows&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20640&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Number of columns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;_______________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Column type frequency:&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;factor&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;numeric&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;________________________&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Group variables&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: factor&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;ordered&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_unique&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;top_counts&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ocean_proximity&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;FALSE&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&amp;lt;1H: 9136, INL: 6551, NEA: 2658, NEA: 2290&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;price_category&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;FALSE&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;abo: 13084, bel: 7556&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Variable type: numeric&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;skim_variable&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;n_missing&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;complete_rate&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mean&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;sd&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p0&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p25&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p50&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p75&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;p100&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;hist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;longitude&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-119.57&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-124.35&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-121.80&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-118.49&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-118.01&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-114.31&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▂▆▃▇▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;latitude&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;35.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.14&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;32.54&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;33.93&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;34.26&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;37.71&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;41.95&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▅▂▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;housing_median_age&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;28.64&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12.59&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;29.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;37.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;52.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▃▇▇▇▅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;total_rooms&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2635.76&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2181.62&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1447.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2127.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3148.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;39320.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;total_bedrooms&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;207&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;537.87&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;421.39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;296.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;435.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;647.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6445.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;population&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1425.48&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1132.46&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;787.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1166.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1725.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;35682.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;households&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;499.54&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;382.33&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;280.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;409.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;605.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6082.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;median_income&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.87&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.90&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.50&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.56&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.53&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4.74&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;15.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▇▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;rooms_per_household&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5.43&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.47&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4.44&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5.23&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6.05&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;141.91&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;bedrooms_per_room&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;207&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.21&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.06&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.10&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.18&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.20&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.24&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;population_per_household&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.00&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.07&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;10.39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.69&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.43&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.82&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.28&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1243.33&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;▇▁▁▁▁&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We have 20640 observations and 13 columns in our data.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;strong&gt;sd&lt;/strong&gt; column shows the standard deviation, which measures how dispersed the values are.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;strong&gt;p0, p25, p50, p75 and p100&lt;/strong&gt; columns show the corresponding percentiles: a percentile indicates the value below which a given percentage of observations in a group of observations fall. For example, 25% of the districts have a &lt;code&gt;housing_median_age&lt;/code&gt; lower than 18, while 50% are lower than 29 and 75% are lower than 37. These are often called the 25th percentile (or first quartile), the median, and the 75th percentile.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Further note that the &lt;strong&gt;median income&lt;/strong&gt; attribute does not look like it is expressed in US dollars (USD). Actually the data has been scaled and capped at 15 (actually, 15.0001) for higher median incomes, and at 0.5 (actually, 0.4999) for lower median incomes. The numbers represent roughly tens of thousands of dollars (e.g., 3 actually means about $30,000).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Another quick way to get an overview of the type of data you are dealing with is to plot a &lt;strong&gt;histogram&lt;/strong&gt; for each numerical attribute. A histogram shows the number of instances (on the vertical axis) that have a given value range (on the horizontal axis). You can either plot this one attribute at a time, or you can use &lt;code&gt;ggscatmat&lt;/code&gt; from the package &lt;code&gt;GGally&lt;/code&gt; on the whole dataset (as shown in the following code example), and it will plot a histogram for each numerical attribute as well as correlation coefficients (Pearson is the default). We just select the most promising variabels for our plot:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(GGally)
+
+housing_df %&amp;gt;% 
+  select(
+    housing_median_age, 
+    median_income, bedrooms_per_room, rooms_per_household, 
+    population_per_household) %&amp;gt;% 
+  ggscatmat(alpha = 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Another option is to use &lt;code&gt;ggpairs&lt;/code&gt;, where we even can integrate categorical variables like our dependent variable &lt;code&gt;price_category&lt;/code&gt; and ocean proximity in the output:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(GGally)
+
+housing_df %&amp;gt;% 
+  select(
+    housing_median_age, 
+    median_income, bedrooms_per_room, rooms_per_household, 
+    population_per_household, ocean_proximity,
+    price_category) %&amp;gt;% 
+  ggpairs()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There are a few things you might notice in these histograms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The variables &lt;em&gt;median income&lt;/em&gt;, &lt;em&gt;housing median age&lt;/em&gt; were capped.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Note that our attributes have very different scales. We will take care of this issue later in data preparation, when we use feature scaling (data normalization).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally, many histograms are tail-heavy: they extend much farther to the right of the median than to the left. This may make it a bit harder for some Machine Learning algorithms to detect patterns. We will transform these attributes later on to have more bell-shaped distributions. For our right-skewed data (i.e., tail is on the right, also called positive skew), common transformations include square root and log (we will use the log).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-splitting&#34; class=&#34;section level2&#34; number=&#34;2.7&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.7&lt;/span&gt; Data splitting&lt;/h2&gt;
+&lt;p&gt;Before we get started with our in-depth data exploration, let’s split our single dataset into two: a training set and a testing set. The training data will be used to fit models, and the testing set will be used to measure model performance. We perform data exploration only on the training data.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;training dataset&lt;/strong&gt; is a dataset of examples used during the learning process and is used to fit the models. A &lt;strong&gt;test dataset&lt;/strong&gt; is a dataset that is independent of the training dataset and is used to evaluate the performance of the final model. If a model fit to the training dataset also fits the test dataset well, minimal &lt;em&gt;overfitting&lt;/em&gt; has taken place. A better fitting of the training dataset as opposed to the test dataset usually points to overfitting.&lt;/p&gt;
+&lt;p&gt;In our data split, we want to ensure that the training and test set is representative of the categories of our dependent variable.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
+  ggplot(aes(price_category)) +
+  geom_bar() &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:hist-med-value-class2&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/hist-med-value-class2-1.png&#34; alt=&#34;Histogram of Median Proces&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2.1: Histogram of Median Proces
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;In general, we would like to have instances for each &lt;em&gt;stratum&lt;/em&gt;, or else the estimate of a stratum’s importance may be biased. A &lt;em&gt;stratum&lt;/em&gt; (plural strata) refers to a subset (part) of the whole data from which is being sampled. We only have two categories in our data.&lt;/p&gt;
+&lt;p&gt;To actually split the data, we can use the &lt;code&gt;rsample&lt;/code&gt; package (included in &lt;code&gt;tidymodels&lt;/code&gt;) to create an object that contains the information on how to split the data (which we call &lt;code&gt;data_split&lt;/code&gt;), and then two more &lt;code&gt;rsample&lt;/code&gt; functions to create data frames for the training and testing sets:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Fix the random numbers by setting the seed 
+# This enables the analysis to be reproducible 
+set.seed(123)
+
+# Put 3/4 of the data into the training set 
+data_split &amp;lt;- initial_split(housing_df, 
+                           prop = 3/4, 
+                           strata = price_category)
+
+# Create dataframes for the two sets:
+train_data &amp;lt;- training(data_split) 
+test_data &amp;lt;- testing(data_split)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-exploration&#34; class=&#34;section level2&#34; number=&#34;2.8&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8&lt;/span&gt; Data exploration&lt;/h2&gt;
+&lt;p&gt;The point of data exploration is to gain insights that will help you select important variables for your model and to get ideas for feature engineering in the data preparation phase. Ususally, data exploration is an iterative process: once you get a prototype model up and running, you can analyze its output to gain more insights and come back to this exploration step. It is important to note that we perform data exploration only with our training data.&lt;/p&gt;
+&lt;div id=&#34;create-data-copy&#34; class=&#34;section level3&#34; number=&#34;2.8.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.1&lt;/span&gt; Create data copy&lt;/h3&gt;
+&lt;p&gt;We first make a copy of the training data since we don’t want to alter our data during data exploration.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore &amp;lt;- train_data&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, we take a closer look at the relationships between our variables. In particular, we are interested in the relationships between ur &lt;em&gt;dependent&lt;/em&gt; variable &lt;code&gt;price_category&lt;/code&gt; and all other variables. The goal is to identify possible &lt;em&gt;predictor variables&lt;/em&gt; which we could use in our models to predict the &lt;code&gt;price_category&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;geographical-overview&#34; class=&#34;section level3&#34; number=&#34;2.8.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.2&lt;/span&gt; Geographical overview&lt;/h3&gt;
+&lt;p&gt;Since our data includes information about &lt;code&gt;longitude&lt;/code&gt; and &lt;code&gt;latitude&lt;/code&gt;, we start our data exploration with the creation of a geographical scatterplot of the data to get some first insights:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = &amp;quot;cornflowerblue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:point-long-lat-class2&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/point-long-lat-class2-1.png&#34; alt=&#34;Scatterplot of longitude and latitude&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2.2: Scatterplot of longitude and latitude
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;A better visualization that highlights high-density areas (with parameter &lt;code&gt;alpha = 0.1&lt;/code&gt; ):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(color = &amp;quot;cornflowerblue&amp;quot;, alpha = 0.1) &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:point-long-lat-a-class2&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/point-long-lat-a-class2-1.png&#34; alt=&#34;Scatterplot of longitude and latitude that highlights high-density areas&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2.3: Scatterplot of longitude and latitude that highlights high-density areas
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Overview about California housing prices:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;red is expensive,&lt;/li&gt;
+&lt;li&gt;purple is cheap and&lt;/li&gt;
+&lt;li&gt;larger circles indicate areas with a larger population.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;% 
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(aes(size = population, color = price_category), 
+             alpha = 0.4)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:plot-ca-prices-class2&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/plot-ca-prices-class2-1.png&#34; alt=&#34;California housing_df prices&#34; width=&#34;80%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2.4: California housing_df prices
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Lastly, we add a map to our data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggmap)
+
+qmplot(x = longitude, 
+       y = latitude, 
+       data = data_explore, 
+       geom = &amp;quot;point&amp;quot;, 
+       color = price_category, 
+       size = population,
+       alpha = 0.4) +
+  scale_alpha(guide = &amp;#39;none&amp;#39;) # don&amp;#39;t show legend for alpha&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This image tells you that the housing prices are very much related to the location (e.g., close to the ocean) and to the population density. Hence our &lt;code&gt;ocean_proximity&lt;/code&gt; variable may be a useful predictor of our categorical price variable median housing prices, although in Northern California the housing prices in coastal districts are not too high, so it is not a simple rule.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;numerical-variables&#34; class=&#34;section level3&#34; number=&#34;2.8.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.3&lt;/span&gt; Numerical variables&lt;/h3&gt;
+&lt;p&gt;We can use boxplots to check, if we actually find differences in our numeric variables for the different levels of our dependent &lt;em&gt;categorical variable&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;% 
+  ggplot(aes(x = price_category, y = median_income, 
+             fill = price_category, color = price_category)) +
+  geom_boxplot(alpha=0.4) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let`s define a function for this task that accepts strings as inputs so we don’t have to copy and paste our code for every plot. Note that we only have to change the “y-variable” in every plot.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print_boxplot &amp;lt;- function(.y_var){
+  
+  # convert strings to variable
+  y_var &amp;lt;- sym(.y_var) 
+ 
+  # unquote variables using {{}}
+  data_explore %&amp;gt;% 
+  ggplot(aes(x = price_category, y = {{y_var}},
+             fill = price_category, color = price_category)) +
+  geom_boxplot(alpha=0.4) 
+  
+}  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Obtain all of the names of the y-variables we want to use for our plots:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y_var &amp;lt;- 
+  data_explore %&amp;gt;% 
+  select(where(is.numeric), -longitude, - latitude) %&amp;gt;% 
+  variable.names() # obtain name&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The map function applys the function &lt;code&gt;print_boxplot&lt;/code&gt; to each element of our atomic vector &lt;code&gt;y_var&lt;/code&gt; and returns the according plot:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(purrr)
+
+map(y_var, print_boxplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[3]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-3.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[4]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-4.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[5]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-5.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[6]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-6.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[7]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-7.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[8]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-8.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[9]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-9.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can observe a difference in the price_category:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The differences between our two groups are quite small for &lt;code&gt;housing_median_age&lt;/code&gt;, &lt;code&gt;total_room&lt;/code&gt;, &lt;code&gt;total_bedrooms&lt;/code&gt;, &lt;code&gt;population&lt;/code&gt; and &lt;code&gt;households&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We can observe a noticeable difference for our variables &lt;code&gt;median_income&lt;/code&gt; and &lt;code&gt;bedrooms_per_room&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;population_per_household&lt;/code&gt; and &lt;code&gt;rooms_per_household&lt;/code&gt; include some extreme values We first need to fix this before we can proceed with our interpretations for this variabels.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Again, let’s write a short function for this task and filter some of the extreme cases. We call the new function &lt;code&gt;print_boxplot_out&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print_boxplot_out &amp;lt;- function(.y_var_out){
+  
+  y_var &amp;lt;- sym(.y_var_out) 
+ 
+  data_explore %&amp;gt;% 
+  filter(rooms_per_household &amp;lt; 50, population_per_household &amp;lt; 20) %&amp;gt;% 
+  ggplot(aes(x = price_category, y = {{y_var}},
+             fill = price_category, color = price_category)) +
+  geom_boxplot(alpha=0.4) 
+  
+} 
+
+y_var_out &amp;lt;- 
+  data_explore %&amp;gt;% 
+  select(rooms_per_household, population_per_household) %&amp;gt;% 
+  variable.names() 
+
+map(y_var_out, print_boxplot_out)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## [[2]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now we are able to recognize a small difference for &lt;code&gt;population_per_household&lt;/code&gt;. &lt;code&gt;rooms_per_household&lt;/code&gt; on the other hand is quite similar for both groups.&lt;/p&gt;
+&lt;p&gt;Additionally, we can use the function &lt;code&gt;ggscatmat&lt;/code&gt; to create plots with our dependent variable as color column:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(GGally)
+
+data_explore %&amp;gt;% 
+  select(price_category, median_income, bedrooms_per_room, rooms_per_household, 
+         population_per_household) %&amp;gt;% 
+  ggscatmat(color=&amp;quot;price_category&amp;quot;, 
+            corMethod = &amp;quot;spearman&amp;quot;,
+            alpha=0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There are a few things you might notice in these histograms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Note that our attributes have very different scales. We will take care of this issue later in data preparation, when we use feature scaling (data normalization).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The histograms are tail-heavy: they extend much farther to the right of the median than to the left. This may make it a bit harder for some Machine Learning algorithms to detect patterns. We will transform these attributes later on to have more bell-shaped distributions. For our right-skewed data (i.e., tail is on the right, also called positive skew), common transformations include square root and log (we will use the log).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As a result of our data exploration, we will include the numerical variables&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;median_income&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bedrooms_per_room&lt;/code&gt; and&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;population_per_household&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;as predictors in our model.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;categorical-variables&#34; class=&#34;section level3&#34; number=&#34;2.8.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.4&lt;/span&gt; Categorical variables&lt;/h3&gt;
+&lt;p&gt;Now let’s analyze the relationship between our categorical variables &lt;code&gt;ocean proximity&lt;/code&gt; and &lt;code&gt;price_category&lt;/code&gt;. We start with a simple count.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gt)
+
+data_explore %&amp;gt;% 
+  count(price_category, ocean_proximity) %&amp;gt;% 
+  group_by(price_category) %&amp;gt;% 
+  mutate(percent = n / sum(n) *100,
+         percent = round(percent, 2)) %&amp;gt;% 
+  gt() %&amp;gt;% 
+    tab_header(
+    title = &amp;quot;California median house prices&amp;quot;,
+    subtitle = &amp;quot;Districts above and below 150.000$&amp;quot;
+  ) %&amp;gt;% 
+  cols_label(
+    ocean_proximity = &amp;quot;Ocean Proximity&amp;quot;,
+    n = &amp;quot;Districts&amp;quot;,
+    percent = &amp;quot;Percent&amp;quot;
+  ) %&amp;gt;% 
+  fmt_number(
+    columns = vars(n),
+    suffixing = TRUE
+  ) &lt;/code&gt;&lt;/pre&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#xmjcfzubex .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xmjcfzubex .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xmjcfzubex .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xmjcfzubex .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xmjcfzubex .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xmjcfzubex .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xmjcfzubex .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xmjcfzubex .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xmjcfzubex .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xmjcfzubex .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#xmjcfzubex .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#xmjcfzubex .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xmjcfzubex .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#xmjcfzubex .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xmjcfzubex .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xmjcfzubex .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xmjcfzubex .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xmjcfzubex .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xmjcfzubex .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xmjcfzubex .gt_left {
+  text-align: left;
+}
+
+#xmjcfzubex .gt_center {
+  text-align: center;
+}
+
+#xmjcfzubex .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xmjcfzubex .gt_font_normal {
+  font-weight: normal;
+}
+
+#xmjcfzubex .gt_font_bold {
+  font-weight: bold;
+}
+
+#xmjcfzubex .gt_font_italic {
+  font-style: italic;
+}
+
+#xmjcfzubex .gt_super {
+  font-size: 65%;
+}
+
+#xmjcfzubex .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;xmjcfzubex&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  &lt;thead class=&#34;gt_header&#34;&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_title gt_font_normal&#34; style&gt;California median house prices&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_subtitle gt_font_normal gt_bottom_border&#34; style&gt;Districts above and below 150.000$&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Ocean Proximity&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_center&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Districts&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Percent&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr class=&#34;gt_group_heading_row&#34;&gt;
+      &lt;td colspan=&#34;3&#34; class=&#34;gt_group_heading&#34;&gt;above&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;&amp;lt;1H OCEAN&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;5.69K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;57.96&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;INLAND&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1.19K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;12.15&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;ISLAND&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;4.00&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;0.04&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;NEAR BAY&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1.42K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;14.42&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;NEAR OCEAN&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1.51K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;15.43&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;gt_group_heading_row&#34;&gt;
+      &lt;td colspan=&#34;3&#34; class=&#34;gt_group_heading&#34;&gt;below&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;&amp;lt;1H OCEAN&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;1.17K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;20.72&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;INLAND&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;3.66K&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;64.53&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;NEAR BAY&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;332.00&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;5.86&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;NEAR OCEAN&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_center&#34;&gt;504.00&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34;&gt;8.89&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;The function &lt;code&gt;geom_bin2d()&lt;/code&gt; creats a heatmap by counting the number of cases in each group, and then mapping the number of cases to each subgroub’s fill.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;%
+  ggplot(aes(price_category, ocean_proximity)) +
+  geom_bin2d() +
+  scale_fill_continuous(type = &amp;quot;viridis&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can observe that most districts with a median house price above 150,000 have an ocean proximity below 1 hour. On the other hand, districts below that threshold are typically inland. Hence, ocean proximity is indeed a good predictor for our two different median house value categories.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-preparation&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Data preparation&lt;/h1&gt;
+&lt;p&gt;Data preparation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Handle missing values&lt;/li&gt;
+&lt;li&gt;Fix or remove outliers&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;Feature selection&lt;/li&gt;
+&lt;li&gt;Feature engineering&lt;/li&gt;
+&lt;li&gt;Feature scaling&lt;/li&gt;
+&lt;li&gt;Create a validation set&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Next, we’ll preprocess our data before training the models. We mainly use the tidymodels packages &lt;code&gt;recipes&lt;/code&gt; and &lt;code&gt;workflows&lt;/code&gt; for this steps. &lt;code&gt;Recipes&lt;/code&gt; are built as a series of optional data preparation steps, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Data cleaning&lt;/em&gt;: Fix or remove outliers, fill in missing values (e.g., with zero, mean, median…) or drop their rows (or columns).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Feature selection&lt;/em&gt;: Drop the attributes that provide no useful information for the task.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Feature engineering&lt;/em&gt;: Discretize continuous features, decompose features (e.g., the weekday from a date variable, etc.), add promising transformations of features (e.g., log(x), sqrt(x), x2 , etc.) or aggregate features into promising new features (like we already did).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Feature scaling&lt;/em&gt;: Standardize or normalize features.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We will want to use our recipe across several steps as we train and test our models. To simplify this process, we can use a &lt;em&gt;model workflow&lt;/em&gt;, which pairs a model and recipe together.&lt;/p&gt;
+&lt;div id=&#34;data-preparation-1&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Data preparation&lt;/h2&gt;
+&lt;p&gt;Before we create our &lt;code&gt;recipes&lt;/code&gt;, we first select the variables which we will use in the model. Note that we keep &lt;code&gt;longitude&lt;/code&gt; and &lt;code&gt;latitude&lt;/code&gt; to be able to map the data in a later stage but we will not use the variables in our model.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df_new &amp;lt;-
+  housing_df %&amp;gt;% 
+  select( # select our predictors
+    longitude, latitude, 
+    price_category, 
+    median_income, 
+    ocean_proximity, 
+    bedrooms_per_room, 
+    rooms_per_household, 
+    population_per_household
+         )
+
+glimpse(housing_df_new)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 20,640
+## Columns: 8
+## $ longitude                &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25,…
+## $ latitude                 &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37…
+## $ price_category           &amp;lt;fct&amp;gt; above, above, above, above, above, above, ab…
+## $ median_income            &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.03…
+## $ ocean_proximity          &amp;lt;fct&amp;gt; NEAR BAY, NEAR BAY, NEAR BAY, NEAR BAY, NEAR…
+## $ bedrooms_per_room        &amp;lt;dbl&amp;gt; 0.1465909, 0.1557966, 0.1295160, 0.1844584, …
+## $ rooms_per_household      &amp;lt;dbl&amp;gt; 6.984127, 6.238137, 8.288136, 5.817352, 6.28…
+## $ population_per_household &amp;lt;dbl&amp;gt; 2.555556, 2.109842, 2.802260, 2.547945, 2.18…&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Furthermore, we need to make a new data split since we updated the original data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
+
+data_split &amp;lt;- initial_split(housing_df_new, # updated data
+                           prop = 3/4, 
+                           strata = price_category)
+
+train_data &amp;lt;- training(data_split) 
+test_data &amp;lt;- testing(data_split)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-prepropecessing-recipe&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Data prepropecessing recipe&lt;/h2&gt;
+&lt;p&gt;The type of data preprocessing is dependent on the data and the type of model being fit. The excellent book “Tidy Modeling with R” provides an &lt;a href=&#34;https://www.tmwr.org/pre-proc-table.html&#34;&gt;appendix with recommendations for baseline levels of preprocessing&lt;/a&gt; that are needed for various model functions.&lt;/p&gt;
+&lt;p&gt;Let’s create a base &lt;code&gt;recipe&lt;/code&gt; for all of our classification models. Note that the sequence of steps matter:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;recipe()&lt;/code&gt; function has two arguments:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;A formula. Any variable on the left-hand side of the tilde (&lt;code&gt;~&lt;/code&gt;) is considered the model outcome (here, &lt;code&gt;price_category&lt;/code&gt;). On the right-hand side of the tilde are the predictors. Variables may be listed by name (separated by a &lt;code&gt;+&lt;/code&gt;), or you can use the dot (&lt;code&gt;.&lt;/code&gt;) to indicate all other variables as predictors.&lt;/li&gt;
+&lt;li&gt;The data. A recipe is associated with the data set used to create the model. This will typically be the training set, so &lt;code&gt;data = train_data&lt;/code&gt; here.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;update_role()&lt;/code&gt;: This step of adding roles to a recipe is optional; the purpose of using it here is that those two variables can be retained in the data but not included in the model. This can be convenient when, after the model is fit, we want to investigate some poorly predicted value. These ID columns will be available and can be used to try to understand what went wrong.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_naomit()&lt;/code&gt; removes observations (rows of data) if they contain NA or NaN values. We use &lt;code&gt;skip = TRUE&lt;/code&gt; because we don’t want to perform this part to new data so that the number of samples in the assessment set is the same as the number of predicted values (even if they are NA).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that instead of deleting missing values we could also easily substitute (i.e., &lt;em&gt;impute&lt;/em&gt;) missing values of variables by one of the following methods (using the training set):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://recipes.tidymodels.org/reference/step_medianimpute.html&#34;&gt;median&lt;/a&gt;,&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://recipes.tidymodels.org/reference/step_meanimpute.html&#34;&gt;mean&lt;/a&gt;,&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://recipes.tidymodels.org/reference/step_modeimpute.html&#34;&gt;mode&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://recipes.tidymodels.org/reference/step_knnimpute.html&#34;&gt;k-nearest neighbors&lt;/a&gt;,&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://recipes.tidymodels.org/reference/step_impute_linear.html&#34;&gt;linear model&lt;/a&gt;,&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://recipes.tidymodels.org/reference/step_bagimpute.html&#34;&gt;bagged tree models&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Take a look at the &lt;a href=&#34;https://recipes.tidymodels.org/reference/index.html&#34;&gt;recipes reference&lt;/a&gt; for an overview about all possible imputation methods.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_novel()&lt;/code&gt; converts all nominal variables to factors and takes care of other issues related to categorical variables.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_log()&lt;/code&gt; will log transform data (since some of our numerical variables are right-skewed). Note that this step can not be performed on negative numbers.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_normalize()&lt;/code&gt; normalizes (center and scales) the numeric variables to have a standard deviation of one and a mean of zero. (i.e., z-standardization).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_dummy()&lt;/code&gt; converts our factor column &lt;code&gt;ocean_proximity&lt;/code&gt; into numeric binary (0 and 1) variables.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that this step may cause problems if your categorical variable has too many levels - especially if some of the levels are very infrequent. In this case you should either drop the variable or pool infrequently occurring values into an “other” category with &lt;a href=&#34;https://recipes.tidymodels.org/reference/step_other.html&#34;&gt;&lt;code&gt;step_other&lt;/code&gt;&lt;/a&gt;. This steps has to be performed befor &lt;code&gt;step_dummy&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_zv()&lt;/code&gt;: removes any numeric variables that have zero variance.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;step_corr()&lt;/code&gt;: will remove predictor variables that have large correlations with other predictor variables.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that the package &lt;a href=&#34;https://themis.tidymodels.org/index.html&#34;&gt;&lt;code&gt;themis&lt;/code&gt;&lt;/a&gt; contains extra steps for the &lt;code&gt;recipes&lt;/code&gt; package for dealing with &lt;strong&gt;imbalanced data&lt;/strong&gt;. A classification data set with skewed class proportions is called imbalanced. Classes that make up a large proportion of the data set are called majority classes. Those that make up a smaller proportion are minority classes (see &lt;a href=&#34;https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data&#34;&gt;Google Developers&lt;/a&gt; for more details). &lt;code&gt;Themis&lt;/code&gt; provides various methods for over-sampling (e.g. SMOTE) and under-sampling. However, we don’t have to use this methods since our data is not imbalanced.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_rec &amp;lt;-
+  recipe(price_category ~ .,
+         data = train_data) %&amp;gt;%
+  update_role(longitude, latitude, 
+              new_role = &amp;quot;ID&amp;quot;) %&amp;gt;% 
+  step_log(
+    median_income,
+    bedrooms_per_room, rooms_per_household, 
+    population_per_household
+    ) %&amp;gt;% 
+  step_naomit(everything(), skip = TRUE) %&amp;gt;% 
+  step_novel(all_nominal(), -all_outcomes()) %&amp;gt;%
+  step_normalize(all_numeric(), -all_outcomes(), 
+                 -longitude, -latitude) %&amp;gt;% 
+  step_dummy(all_nominal(), -all_outcomes()) %&amp;gt;%
+  step_zv(all_numeric(), -all_outcomes()) %&amp;gt;%
+  step_corr(all_predictors(), threshold = 0.7, method = &amp;quot;spearman&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To view the current set of variables and roles, use the &lt;code&gt;summary()&lt;/code&gt; function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(housing_rec)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 4
+##   variable                 type    role      source  
+##   &amp;lt;chr&amp;gt;                    &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;   
+## 1 longitude                numeric ID        original
+## 2 latitude                 numeric ID        original
+## 3 median_income            numeric predictor original
+## 4 ocean_proximity          nominal predictor original
+## 5 bedrooms_per_room        numeric predictor original
+## 6 rooms_per_household      numeric predictor original
+## 7 population_per_household numeric predictor original
+## 8 price_category           nominal outcome   original&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If we would like to check if all of our preprocessing steps from above actually worked, we can proceed as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prepped_data &amp;lt;- 
+  housing_rec %&amp;gt;% # use the recipe object
+  prep() %&amp;gt;% # perform the recipe on training data
+  juice() # extract only the preprocessed dataframe &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Take a look at the data structure:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(prepped_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 15,317
+## Columns: 10
+## $ longitude                  &amp;lt;dbl&amp;gt; -122.22, -122.24, -122.25, -122.25, -122.2…
+## $ latitude                   &amp;lt;dbl&amp;gt; 37.86, 37.85, 37.85, 37.85, 37.84, 37.84, …
+## $ median_income              &amp;lt;dbl&amp;gt; 1.8483941, 1.5639024, 1.0313625, 0.3223031…
+## $ rooms_per_household        &amp;lt;dbl&amp;gt; 0.676801762, 1.719249869, 0.420589933, -0.…
+## $ population_per_household   &amp;lt;dbl&amp;gt; -1.07327656, -0.04202316, -0.38771664, -1.…
+## $ price_category             &amp;lt;fct&amp;gt; above, above, above, above, above, above, …
+## $ ocean_proximity_INLAND     &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ ocean_proximity_ISLAND     &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ ocean_proximity_NEAR.BAY   &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ ocean_proximity_NEAR.OCEAN &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Visualize the numerical data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prepped_data %&amp;gt;% 
+  select(price_category, 
+         median_income, 
+         rooms_per_household, 
+         population_per_household) %&amp;gt;% 
+  ggscatmat(corMethod = &amp;quot;spearman&amp;quot;,
+            alpha=0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-34-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You should notice that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the variables &lt;code&gt;longitude&lt;/code&gt; and &lt;code&gt;latitude&lt;/code&gt; did not change.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;median_income&lt;/code&gt;, &lt;code&gt;rooms_per_household&lt;/code&gt; and &lt;code&gt;population_per_household&lt;/code&gt; are now z-standardized and the distributions are a bit less right skewed (due to our log transformation)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;ocean_proximity&lt;/code&gt; was replaced by dummy variables.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;validation-set&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Validation set&lt;/h2&gt;
+&lt;p&gt;Remember that we already partitioned our data set into a &lt;em&gt;training set&lt;/em&gt; and &lt;em&gt;test set&lt;/em&gt;. This lets us judge whether a given model will generalize well to new data. However, using only two partitions may be insufficient when doing many rounds of hyperparameter tuning (which we don’t perform in this tutorial but it is always recommended to use a validation set).&lt;/p&gt;
+&lt;p&gt;Therefore, it is usually a good idea to create a so called &lt;code&gt;validation set&lt;/code&gt;. Watch this short &lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/validation/video-lecture&#34;&gt;video from Google’s Machine Learning crash course&lt;/a&gt; to learn more about the value of a validation set.&lt;/p&gt;
+&lt;p&gt;We use k-fold crossvalidation to build a set of 5 validation folds with the function &lt;code&gt;vfold_cv&lt;/code&gt;. We also use stratified sampling:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(100)
+
+cv_folds &amp;lt;-
+ vfold_cv(train_data, 
+          v = 5, 
+          strata = price_category) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We will come back to the &lt;em&gt;validation set&lt;/em&gt; after we specified our models.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-building&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Model building&lt;/h1&gt;
+&lt;div id=&#34;specify-models&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Specify models&lt;/h2&gt;
+&lt;p&gt;The process of specifying our models is always as follows:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Pick a &lt;code&gt;model type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the &lt;code&gt;engine&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set the &lt;code&gt;mode&lt;/code&gt;: regression or classification&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can choose the &lt;code&gt;model type&lt;/code&gt; and &lt;code&gt;engine&lt;/code&gt; from this &lt;a href=&#34;https://www.tidymodels.org/find/parsnip/&#34;&gt;list&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;logistic-regression&#34; class=&#34;section level3&#34; number=&#34;4.1.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1.1&lt;/span&gt; Logistic regression&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_spec &amp;lt;- # your model specification
+  logistic_reg() %&amp;gt;%  # model type
+  set_engine(engine = &amp;quot;glm&amp;quot;) %&amp;gt;%  # model engine
+  set_mode(&amp;quot;classification&amp;quot;) # model mode
+
+# Show your model specification
+log_spec&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Logistic Regression Model Specification (classification)
+## 
+## Computational engine: glm&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;random-forest&#34; class=&#34;section level3&#34; number=&#34;4.1.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1.2&lt;/span&gt; Random forest&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ranger)
+
+rf_spec &amp;lt;- 
+  rand_forest() %&amp;gt;% 
+  set_engine(&amp;quot;ranger&amp;quot;, importance = &amp;quot;impurity&amp;quot;) %&amp;gt;% 
+  set_mode(&amp;quot;classification&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When we set the engine, we add &lt;code&gt;importance = &#34;impurity&#34;&lt;/code&gt;. This will provide variable importance scores for this model, which gives some insight into which predictors drive model performance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;boosted-tree-xgboost&#34; class=&#34;section level3&#34; number=&#34;4.1.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1.3&lt;/span&gt; Boosted tree (XGBoost)&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(xgboost)
+
+xgb_spec &amp;lt;- 
+  boost_tree() %&amp;gt;% 
+  set_engine(&amp;quot;xgboost&amp;quot;) %&amp;gt;% 
+  set_mode(&amp;quot;classification&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;k-nearest-neighbor&#34; class=&#34;section level3&#34; number=&#34;4.1.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1.4&lt;/span&gt; K-nearest neighbor&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knn_spec &amp;lt;- 
+  nearest_neighbor(neighbors = 4) %&amp;gt;% # we can adjust the number of neighbors 
+  set_engine(&amp;quot;kknn&amp;quot;) %&amp;gt;% 
+  set_mode(&amp;quot;classification&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;neural-network&#34; class=&#34;section level3&#34; number=&#34;4.1.5&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1.5&lt;/span&gt; Neural network&lt;/h3&gt;
+&lt;p&gt;To use the neural network model, you will need to install the following packages: &lt;code&gt;keras&lt;/code&gt;. You will also need the python keras library installed (see &lt;code&gt;?keras::install_keras()&lt;/code&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(keras)
+
+nnet_spec &amp;lt;-
+  mlp() %&amp;gt;%
+  set_mode(&amp;quot;classification&amp;quot;) %&amp;gt;% 
+  set_engine(&amp;quot;keras&amp;quot;, verbose = 0) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We set the engine-specific &lt;code&gt;verbose&lt;/code&gt; argument to prevent logging the results.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;create-workflows&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Create workflows&lt;/h2&gt;
+&lt;p&gt;To combine the data preparation recipe with the model building, we use the package &lt;a href=&#34;https://workflows.tidymodels.org&#34;&gt;workflows&lt;/a&gt;. A workflow is an object that can bundle together your pre-processing recipe, modeling, and even post-processing requests (like calculating the RMSE).&lt;/p&gt;
+&lt;div id=&#34;logistic-regression-1&#34; class=&#34;section level3&#34; number=&#34;4.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2.1&lt;/span&gt; Logistic regression&lt;/h3&gt;
+&lt;p&gt;Bundle recipe and model with &lt;code&gt;workflows&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_wflow &amp;lt;- # new workflow object
+ workflow() %&amp;gt;% # use workflow function
+ add_recipe(housing_rec) %&amp;gt;%   # use the new recipe
+ add_model(log_spec)   # add your model spec
+
+# show object
+log_wflow&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ══ Workflow ════════════════════════════════════════════════════════════════════
+## Preprocessor: Recipe
+## Model: logistic_reg()
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## 7 Recipe Steps
+## 
+## ● step_log()
+## ● step_naomit()
+## ● step_novel()
+## ● step_normalize()
+## ● step_dummy()
+## ● step_zv()
+## ● step_corr()
+## 
+## ── Model ───────────────────────────────────────────────────────────────────────
+## Logistic Regression Model Specification (classification)
+## 
+## Computational engine: glm&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;random-forest-1&#34; class=&#34;section level3&#34; number=&#34;4.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2.2&lt;/span&gt; Random forest&lt;/h3&gt;
+&lt;p&gt;Bundle recipe and model:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rf_wflow &amp;lt;-
+ workflow() %&amp;gt;%
+ add_recipe(housing_rec) %&amp;gt;% 
+ add_model(rf_spec) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;xgboost&#34; class=&#34;section level3&#34; number=&#34;4.2.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2.3&lt;/span&gt; XGBoost&lt;/h3&gt;
+&lt;p&gt;Bundle recipe and model:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xgb_wflow &amp;lt;-
+ workflow() %&amp;gt;%
+ add_recipe(housing_rec) %&amp;gt;% 
+ add_model(xgb_spec)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;k-nearest-neighbor-1&#34; class=&#34;section level3&#34; number=&#34;4.2.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2.4&lt;/span&gt; K-nearest neighbor&lt;/h3&gt;
+&lt;p&gt;Bundle recipe and model:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knn_wflow &amp;lt;-
+ workflow() %&amp;gt;%
+ add_recipe(housing_rec) %&amp;gt;% 
+ add_model(knn_spec)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;neural-network-1&#34; class=&#34;section level3&#34; number=&#34;4.2.5&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2.5&lt;/span&gt; Neural network&lt;/h3&gt;
+&lt;p&gt;Bundle recipe and model:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nnet_wflow &amp;lt;-
+ workflow() %&amp;gt;%
+ add_recipe(housing_rec) %&amp;gt;% 
+ add_model(nnet_spec)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;evaluate-models&#34; class=&#34;section level2&#34; number=&#34;4.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; Evaluate models&lt;/h2&gt;
+&lt;p&gt;Now we can use our validation set (&lt;code&gt;cv_folds&lt;/code&gt;) to estimate the performance of our models using the &lt;code&gt;fit_resamples()&lt;/code&gt; function to fit the models on each of the folds and store the results.&lt;/p&gt;
+&lt;p&gt;Note that &lt;code&gt;fit_resamples()&lt;/code&gt; will fit our model to each resample and evaluate on the heldout set from each resample. The function is usually only used for computing performance metrics across some set of resamples to evaluate our models (like accuracy) - the models are not even stored. However, in our example we save the predictions in order to visualize the model fit and residuals with &lt;code&gt;control_resamples(save_pred = TRUE)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, we collect the performance metrics with &lt;code&gt;collect_metrics()&lt;/code&gt; and pick the model that does best on the validation set.&lt;/p&gt;
+&lt;div id=&#34;logistic-regression-2&#34; class=&#34;section level3&#34; number=&#34;4.3.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1&lt;/span&gt; Logistic regression&lt;/h3&gt;
+&lt;p&gt;We use our workflow object to perform resampling. Furthermore, we use
+&lt;code&gt;metric_set()&lt;/code&gt;to choose some common classification performance metrics provided by the &lt;code&gt;yardstick&lt;/code&gt; package. Visit &lt;a href=&#34;https://yardstick.tidymodels.org/reference/index.html&#34;&gt;&lt;code&gt;yardsticks&lt;/code&gt; reference&lt;/a&gt; to see the complete list of all possible metrics.&lt;/p&gt;
+&lt;p&gt;Note that Cohen’s &lt;em&gt;kappa&lt;/em&gt; coefficient (κ) is a similar measure to accuracy, but is normalized by the accuracy that would be expected by chance alone and is very useful when one or more classes have large frequency distributions. The higher the value, the better.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res &amp;lt;- 
+  log_wflow %&amp;gt;% 
+  fit_resamples(
+    resamples = cv_folds, 
+    metrics = metric_set(
+      recall, precision, f_meas, 
+      accuracy, kap,
+      roc_auc, sens, spec),
+    control = control_resamples(
+      save_pred = TRUE)
+    ) &lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;model-coefficients&#34; class=&#34;section level4&#34; number=&#34;4.3.1.1&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.1&lt;/span&gt; Model coefficients&lt;/h4&gt;
+&lt;p&gt;The above described method to obtain &lt;code&gt;log_res&lt;/code&gt; is fine if we are not interested in model coefficients. However, if we would like to extract the model coeffcients from &lt;code&gt;fit_resamples&lt;/code&gt;, we need to proceed as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# save model coefficients for a fitted model object from a workflow
+
+get_model &amp;lt;- function(x) {
+  pull_workflow_fit(x) %&amp;gt;% tidy()
+}
+
+# same as before with one exception
+log_res_2 &amp;lt;- 
+  log_wflow %&amp;gt;% 
+  fit_resamples(
+    resamples = cv_folds, 
+    metrics = metric_set(
+      recall, precision, f_meas, 
+      accuracy, kap,
+      roc_auc, sens, spec),
+    control = control_resamples(
+      save_pred = TRUE,
+      extract = get_model) # use extract and our new function
+    ) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now there is a &lt;code&gt;.extracts&lt;/code&gt; column with nested tibbles.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res_2$.extracts[[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 2
+##   .extracts        .config             
+##   &amp;lt;list&amp;gt;           &amp;lt;chr&amp;gt;               
+## 1 &amp;lt;tibble [8 × 5]&amp;gt; Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To get the results use:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res_2$.extracts[[1]][[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## # A tibble: 8 x 5
+##   term                       estimate std.error statistic  p.value
+##   &amp;lt;chr&amp;gt;                         &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1 (Intercept)                  -2.02     0.0510  -39.6    0.      
+## 2 median_income                -1.91     0.0470  -40.6    0.      
+## 3 rooms_per_household           0.252    0.0376    6.70   2.14e-11
+## 4 population_per_household      0.485    0.0297   16.3    7.36e-60
+## 5 ocean_proximity_INLAND        2.92     0.0729   40.0    0.      
+## 6 ocean_proximity_ISLAND      -11.4    160.       -0.0714 9.43e- 1
+## 7 ocean_proximity_NEAR.BAY      0.386    0.0991    3.90   9.60e- 5
+## 8 ocean_proximity_NEAR.OCEAN    0.631    0.0871    7.24   4.34e-13&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;All of the results can be flattened and collected using:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;all_coef &amp;lt;- map_dfr(log_res_2$.extracts, ~ .x[[1]][[1]])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Show all of the resample coefficients for a single predictor:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;filter(all_coef, term == &amp;quot;median_income&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
+##   term          estimate std.error statistic p.value
+##   &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt;
+## 1 median_income    -1.91    0.0470     -40.6       0
+## 2 median_income    -1.91    0.0469     -40.6       0
+## 3 median_income    -1.89    0.0469     -40.4       0
+## 4 median_income    -1.96    0.0480     -40.8       0
+## 5 median_income    -1.90    0.0468     -40.5       0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;performance-metrics&#34; class=&#34;section level4&#34; number=&#34;4.3.1.2&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.2&lt;/span&gt; Performance metrics&lt;/h4&gt;
+&lt;p&gt;Show average performance over all folds (note that we use &lt;code&gt;log_res&lt;/code&gt;):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res %&amp;gt;%  collect_metrics(summarize = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n  std_err .config             
+##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 accuracy  binary     0.849     5 0.00283  Preprocessor1_Model1
+## 2 f_meas    binary     0.883     5 0.00243  Preprocessor1_Model1
+## 3 kap       binary     0.672     5 0.00569  Preprocessor1_Model1
+## 4 precision binary     0.871     5 0.000987 Preprocessor1_Model1
+## 5 recall    binary     0.896     5 0.00430  Preprocessor1_Model1
+## 6 roc_auc   binary     0.918     5 0.00117  Preprocessor1_Model1
+## 7 sens      binary     0.896     5 0.00430  Preprocessor1_Model1
+## 8 spec      binary     0.770     5 0.00162  Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Show performance for every single fold:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res %&amp;gt;%  collect_metrics(summarize = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 40 x 5
+##    id    .metric   .estimator .estimate .config             
+##    &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+##  1 Fold1 recall    binary         0.886 Preprocessor1_Model1
+##  2 Fold1 precision binary         0.868 Preprocessor1_Model1
+##  3 Fold1 f_meas    binary         0.877 Preprocessor1_Model1
+##  4 Fold1 accuracy  binary         0.842 Preprocessor1_Model1
+##  5 Fold1 kap       binary         0.658 Preprocessor1_Model1
+##  6 Fold1 sens      binary         0.886 Preprocessor1_Model1
+##  7 Fold1 spec      binary         0.766 Preprocessor1_Model1
+##  8 Fold1 roc_auc   binary         0.914 Preprocessor1_Model1
+##  9 Fold2 recall    binary         0.907 Preprocessor1_Model1
+## 10 Fold2 precision binary         0.874 Preprocessor1_Model1
+## # … with 30 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;collect-predictions&#34; class=&#34;section level4&#34; number=&#34;4.3.1.3&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.3&lt;/span&gt; Collect predictions&lt;/h4&gt;
+&lt;p&gt;To obtain the actual model predictions, we use the function &lt;code&gt;collect_predictions&lt;/code&gt; and save the result as &lt;code&gt;log_pred&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred &amp;lt;- 
+  log_res %&amp;gt;%
+  collect_predictions()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;confusion-matrix&#34; class=&#34;section level4&#34; number=&#34;4.3.1.4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.4&lt;/span&gt; Confusion matrix&lt;/h4&gt;
+&lt;p&gt;Now we can use the predictions to create a &lt;em&gt;confusion matrix&lt;/em&gt; with &lt;code&gt;conf_mat()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
+  conf_mat(price_category, .pred_class) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           Truth
+## Prediction above below
+##      above  8788  1306
+##      below  1025  4361&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Additionally, the confusion matrix can quickly be visualized in different formats using &lt;code&gt;autoplot()&lt;/code&gt;. Type mosaic:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
+  conf_mat(price_category, .pred_class) %&amp;gt;% 
+  autoplot(type = &amp;quot;mosaic&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-56-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Or type heatmap:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
+  conf_mat(price_category, .pred_class) %&amp;gt;% 
+  autoplot(type = &amp;quot;heatmap&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-57-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;roc-curve&#34; class=&#34;section level4&#34; number=&#34;4.3.1.5&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.5&lt;/span&gt; ROC-Curve&lt;/h4&gt;
+&lt;p&gt;We can also make an ROC curve for our 5 folds. Since the category we are predicting is the first level in the &lt;code&gt;price_category&lt;/code&gt; factor (“above”), we provide &lt;code&gt;roc_curve()&lt;/code&gt; with the relevant class probability &lt;code&gt;.pred_above&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
+  group_by(id) %&amp;gt;% # id contains our folds
+  roc_curve(price_category, .pred_above) %&amp;gt;% 
+  autoplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-58-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Visit &lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc&#34;&gt;Google developer’s Machine Learning Crashcourse&lt;/a&gt; to learn more about the ROC-Curve.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;probability-distributions&#34; class=&#34;section level4&#34; number=&#34;4.3.1.6&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.6&lt;/span&gt; Probability distributions&lt;/h4&gt;
+&lt;p&gt;Plot predicted probability distributions for our two classes.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
+  ggplot() +
+  geom_density(aes(x = .pred_above, 
+                   fill = price_category), 
+               alpha = 0.5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-59-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;random-forest-2&#34; class=&#34;section level3&#34; number=&#34;4.3.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.2&lt;/span&gt; Random forest&lt;/h3&gt;
+&lt;p&gt;We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rf_res &amp;lt;-
+  rf_wflow %&amp;gt;% 
+  fit_resamples(
+    resamples = cv_folds, 
+    metrics = metric_set(
+      recall, precision, f_meas, 
+      accuracy, kap,
+      roc_auc, sens, spec),
+    control = control_resamples(save_pred = TRUE)
+    ) 
+
+rf_res %&amp;gt;%  collect_metrics(summarize = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n std_err .config             
+##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 accuracy  binary     0.858     5 0.00315 Preprocessor1_Model1
+## 2 f_meas    binary     0.890     5 0.00265 Preprocessor1_Model1
+## 3 kap       binary     0.692     5 0.00647 Preprocessor1_Model1
+## 4 precision binary     0.877     5 0.00195 Preprocessor1_Model1
+## 5 recall    binary     0.903     5 0.00480 Preprocessor1_Model1
+## 6 roc_auc   binary     0.926     5 0.00175 Preprocessor1_Model1
+## 7 sens      binary     0.903     5 0.00480 Preprocessor1_Model1
+## 8 spec      binary     0.781     5 0.00397 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;xgboost-1&#34; class=&#34;section level3&#34; number=&#34;4.3.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.3&lt;/span&gt; XGBoost&lt;/h3&gt;
+&lt;p&gt;We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xgb_res &amp;lt;- 
+  xgb_wflow %&amp;gt;% 
+  fit_resamples(
+    resamples = cv_folds, 
+    metrics = metric_set(
+      recall, precision, f_meas, 
+      accuracy, kap,
+      roc_auc, sens, spec),
+    control = control_resamples(save_pred = TRUE)
+    ) 
+
+xgb_res %&amp;gt;% collect_metrics(summarize = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n  std_err .config             
+##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 accuracy  binary     0.859     5 0.00262  Preprocessor1_Model1
+## 2 f_meas    binary     0.890     5 0.00235  Preprocessor1_Model1
+## 3 kap       binary     0.694     5 0.00508  Preprocessor1_Model1
+## 4 precision binary     0.881     5 0.000480 Preprocessor1_Model1
+## 5 recall    binary     0.898     5 0.00485  Preprocessor1_Model1
+## 6 roc_auc   binary     0.928     5 0.00121  Preprocessor1_Model1
+## 7 sens      binary     0.898     5 0.00485  Preprocessor1_Model1
+## 8 spec      binary     0.791     5 0.00158  Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;k-nearest-neighbor-2&#34; class=&#34;section level3&#34; number=&#34;4.3.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.4&lt;/span&gt; K-nearest neighbor&lt;/h3&gt;
+&lt;p&gt;We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knn_res &amp;lt;- 
+  knn_wflow %&amp;gt;% 
+  fit_resamples(
+    resamples = cv_folds, 
+    metrics = metric_set(
+      recall, precision, f_meas, 
+      accuracy, kap,
+      roc_auc, sens, spec),
+    control = control_resamples(save_pred = TRUE)
+    ) 
+
+knn_res %&amp;gt;% collect_metrics(summarize = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 6
+##   .metric   .estimator  mean     n std_err .config             
+##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 accuracy  binary     0.803     5 0.00437 Preprocessor1_Model1
+## 2 f_meas    binary     0.845     5 0.00361 Preprocessor1_Model1
+## 3 kap       binary     0.575     5 0.00926 Preprocessor1_Model1
+## 4 precision binary     0.844     5 0.00402 Preprocessor1_Model1
+## 5 recall    binary     0.846     5 0.00565 Preprocessor1_Model1
+## 6 roc_auc   binary     0.883     5 0.00289 Preprocessor1_Model1
+## 7 sens      binary     0.846     5 0.00565 Preprocessor1_Model1
+## 8 spec      binary     0.729     5 0.00832 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;neural-network-2&#34; class=&#34;section level3&#34; number=&#34;4.3.5&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.5&lt;/span&gt; Neural network&lt;/h3&gt;
+&lt;p&gt;We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nnet_res &amp;lt;- 
+  nnet_wflow %&amp;gt;% 
+  fit_resamples(
+    resamples = cv_folds, 
+    metrics = metric_set(
+      recall, precision, f_meas, 
+      accuracy, kap,
+      roc_auc, sens, spec),
+    control = control_resamples(save_pred = TRUE)
+    ) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;compare-models&#34; class=&#34;section level3&#34; number=&#34;4.3.6&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.6&lt;/span&gt; Compare models&lt;/h3&gt;
+&lt;p&gt;Extract metrics from our models to compare them:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_metrics &amp;lt;- 
+  log_res %&amp;gt;% 
+  collect_metrics(summarise = TRUE) %&amp;gt;%
+  mutate(model = &amp;quot;Logistic Regression&amp;quot;) # add the name of the model to every row
+
+rf_metrics &amp;lt;- 
+  rf_res %&amp;gt;% 
+  collect_metrics(summarise = TRUE) %&amp;gt;%
+  mutate(model = &amp;quot;Random Forest&amp;quot;)
+
+xgb_metrics &amp;lt;- 
+  xgb_res %&amp;gt;% 
+  collect_metrics(summarise = TRUE) %&amp;gt;%
+  mutate(model = &amp;quot;XGBoost&amp;quot;)
+
+knn_metrics &amp;lt;- 
+  knn_res %&amp;gt;% 
+  collect_metrics(summarise = TRUE) %&amp;gt;%
+  mutate(model = &amp;quot;Knn&amp;quot;)
+
+# nnet_metrics &amp;lt;- 
+#   nnet_res %&amp;gt;% 
+#   collect_metrics(summarise = TRUE) %&amp;gt;%
+#   mutate(model = &amp;quot;Neural Net&amp;quot;)
+
+# create dataframe with all models
+model_compare &amp;lt;- bind_rows(
+                          log_metrics,
+                           rf_metrics,
+                           xgb_metrics,
+                           knn_metrics,
+                         # nnet_metrics
+                           ) 
+
+# change data structure
+model_comp &amp;lt;- 
+  model_compare %&amp;gt;% 
+  select(model, .metric, mean, std_err) %&amp;gt;% 
+  pivot_wider(names_from = .metric, values_from = c(mean, std_err)) 
+
+# show mean F1-Score for every model
+model_comp %&amp;gt;% 
+  arrange(mean_f_meas) %&amp;gt;% 
+  mutate(model = fct_reorder(model, mean_f_meas)) %&amp;gt;% # order results
+  ggplot(aes(model, mean_f_meas, fill=model)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_brewer(palette = &amp;quot;Blues&amp;quot;) +
+   geom_text(
+     size = 3,
+     aes(label = round(mean_f_meas, 2), y = mean_f_meas + 0.08),
+     vjust = 1
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# show mean area under the curve (auc) per model
+model_comp %&amp;gt;% 
+  arrange(mean_roc_auc) %&amp;gt;% 
+  mutate(model = fct_reorder(model, mean_roc_auc)) %&amp;gt;%
+  ggplot(aes(model, mean_roc_auc, fill=model)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_brewer(palette = &amp;quot;Blues&amp;quot;) + 
+     geom_text(
+     size = 3,
+     aes(label = round(mean_roc_auc, 2), y = mean_roc_auc + 0.08),
+     vjust = 1
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Note that the model results are all quite similar. In our example we choose the F1-Score as performance measure to select the best model. Let’s find the maximum mean F1-Score:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;model_comp %&amp;gt;% slice_max(mean_f_meas)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 17
+##   model mean_accuracy mean_f_meas mean_kap mean_precision mean_recall
+##   &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1 Rand…         0.858       0.890    0.692          0.877       0.903
+## # … with 11 more variables: mean_roc_auc &amp;lt;dbl&amp;gt;, mean_sens &amp;lt;dbl&amp;gt;,
+## #   mean_spec &amp;lt;dbl&amp;gt;, std_err_accuracy &amp;lt;dbl&amp;gt;, std_err_f_meas &amp;lt;dbl&amp;gt;,
+## #   std_err_kap &amp;lt;dbl&amp;gt;, std_err_precision &amp;lt;dbl&amp;gt;, std_err_recall &amp;lt;dbl&amp;gt;,
+## #   std_err_roc_auc &amp;lt;dbl&amp;gt;, std_err_sens &amp;lt;dbl&amp;gt;, std_err_spec &amp;lt;dbl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now it’s time to fit the best model one last time to the full &lt;em&gt;training set&lt;/em&gt; and evaluate the resulting final model on the &lt;em&gt;test set&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;last-evaluation-on-test-set&#34; class=&#34;section level2&#34; number=&#34;4.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.4&lt;/span&gt; Last evaluation on test set&lt;/h2&gt;
+&lt;p&gt;Tidymodels provides the function &lt;a href=&#34;https://tune.tidymodels.org/reference/last_fit.html&#34;&gt;&lt;code&gt;last_fit()&lt;/code&gt;&lt;/a&gt; which fits a model to the whole &lt;em&gt;training data&lt;/em&gt; and evaluates it on the &lt;em&gt;test set&lt;/em&gt;. We just need to provide the workflow object of the best model as well as the &lt;strong&gt;data split&lt;/strong&gt; object (not the training data).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_rf &amp;lt;- last_fit(rf_wflow, 
+                        split = data_split,
+                        metrics = metric_set(
+                          recall, precision, f_meas, 
+                          accuracy, kap,
+                          roc_auc, sens, spec)
+                        )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Show performance metrics&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_rf %&amp;gt;% 
+  collect_metrics()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 4
+##   .metric   .estimator .estimate .config             
+##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 recall    binary         0.892 Preprocessor1_Model1
+## 2 precision binary         0.879 Preprocessor1_Model1
+## 3 f_meas    binary         0.885 Preprocessor1_Model1
+## 4 accuracy  binary         0.853 Preprocessor1_Model1
+## 5 kap       binary         0.682 Preprocessor1_Model1
+## 6 sens      binary         0.892 Preprocessor1_Model1
+## 7 spec      binary         0.787 Preprocessor1_Model1
+## 8 roc_auc   binary         0.925 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And these are our final performance metrics. Remember that if a model fit to the training dataset also fits the test dataset well, minimal &lt;em&gt;overfitting&lt;/em&gt; has taken place. This seems to be also the case in our example.&lt;/p&gt;
+&lt;p&gt;To learn more about the model we can access the variable importance scores via the &lt;code&gt;.workflow&lt;/code&gt; column. We first need to pluck out the first element in the workflow column, then pull out the fit from the workflow object. Finally, the &lt;code&gt;vip&lt;/code&gt; package helps us visualize the variable importance scores for the top features. Note that we can’t create this type of plot for every model engine.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(vip)
+
+last_fit_rf %&amp;gt;% 
+  pluck(&amp;quot;.workflow&amp;quot;, 1) %&amp;gt;%   
+  pull_workflow_fit() %&amp;gt;% 
+  vip(num_features = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-68-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The two most important predictors in whether a district has a median house value above or below 150000 dollars were the ocean proximity inland and the median income.&lt;/p&gt;
+&lt;p&gt;Take a look at the confusion matrix:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_rf %&amp;gt;%
+  collect_predictions() %&amp;gt;% 
+  conf_mat(price_category, .pred_class) %&amp;gt;% 
+  autoplot(type = &amp;quot;heatmap&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-69-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let’s create the ROC curve. Again, since the event we are predicting is the first level in the &lt;code&gt;price_category&lt;/code&gt; factor (“above”), we provide &lt;code&gt;roc_curve()&lt;/code&gt; with the relevant class probability &lt;code&gt;.pred_above&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_rf %&amp;gt;% 
+  collect_predictions() %&amp;gt;% 
+  roc_curve(price_category, .pred_above) %&amp;gt;% 
+  autoplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-70-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Based on all of the results, the validation set and test set performance statistics are very close, so we would have pretty high confidence that our random forest model with the selected hyperparameters would perform well when predicting new data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Data Science with Tidymodels, Workflows and Recipes</title>

@@ -4,7 +4,77 @@
   
   <url>
     <loc>https://kirenz.com/authors/jan/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/authors/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/categories/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/post/2021-02-17-r-classification-tidymodels/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/machine-learning/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/categories/r/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/r/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/statistics/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/categories/tidymodels/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/tags/tidymodels/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kirenz.com/post/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,25 +84,7 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/authors/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/categories/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://kirenz.com/tags/deeplearning/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -55,12 +107,6 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/tags/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://kirenz.com/categories/tutorial/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -68,47 +114,6 @@
   
   <url>
     <loc>https://kirenz.com/post/2020-12-19-r-tidymodels-housing/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/tags/machine-learning/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/tags/r/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/categories/r/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/tags/statistics/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/tags/tidymodels/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/categories/tidymodels/</loc>
-    <lastmod>2020-12-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kirenz.com/post/</loc>
     <lastmod>2020-12-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -364,13 +369,13 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/tags/blogdown/</loc>
+    <loc>https://kirenz.com/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kirenz.com/categories/blogdown/</loc>
+    <loc>https://kirenz.com/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
