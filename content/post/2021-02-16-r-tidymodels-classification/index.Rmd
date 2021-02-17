@@ -52,7 +52,7 @@ In this tutorial, we'll build the following classification models using the tidy
 Furthermore, we follow the data science lifecycle process proposed by @Wirth2000:
 
 
-```{r crisp1, fig.margin = TRUE, echo = FALSE, out.width = "50%", out.height = "50%", fig.cap = "Cross Industry Standard Process for Data Mining (Wirth & Hipp, 2000)"}
+```{r crisp1clas, fig.margin = TRUE, echo = FALSE, out.width = "50%", out.height = "50%", fig.cap = "Cross Industry Standard Process for Data Mining (Wirth & Hipp, 2000)"}
 knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/CRISP-DM.png")
 ```
 
@@ -76,7 +76,7 @@ Note that in our classification example we again use the dataset from the previo
 
 Let's assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The **data processing components** (also called data pipeline) are shown in the figure below (you can use [Google's architectural templates](https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265) to draw a data pipeline).
 
-```{r datapipeline-class, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "Data processing components"}
+```{r datapipeline-class2, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "Data processing components"}
 knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/data-pipeline.png")
 ```
 
@@ -335,10 +335,10 @@ Before we get started with our in-depth data exploration, let’s split our sing
 
 A **training dataset** is a dataset of examples used during the learning process and is used to fit the models. A **test dataset** is a dataset that is independent of the training dataset and is used to evaluate the performance of the final model. If a model fit to the training dataset also fits the test dataset well, minimal *overfitting* has taken place. A better fitting of the training dataset as opposed to the test dataset usually points to overfitting.
 
-In our data split, we want to ensure that the training and test set is representative of the categories of our dependent variable. Take a look at \@ref(fig:hist-med-value-class)
+In our data split, we want to ensure that the training and test set is representative of the categories of our dependent variable. 
 
 
-```{r hist-med-value-class, fig.cap="Histogram of Median Proces", out.width='80%'}
+```{r hist-med-value-class2, fig.cap="Histogram of Median Proces", out.width='80%'}
 
 housing_df %>% 
   ggplot(aes(price_category)) +
@@ -385,7 +385,7 @@ Next, we take a closer look at the relationships between our variables. In parti
 
 Since our data includes information about `longitude` and `latitude`, we start our data exploration with the creation of a geographical scatterplot of the data to get some first insights: 
 
-```{r point-long-lat-class, fig.cap="Scatterplot of longitude and latitude", out.width='80%'}
+```{r point-long-lat-class2, fig.cap="Scatterplot of longitude and latitude", out.width='80%'}
 data_explore %>% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = "cornflowerblue")
@@ -393,7 +393,7 @@ data_explore %>%
 
 A better visualization that highlights high-density areas (with parameter `alpha = 0.1` ):
 
-```{r point-long-lat-a-class, fig.cap="Scatterplot of longitude and latitude that highlights high-density areas", out.width='80%'}
+```{r point-long-lat-a-class2, fig.cap="Scatterplot of longitude and latitude that highlights high-density areas", out.width='80%'}
 data_explore %>% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = "cornflowerblue", alpha = 0.1) 
@@ -406,7 +406,7 @@ Overview about California housing prices:
 - larger circles indicate areas with a larger population.
 
 
-```{r plot-ca-prices-class, fig.cap="California housing_df prices", out.width='80%'}
+```{r plot-ca-prices-class2, fig.cap="California housing_df prices", out.width='80%'}
 data_explore %>% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(aes(size = population, color = price_category), 
