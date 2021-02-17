@@ -78,13 +78,13 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/categories/r/</loc>
+    <loc>https://kirenz.com/tags/r/</loc>
     <lastmod>2020-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kirenz.com/tags/r/</loc>
+    <loc>https://kirenz.com/categories/r/</loc>
     <lastmod>2020-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -96,13 +96,13 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/categories/tidymodels/</loc>
+    <loc>https://kirenz.com/tags/tidymodels/</loc>
     <lastmod>2020-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kirenz.com/tags/tidymodels/</loc>
+    <loc>https://kirenz.com/categories/tidymodels/</loc>
     <lastmod>2020-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -364,13 +364,13 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/categories/blogdown/</loc>
+    <loc>https://kirenz.com/tags/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kirenz.com/tags/blogdown/</loc>
+    <loc>https://kirenz.com/categories/blogdown/</loc>
     <lastmod>2019-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
