@@ -23,7 +23,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 	fig.align = 'center')
 library(tidyverse)
 library(skimr)
 library(GGally)
@@ -59,14 +59,14 @@ knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/CRISP-D
 
 # Business understanding
 
-:::note
+
 In business understanding, you:
 
 - Define your (business) goal
 - Frame the problem (regression, classification,...)
 - Choose a performance measure
 - Show the data processing components
-:::
+
 
 First of all, we take a look at the big picture and define the objective of our data science project in business terms.
 
@@ -83,7 +83,7 @@ knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/data-pi
 
 # Data understanding
 
-:::note
+
 In Data Understanding, you:
 
 - Import data 
@@ -93,7 +93,7 @@ In Data Understanding, you:
 - Get an overview about the complete data
 - Split data into training and test set using stratified sampling
 - Discover and visualize the data to gain insights 
-:::
+
 
 ## Imort Data
 
@@ -589,7 +589,7 @@ We can observe that most districts with a median house price above 150,000 have 
 # Data preparation
 
 
-:::note
+
 Data preparation:
 
 - Handle missing values
@@ -598,7 +598,7 @@ Data preparation:
 - Feature engineering
 - Feature scaling
 - Create a validation set
-:::
+
 
 Next, we’ll preprocess our data before training the models. We mainly use the tidymodels packages `recipes` and `workflows` for this steps. `Recipes` are built as a series of optional data preparation steps, such as:
 
