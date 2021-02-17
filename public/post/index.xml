@@ -90,8 +90,8 @@
 &lt;/ul&gt;
 &lt;p&gt;Note that due to performance reasons, I only show the code for the neural net but don’t actually run it.&lt;/p&gt;
 &lt;p&gt;Furthermore, we follow this data science lifecycle process:&lt;/p&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:crisp1clas&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://data-science-tidymodels.netlify.app/css/CRISP-DM.png&#34; alt=&#34;Cross Industry Standard Process for Data Mining (Wirth &amp;amp; Hipp, 2000)&#34; width=&#34;50%&#34; height=&#34;50%&#34; /&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:crisp1clas&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://data-science-tidymodels.netlify.app/css/CRISP-DM.png&#34; alt=&#34;Cross Industry Standard Process for Data Mining (Wirth &amp;amp; Hipp, 2000)&#34; width=&#34;70%&#34; height=&#34;70%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp;amp; Hipp, 2000)
 &lt;/p&gt;
@@ -109,7 +109,7 @@ Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp;amp; Hip
 &lt;p&gt;In our example, the goal is to build a classification model to predict the type of median housing prices in districts in California. In particular, the model should learn from California census data and be able to predict wether the median house price in a district (population of 600 to 3000 people) is below or above a certain threshold, given some predictor variables. Hence, we face a &lt;strong&gt;supervised learning&lt;/strong&gt; situation and should use a &lt;strong&gt;classification model&lt;/strong&gt; to predict the categorical outcomes (below or above the preice). Furthermore, we use the &lt;strong&gt;F1-Score&lt;/strong&gt; as a performance measure for our classification problem.&lt;/p&gt;
 &lt;p&gt;Note that in our classification example we again use the dataset from the previous regession tutorial. Therefore, we first need to create our categorical dependent variable from the numeric variable median house value. We will do this in the phase data understanding during the creation of new variables. Afterwards, we will remove the numeric variable median house value from our data.&lt;/p&gt;
 &lt;p&gt;Let’s assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The &lt;strong&gt;data processing components&lt;/strong&gt; (also called data pipeline) are shown in the figure below (you can use &lt;a href=&#34;https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265&#34;&gt;Google’s architectural templates&lt;/a&gt; to draw a data pipeline).&lt;/p&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:datapipeline-class2&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:datapipeline-class2&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;https://data-science-tidymodels.netlify.app/css/data-pipeline.png&#34; alt=&#34;Data processing components&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1.1: Data processing components
@@ -148,7 +148,7 @@ housing_df %&amp;gt;%
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#pfjhbbquvc .gt_table {
+#tztsainccq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -173,7 +173,7 @@ housing_df %&amp;gt;%
   border-left-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_heading {
+#tztsainccq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -185,7 +185,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_title {
+#tztsainccq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -195,7 +195,7 @@ housing_df %&amp;gt;%
   border-bottom-width: 0;
 }
 
-#pfjhbbquvc .gt_subtitle {
+#tztsainccq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -205,13 +205,13 @@ housing_df %&amp;gt;%
   border-top-width: 0;
 }
 
-#pfjhbbquvc .gt_bottom_border {
+#tztsainccq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_col_headings {
+#tztsainccq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -226,7 +226,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_col_heading {
+#tztsainccq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -246,7 +246,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#pfjhbbquvc .gt_column_spanner_outer {
+#tztsainccq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -258,15 +258,15 @@ housing_df %&amp;gt;%
   padding-right: 4px;
 }
 
-#pfjhbbquvc .gt_column_spanner_outer:first-child {
+#tztsainccq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pfjhbbquvc .gt_column_spanner_outer:last-child {
+#tztsainccq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pfjhbbquvc .gt_column_spanner {
+#tztsainccq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -278,7 +278,7 @@ housing_df %&amp;gt;%
   width: 100%;
 }
 
-#pfjhbbquvc .gt_group_heading {
+#tztsainccq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -300,7 +300,7 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#pfjhbbquvc .gt_empty_group_heading {
+#tztsainccq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -315,15 +315,15 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#pfjhbbquvc .gt_from_md &gt; :first-child {
+#tztsainccq .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#pfjhbbquvc .gt_from_md &gt; :last-child {
+#tztsainccq .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#pfjhbbquvc .gt_row {
+#tztsainccq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -342,7 +342,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#pfjhbbquvc .gt_stub {
+#tztsainccq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -354,7 +354,7 @@ housing_df %&amp;gt;%
   padding-left: 12px;
 }
 
-#pfjhbbquvc .gt_summary_row {
+#tztsainccq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -364,7 +364,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#pfjhbbquvc .gt_first_summary_row {
+#tztsainccq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -374,7 +374,7 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_grand_summary_row {
+#tztsainccq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -384,7 +384,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#pfjhbbquvc .gt_first_grand_summary_row {
+#tztsainccq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -394,11 +394,11 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_striped {
+#tztsainccq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pfjhbbquvc .gt_table_body {
+#tztsainccq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -407,7 +407,7 @@ housing_df %&amp;gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_footnotes {
+#tztsainccq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -421,13 +421,13 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_footnote {
+#tztsainccq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pfjhbbquvc .gt_sourcenotes {
+#tztsainccq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -441,46 +441,46 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_sourcenote {
+#tztsainccq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pfjhbbquvc .gt_left {
+#tztsainccq .gt_left {
   text-align: left;
 }
 
-#pfjhbbquvc .gt_center {
+#tztsainccq .gt_center {
   text-align: center;
 }
 
-#pfjhbbquvc .gt_right {
+#tztsainccq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pfjhbbquvc .gt_font_normal {
+#tztsainccq .gt_font_normal {
   font-weight: normal;
 }
 
-#pfjhbbquvc .gt_font_bold {
+#tztsainccq .gt_font_bold {
   font-weight: bold;
 }
 
-#pfjhbbquvc .gt_font_italic {
+#tztsainccq .gt_font_italic {
   font-style: italic;
 }
 
-#pfjhbbquvc .gt_super {
+#tztsainccq .gt_super {
   font-size: 65%;
 }
 
-#pfjhbbquvc .gt_footnote_marks {
+#tztsainccq .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;pfjhbbquvc&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;tztsainccq&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -584,7 +584,7 @@ housing_df &amp;lt;-
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(visdat)
 
 vis_dat(housing_df)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can observe that the numeric variables &lt;code&gt;housing_media_age&lt;/code&gt; and &lt;code&gt;median_house_value&lt;/code&gt; are declared as characters (&lt;code&gt;chr&lt;/code&gt;) instead of numeric. We choose to format the variables as &lt;code&gt;dbl&lt;/code&gt;, since the values could be floating-point numbers.&lt;/p&gt;
 &lt;p&gt;Furthermore, the categorical variable &lt;code&gt;ocean_proximity&lt;/code&gt; is formatted as character instead of factor. Let’s take a look at the levels of the variable:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
@@ -617,7 +617,7 @@ housing_df &amp;lt;-
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4&lt;/span&gt; Missing data&lt;/h2&gt;
 &lt;p&gt;Now let’s turn our attention to missing data. Missing data can be viewed with the function &lt;code&gt;vis_miss&lt;/code&gt; from the package &lt;code&gt;visdat&lt;/code&gt;. We arrange the data by columns with most missingness:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;vis_miss(housing_df, sort_miss = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here an alternative method to obtain missing data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is.na(housing_df) %&amp;gt;% colSums()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##          longitude           latitude housing_median_age        total_rooms 
@@ -664,7 +664,7 @@ housing_df %&amp;gt;%
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#pcvgfufbwe .gt_table {
+#glxfjimoql .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -689,7 +689,7 @@ housing_df %&amp;gt;%
   border-left-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_heading {
+#glxfjimoql .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -701,7 +701,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_title {
+#glxfjimoql .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -711,7 +711,7 @@ housing_df %&amp;gt;%
   border-bottom-width: 0;
 }
 
-#pcvgfufbwe .gt_subtitle {
+#glxfjimoql .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -721,13 +721,13 @@ housing_df %&amp;gt;%
   border-top-width: 0;
 }
 
-#pcvgfufbwe .gt_bottom_border {
+#glxfjimoql .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_col_headings {
+#glxfjimoql .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -742,7 +742,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_col_heading {
+#glxfjimoql .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -762,7 +762,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#pcvgfufbwe .gt_column_spanner_outer {
+#glxfjimoql .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -774,15 +774,15 @@ housing_df %&amp;gt;%
   padding-right: 4px;
 }
 
-#pcvgfufbwe .gt_column_spanner_outer:first-child {
+#glxfjimoql .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pcvgfufbwe .gt_column_spanner_outer:last-child {
+#glxfjimoql .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pcvgfufbwe .gt_column_spanner {
+#glxfjimoql .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -794,7 +794,7 @@ housing_df %&amp;gt;%
   width: 100%;
 }
 
-#pcvgfufbwe .gt_group_heading {
+#glxfjimoql .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -816,7 +816,7 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#pcvgfufbwe .gt_empty_group_heading {
+#glxfjimoql .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -831,15 +831,15 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#pcvgfufbwe .gt_from_md &gt; :first-child {
+#glxfjimoql .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#pcvgfufbwe .gt_from_md &gt; :last-child {
+#glxfjimoql .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#pcvgfufbwe .gt_row {
+#glxfjimoql .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -858,7 +858,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#pcvgfufbwe .gt_stub {
+#glxfjimoql .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -870,7 +870,7 @@ housing_df %&amp;gt;%
   padding-left: 12px;
 }
 
-#pcvgfufbwe .gt_summary_row {
+#glxfjimoql .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -880,7 +880,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#pcvgfufbwe .gt_first_summary_row {
+#glxfjimoql .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -890,7 +890,7 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_grand_summary_row {
+#glxfjimoql .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -900,7 +900,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#pcvgfufbwe .gt_first_grand_summary_row {
+#glxfjimoql .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -910,11 +910,11 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_striped {
+#glxfjimoql .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pcvgfufbwe .gt_table_body {
+#glxfjimoql .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -923,7 +923,7 @@ housing_df %&amp;gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_footnotes {
+#glxfjimoql .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -937,13 +937,13 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_footnote {
+#glxfjimoql .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pcvgfufbwe .gt_sourcenotes {
+#glxfjimoql .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -957,46 +957,46 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_sourcenote {
+#glxfjimoql .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pcvgfufbwe .gt_left {
+#glxfjimoql .gt_left {
   text-align: left;
 }
 
-#pcvgfufbwe .gt_center {
+#glxfjimoql .gt_center {
   text-align: center;
 }
 
-#pcvgfufbwe .gt_right {
+#glxfjimoql .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pcvgfufbwe .gt_font_normal {
+#glxfjimoql .gt_font_normal {
   font-weight: normal;
 }
 
-#pcvgfufbwe .gt_font_bold {
+#glxfjimoql .gt_font_bold {
   font-weight: bold;
 }
 
-#pcvgfufbwe .gt_font_italic {
+#glxfjimoql .gt_font_italic {
   font-style: italic;
 }
 
-#pcvgfufbwe .gt_super {
+#glxfjimoql .gt_super {
   font-size: 65%;
 }
 
-#pcvgfufbwe .gt_footnote_marks {
+#glxfjimoql .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;pcvgfufbwe&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;glxfjimoql&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -1044,7 +1044,7 @@ housing_df %&amp;gt;%
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#dcgfdqfonu .gt_table {
+#lnuqutloju .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1069,7 +1069,7 @@ housing_df %&amp;gt;%
   border-left-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_heading {
+#lnuqutloju .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1081,7 +1081,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_title {
+#lnuqutloju .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1091,7 +1091,7 @@ housing_df %&amp;gt;%
   border-bottom-width: 0;
 }
 
-#dcgfdqfonu .gt_subtitle {
+#lnuqutloju .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1101,13 +1101,13 @@ housing_df %&amp;gt;%
   border-top-width: 0;
 }
 
-#dcgfdqfonu .gt_bottom_border {
+#lnuqutloju .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_col_headings {
+#lnuqutloju .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1122,7 +1122,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_col_heading {
+#lnuqutloju .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1142,7 +1142,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#dcgfdqfonu .gt_column_spanner_outer {
+#lnuqutloju .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1154,15 +1154,15 @@ housing_df %&amp;gt;%
   padding-right: 4px;
 }
 
-#dcgfdqfonu .gt_column_spanner_outer:first-child {
+#lnuqutloju .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dcgfdqfonu .gt_column_spanner_outer:last-child {
+#lnuqutloju .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dcgfdqfonu .gt_column_spanner {
+#lnuqutloju .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1174,7 +1174,7 @@ housing_df %&amp;gt;%
   width: 100%;
 }
 
-#dcgfdqfonu .gt_group_heading {
+#lnuqutloju .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1196,7 +1196,7 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#dcgfdqfonu .gt_empty_group_heading {
+#lnuqutloju .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1211,15 +1211,15 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#dcgfdqfonu .gt_from_md &gt; :first-child {
+#lnuqutloju .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#dcgfdqfonu .gt_from_md &gt; :last-child {
+#lnuqutloju .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#dcgfdqfonu .gt_row {
+#lnuqutloju .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1238,7 +1238,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#dcgfdqfonu .gt_stub {
+#lnuqutloju .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1250,7 +1250,7 @@ housing_df %&amp;gt;%
   padding-left: 12px;
 }
 
-#dcgfdqfonu .gt_summary_row {
+#lnuqutloju .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1260,7 +1260,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#dcgfdqfonu .gt_first_summary_row {
+#lnuqutloju .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1270,7 +1270,7 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_grand_summary_row {
+#lnuqutloju .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1280,7 +1280,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#dcgfdqfonu .gt_first_grand_summary_row {
+#lnuqutloju .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1290,11 +1290,11 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_striped {
+#lnuqutloju .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dcgfdqfonu .gt_table_body {
+#lnuqutloju .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1303,7 +1303,7 @@ housing_df %&amp;gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_footnotes {
+#lnuqutloju .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1317,13 +1317,13 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_footnote {
+#lnuqutloju .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#dcgfdqfonu .gt_sourcenotes {
+#lnuqutloju .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1337,46 +1337,46 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_sourcenote {
+#lnuqutloju .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#dcgfdqfonu .gt_left {
+#lnuqutloju .gt_left {
   text-align: left;
 }
 
-#dcgfdqfonu .gt_center {
+#lnuqutloju .gt_center {
   text-align: center;
 }
 
-#dcgfdqfonu .gt_right {
+#lnuqutloju .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dcgfdqfonu .gt_font_normal {
+#lnuqutloju .gt_font_normal {
   font-weight: normal;
 }
 
-#dcgfdqfonu .gt_font_bold {
+#lnuqutloju .gt_font_bold {
   font-weight: bold;
 }
 
-#dcgfdqfonu .gt_font_italic {
+#lnuqutloju .gt_font_italic {
   font-style: italic;
 }
 
-#dcgfdqfonu .gt_super {
+#lnuqutloju .gt_super {
   font-size: 65%;
 }
 
-#dcgfdqfonu .gt_footnote_marks {
+#lnuqutloju .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;dcgfdqfonu&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;lnuqutloju&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   &lt;thead class=&#34;gt_header&#34;&gt;
     &lt;tr&gt;
       &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_title gt_font_normal&#34; style&gt;California median house prices&lt;/th&gt;
@@ -1662,7 +1662,7 @@ housing_df %&amp;gt;%
     median_income, bedrooms_per_room, rooms_per_household, 
     population_per_household) %&amp;gt;% 
   ggscatmat(alpha = 0.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Another option is to use &lt;code&gt;ggpairs&lt;/code&gt;, where we even can integrate categorical variables like our dependent variable &lt;code&gt;price_category&lt;/code&gt; and ocean proximity in the output:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(GGally)
 
@@ -1673,7 +1673,7 @@ housing_df %&amp;gt;%
     population_per_household, ocean_proximity,
     price_category) %&amp;gt;% 
   ggpairs()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are a few things you might notice in these histograms:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;The variables &lt;em&gt;median income&lt;/em&gt;, &lt;em&gt;housing median age&lt;/em&gt; were capped.&lt;/p&gt;&lt;/li&gt;
@@ -1689,7 +1689,7 @@ housing_df %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;housing_df %&amp;gt;% 
   ggplot(aes(price_category)) +
   geom_bar() &lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:hist-med-value-class2&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:hist-med-value-class2&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/hist-med-value-class2-1.png&#34; alt=&#34;Histogram of Median Proces&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2.1: Histogram of Median Proces
@@ -1725,7 +1725,7 @@ test_data &amp;lt;- testing(data_split)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &amp;quot;cornflowerblue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:point-long-lat-class2&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:point-long-lat-class2&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/point-long-lat-class2-1.png&#34; alt=&#34;Scatterplot of longitude and latitude&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2.2: Scatterplot of longitude and latitude
@@ -1735,7 +1735,7 @@ Figure 2.2: Scatterplot of longitude and latitude
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_explore %&amp;gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &amp;quot;cornflowerblue&amp;quot;, alpha = 0.1) &lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:point-long-lat-a-class2&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:point-long-lat-a-class2&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/point-long-lat-a-class2-1.png&#34; alt=&#34;Scatterplot of longitude and latitude that highlights high-density areas&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2.3: Scatterplot of longitude and latitude that highlights high-density areas
@@ -1751,7 +1751,7 @@ Figure 2.3: Scatterplot of longitude and latitude that highlights high-density a
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(aes(size = population, color = price_category), 
              alpha = 0.4)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:plot-ca-prices-class2&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plot-ca-prices-class2&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/plot-ca-prices-class2-1.png&#34; alt=&#34;California housing_df prices&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2.4: California housing_df prices
@@ -1768,7 +1768,7 @@ qmplot(x = longitude,
        size = population,
        alpha = 0.4) +
   scale_alpha(guide = &amp;#39;none&amp;#39;) # don&amp;#39;t show legend for alpha&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This image tells you that the housing prices are very much related to the location (e.g., close to the ocean) and to the population density. Hence our &lt;code&gt;ocean_proximity&lt;/code&gt; variable may be a useful predictor of our categorical price variable median housing prices, although in Northern California the housing prices in coastal districts are not too high, so it is not a simple rule.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;numerical-variables&#34; class=&#34;section level3&#34; number=&#34;2.8.3&#34;&gt;
@@ -1778,7 +1778,7 @@ qmplot(x = longitude,
   ggplot(aes(x = price_category, y = median_income, 
              fill = price_category, color = price_category)) +
   geom_boxplot(alpha=0.4) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Let`s define a function for this task that accepts strings as inputs so we don’t have to copy and paste our code for every plot. Note that we only have to change the “y-variable” in every plot.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print_boxplot &amp;lt;- function(.y_var){
   
@@ -1802,31 +1802,31 @@ qmplot(x = longitude,
 
 map(y_var, print_boxplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[3]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-3.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[4]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-4.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[5]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-5.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[6]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-6.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[7]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-7.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[8]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-8.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[9]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-9.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-23-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can observe a difference in the price_category:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;The differences between our two groups are quite small for &lt;code&gt;housing_median_age&lt;/code&gt;, &lt;code&gt;total_room&lt;/code&gt;, &lt;code&gt;total_bedrooms&lt;/code&gt;, &lt;code&gt;population&lt;/code&gt; and &lt;code&gt;households&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
@@ -1853,10 +1853,10 @@ y_var_out &amp;lt;-
 
 map(y_var_out, print_boxplot_out)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## [[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-24-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now we are able to recognize a small difference for &lt;code&gt;population_per_household&lt;/code&gt;. &lt;code&gt;rooms_per_household&lt;/code&gt; on the other hand is quite similar for both groups.&lt;/p&gt;
 &lt;p&gt;Additionally, we can use the function &lt;code&gt;ggscatmat&lt;/code&gt; to create plots with our dependent variable as color column:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(GGally)
@@ -1867,7 +1867,7 @@ data_explore %&amp;gt;%
   ggscatmat(color=&amp;quot;price_category&amp;quot;, 
             corMethod = &amp;quot;spearman&amp;quot;,
             alpha=0.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are a few things you might notice in these histograms:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Note that our attributes have very different scales. We will take care of this issue later in data preparation, when we use feature scaling (data normalization).&lt;/p&gt;&lt;/li&gt;
@@ -2319,7 +2319,7 @@ data_explore %&amp;gt;%
   ggplot(aes(price_category, ocean_proximity)) +
   geom_bin2d() +
   scale_fill_continuous(type = &amp;quot;viridis&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can observe that most districts with a median house price above 150,000 have an ocean proximity below 1 hour. On the other hand, districts below that threshold are typically inland. Hence, ocean proximity is indeed a good predictor for our two different median house value categories.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2476,7 +2476,7 @@ test_data &amp;lt;- testing(data_split)&lt;/code&gt;&lt;/pre&gt;
          population_per_household) %&amp;gt;% 
   ggscatmat(corMethod = &amp;quot;spearman&amp;quot;,
             alpha=0.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-34-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-34-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You should notice that:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;the variables &lt;code&gt;longitude&lt;/code&gt; and &lt;code&gt;latitude&lt;/code&gt; did not change.&lt;/p&gt;&lt;/li&gt;
@@ -2754,12 +2754,12 @@ log_res_2 &amp;lt;-
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
   conf_mat(price_category, .pred_class) %&amp;gt;% 
   autoplot(type = &amp;quot;mosaic&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-56-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-56-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Or type heatmap:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_pred %&amp;gt;% 
   conf_mat(price_category, .pred_class) %&amp;gt;% 
   autoplot(type = &amp;quot;heatmap&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-57-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-57-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;roc-curve&#34; class=&#34;section level4&#34; number=&#34;4.3.1.5&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.1.5&lt;/span&gt; ROC-Curve&lt;/h4&gt;
@@ -2768,7 +2768,7 @@ log_res_2 &amp;lt;-
   group_by(id) %&amp;gt;% # id contains our folds
   roc_curve(price_category, .pred_above) %&amp;gt;% 
   autoplot()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-58-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-58-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Visit &lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc&#34;&gt;Google developer’s Machine Learning Crashcourse&lt;/a&gt; to learn more about the ROC-Curve.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;probability-distributions&#34; class=&#34;section level4&#34; number=&#34;4.3.1.6&#34;&gt;
@@ -2779,7 +2779,7 @@ log_res_2 &amp;lt;-
   geom_density(aes(x = .pred_above, 
                    fill = price_category), 
                alpha = 0.5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-59-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-59-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;random-forest-2&#34; class=&#34;section level3&#34; number=&#34;4.3.2&#34;&gt;
@@ -2933,7 +2933,7 @@ model_comp %&amp;gt;%
      aes(label = round(mean_f_meas, 2), y = mean_f_meas + 0.08),
      vjust = 1
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# show mean area under the curve (auc) per model
 model_comp %&amp;gt;% 
   arrange(mean_roc_auc) %&amp;gt;% 
@@ -2947,7 +2947,7 @@ model_comp %&amp;gt;%
      aes(label = round(mean_roc_auc, 2), y = mean_roc_auc + 0.08),
      vjust = 1
   )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-64-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Note that the model results are all quite similar. In our example we choose the F1-Score as performance measure to select the best model. Let’s find the maximum mean F1-Score:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;model_comp %&amp;gt;% slice_max(mean_f_meas)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 17
@@ -2993,20 +2993,20 @@ last_fit_rf %&amp;gt;%
   pluck(&amp;quot;.workflow&amp;quot;, 1) %&amp;gt;%   
   pull_workflow_fit() %&amp;gt;% 
   vip(num_features = 10)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-68-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-68-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The two most important predictors in whether a district has a median house value above or below 150000 dollars were the ocean proximity inland and the median income.&lt;/p&gt;
 &lt;p&gt;Take a look at the confusion matrix:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_rf %&amp;gt;%
   collect_predictions() %&amp;gt;% 
   conf_mat(price_category, .pred_class) %&amp;gt;% 
   autoplot(type = &amp;quot;heatmap&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-69-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-69-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Let’s create the ROC curve. Again, since the event we are predicting is the first level in the &lt;code&gt;price_category&lt;/code&gt; factor (“above”), we provide &lt;code&gt;roc_curve()&lt;/code&gt; with the relevant class probability &lt;code&gt;.pred_above&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;last_fit_rf %&amp;gt;% 
   collect_predictions() %&amp;gt;% 
   roc_curve(price_category, .pred_above) %&amp;gt;% 
   autoplot()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-70-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2021-02-17-r-classification-tidymodels/index_files/figure-html/unnamed-chunk-70-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Based on all of the results, the validation set and test set performance statistics are very close, so we would have pretty high confidence that our random forest model with the selected hyperparameters would perform well when predicting new data.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

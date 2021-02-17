@@ -91,8 +91,8 @@ output:
 </ul>
 <p>Note that due to performance reasons, I only show the code for the neural net but don’t actually run it.</p>
 <p>Furthermore, we follow this data science lifecycle process:</p>
-<div class="figure" style="text-align: center"><span id="fig:crisp1clas"></span>
-<img src="https://data-science-tidymodels.netlify.app/css/CRISP-DM.png" alt="Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2000)" width="50%" height="50%" />
+<div class="figure"><span id="fig:crisp1clas"></span>
+<img src="https://data-science-tidymodels.netlify.app/css/CRISP-DM.png" alt="Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2000)" width="70%" height="70%" />
 <p class="caption">
 Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2000)
 </p>
@@ -110,7 +110,7 @@ Figure 0.1: Cross Industry Standard Process for Data Mining (Wirth &amp; Hipp, 2
 <p>In our example, the goal is to build a classification model to predict the type of median housing prices in districts in California. In particular, the model should learn from California census data and be able to predict wether the median house price in a district (population of 600 to 3000 people) is below or above a certain threshold, given some predictor variables. Hence, we face a <strong>supervised learning</strong> situation and should use a <strong>classification model</strong> to predict the categorical outcomes (below or above the preice). Furthermore, we use the <strong>F1-Score</strong> as a performance measure for our classification problem.</p>
 <p>Note that in our classification example we again use the dataset from the previous regession tutorial. Therefore, we first need to create our categorical dependent variable from the numeric variable median house value. We will do this in the phase data understanding during the creation of new variables. Afterwards, we will remove the numeric variable median house value from our data.</p>
 <p>Let’s assume that the model’s output will be fed to another analytics system, along with other data. This downstream system will determine whether it is worth investing in a given area or not. The <strong>data processing components</strong> (also called data pipeline) are shown in the figure below (you can use <a href="https://docs.google.com/presentation/d/1vjm5YdmOH5LrubFhHf1vlqW2O9Z2UqdWA8biN3e8K5U/edit#slide=id.g19b41f69d7_2_265">Google’s architectural templates</a> to draw a data pipeline).</p>
-<div class="figure" style="text-align: center"><span id="fig:datapipeline-class2"></span>
+<div class="figure"><span id="fig:datapipeline-class2"></span>
 <img src="https://data-science-tidymodels.netlify.app/css/data-pipeline.png" alt="Data processing components"  />
 <p class="caption">
 Figure 1.1: Data processing components
@@ -149,7 +149,7 @@ housing_df %&gt;%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pfjhbbquvc .gt_table {
+#tztsainccq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -174,7 +174,7 @@ housing_df %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_heading {
+#tztsainccq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -186,7 +186,7 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_title {
+#tztsainccq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -196,7 +196,7 @@ housing_df %&gt;%
   border-bottom-width: 0;
 }
 
-#pfjhbbquvc .gt_subtitle {
+#tztsainccq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -206,13 +206,13 @@ housing_df %&gt;%
   border-top-width: 0;
 }
 
-#pfjhbbquvc .gt_bottom_border {
+#tztsainccq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_col_headings {
+#tztsainccq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -227,7 +227,7 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_col_heading {
+#tztsainccq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -247,7 +247,7 @@ housing_df %&gt;%
   overflow-x: hidden;
 }
 
-#pfjhbbquvc .gt_column_spanner_outer {
+#tztsainccq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -259,15 +259,15 @@ housing_df %&gt;%
   padding-right: 4px;
 }
 
-#pfjhbbquvc .gt_column_spanner_outer:first-child {
+#tztsainccq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pfjhbbquvc .gt_column_spanner_outer:last-child {
+#tztsainccq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pfjhbbquvc .gt_column_spanner {
+#tztsainccq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -279,7 +279,7 @@ housing_df %&gt;%
   width: 100%;
 }
 
-#pfjhbbquvc .gt_group_heading {
+#tztsainccq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -301,7 +301,7 @@ housing_df %&gt;%
   vertical-align: middle;
 }
 
-#pfjhbbquvc .gt_empty_group_heading {
+#tztsainccq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -316,15 +316,15 @@ housing_df %&gt;%
   vertical-align: middle;
 }
 
-#pfjhbbquvc .gt_from_md > :first-child {
+#tztsainccq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pfjhbbquvc .gt_from_md > :last-child {
+#tztsainccq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pfjhbbquvc .gt_row {
+#tztsainccq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -343,7 +343,7 @@ housing_df %&gt;%
   overflow-x: hidden;
 }
 
-#pfjhbbquvc .gt_stub {
+#tztsainccq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -355,7 +355,7 @@ housing_df %&gt;%
   padding-left: 12px;
 }
 
-#pfjhbbquvc .gt_summary_row {
+#tztsainccq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -365,7 +365,7 @@ housing_df %&gt;%
   padding-right: 5px;
 }
 
-#pfjhbbquvc .gt_first_summary_row {
+#tztsainccq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -375,7 +375,7 @@ housing_df %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_grand_summary_row {
+#tztsainccq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -385,7 +385,7 @@ housing_df %&gt;%
   padding-right: 5px;
 }
 
-#pfjhbbquvc .gt_first_grand_summary_row {
+#tztsainccq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -395,11 +395,11 @@ housing_df %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_striped {
+#tztsainccq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pfjhbbquvc .gt_table_body {
+#tztsainccq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -408,7 +408,7 @@ housing_df %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_footnotes {
+#tztsainccq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -422,13 +422,13 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_footnote {
+#tztsainccq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pfjhbbquvc .gt_sourcenotes {
+#tztsainccq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -442,46 +442,46 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pfjhbbquvc .gt_sourcenote {
+#tztsainccq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pfjhbbquvc .gt_left {
+#tztsainccq .gt_left {
   text-align: left;
 }
 
-#pfjhbbquvc .gt_center {
+#tztsainccq .gt_center {
   text-align: center;
 }
 
-#pfjhbbquvc .gt_right {
+#tztsainccq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pfjhbbquvc .gt_font_normal {
+#tztsainccq .gt_font_normal {
   font-weight: normal;
 }
 
-#pfjhbbquvc .gt_font_bold {
+#tztsainccq .gt_font_bold {
   font-weight: bold;
 }
 
-#pfjhbbquvc .gt_font_italic {
+#tztsainccq .gt_font_italic {
   font-style: italic;
 }
 
-#pfjhbbquvc .gt_super {
+#tztsainccq .gt_super {
   font-size: 65%;
 }
 
-#pfjhbbquvc .gt_footnote_marks {
+#tztsainccq .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="pfjhbbquvc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="tztsainccq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -585,7 +585,7 @@ housing_df &lt;-
 <pre class="r"><code>library(visdat)
 
 vis_dat(housing_df)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We can observe that the numeric variables <code>housing_media_age</code> and <code>median_house_value</code> are declared as characters (<code>chr</code>) instead of numeric. We choose to format the variables as <code>dbl</code>, since the values could be floating-point numbers.</p>
 <p>Furthermore, the categorical variable <code>ocean_proximity</code> is formatted as character instead of factor. Let’s take a look at the levels of the variable:</p>
 <pre class="r"><code>housing_df %&gt;% 
@@ -618,7 +618,7 @@ housing_df &lt;-
 <h2><span class="header-section-number">2.4</span> Missing data</h2>
 <p>Now let’s turn our attention to missing data. Missing data can be viewed with the function <code>vis_miss</code> from the package <code>visdat</code>. We arrange the data by columns with most missingness:</p>
 <pre class="r"><code>vis_miss(housing_df, sort_miss = TRUE)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Here an alternative method to obtain missing data:</p>
 <pre class="r"><code>is.na(housing_df) %&gt;% colSums()</code></pre>
 <pre><code>##          longitude           latitude housing_median_age        total_rooms 
@@ -665,7 +665,7 @@ housing_df %&gt;%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pcvgfufbwe .gt_table {
+#glxfjimoql .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -690,7 +690,7 @@ housing_df %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_heading {
+#glxfjimoql .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -702,7 +702,7 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_title {
+#glxfjimoql .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -712,7 +712,7 @@ housing_df %&gt;%
   border-bottom-width: 0;
 }
 
-#pcvgfufbwe .gt_subtitle {
+#glxfjimoql .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -722,13 +722,13 @@ housing_df %&gt;%
   border-top-width: 0;
 }
 
-#pcvgfufbwe .gt_bottom_border {
+#glxfjimoql .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_col_headings {
+#glxfjimoql .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -743,7 +743,7 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_col_heading {
+#glxfjimoql .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -763,7 +763,7 @@ housing_df %&gt;%
   overflow-x: hidden;
 }
 
-#pcvgfufbwe .gt_column_spanner_outer {
+#glxfjimoql .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -775,15 +775,15 @@ housing_df %&gt;%
   padding-right: 4px;
 }
 
-#pcvgfufbwe .gt_column_spanner_outer:first-child {
+#glxfjimoql .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pcvgfufbwe .gt_column_spanner_outer:last-child {
+#glxfjimoql .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pcvgfufbwe .gt_column_spanner {
+#glxfjimoql .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -795,7 +795,7 @@ housing_df %&gt;%
   width: 100%;
 }
 
-#pcvgfufbwe .gt_group_heading {
+#glxfjimoql .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -817,7 +817,7 @@ housing_df %&gt;%
   vertical-align: middle;
 }
 
-#pcvgfufbwe .gt_empty_group_heading {
+#glxfjimoql .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -832,15 +832,15 @@ housing_df %&gt;%
   vertical-align: middle;
 }
 
-#pcvgfufbwe .gt_from_md > :first-child {
+#glxfjimoql .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pcvgfufbwe .gt_from_md > :last-child {
+#glxfjimoql .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pcvgfufbwe .gt_row {
+#glxfjimoql .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -859,7 +859,7 @@ housing_df %&gt;%
   overflow-x: hidden;
 }
 
-#pcvgfufbwe .gt_stub {
+#glxfjimoql .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -871,7 +871,7 @@ housing_df %&gt;%
   padding-left: 12px;
 }
 
-#pcvgfufbwe .gt_summary_row {
+#glxfjimoql .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -881,7 +881,7 @@ housing_df %&gt;%
   padding-right: 5px;
 }
 
-#pcvgfufbwe .gt_first_summary_row {
+#glxfjimoql .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -891,7 +891,7 @@ housing_df %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_grand_summary_row {
+#glxfjimoql .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -901,7 +901,7 @@ housing_df %&gt;%
   padding-right: 5px;
 }
 
-#pcvgfufbwe .gt_first_grand_summary_row {
+#glxfjimoql .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -911,11 +911,11 @@ housing_df %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_striped {
+#glxfjimoql .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pcvgfufbwe .gt_table_body {
+#glxfjimoql .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -924,7 +924,7 @@ housing_df %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_footnotes {
+#glxfjimoql .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -938,13 +938,13 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_footnote {
+#glxfjimoql .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pcvgfufbwe .gt_sourcenotes {
+#glxfjimoql .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -958,46 +958,46 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#pcvgfufbwe .gt_sourcenote {
+#glxfjimoql .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pcvgfufbwe .gt_left {
+#glxfjimoql .gt_left {
   text-align: left;
 }
 
-#pcvgfufbwe .gt_center {
+#glxfjimoql .gt_center {
   text-align: center;
 }
 
-#pcvgfufbwe .gt_right {
+#glxfjimoql .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pcvgfufbwe .gt_font_normal {
+#glxfjimoql .gt_font_normal {
   font-weight: normal;
 }
 
-#pcvgfufbwe .gt_font_bold {
+#glxfjimoql .gt_font_bold {
   font-weight: bold;
 }
 
-#pcvgfufbwe .gt_font_italic {
+#glxfjimoql .gt_font_italic {
   font-style: italic;
 }
 
-#pcvgfufbwe .gt_super {
+#glxfjimoql .gt_super {
   font-size: 65%;
 }
 
-#pcvgfufbwe .gt_footnote_marks {
+#glxfjimoql .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="pcvgfufbwe" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="glxfjimoql" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1045,7 +1045,7 @@ housing_df %&gt;%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dcgfdqfonu .gt_table {
+#lnuqutloju .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1070,7 +1070,7 @@ housing_df %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_heading {
+#lnuqutloju .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1082,7 +1082,7 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_title {
+#lnuqutloju .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1092,7 +1092,7 @@ housing_df %&gt;%
   border-bottom-width: 0;
 }
 
-#dcgfdqfonu .gt_subtitle {
+#lnuqutloju .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1102,13 +1102,13 @@ housing_df %&gt;%
   border-top-width: 0;
 }
 
-#dcgfdqfonu .gt_bottom_border {
+#lnuqutloju .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_col_headings {
+#lnuqutloju .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1123,7 +1123,7 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_col_heading {
+#lnuqutloju .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1143,7 +1143,7 @@ housing_df %&gt;%
   overflow-x: hidden;
 }
 
-#dcgfdqfonu .gt_column_spanner_outer {
+#lnuqutloju .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1155,15 +1155,15 @@ housing_df %&gt;%
   padding-right: 4px;
 }
 
-#dcgfdqfonu .gt_column_spanner_outer:first-child {
+#lnuqutloju .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dcgfdqfonu .gt_column_spanner_outer:last-child {
+#lnuqutloju .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dcgfdqfonu .gt_column_spanner {
+#lnuqutloju .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1175,7 +1175,7 @@ housing_df %&gt;%
   width: 100%;
 }
 
-#dcgfdqfonu .gt_group_heading {
+#lnuqutloju .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1197,7 +1197,7 @@ housing_df %&gt;%
   vertical-align: middle;
 }
 
-#dcgfdqfonu .gt_empty_group_heading {
+#lnuqutloju .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1212,15 +1212,15 @@ housing_df %&gt;%
   vertical-align: middle;
 }
 
-#dcgfdqfonu .gt_from_md > :first-child {
+#lnuqutloju .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dcgfdqfonu .gt_from_md > :last-child {
+#lnuqutloju .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dcgfdqfonu .gt_row {
+#lnuqutloju .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1239,7 +1239,7 @@ housing_df %&gt;%
   overflow-x: hidden;
 }
 
-#dcgfdqfonu .gt_stub {
+#lnuqutloju .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1251,7 +1251,7 @@ housing_df %&gt;%
   padding-left: 12px;
 }
 
-#dcgfdqfonu .gt_summary_row {
+#lnuqutloju .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1261,7 +1261,7 @@ housing_df %&gt;%
   padding-right: 5px;
 }
 
-#dcgfdqfonu .gt_first_summary_row {
+#lnuqutloju .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1271,7 +1271,7 @@ housing_df %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_grand_summary_row {
+#lnuqutloju .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1281,7 +1281,7 @@ housing_df %&gt;%
   padding-right: 5px;
 }
 
-#dcgfdqfonu .gt_first_grand_summary_row {
+#lnuqutloju .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1291,11 +1291,11 @@ housing_df %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_striped {
+#lnuqutloju .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dcgfdqfonu .gt_table_body {
+#lnuqutloju .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1304,7 +1304,7 @@ housing_df %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_footnotes {
+#lnuqutloju .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1318,13 +1318,13 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_footnote {
+#lnuqutloju .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#dcgfdqfonu .gt_sourcenotes {
+#lnuqutloju .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1338,46 +1338,46 @@ housing_df %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#dcgfdqfonu .gt_sourcenote {
+#lnuqutloju .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#dcgfdqfonu .gt_left {
+#lnuqutloju .gt_left {
   text-align: left;
 }
 
-#dcgfdqfonu .gt_center {
+#lnuqutloju .gt_center {
   text-align: center;
 }
 
-#dcgfdqfonu .gt_right {
+#lnuqutloju .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dcgfdqfonu .gt_font_normal {
+#lnuqutloju .gt_font_normal {
   font-weight: normal;
 }
 
-#dcgfdqfonu .gt_font_bold {
+#lnuqutloju .gt_font_bold {
   font-weight: bold;
 }
 
-#dcgfdqfonu .gt_font_italic {
+#lnuqutloju .gt_font_italic {
   font-style: italic;
 }
 
-#dcgfdqfonu .gt_super {
+#lnuqutloju .gt_super {
   font-size: 65%;
 }
 
-#dcgfdqfonu .gt_footnote_marks {
+#lnuqutloju .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="dcgfdqfonu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="lnuqutloju" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="3" class="gt_heading gt_title gt_font_normal" style>California median house prices</th>
@@ -1663,7 +1663,7 @@ housing_df %&gt;%
     median_income, bedrooms_per_room, rooms_per_household, 
     population_per_household) %&gt;% 
   ggscatmat(alpha = 0.2)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Another option is to use <code>ggpairs</code>, where we even can integrate categorical variables like our dependent variable <code>price_category</code> and ocean proximity in the output:</p>
 <pre class="r"><code>library(GGally)
 
@@ -1674,7 +1674,7 @@ housing_df %&gt;%
     population_per_household, ocean_proximity,
     price_category) %&gt;% 
   ggpairs()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>There are a few things you might notice in these histograms:</p>
 <ul>
 <li><p>The variables <em>median income</em>, <em>housing median age</em> were capped.</p></li>
@@ -1690,7 +1690,7 @@ housing_df %&gt;%
 <pre class="r"><code>housing_df %&gt;% 
   ggplot(aes(price_category)) +
   geom_bar() </code></pre>
-<div class="figure" style="text-align: center"><span id="fig:hist-med-value-class2"></span>
+<div class="figure"><span id="fig:hist-med-value-class2"></span>
 <img src="{{< blogdown/postref >}}index_files/figure-html/hist-med-value-class2-1.png" alt="Histogram of Median Proces" width="80%" />
 <p class="caption">
 Figure 2.1: Histogram of Median Proces
@@ -1726,7 +1726,7 @@ test_data &lt;- testing(data_split)</code></pre>
 <pre class="r"><code>data_explore %&gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &quot;cornflowerblue&quot;)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:point-long-lat-class2"></span>
+<div class="figure"><span id="fig:point-long-lat-class2"></span>
 <img src="{{< blogdown/postref >}}index_files/figure-html/point-long-lat-class2-1.png" alt="Scatterplot of longitude and latitude" width="80%" />
 <p class="caption">
 Figure 2.2: Scatterplot of longitude and latitude
@@ -1736,7 +1736,7 @@ Figure 2.2: Scatterplot of longitude and latitude
 <pre class="r"><code>data_explore %&gt;% 
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &quot;cornflowerblue&quot;, alpha = 0.1) </code></pre>
-<div class="figure" style="text-align: center"><span id="fig:point-long-lat-a-class2"></span>
+<div class="figure"><span id="fig:point-long-lat-a-class2"></span>
 <img src="{{< blogdown/postref >}}index_files/figure-html/point-long-lat-a-class2-1.png" alt="Scatterplot of longitude and latitude that highlights high-density areas" width="80%" />
 <p class="caption">
 Figure 2.3: Scatterplot of longitude and latitude that highlights high-density areas
@@ -1752,7 +1752,7 @@ Figure 2.3: Scatterplot of longitude and latitude that highlights high-density a
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(aes(size = population, color = price_category), 
              alpha = 0.4)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:plot-ca-prices-class2"></span>
+<div class="figure"><span id="fig:plot-ca-prices-class2"></span>
 <img src="{{< blogdown/postref >}}index_files/figure-html/plot-ca-prices-class2-1.png" alt="California housing_df prices" width="80%" />
 <p class="caption">
 Figure 2.4: California housing_df prices
@@ -1769,7 +1769,7 @@ qmplot(x = longitude,
        size = population,
        alpha = 0.4) +
   scale_alpha(guide = &#39;none&#39;) # don&#39;t show legend for alpha</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>This image tells you that the housing prices are very much related to the location (e.g., close to the ocean) and to the population density. Hence our <code>ocean_proximity</code> variable may be a useful predictor of our categorical price variable median housing prices, although in Northern California the housing prices in coastal districts are not too high, so it is not a simple rule.</p>
 </div>
 <div id="numerical-variables" class="section level3" number="2.8.3">
@@ -1779,7 +1779,7 @@ qmplot(x = longitude,
   ggplot(aes(x = price_category, y = median_income, 
              fill = price_category, color = price_category)) +
   geom_boxplot(alpha=0.4) </code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>Let`s define a function for this task that accepts strings as inputs so we don’t have to copy and paste our code for every plot. Note that we only have to change the “y-variable” in every plot.</p>
 <pre class="r"><code>print_boxplot &lt;- function(.y_var){
   
@@ -1803,31 +1803,31 @@ qmplot(x = longitude,
 
 map(y_var, print_boxplot)</code></pre>
 <pre><code>## [[1]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <pre><code>## 
 ## [[2]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
 <pre><code>## 
 ## [[3]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-3.png" width="672" /></p>
 <pre><code>## 
 ## [[4]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-4.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-4.png" width="672" /></p>
 <pre><code>## 
 ## [[5]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-5.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-5.png" width="672" /></p>
 <pre><code>## 
 ## [[6]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-6.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-6.png" width="672" /></p>
 <pre><code>## 
 ## [[7]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-7.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-7.png" width="672" /></p>
 <pre><code>## 
 ## [[8]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-8.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-8.png" width="672" /></p>
 <pre><code>## 
 ## [[9]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-9.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-9.png" width="672" /></p>
 <p>We can observe a difference in the price_category:</p>
 <ul>
 <li><p>The differences between our two groups are quite small for <code>housing_median_age</code>, <code>total_room</code>, <code>total_bedrooms</code>, <code>population</code> and <code>households</code></p></li>
@@ -1854,10 +1854,10 @@ y_var_out &lt;-
 
 map(y_var_out, print_boxplot_out)</code></pre>
 <pre><code>## [[1]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <pre><code>## 
 ## [[2]]</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
 <p>Now we are able to recognize a small difference for <code>population_per_household</code>. <code>rooms_per_household</code> on the other hand is quite similar for both groups.</p>
 <p>Additionally, we can use the function <code>ggscatmat</code> to create plots with our dependent variable as color column:</p>
 <pre class="r"><code>library(GGally)
@@ -1868,7 +1868,7 @@ data_explore %&gt;%
   ggscatmat(color=&quot;price_category&quot;, 
             corMethod = &quot;spearman&quot;,
             alpha=0.2)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>There are a few things you might notice in these histograms:</p>
 <ul>
 <li><p>Note that our attributes have very different scales. We will take care of this issue later in data preparation, when we use feature scaling (data normalization).</p></li>
@@ -2320,7 +2320,7 @@ data_explore %&gt;%
   ggplot(aes(price_category, ocean_proximity)) +
   geom_bin2d() +
   scale_fill_continuous(type = &quot;viridis&quot;) </code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>We can observe that most districts with a median house price above 150,000 have an ocean proximity below 1 hour. On the other hand, districts below that threshold are typically inland. Hence, ocean proximity is indeed a good predictor for our two different median house value categories.</p>
 </div>
 </div>
@@ -2477,7 +2477,7 @@ test_data &lt;- testing(data_split)</code></pre>
          population_per_household) %&gt;% 
   ggscatmat(corMethod = &quot;spearman&quot;,
             alpha=0.2)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>You should notice that:</p>
 <ul>
 <li><p>the variables <code>longitude</code> and <code>latitude</code> did not change.</p></li>
@@ -2755,12 +2755,12 @@ log_res_2 &lt;-
 <pre class="r"><code>log_pred %&gt;% 
   conf_mat(price_category, .pred_class) %&gt;% 
   autoplot(type = &quot;mosaic&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>Or type heatmap:</p>
 <pre class="r"><code>log_pred %&gt;% 
   conf_mat(price_category, .pred_class) %&gt;% 
   autoplot(type = &quot;heatmap&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="roc-curve" class="section level4" number="4.3.1.5">
 <h4><span class="header-section-number">4.3.1.5</span> ROC-Curve</h4>
@@ -2769,7 +2769,7 @@ log_res_2 &lt;-
   group_by(id) %&gt;% # id contains our folds
   roc_curve(price_category, .pred_above) %&gt;% 
   autoplot()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Visit <a href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc">Google developer’s Machine Learning Crashcourse</a> to learn more about the ROC-Curve.</p>
 </div>
 <div id="probability-distributions" class="section level4" number="4.3.1.6">
@@ -2780,7 +2780,7 @@ log_res_2 &lt;-
   geom_density(aes(x = .pred_above, 
                    fill = price_category), 
                alpha = 0.5)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 </div>
 </div>
 <div id="random-forest-2" class="section level3" number="4.3.2">
@@ -2934,7 +2934,7 @@ model_comp %&gt;%
      aes(label = round(mean_f_meas, 2), y = mean_f_meas + 0.08),
      vjust = 1
   )</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <pre class="r"><code># show mean area under the curve (auc) per model
 model_comp %&gt;% 
   arrange(mean_roc_auc) %&gt;% 
@@ -2948,7 +2948,7 @@ model_comp %&gt;%
      aes(label = round(mean_roc_auc, 2), y = mean_roc_auc + 0.08),
      vjust = 1
   )</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-64-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-64-2.png" width="672" /></p>
 <p>Note that the model results are all quite similar. In our example we choose the F1-Score as performance measure to select the best model. Let’s find the maximum mean F1-Score:</p>
 <pre class="r"><code>model_comp %&gt;% slice_max(mean_f_meas)</code></pre>
 <pre><code>## # A tibble: 1 x 17
@@ -2994,20 +2994,20 @@ last_fit_rf %&gt;%
   pluck(&quot;.workflow&quot;, 1) %&gt;%   
   pull_workflow_fit() %&gt;% 
   vip(num_features = 10)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-68-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>The two most important predictors in whether a district has a median house value above or below 150000 dollars were the ocean proximity inland and the median income.</p>
 <p>Take a look at the confusion matrix:</p>
 <pre class="r"><code>last_fit_rf %&gt;%
   collect_predictions() %&gt;% 
   conf_mat(price_category, .pred_class) %&gt;% 
   autoplot(type = &quot;heatmap&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-69-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>Let’s create the ROC curve. Again, since the event we are predicting is the first level in the <code>price_category</code> factor (“above”), we provide <code>roc_curve()</code> with the relevant class probability <code>.pred_above</code>:</p>
 <pre class="r"><code>last_fit_rf %&gt;% 
   collect_predictions() %&gt;% 
   roc_curve(price_category, .pred_above) %&gt;% 
   autoplot()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <p>Based on all of the results, the validation set and test set performance statistics are very close, so we would have pretty high confidence that our random forest model with the selected hyperparameters would perform well when predicting new data.</p>
 </div>
 </div>

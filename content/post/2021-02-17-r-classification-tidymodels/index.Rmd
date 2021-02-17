@@ -23,7 +23,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, 	fig.align = 'center')
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 library(tidyverse)
 library(skimr)
@@ -57,7 +57,7 @@ Note that due to performance reasons, I only show the code for the neural net bu
 Furthermore, we follow this data science lifecycle process:
 
 
-```{r crisp1clas, fig.margin = TRUE, echo = FALSE, out.width = "50%", out.height = "50%", fig.cap = "Cross Industry Standard Process for Data Mining (Wirth & Hipp, 2000)"}
+```{r crisp1clas, fig.margin = TRUE, echo = FALSE, out.width = "70%", out.height = "70%", fig.cap = "Cross Industry Standard Process for Data Mining (Wirth & Hipp, 2000)"}
 knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/CRISP-DM.png")
 ```
 
