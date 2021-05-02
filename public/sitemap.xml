@@ -129,14 +129,14 @@
   </url>
   
   <url>
-    <loc>https://kirenz.com/categories/seminar/</loc>
+    <loc>https://kirenz.com/talk/</loc>
     <lastmod>2020-12-04T09:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kirenz.com/talk/</loc>
+    <loc>https://kirenz.com/categories/seminar/</loc>
     <lastmod>2020-12-04T09:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
