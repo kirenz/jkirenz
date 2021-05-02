@@ -38,6 +38,7 @@ library(themis)
 library(purrr)
 library(tidyr)
 library(tidymodels)
+
 ```
 
 
@@ -64,7 +65,7 @@ knitr::include_graphics("https://data-science-tidymodels.netlify.app/css/CRISP-D
 # Business understanding
 
 
-In business understanding, you should:
+In business understanding, you:
 
 - Define your (business) goal
 - Frame the problem (regression, classification,...)
@@ -99,7 +100,7 @@ In Data Understanding, you:
 - Discover and visualize the data to gain insights 
 
 
-## Importing Data
+## Import Data
 
 First of all, let's import the data:
 
@@ -108,7 +109,6 @@ library(tidyverse)
 
 LINK <- "https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"
 housing_df <- read_csv(LINK)
-
 ```
 
 
