@@ -61,7 +61,7 @@ In Data Understanding, we first
 - Get an overview about the data structure
 - Discover and visualize the data to gain insights 
 
-## Import Data
+## Imort Data
 
 First of all, let's import the data:
 

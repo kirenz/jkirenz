@@ -20,13 +20,15 @@ output:
     toc_depth: 3
 ---
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 <div id="TOC">
 <ul>
 <li><a href="#data-understanding"><span class="toc-section-number">1</span> Data understanding</a>
 <ul>
-<li><a href="#import-data"><span class="toc-section-number">1.1</span> Import Data</a></li>
+<li><a href="#imort-data"><span class="toc-section-number">1.1</span> Imort Data</a></li>
 <li><a href="#data-overview"><span class="toc-section-number">1.2</span> Data overview</a></li>
 <li><a href="#data-exploration"><span class="toc-section-number">1.3</span> Data exploration</a></li>
 </ul></li>
@@ -69,8 +71,8 @@ library(ggmap)</code></pre>
 <li>Get an overview about the data structure</li>
 <li>Discover and visualize the data to gain insights</li>
 </ul>
-<div id="import-data" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Import Data</h2>
+<div id="imort-data" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Imort Data</h2>
 <p>First of all, let’s import the data:</p>
 <pre class="r"><code>LINK &lt;- &quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing.csv&quot;
 housing_df &lt;- read_csv(LINK)</code></pre>
@@ -81,28 +83,28 @@ housing_df &lt;- read_csv(LINK)</code></pre>
 <p>California census top 4 rows of the DataFrame:</p>
 <pre class="r"><code>head(housing_df, 4)</code></pre>
 <pre><code>## # A tibble: 4 x 10
-##   longitude latitude housing_median_age total_rooms total_bedrooms population
-##       &lt;dbl&gt;    &lt;dbl&gt;              &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;
-## 1     -122.     37.9                 41         880            129        322
-## 2     -122.     37.9                 21        7099           1106       2401
-## 3     -122.     37.8                 52        1467            190        496
-## 4     -122.     37.8                 52        1274            235        558
+##   longitude latitude housing_median_… total_rooms total_bedrooms population
+##       &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+## 1     -122.     37.9               41         880            129        322
+## 2     -122.     37.9               21        7099           1106       2401
+## 3     -122.     37.8               52        1467            190        496
+## 4     -122.     37.8               52        1274            235        558
 ## # … with 4 more variables: households &lt;dbl&gt;, median_income &lt;dbl&gt;,
 ## #   median_house_value &lt;dbl&gt;, ocean_proximity &lt;chr&gt;</code></pre>
 <p>Data info:</p>
 <pre class="r"><code>glimpse(housing_df)</code></pre>
 <pre><code>## Rows: 20,640
 ## Columns: 10
-## $ longitude          &lt;dbl&gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.2…
-## $ latitude           &lt;dbl&gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 37…
-## $ housing_median_age &lt;dbl&gt; 41, 21, 52, 52, 52, 52, 52, 52, 42, 52, 52, 52, 52,…
-## $ total_rooms        &lt;dbl&gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555,…
-## $ total_bedrooms     &lt;dbl&gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707, …
-## $ population         &lt;dbl&gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 15…
-## $ households         &lt;dbl&gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714, …
-## $ median_income      &lt;dbl&gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.6…
-## $ median_house_value &lt;dbl&gt; 452600, 358500, 352100, 341300, 342200, 269700, 299…
-## $ ocean_proximity    &lt;chr&gt; &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NE…</code></pre>
+## $ longitude          &lt;dbl&gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.…
+## $ latitude           &lt;dbl&gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 3…
+## $ housing_median_age &lt;dbl&gt; 41, 21, 52, 52, 52, 52, 52, 52, 42, 52, 52, 52, 52…
+## $ total_rooms        &lt;dbl&gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555…
+## $ total_bedrooms     &lt;dbl&gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707,…
+## $ population         &lt;dbl&gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 1…
+## $ households         &lt;dbl&gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714,…
+## $ median_income      &lt;dbl&gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.…
+## $ median_house_value &lt;dbl&gt; 452600, 358500, 352100, 341300, 342200, 269700, 29…
+## $ ocean_proximity    &lt;chr&gt; &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;NEAR BAY&quot;, &quot;N…</code></pre>
 <p>Data summary of numerical and categorical attributes using a function from the package <code>skimr</code>:</p>
 <pre class="r"><code>skim(housing_df)</code></pre>
 <table style="width: auto;" class="table table-condensed">
@@ -619,10 +621,10 @@ median_house_value
 ## 5 ISLAND              5</code></pre>
 <p>The function <code>ggscatmat</code> from the package <code>GGally</code> creates a matrix with scatterplots, densities and correlations for numeric columns. In our code, we enter the dataset <code>housing_df</code>, choose columns 6 to 9, a color column for our categorical variable <code>ocean_proximity</code>, and an alpha level of 0.8 (for transparency).</p>
 <pre class="r"><code>ggscatmat(housing_df, columns = 6:9, color=&quot;ocean_proximity&quot;, alpha=0.8)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>To obtain an overview of even more visualizations, we can use the function <code>ggpairs</code>:</p>
 <pre class="r"><code>ggpairs(housing_df)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="data-exploration" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Data exploration</h2>
@@ -631,7 +633,7 @@ median_house_value
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &quot;cornflowerblue&quot;)</code></pre>
 <div class="figure"><span id="fig:point-long-lat"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/point-long-lat-1.png" alt="Scatterplot of longitude and latitude" width="80%" />
+<img src="index_files/figure-html/point-long-lat-1.png" alt="Scatterplot of longitude and latitude" width="80%" />
 <p class="caption">
 Figure 1.1: Scatterplot of longitude and latitude
 </p>
@@ -641,7 +643,7 @@ Figure 1.1: Scatterplot of longitude and latitude
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &quot;cornflowerblue&quot;, alpha = 0.1) </code></pre>
 <div class="figure"><span id="fig:point-long-lat-a"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/point-long-lat-a-1.png" alt="Scatterplot of longitude and latitude that highlights high-density areas" width="80%" />
+<img src="index_files/figure-html/point-long-lat-a-1.png" alt="Scatterplot of longitude and latitude that highlights high-density areas" width="80%" />
 <p class="caption">
 Figure 1.2: Scatterplot of longitude and latitude that highlights high-density areas
 </p>
@@ -658,7 +660,7 @@ Figure 1.2: Scatterplot of longitude and latitude that highlights high-density a
              alpha = 0.4) +
   scale_colour_gradientn(colours=rev(rainbow(4)))</code></pre>
 <div class="figure"><span id="fig:plot-ca-prices"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/plot-ca-prices-1.png" alt="California housing_df prices" width="80%" />
+<img src="index_files/figure-html/plot-ca-prices-1.png" alt="California housing_df prices" width="80%" />
 <p class="caption">
 Figure 1.3: California housing_df prices
 </p>
@@ -673,7 +675,7 @@ qmplot(x = longitude,
        size = population,
        alpha = 0.4) +
   scale_colour_gradientn(colours=rev(rainbow(4)))</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
 <div id="data-preparation" class="section level1" number="2">
@@ -687,7 +689,7 @@ qmplot(x = longitude,
   ggplot(aes(median_income)) +
   geom_histogram(bins = 30)</code></pre>
 <div class="figure"><span id="fig:hist-med-income"></span>
-<img src="{{< blogdown/postref >}}index_files/figure-html/hist-med-income-1.png" alt="Histogram of Median Income" width="80%" />
+<img src="index_files/figure-html/hist-med-income-1.png" alt="Histogram of Median Income" width="80%" />
 <p class="caption">
 Figure 2.1: Histogram of Median Income
 </p>
@@ -794,11 +796,11 @@ cv_folds</code></pre>
 ## # A tibble: 5 x 2
 ##   splits               id   
 ##   &lt;list&gt;               &lt;chr&gt;
-## 1 &lt;split [12384/3098]&gt; Fold1
-## 2 &lt;split [12384/3098]&gt; Fold2
-## 3 &lt;split [12385/3097]&gt; Fold3
-## 4 &lt;split [12387/3095]&gt; Fold4
-## 5 &lt;split [12388/3094]&gt; Fold5</code></pre>
+## 1 &lt;split [12.4K/3.1K]&gt; Fold1
+## 2 &lt;split [12.4K/3.1K]&gt; Fold2
+## 3 &lt;split [12.4K/3.1K]&gt; Fold3
+## 4 &lt;split [12.4K/3.1K]&gt; Fold4
+## 5 &lt;split [12.4K/3.1K]&gt; Fold5</code></pre>
 <p>Now we can fit the model and collect the performance metrics with <code>collect_metrics()</code>:</p>
 <pre class="r"><code>lm_wflow_eval &lt;- 
   lm_wflow %&gt;% 
