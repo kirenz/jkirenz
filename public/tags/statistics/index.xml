@@ -26,7 +26,7 @@
 &lt;li&gt;&lt;a href=&#34;#business-understanding&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Business understanding&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#data-understanding&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Data understanding&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#imort-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Imort Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Import Data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#clean-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; Clean data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#format-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; Format data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#missing-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; Missing data&lt;/a&gt;&lt;/li&gt;
@@ -128,8 +128,8 @@ Figure 1.1: Data processing components
 &lt;li&gt;Split data into training and test set using stratified sampling&lt;/li&gt;
 &lt;li&gt;Discover and visualize the data to gain insights&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div id=&#34;imort-data&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Imort Data&lt;/h2&gt;
+&lt;div id=&#34;import-data&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Import Data&lt;/h2&gt;
 &lt;p&gt;First of all, let’s import the data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
 
@@ -148,7 +148,7 @@ housing_df %&amp;gt;%
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#tztsainccq .gt_table {
+#lhrgurynmx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -173,7 +173,7 @@ housing_df %&amp;gt;%
   border-left-color: #D3D3D3;
 }
 
-#tztsainccq .gt_heading {
+#lhrgurynmx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -185,7 +185,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#tztsainccq .gt_title {
+#lhrgurynmx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -195,7 +195,7 @@ housing_df %&amp;gt;%
   border-bottom-width: 0;
 }
 
-#tztsainccq .gt_subtitle {
+#lhrgurynmx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -205,13 +205,13 @@ housing_df %&amp;gt;%
   border-top-width: 0;
 }
 
-#tztsainccq .gt_bottom_border {
+#lhrgurynmx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tztsainccq .gt_col_headings {
+#lhrgurynmx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -226,7 +226,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#tztsainccq .gt_col_heading {
+#lhrgurynmx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -246,7 +246,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#tztsainccq .gt_column_spanner_outer {
+#lhrgurynmx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -258,15 +258,15 @@ housing_df %&amp;gt;%
   padding-right: 4px;
 }
 
-#tztsainccq .gt_column_spanner_outer:first-child {
+#lhrgurynmx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tztsainccq .gt_column_spanner_outer:last-child {
+#lhrgurynmx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tztsainccq .gt_column_spanner {
+#lhrgurynmx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -278,7 +278,7 @@ housing_df %&amp;gt;%
   width: 100%;
 }
 
-#tztsainccq .gt_group_heading {
+#lhrgurynmx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -300,7 +300,7 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#tztsainccq .gt_empty_group_heading {
+#lhrgurynmx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -315,15 +315,15 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#tztsainccq .gt_from_md &gt; :first-child {
+#lhrgurynmx .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#tztsainccq .gt_from_md &gt; :last-child {
+#lhrgurynmx .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#tztsainccq .gt_row {
+#lhrgurynmx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -342,7 +342,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#tztsainccq .gt_stub {
+#lhrgurynmx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -354,7 +354,7 @@ housing_df %&amp;gt;%
   padding-left: 12px;
 }
 
-#tztsainccq .gt_summary_row {
+#lhrgurynmx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -364,7 +364,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#tztsainccq .gt_first_summary_row {
+#lhrgurynmx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -374,7 +374,7 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#tztsainccq .gt_grand_summary_row {
+#lhrgurynmx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -384,7 +384,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#tztsainccq .gt_first_grand_summary_row {
+#lhrgurynmx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -394,11 +394,11 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#tztsainccq .gt_striped {
+#lhrgurynmx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tztsainccq .gt_table_body {
+#lhrgurynmx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -407,7 +407,7 @@ housing_df %&amp;gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#tztsainccq .gt_footnotes {
+#lhrgurynmx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -421,13 +421,13 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#tztsainccq .gt_footnote {
+#lhrgurynmx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#tztsainccq .gt_sourcenotes {
+#lhrgurynmx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -441,46 +441,46 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#tztsainccq .gt_sourcenote {
+#lhrgurynmx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#tztsainccq .gt_left {
+#lhrgurynmx .gt_left {
   text-align: left;
 }
 
-#tztsainccq .gt_center {
+#lhrgurynmx .gt_center {
   text-align: center;
 }
 
-#tztsainccq .gt_right {
+#lhrgurynmx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tztsainccq .gt_font_normal {
+#lhrgurynmx .gt_font_normal {
   font-weight: normal;
 }
 
-#tztsainccq .gt_font_bold {
+#lhrgurynmx .gt_font_bold {
   font-weight: bold;
 }
 
-#tztsainccq .gt_font_italic {
+#lhrgurynmx .gt_font_italic {
   font-style: italic;
 }
 
-#tztsainccq .gt_super {
+#lhrgurynmx .gt_super {
   font-size: 65%;
 }
 
-#tztsainccq .gt_footnote_marks {
+#lhrgurynmx .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;tztsainccq&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;lhrgurynmx&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -570,16 +570,16 @@ housing_df &amp;lt;-
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(housing_df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Rows: 20,640
 ## Columns: 10
-## $ longitude          &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.…
-## $ latitude           &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 3…
-## $ housing_median_age &amp;lt;chr&amp;gt; &amp;quot;41.0&amp;quot;, &amp;quot;21.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;5…
-## $ total_rooms        &amp;lt;dbl&amp;gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555…
-## $ total_bedrooms     &amp;lt;dbl&amp;gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707,…
-## $ population         &amp;lt;dbl&amp;gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 1…
-## $ households         &amp;lt;dbl&amp;gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714,…
-## $ median_income      &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.…
-## $ median_house_value &amp;lt;chr&amp;gt; &amp;quot;452600.0&amp;quot;, &amp;quot;358500.0&amp;quot;, &amp;quot;352100.0&amp;quot;, &amp;quot;341300.0&amp;quot;, &amp;quot;3…
-## $ ocean_proximity    &amp;lt;chr&amp;gt; &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;N…&lt;/code&gt;&lt;/pre&gt;
+## $ longitude          &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.2…
+## $ latitude           &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 37…
+## $ housing_median_age &amp;lt;chr&amp;gt; &amp;quot;41.0&amp;quot;, &amp;quot;21.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52.0&amp;quot;, &amp;quot;52…
+## $ total_rooms        &amp;lt;dbl&amp;gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555,…
+## $ total_bedrooms     &amp;lt;dbl&amp;gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707, …
+## $ population         &amp;lt;dbl&amp;gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 15…
+## $ households         &amp;lt;dbl&amp;gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714, …
+## $ median_income      &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.6…
+## $ median_house_value &amp;lt;chr&amp;gt; &amp;quot;452600.0&amp;quot;, &amp;quot;358500.0&amp;quot;, &amp;quot;352100.0&amp;quot;, &amp;quot;341300.0&amp;quot;, &amp;quot;34…
+## $ ocean_proximity    &amp;lt;chr&amp;gt; &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NE…&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The package &lt;code&gt;visdat&lt;/code&gt; helps us to explore the data class structure visually:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(visdat)
 
@@ -664,7 +664,7 @@ housing_df %&amp;gt;%
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#glxfjimoql .gt_table {
+#dopkjztufg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -689,7 +689,7 @@ housing_df %&amp;gt;%
   border-left-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_heading {
+#dopkjztufg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -701,7 +701,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_title {
+#dopkjztufg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -711,7 +711,7 @@ housing_df %&amp;gt;%
   border-bottom-width: 0;
 }
 
-#glxfjimoql .gt_subtitle {
+#dopkjztufg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -721,13 +721,13 @@ housing_df %&amp;gt;%
   border-top-width: 0;
 }
 
-#glxfjimoql .gt_bottom_border {
+#dopkjztufg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_col_headings {
+#dopkjztufg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -742,7 +742,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_col_heading {
+#dopkjztufg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -762,7 +762,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#glxfjimoql .gt_column_spanner_outer {
+#dopkjztufg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -774,15 +774,15 @@ housing_df %&amp;gt;%
   padding-right: 4px;
 }
 
-#glxfjimoql .gt_column_spanner_outer:first-child {
+#dopkjztufg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#glxfjimoql .gt_column_spanner_outer:last-child {
+#dopkjztufg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#glxfjimoql .gt_column_spanner {
+#dopkjztufg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -794,7 +794,7 @@ housing_df %&amp;gt;%
   width: 100%;
 }
 
-#glxfjimoql .gt_group_heading {
+#dopkjztufg .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -816,7 +816,7 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#glxfjimoql .gt_empty_group_heading {
+#dopkjztufg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -831,15 +831,15 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#glxfjimoql .gt_from_md &gt; :first-child {
+#dopkjztufg .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#glxfjimoql .gt_from_md &gt; :last-child {
+#dopkjztufg .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#glxfjimoql .gt_row {
+#dopkjztufg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -858,7 +858,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#glxfjimoql .gt_stub {
+#dopkjztufg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -870,7 +870,7 @@ housing_df %&amp;gt;%
   padding-left: 12px;
 }
 
-#glxfjimoql .gt_summary_row {
+#dopkjztufg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -880,7 +880,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#glxfjimoql .gt_first_summary_row {
+#dopkjztufg .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -890,7 +890,7 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_grand_summary_row {
+#dopkjztufg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -900,7 +900,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#glxfjimoql .gt_first_grand_summary_row {
+#dopkjztufg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -910,11 +910,11 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_striped {
+#dopkjztufg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#glxfjimoql .gt_table_body {
+#dopkjztufg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -923,7 +923,7 @@ housing_df %&amp;gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_footnotes {
+#dopkjztufg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -937,13 +937,13 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_footnote {
+#dopkjztufg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#glxfjimoql .gt_sourcenotes {
+#dopkjztufg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -957,46 +957,46 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#glxfjimoql .gt_sourcenote {
+#dopkjztufg .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#glxfjimoql .gt_left {
+#dopkjztufg .gt_left {
   text-align: left;
 }
 
-#glxfjimoql .gt_center {
+#dopkjztufg .gt_center {
   text-align: center;
 }
 
-#glxfjimoql .gt_right {
+#dopkjztufg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#glxfjimoql .gt_font_normal {
+#dopkjztufg .gt_font_normal {
   font-weight: normal;
 }
 
-#glxfjimoql .gt_font_bold {
+#dopkjztufg .gt_font_bold {
   font-weight: bold;
 }
 
-#glxfjimoql .gt_font_italic {
+#dopkjztufg .gt_font_italic {
   font-style: italic;
 }
 
-#glxfjimoql .gt_super {
+#dopkjztufg .gt_super {
   font-size: 65%;
 }
 
-#glxfjimoql .gt_footnote_marks {
+#dopkjztufg .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;glxfjimoql&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;dopkjztufg&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   
   &lt;thead class=&#34;gt_col_headings&#34;&gt;
     &lt;tr&gt;
@@ -1044,7 +1044,7 @@ housing_df %&amp;gt;%
   font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
 }
 
-#lnuqutloju .gt_table {
+#lzwlxuzllo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1069,7 +1069,7 @@ housing_df %&amp;gt;%
   border-left-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_heading {
+#lzwlxuzllo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1081,7 +1081,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_title {
+#lzwlxuzllo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1091,7 +1091,7 @@ housing_df %&amp;gt;%
   border-bottom-width: 0;
 }
 
-#lnuqutloju .gt_subtitle {
+#lzwlxuzllo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1101,13 +1101,13 @@ housing_df %&amp;gt;%
   border-top-width: 0;
 }
 
-#lnuqutloju .gt_bottom_border {
+#lzwlxuzllo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_col_headings {
+#lzwlxuzllo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1122,7 +1122,7 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_col_heading {
+#lzwlxuzllo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1142,7 +1142,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#lnuqutloju .gt_column_spanner_outer {
+#lzwlxuzllo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1154,15 +1154,15 @@ housing_df %&amp;gt;%
   padding-right: 4px;
 }
 
-#lnuqutloju .gt_column_spanner_outer:first-child {
+#lzwlxuzllo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lnuqutloju .gt_column_spanner_outer:last-child {
+#lzwlxuzllo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lnuqutloju .gt_column_spanner {
+#lzwlxuzllo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1174,7 +1174,7 @@ housing_df %&amp;gt;%
   width: 100%;
 }
 
-#lnuqutloju .gt_group_heading {
+#lzwlxuzllo .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1196,7 +1196,7 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#lnuqutloju .gt_empty_group_heading {
+#lzwlxuzllo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1211,15 +1211,15 @@ housing_df %&amp;gt;%
   vertical-align: middle;
 }
 
-#lnuqutloju .gt_from_md &gt; :first-child {
+#lzwlxuzllo .gt_from_md &gt; :first-child {
   margin-top: 0;
 }
 
-#lnuqutloju .gt_from_md &gt; :last-child {
+#lzwlxuzllo .gt_from_md &gt; :last-child {
   margin-bottom: 0;
 }
 
-#lnuqutloju .gt_row {
+#lzwlxuzllo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1238,7 +1238,7 @@ housing_df %&amp;gt;%
   overflow-x: hidden;
 }
 
-#lnuqutloju .gt_stub {
+#lzwlxuzllo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1250,7 +1250,7 @@ housing_df %&amp;gt;%
   padding-left: 12px;
 }
 
-#lnuqutloju .gt_summary_row {
+#lzwlxuzllo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1260,7 +1260,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#lnuqutloju .gt_first_summary_row {
+#lzwlxuzllo .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1270,7 +1270,7 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_grand_summary_row {
+#lzwlxuzllo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1280,7 +1280,7 @@ housing_df %&amp;gt;%
   padding-right: 5px;
 }
 
-#lnuqutloju .gt_first_grand_summary_row {
+#lzwlxuzllo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1290,11 +1290,11 @@ housing_df %&amp;gt;%
   border-top-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_striped {
+#lzwlxuzllo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lnuqutloju .gt_table_body {
+#lzwlxuzllo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1303,7 +1303,7 @@ housing_df %&amp;gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_footnotes {
+#lzwlxuzllo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1317,13 +1317,13 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_footnote {
+#lzwlxuzllo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#lnuqutloju .gt_sourcenotes {
+#lzwlxuzllo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1337,46 +1337,46 @@ housing_df %&amp;gt;%
   border-right-color: #D3D3D3;
 }
 
-#lnuqutloju .gt_sourcenote {
+#lzwlxuzllo .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#lnuqutloju .gt_left {
+#lzwlxuzllo .gt_left {
   text-align: left;
 }
 
-#lnuqutloju .gt_center {
+#lzwlxuzllo .gt_center {
   text-align: center;
 }
 
-#lnuqutloju .gt_right {
+#lzwlxuzllo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lnuqutloju .gt_font_normal {
+#lzwlxuzllo .gt_font_normal {
   font-weight: normal;
 }
 
-#lnuqutloju .gt_font_bold {
+#lzwlxuzllo .gt_font_bold {
   font-weight: bold;
 }
 
-#lnuqutloju .gt_font_italic {
+#lzwlxuzllo .gt_font_italic {
   font-style: italic;
 }
 
-#lnuqutloju .gt_super {
+#lzwlxuzllo .gt_super {
   font-size: 65%;
 }
 
-#lnuqutloju .gt_footnote_marks {
+#lzwlxuzllo .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 &lt;/style&gt;
-&lt;div id=&#34;lnuqutloju&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+&lt;div id=&#34;lzwlxuzllo&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
   &lt;thead class=&#34;gt_header&#34;&gt;
     &lt;tr&gt;
       &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_title gt_font_normal&#34; style&gt;California median house prices&lt;/th&gt;
@@ -2362,14 +2362,14 @@ data_explore %&amp;gt;%
 glimpse(housing_df_new)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Rows: 20,640
 ## Columns: 8
-## $ longitude                &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25,…
-## $ latitude                 &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37…
-## $ price_category           &amp;lt;fct&amp;gt; above, above, above, above, above, above, ab…
-## $ median_income            &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.03…
-## $ ocean_proximity          &amp;lt;fct&amp;gt; NEAR BAY, NEAR BAY, NEAR BAY, NEAR BAY, NEAR…
-## $ bedrooms_per_room        &amp;lt;dbl&amp;gt; 0.1465909, 0.1557966, 0.1295160, 0.1844584, …
-## $ rooms_per_household      &amp;lt;dbl&amp;gt; 6.984127, 6.238137, 8.288136, 5.817352, 6.28…
-## $ population_per_household &amp;lt;dbl&amp;gt; 2.555556, 2.109842, 2.802260, 2.547945, 2.18…&lt;/code&gt;&lt;/pre&gt;
+## $ longitude                &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, …
+## $ latitude                 &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.…
+## $ price_category           &amp;lt;fct&amp;gt; above, above, above, above, above, above, abo…
+## $ median_income            &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.036…
+## $ ocean_proximity          &amp;lt;fct&amp;gt; NEAR BAY, NEAR BAY, NEAR BAY, NEAR BAY, NEAR …
+## $ bedrooms_per_room        &amp;lt;dbl&amp;gt; 0.1465909, 0.1557966, 0.1295160, 0.1844584, 0…
+## $ rooms_per_household      &amp;lt;dbl&amp;gt; 6.984127, 6.238137, 8.288136, 5.817352, 6.281…
+## $ population_per_household &amp;lt;dbl&amp;gt; 2.555556, 2.109842, 2.802260, 2.547945, 2.181…&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Furthermore, we need to make a new data split since we updated the original data.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
 
@@ -2458,16 +2458,16 @@ test_data &amp;lt;- testing(data_split)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(prepped_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Rows: 15,317
 ## Columns: 10
-## $ longitude                  &amp;lt;dbl&amp;gt; -122.22, -122.24, -122.25, -122.25, -122.2…
-## $ latitude                   &amp;lt;dbl&amp;gt; 37.86, 37.85, 37.85, 37.85, 37.84, 37.84, …
-## $ median_income              &amp;lt;dbl&amp;gt; 1.8483941, 1.5639024, 1.0313625, 0.3223031…
-## $ rooms_per_household        &amp;lt;dbl&amp;gt; 0.676801762, 1.719249869, 0.420589933, -0.…
-## $ population_per_household   &amp;lt;dbl&amp;gt; -1.07327656, -0.04202316, -0.38771664, -1.…
-## $ price_category             &amp;lt;fct&amp;gt; above, above, above, above, above, above, …
-## $ ocean_proximity_INLAND     &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-## $ ocean_proximity_ISLAND     &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-## $ ocean_proximity_NEAR.BAY   &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ ocean_proximity_NEAR.OCEAN &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …&lt;/code&gt;&lt;/pre&gt;
+## $ longitude                  &amp;lt;dbl&amp;gt; -122.22, -122.24, -122.25, -122.25, -122.25…
+## $ latitude                   &amp;lt;dbl&amp;gt; 37.86, 37.85, 37.85, 37.85, 37.84, 37.84, 3…
+## $ median_income              &amp;lt;dbl&amp;gt; 1.8483941, 1.5639024, 1.0313625, 0.3223031,…
+## $ rooms_per_household        &amp;lt;dbl&amp;gt; 0.676801762, 1.719249869, 0.420589933, -0.3…
+## $ population_per_household   &amp;lt;dbl&amp;gt; -1.07327656, -0.04202316, -0.38771664, -1.0…
+## $ price_category             &amp;lt;fct&amp;gt; above, above, above, above, above, above, a…
+## $ ocean_proximity_INLAND     &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ ocean_proximity_ISLAND     &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ ocean_proximity_NEAR.BAY   &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ ocean_proximity_NEAR.OCEAN &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Visualize the numerical data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prepped_data %&amp;gt;% 
   select(price_category, 
@@ -2580,13 +2580,13 @@ log_wflow&lt;/code&gt;&lt;/pre&gt;
 ## ── Preprocessor ────────────────────────────────────────────────────────────────
 ## 7 Recipe Steps
 ## 
-## ● step_log()
-## ● step_naomit()
-## ● step_novel()
-## ● step_normalize()
-## ● step_dummy()
-## ● step_zv()
-## ● step_corr()
+## • step_log()
+## • step_naomit()
+## • step_novel()
+## • step_normalize()
+## • step_dummy()
+## • step_zv()
+## • step_corr()
 ## 
 ## ── Model ───────────────────────────────────────────────────────────────────────
 ## Logistic Regression Model Specification (classification)
@@ -2672,20 +2672,20 @@ log_res_2 &amp;lt;-
 &lt;p&gt;Now there is a &lt;code&gt;.extracts&lt;/code&gt; column with nested tibbles.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res_2$.extracts[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 2
-##   .extracts        .config             
-##   &amp;lt;list&amp;gt;           &amp;lt;chr&amp;gt;               
-## 1 &amp;lt;tibble [8 × 5]&amp;gt; Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+##   .extracts            .config             
+##   &amp;lt;list&amp;gt;               &amp;lt;chr&amp;gt;               
+## 1 &amp;lt;tibble[,5] [8 × 5]&amp;gt; Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To get the results use:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;log_res_2$.extracts[[1]][[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## # A tibble: 8 x 5
 ##   term                       estimate std.error statistic  p.value
 ##   &amp;lt;chr&amp;gt;                         &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-## 1 (Intercept)                  -2.02     0.0510  -39.6    0.      
-## 2 median_income                -1.91     0.0470  -40.6    0.      
+## 1 (Intercept)                  -2.02     0.0510  -39.6    0       
+## 2 median_income                -1.91     0.0470  -40.6    0       
 ## 3 rooms_per_household           0.252    0.0376    6.70   2.14e-11
 ## 4 population_per_household      0.485    0.0297   16.3    7.36e-60
-## 5 ocean_proximity_INLAND        2.92     0.0729   40.0    0.      
+## 5 ocean_proximity_INLAND        2.92     0.0729   40.0    0       
 ## 6 ocean_proximity_ISLAND      -11.4    160.       -0.0714 9.43e- 1
 ## 7 ocean_proximity_NEAR.BAY      0.386    0.0991    3.90   9.60e- 5
 ## 8 ocean_proximity_NEAR.OCEAN    0.631    0.0871    7.24   4.34e-13&lt;/code&gt;&lt;/pre&gt;
@@ -2800,14 +2800,14 @@ rf_res %&amp;gt;%  collect_metrics(summarize = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 6
 ##   .metric   .estimator  mean     n std_err .config             
 ##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
-## 1 accuracy  binary     0.858     5 0.00315 Preprocessor1_Model1
-## 2 f_meas    binary     0.890     5 0.00265 Preprocessor1_Model1
-## 3 kap       binary     0.692     5 0.00647 Preprocessor1_Model1
-## 4 precision binary     0.877     5 0.00195 Preprocessor1_Model1
-## 5 recall    binary     0.903     5 0.00480 Preprocessor1_Model1
-## 6 roc_auc   binary     0.926     5 0.00175 Preprocessor1_Model1
-## 7 sens      binary     0.903     5 0.00480 Preprocessor1_Model1
-## 8 spec      binary     0.781     5 0.00397 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+## 1 accuracy  binary     0.858     5 0.00318 Preprocessor1_Model1
+## 2 f_meas    binary     0.889     5 0.00264 Preprocessor1_Model1
+## 3 kap       binary     0.690     5 0.00663 Preprocessor1_Model1
+## 4 precision binary     0.876     5 0.00208 Preprocessor1_Model1
+## 5 recall    binary     0.903     5 0.00442 Preprocessor1_Model1
+## 6 roc_auc   binary     0.926     5 0.00179 Preprocessor1_Model1
+## 7 sens      binary     0.903     5 0.00442 Preprocessor1_Model1
+## 8 spec      binary     0.779     5 0.00409 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;xgboost-1&#34; class=&#34;section level3&#34; number=&#34;4.3.3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3.3&lt;/span&gt; XGBoost&lt;/h3&gt;
@@ -2951,9 +2951,9 @@ model_comp %&amp;gt;%
 &lt;p&gt;Note that the model results are all quite similar. In our example we choose the F1-Score as performance measure to select the best model. Let’s find the maximum mean F1-Score:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;model_comp %&amp;gt;% slice_max(mean_f_meas)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 17
-##   model mean_accuracy mean_f_meas mean_kap mean_precision mean_recall
-##   &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-## 1 Rand…         0.858       0.890    0.692          0.877       0.903
+##   model   mean_accuracy mean_f_meas mean_kap mean_precision mean_recall
+##   &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1 XGBoost         0.859       0.890    0.694          0.881       0.898
 ## # … with 11 more variables: mean_roc_auc &amp;lt;dbl&amp;gt;, mean_sens &amp;lt;dbl&amp;gt;,
 ## #   mean_spec &amp;lt;dbl&amp;gt;, std_err_accuracy &amp;lt;dbl&amp;gt;, std_err_f_meas &amp;lt;dbl&amp;gt;,
 ## #   std_err_kap &amp;lt;dbl&amp;gt;, std_err_precision &amp;lt;dbl&amp;gt;, std_err_recall &amp;lt;dbl&amp;gt;,
@@ -2977,13 +2977,13 @@ model_comp %&amp;gt;%
 &lt;pre&gt;&lt;code&gt;## # A tibble: 8 x 4
 ##   .metric   .estimator .estimate .config             
 ##   &amp;lt;chr&amp;gt;     &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
-## 1 recall    binary         0.892 Preprocessor1_Model1
-## 2 precision binary         0.879 Preprocessor1_Model1
-## 3 f_meas    binary         0.885 Preprocessor1_Model1
-## 4 accuracy  binary         0.853 Preprocessor1_Model1
-## 5 kap       binary         0.682 Preprocessor1_Model1
-## 6 sens      binary         0.892 Preprocessor1_Model1
-## 7 spec      binary         0.787 Preprocessor1_Model1
+## 1 recall    binary         0.895 Preprocessor1_Model1
+## 2 precision binary         0.877 Preprocessor1_Model1
+## 3 f_meas    binary         0.886 Preprocessor1_Model1
+## 4 accuracy  binary         0.854 Preprocessor1_Model1
+## 5 kap       binary         0.683 Preprocessor1_Model1
+## 6 sens      binary         0.895 Preprocessor1_Model1
+## 7 spec      binary         0.783 Preprocessor1_Model1
 ## 8 roc_auc   binary         0.925 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And these are our final performance metrics. Remember that if a model fit to the training dataset also fits the test dataset well, minimal &lt;em&gt;overfitting&lt;/em&gt; has taken place. This seems to be also the case in our example.&lt;/p&gt;
 &lt;p&gt;To learn more about the model we can access the variable importance scores via the &lt;code&gt;.workflow&lt;/code&gt; column. We first need to pluck out the first element in the workflow column, then pull out the fit from the workflow object. Finally, the &lt;code&gt;vip&lt;/code&gt; package helps us visualize the variable importance scores for the top features. Note that we can’t create this type of plot for every model engine.&lt;/p&gt;

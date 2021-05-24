@@ -100,7 +100,7 @@ In Data Understanding, you:
 - Discover and visualize the data to gain insights 
 
 
-## Imort Data
+## Import Data
 
 First of all, let's import the data:
 
