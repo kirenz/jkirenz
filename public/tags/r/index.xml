@@ -3020,15 +3020,13 @@ last_fit_rf %&amp;gt;%
       
       <guid>https://kirenz.com/post/2020-12-19-r-tidymodels-housing/</guid>
       <description>
-&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;index_files/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;index_files/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#data-understanding&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Data understanding&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#imort-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Imort Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Import Data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#data-overview&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Data overview&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#data-exploration&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Data exploration&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -3071,8 +3069,8 @@ library(ggmap)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;Get an overview about the data structure&lt;/li&gt;
 &lt;li&gt;Discover and visualize the data to gain insights&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div id=&#34;imort-data&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Imort Data&lt;/h2&gt;
+&lt;div id=&#34;import-data&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Import Data&lt;/h2&gt;
 &lt;p&gt;First of all, let’s import the data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LINK &amp;lt;- &amp;quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing.csv&amp;quot;
 housing_df &amp;lt;- read_csv(LINK)&lt;/code&gt;&lt;/pre&gt;
@@ -3083,28 +3081,28 @@ housing_df &amp;lt;- read_csv(LINK)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;California census top 4 rows of the DataFrame:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(housing_df, 4)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 10
-##   longitude latitude housing_median_… total_rooms total_bedrooms population
-##       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-## 1     -122.     37.9               41         880            129        322
-## 2     -122.     37.9               21        7099           1106       2401
-## 3     -122.     37.8               52        1467            190        496
-## 4     -122.     37.8               52        1274            235        558
+##   longitude latitude housing_median_age total_rooms total_bedrooms population
+##       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;              &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1     -122.     37.9                 41         880            129        322
+## 2     -122.     37.9                 21        7099           1106       2401
+## 3     -122.     37.8                 52        1467            190        496
+## 4     -122.     37.8                 52        1274            235        558
 ## # … with 4 more variables: households &amp;lt;dbl&amp;gt;, median_income &amp;lt;dbl&amp;gt;,
 ## #   median_house_value &amp;lt;dbl&amp;gt;, ocean_proximity &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Data info:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glimpse(housing_df)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Rows: 20,640
 ## Columns: 10
-## $ longitude          &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.…
-## $ latitude           &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 3…
-## $ housing_median_age &amp;lt;dbl&amp;gt; 41, 21, 52, 52, 52, 52, 52, 52, 42, 52, 52, 52, 52…
-## $ total_rooms        &amp;lt;dbl&amp;gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555…
-## $ total_bedrooms     &amp;lt;dbl&amp;gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707,…
-## $ population         &amp;lt;dbl&amp;gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 1…
-## $ households         &amp;lt;dbl&amp;gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714,…
-## $ median_income      &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.…
-## $ median_house_value &amp;lt;dbl&amp;gt; 452600, 358500, 352100, 341300, 342200, 269700, 29…
-## $ ocean_proximity    &amp;lt;chr&amp;gt; &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;N…&lt;/code&gt;&lt;/pre&gt;
+## $ longitude          &amp;lt;dbl&amp;gt; -122.23, -122.22, -122.24, -122.25, -122.25, -122.2…
+## $ latitude           &amp;lt;dbl&amp;gt; 37.88, 37.86, 37.85, 37.85, 37.85, 37.85, 37.84, 37…
+## $ housing_median_age &amp;lt;dbl&amp;gt; 41, 21, 52, 52, 52, 52, 52, 52, 42, 52, 52, 52, 52,…
+## $ total_rooms        &amp;lt;dbl&amp;gt; 880, 7099, 1467, 1274, 1627, 919, 2535, 3104, 2555,…
+## $ total_bedrooms     &amp;lt;dbl&amp;gt; 129, 1106, 190, 235, 280, 213, 489, 687, 665, 707, …
+## $ population         &amp;lt;dbl&amp;gt; 322, 2401, 496, 558, 565, 413, 1094, 1157, 1206, 15…
+## $ households         &amp;lt;dbl&amp;gt; 126, 1138, 177, 219, 259, 193, 514, 647, 595, 714, …
+## $ median_income      &amp;lt;dbl&amp;gt; 8.3252, 8.3014, 7.2574, 5.6431, 3.8462, 4.0368, 3.6…
+## $ median_house_value &amp;lt;dbl&amp;gt; 452600, 358500, 352100, 341300, 342200, 269700, 299…
+## $ ocean_proximity    &amp;lt;chr&amp;gt; &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NEAR BAY&amp;quot;, &amp;quot;NE…&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Data summary of numerical and categorical attributes using a function from the package &lt;code&gt;skimr&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;skim(housing_df)&lt;/code&gt;&lt;/pre&gt;
 &lt;table style=&#34;width: auto;&#34; class=&#34;table table-condensed&#34;&gt;
@@ -3621,10 +3619,10 @@ median_house_value
 ## 5 ISLAND              5&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The function &lt;code&gt;ggscatmat&lt;/code&gt; from the package &lt;code&gt;GGally&lt;/code&gt; creates a matrix with scatterplots, densities and correlations for numeric columns. In our code, we enter the dataset &lt;code&gt;housing_df&lt;/code&gt;, choose columns 6 to 9, a color column for our categorical variable &lt;code&gt;ocean_proximity&lt;/code&gt;, and an alpha level of 0.8 (for transparency).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggscatmat(housing_df, columns = 6:9, color=&amp;quot;ocean_proximity&amp;quot;, alpha=0.8)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;To obtain an overview of even more visualizations, we can use the function &lt;code&gt;ggpairs&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggpairs(housing_df)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;data-exploration&#34; class=&#34;section level2&#34; number=&#34;1.3&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Data exploration&lt;/h2&gt;
@@ -3633,7 +3631,7 @@ median_house_value
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &amp;quot;cornflowerblue&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:point-long-lat&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;index_files/figure-html/point-long-lat-1.png&#34; alt=&#34;Scatterplot of longitude and latitude&#34; width=&#34;80%&#34; /&gt;
+&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/point-long-lat-1.png&#34; alt=&#34;Scatterplot of longitude and latitude&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1.1: Scatterplot of longitude and latitude
 &lt;/p&gt;
@@ -3643,7 +3641,7 @@ Figure 1.1: Scatterplot of longitude and latitude
   ggplot(aes(x = longitude, y = latitude)) +
   geom_point(color = &amp;quot;cornflowerblue&amp;quot;, alpha = 0.1) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:point-long-lat-a&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;index_files/figure-html/point-long-lat-a-1.png&#34; alt=&#34;Scatterplot of longitude and latitude that highlights high-density areas&#34; width=&#34;80%&#34; /&gt;
+&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/point-long-lat-a-1.png&#34; alt=&#34;Scatterplot of longitude and latitude that highlights high-density areas&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1.2: Scatterplot of longitude and latitude that highlights high-density areas
 &lt;/p&gt;
@@ -3660,7 +3658,7 @@ Figure 1.2: Scatterplot of longitude and latitude that highlights high-density a
              alpha = 0.4) +
   scale_colour_gradientn(colours=rev(rainbow(4)))&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plot-ca-prices&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;index_files/figure-html/plot-ca-prices-1.png&#34; alt=&#34;California housing_df prices&#34; width=&#34;80%&#34; /&gt;
+&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/plot-ca-prices-1.png&#34; alt=&#34;California housing_df prices&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1.3: California housing_df prices
 &lt;/p&gt;
@@ -3675,7 +3673,7 @@ qmplot(x = longitude,
        size = population,
        alpha = 0.4) +
   scale_colour_gradientn(colours=rev(rainbow(4)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;data-preparation&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
@@ -3689,7 +3687,7 @@ qmplot(x = longitude,
   ggplot(aes(median_income)) +
   geom_histogram(bins = 30)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:hist-med-income&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;index_files/figure-html/hist-med-income-1.png&#34; alt=&#34;Histogram of Median Income&#34; width=&#34;80%&#34; /&gt;
+&lt;img src=&#34;https://kirenz.com/post/2020-12-19-r-tidymodels-housing/index_files/figure-html/hist-med-income-1.png&#34; alt=&#34;Histogram of Median Income&#34; width=&#34;80%&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2.1: Histogram of Median Income
 &lt;/p&gt;
@@ -3796,11 +3794,11 @@ cv_folds&lt;/code&gt;&lt;/pre&gt;
 ## # A tibble: 5 x 2
 ##   splits               id   
 ##   &amp;lt;list&amp;gt;               &amp;lt;chr&amp;gt;
-## 1 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold1
-## 2 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold2
-## 3 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold3
-## 4 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold4
-## 5 &amp;lt;split [12.4K/3.1K]&amp;gt; Fold5&lt;/code&gt;&lt;/pre&gt;
+## 1 &amp;lt;split [12384/3098]&amp;gt; Fold1
+## 2 &amp;lt;split [12384/3098]&amp;gt; Fold2
+## 3 &amp;lt;split [12385/3097]&amp;gt; Fold3
+## 4 &amp;lt;split [12387/3095]&amp;gt; Fold4
+## 5 &amp;lt;split [12388/3094]&amp;gt; Fold5&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we can fit the model and collect the performance metrics with &lt;code&gt;collect_metrics()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm_wflow_eval &amp;lt;- 
   lm_wflow %&amp;gt;% 
